@@ -1,0 +1,1123 @@
+{
+  "config": {
+    "argv": [
+      "/Users/abhi/.hermes/node/bin/node",
+      "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/node_modules/.bin/playwright",
+      "test",
+      "tests/persistence.spec.ts",
+      "tests/mobile.spec.ts",
+      "tests/regressions.spec.ts",
+      "--grep",
+      "empty newly|failed local|older session|mobile New|last edit"
+    ],
+    "configFile": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/playwright.config.ts",
+    "rootDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/baseline-strengthened-verified/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop-chromium",
+        "name": "desktop-chromium",
+        "testDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests",
+        "testIgnore": [
+          "**/mobile.spec.ts"
+        ],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/baseline-strengthened-verified/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile-webkit",
+        "name": "mobile-webkit",
+        "testDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/baseline-strengthened-verified/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "desktop-chromium",
+        "testDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests",
+        "snapshotDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests",
+        "testIgnore": "**/mobile.spec.ts",
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 30000,
+        "use": {
+          "baseURL": "http://127.0.0.1:3107",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "video": "retain-on-failure",
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.8078.4 Safari/537.36",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          },
+          "screen": {
+            "width": 1920,
+            "height": 1080
+          },
+          "deviceScaleFactor": 1,
+          "isMobile": false,
+          "hasTouch": false,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "desktop-chromium"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/baseline-strengthened-verified/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "mobile-webkit",
+        "testDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests",
+        "snapshotDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 30000,
+        "use": {
+          "baseURL": "http://127.0.0.1:3107",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "video": "retain-on-failure",
+          "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.2 Mobile/15E148 Safari/604.1",
+          "viewport": {
+            "width": 390,
+            "height": 664
+          },
+          "screen": {
+            "width": 390,
+            "height": 844
+          },
+          "deviceScaleFactor": 3,
+          "isMobile": true,
+          "hasTouch": true,
+          "defaultBrowserType": "webkit"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "mobile-webkit"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": ".audit/overnight/baseline-strengthened-verified/report.json"
+        }
+      ],
+      [
+        "html",
+        {
+          "outputFolder": ".audit/overnight/baseline-strengthened-verified/html",
+          "open": "never"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "persistence.spec.ts",
+      "file": "persistence.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "an empty newly created note survives reload",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 6018,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"\"\u001b[39m\nReceived: \u001b[31mundefined\u001b[39m\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"\"\u001b[39m\nReceived: \u001b[31mundefined\u001b[39m\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate\n    at waitForStoredContent (/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/notes-helpers.ts:39:76)\n    at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/persistence.spec.ts:39:29",
+                    "location": {
+                      "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/notes-helpers.ts",
+                      "column": 76,
+                      "line": 39
+                    },
+                    "snippet": "\u001b[90m   at \u001b[39mnotes-helpers.ts:39\n\n  37 |\n  38 | export async function waitForStoredContent(page: Page, id: string, content: string) {\n> 39 |   await expect.poll(async () => (await readStoredNote(page, id))?.content).toBe(content);\n     |                                                                            ^\n  40 | }\n  41 |\n  42 | export async function openSidebar(page: Page, isMobile: boolean) {"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/notes-helpers.ts",
+                        "column": 76,
+                        "line": 39
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"\"\u001b[39m\nReceived: \u001b[31mundefined\u001b[39m\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate\n\n   at notes-helpers.ts:39\n\n  37 |\n  38 | export async function waitForStoredContent(page: Page, id: string, content: string) {\n> 39 |   await expect.poll(async () => (await readStoredNote(page, id))?.content).toBe(content);\n     |                                                                            ^\n  40 | }\n  41 |\n  42 | export async function openSidebar(page: Page, isMobile: boolean) {\n    at waitForStoredContent (/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/notes-helpers.ts:39:76)\n    at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/persistence.spec.ts:39:29"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T20:48:58.022Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "empty-note-after-reload",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/baseline-strengthened-verified/test-results/persistence-an-empty-newly-created-note-survives-reload-desktop-chromium/attachments/empty-note-after-reload-48a61c24bac8ba69707dd8fc6e8e0008e1d47415.png"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/baseline-strengthened-verified/test-results/persistence-an-empty-newly-created-note-survives-reload-desktop-chromium/test-failed-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/baseline-strengthened-verified/test-results/persistence-an-empty-newly-created-note-survives-reload-desktop-chromium/video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/baseline-strengthened-verified/test-results/persistence-an-empty-newly-created-note-survives-reload-desktop-chromium/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/baseline-strengthened-verified/test-results/persistence-an-empty-newly-created-note-survives-reload-desktop-chromium/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/notes-helpers.ts",
+                    "column": 76,
+                    "line": 39
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "a5ef73a4e2a1baaea746-a4f09c02719285b69f12",
+          "file": "persistence.spec.ts",
+          "line": 33,
+          "column": 5
+        },
+        {
+          "title": "failed local saves show failure and recover the draft after reload",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 7690,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('alert').filter({ hasText: 'Changes aren’t saved to this device. Keep this tab open and try saving again.' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('alert').filter({ hasText: 'Changes aren’t saved to this device. Keep this tab open and try saving again.' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('alert').filter({ hasText: 'Changes aren’t saved to this device. Keep this tab open and try saving again.' })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('alert').filter({ hasText: 'Changes aren’t saved to this device. Keep this tab open and try saving again.' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('alert').filter({ hasText: 'Changes aren’t saved to this device. Keep this tab open and try saving again.' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('alert').filter({ hasText: 'Changes aren’t saved to this device. Keep this tab open and try saving again.' })\u001b[22m\n\n    at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/persistence.spec.ts:55:29",
+                    "location": {
+                      "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/persistence.spec.ts",
+                      "column": 29,
+                      "line": 55
+                    },
+                    "snippet": "  53 |   await capture(page, testInfo, \"forced-local-save-failure\");\n  54 |   const saveFailure = page.getByRole(\"alert\").filter({ hasText: failedSaveMessage });\n> 55 |   await expect(saveFailure).toBeVisible();\n     |                             ^\n  56 |   await expect(page.getByText(\"Couldn’t save note\", { exact: true })).toBeVisible();\n  57 |   await expect(page.getByText(\"Saved\", { exact: true })).not.toBeVisible();\n  58 |   await page.reload();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/persistence.spec.ts",
+                        "column": 29,
+                        "line": 55
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('alert').filter({ hasText: 'Changes aren’t saved to this device. Keep this tab open and try saving again.' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('alert').filter({ hasText: 'Changes aren’t saved to this device. Keep this tab open and try saving again.' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('alert').filter({ hasText: 'Changes aren’t saved to this device. Keep this tab open and try saving again.' })\u001b[22m\n\n\n  53 |   await capture(page, testInfo, \"forced-local-save-failure\");\n  54 |   const saveFailure = page.getByRole(\"alert\").filter({ hasText: failedSaveMessage });\n> 55 |   await expect(saveFailure).toBeVisible();\n     |                             ^\n  56 |   await expect(page.getByText(\"Couldn’t save note\", { exact: true })).toBeVisible();\n  57 |   await expect(page.getByText(\"Saved\", { exact: true })).not.toBeVisible();\n  58 |   await page.reload();\n    at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/persistence.spec.ts:55:29"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T20:49:04.751Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "forced-local-save-failure",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/baseline-strengthened-verified/test-results/persistence-failed-local-s-064e0-over-the-draft-after-reload-desktop-chromium/attachments/forced-local-save-failure-e10bc9be0ca8cfd89b5e4c36947006ca9b600ecf.png"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/baseline-strengthened-verified/test-results/persistence-failed-local-s-064e0-over-the-draft-after-reload-desktop-chromium/test-failed-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/baseline-strengthened-verified/test-results/persistence-failed-local-s-064e0-over-the-draft-after-reload-desktop-chromium/video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/baseline-strengthened-verified/test-results/persistence-failed-local-s-064e0-over-the-draft-after-reload-desktop-chromium/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/baseline-strengthened-verified/test-results/persistence-failed-local-s-064e0-over-the-draft-after-reload-desktop-chromium/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/persistence.spec.ts",
+                    "column": 29,
+                    "line": 55
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "a5ef73a4e2a1baaea746-9af49e9d3c8910b9d963",
+          "file": "persistence.spec.ts",
+          "line": 44,
+          "column": 5
+        },
+        {
+          "title": "an older session draft cannot replace a newer edit committed by another tab",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 2735,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"The older interrupted draft.\"\u001b[39m\nReceived: \u001b[31mundefined\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"The older interrupted draft.\"\u001b[39m\nReceived: \u001b[31mundefined\u001b[39m\n    at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/persistence.spec.ts:73:55",
+                    "location": {
+                      "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/persistence.spec.ts",
+                      "column": 55,
+                      "line": 73
+                    },
+                    "snippet": "  71 |   await expectAbortedWrite(page);\n  72 |   await waitForStoredContent(page, id, \"The original shared note.\");\n> 73 |   expect((await readSessionDraft(page, id))?.content).toBe(\"The older interrupted draft.\");\n     |                                                       ^\n  74 |   await page.goto(\"about:blank\");\n  75 |\n  76 |   const otherTab = await context.newPage();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/persistence.spec.ts",
+                        "column": 55,
+                        "line": 73
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"The older interrupted draft.\"\u001b[39m\nReceived: \u001b[31mundefined\u001b[39m\n\n  71 |   await expectAbortedWrite(page);\n  72 |   await waitForStoredContent(page, id, \"The original shared note.\");\n> 73 |   expect((await readSessionDraft(page, id))?.content).toBe(\"The older interrupted draft.\");\n     |                                                       ^\n  74 |   await page.goto(\"about:blank\");\n  75 |\n  76 |   const otherTab = await context.newPage();\n    at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/persistence.spec.ts:73:55"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T20:49:12.994Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/baseline-strengthened-verified/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-desktop-chromium/test-failed-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/baseline-strengthened-verified/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-desktop-chromium/video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/baseline-strengthened-verified/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-desktop-chromium/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/baseline-strengthened-verified/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-desktop-chromium/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/persistence.spec.ts",
+                    "column": 55,
+                    "line": 73
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "a5ef73a4e2a1baaea746-dfa8d40b487efc49b0ff",
+          "file": "persistence.spec.ts",
+          "line": 65,
+          "column": 5
+        },
+        {
+          "title": "an older session draft cannot resurrect a note deleted in another tab",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 2722,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"An interrupted draft that must stay deleted.\"\u001b[39m\nReceived: \u001b[31mundefined\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"An interrupted draft that must stay deleted.\"\u001b[39m\nReceived: \u001b[31mundefined\u001b[39m\n    at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/persistence.spec.ts:97:55",
+                    "location": {
+                      "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/persistence.spec.ts",
+                      "column": 55,
+                      "line": 97
+                    },
+                    "snippet": "   95 |   await expectAbortedWrite(page);\n   96 |   await waitForStoredContent(page, id, \"Delete this shared note.\");\n>  97 |   expect((await readSessionDraft(page, id))?.content).toBe(\"An interrupted draft that must stay deleted.\");\n      |                                                       ^\n   98 |   await page.goto(\"about:blank\");\n   99 |\n  100 |   const otherTab = await context.newPage();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/persistence.spec.ts",
+                        "column": 55,
+                        "line": 97
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"An interrupted draft that must stay deleted.\"\u001b[39m\nReceived: \u001b[31mundefined\u001b[39m\n\n   95 |   await expectAbortedWrite(page);\n   96 |   await waitForStoredContent(page, id, \"Delete this shared note.\");\n>  97 |   expect((await readSessionDraft(page, id))?.content).toBe(\"An interrupted draft that must stay deleted.\");\n      |                                                       ^\n   98 |   await page.goto(\"about:blank\");\n   99 |\n  100 |   const otherTab = await context.newPage();\n    at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/persistence.spec.ts:97:55"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T20:49:16.388Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/baseline-strengthened-verified/test-results/persistence-an-older-sessi-eb9b0-note-deleted-in-another-tab-desktop-chromium/test-failed-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/baseline-strengthened-verified/test-results/persistence-an-older-sessi-eb9b0-note-deleted-in-another-tab-desktop-chromium/video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/baseline-strengthened-verified/test-results/persistence-an-older-sessi-eb9b0-note-deleted-in-another-tab-desktop-chromium/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/baseline-strengthened-verified/test-results/persistence-an-older-sessi-eb9b0-note-deleted-in-another-tab-desktop-chromium/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/persistence.spec.ts",
+                    "column": 55,
+                    "line": 97
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "a5ef73a4e2a1baaea746-82ceb4de6ef9f0f91ee9",
+          "file": "persistence.spec.ts",
+          "line": 89,
+          "column": 5
+        },
+        {
+          "title": "an empty newly created note survives reload",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 6142,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"\"\u001b[39m\nReceived: \u001b[31mundefined\u001b[39m\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"\"\u001b[39m\nReceived: \u001b[31mundefined\u001b[39m\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate\n    at waitForStoredContent (/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/notes-helpers.ts:39:76)\n    at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/persistence.spec.ts:39:29",
+                    "location": {
+                      "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/notes-helpers.ts",
+                      "column": 76,
+                      "line": 39
+                    },
+                    "snippet": "\u001b[90m   at \u001b[39mnotes-helpers.ts:39\n\n  37 |\n  38 | export async function waitForStoredContent(page: Page, id: string, content: string) {\n> 39 |   await expect.poll(async () => (await readStoredNote(page, id))?.content).toBe(content);\n     |                                                                            ^\n  40 | }\n  41 |\n  42 | export async function openSidebar(page: Page, isMobile: boolean) {"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/notes-helpers.ts",
+                        "column": 76,
+                        "line": 39
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"\"\u001b[39m\nReceived: \u001b[31mundefined\u001b[39m\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate\n\n   at notes-helpers.ts:39\n\n  37 |\n  38 | export async function waitForStoredContent(page: Page, id: string, content: string) {\n> 39 |   await expect.poll(async () => (await readStoredNote(page, id))?.content).toBe(content);\n     |                                                                            ^\n  40 | }\n  41 |\n  42 | export async function openSidebar(page: Page, isMobile: boolean) {\n    at waitForStoredContent (/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/notes-helpers.ts:39:76)\n    at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/persistence.spec.ts:39:29"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T20:49:36.518Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "empty-note-after-reload",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/baseline-strengthened-verified/test-results/persistence-an-empty-newly-created-note-survives-reload-mobile-webkit/attachments/empty-note-after-reload-bf946a02e997a8658ef90921d2715eec313ed264.png"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/baseline-strengthened-verified/test-results/persistence-an-empty-newly-created-note-survives-reload-mobile-webkit/test-failed-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/baseline-strengthened-verified/test-results/persistence-an-empty-newly-created-note-survives-reload-mobile-webkit/video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/baseline-strengthened-verified/test-results/persistence-an-empty-newly-created-note-survives-reload-mobile-webkit/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/baseline-strengthened-verified/test-results/persistence-an-empty-newly-created-note-survives-reload-mobile-webkit/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/notes-helpers.ts",
+                    "column": 76,
+                    "line": 39
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "a5ef73a4e2a1baaea746-4010856baef5823a6293",
+          "file": "persistence.spec.ts",
+          "line": 33,
+          "column": 5
+        },
+        {
+          "title": "failed local saves show failure and recover the draft after reload",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 7970,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('alert').filter({ hasText: 'Changes aren’t saved to this device. Keep this tab open and try saving again.' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('alert').filter({ hasText: 'Changes aren’t saved to this device. Keep this tab open and try saving again.' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('alert').filter({ hasText: 'Changes aren’t saved to this device. Keep this tab open and try saving again.' })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('alert').filter({ hasText: 'Changes aren’t saved to this device. Keep this tab open and try saving again.' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('alert').filter({ hasText: 'Changes aren’t saved to this device. Keep this tab open and try saving again.' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('alert').filter({ hasText: 'Changes aren’t saved to this device. Keep this tab open and try saving again.' })\u001b[22m\n\n    at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/persistence.spec.ts:55:29",
+                    "location": {
+                      "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/persistence.spec.ts",
+                      "column": 29,
+                      "line": 55
+                    },
+                    "snippet": "  53 |   await capture(page, testInfo, \"forced-local-save-failure\");\n  54 |   const saveFailure = page.getByRole(\"alert\").filter({ hasText: failedSaveMessage });\n> 55 |   await expect(saveFailure).toBeVisible();\n     |                             ^\n  56 |   await expect(page.getByText(\"Couldn’t save note\", { exact: true })).toBeVisible();\n  57 |   await expect(page.getByText(\"Saved\", { exact: true })).not.toBeVisible();\n  58 |   await page.reload();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/persistence.spec.ts",
+                        "column": 29,
+                        "line": 55
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('alert').filter({ hasText: 'Changes aren’t saved to this device. Keep this tab open and try saving again.' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('alert').filter({ hasText: 'Changes aren’t saved to this device. Keep this tab open and try saving again.' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('alert').filter({ hasText: 'Changes aren’t saved to this device. Keep this tab open and try saving again.' })\u001b[22m\n\n\n  53 |   await capture(page, testInfo, \"forced-local-save-failure\");\n  54 |   const saveFailure = page.getByRole(\"alert\").filter({ hasText: failedSaveMessage });\n> 55 |   await expect(saveFailure).toBeVisible();\n     |                             ^\n  56 |   await expect(page.getByText(\"Couldn’t save note\", { exact: true })).toBeVisible();\n  57 |   await expect(page.getByText(\"Saved\", { exact: true })).not.toBeVisible();\n  58 |   await page.reload();\n    at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/persistence.spec.ts:55:29"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T20:49:43.349Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "forced-local-save-failure",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/baseline-strengthened-verified/test-results/persistence-failed-local-s-064e0-over-the-draft-after-reload-mobile-webkit/attachments/forced-local-save-failure-2a9d75dad0d536998ba70a57ce4e6515970d39b7.png"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/baseline-strengthened-verified/test-results/persistence-failed-local-s-064e0-over-the-draft-after-reload-mobile-webkit/test-failed-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/baseline-strengthened-verified/test-results/persistence-failed-local-s-064e0-over-the-draft-after-reload-mobile-webkit/video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/baseline-strengthened-verified/test-results/persistence-failed-local-s-064e0-over-the-draft-after-reload-mobile-webkit/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/baseline-strengthened-verified/test-results/persistence-failed-local-s-064e0-over-the-draft-after-reload-mobile-webkit/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/persistence.spec.ts",
+                    "column": 29,
+                    "line": 55
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "a5ef73a4e2a1baaea746-78b7642ba0ae13cb5a97",
+          "file": "persistence.spec.ts",
+          "line": 44,
+          "column": 5
+        },
+        {
+          "title": "an older session draft cannot replace a newer edit committed by another tab",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 2888,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"The older interrupted draft.\"\u001b[39m\nReceived: \u001b[31mundefined\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"The older interrupted draft.\"\u001b[39m\nReceived: \u001b[31mundefined\u001b[39m\n    at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/persistence.spec.ts:73:55",
+                    "location": {
+                      "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/persistence.spec.ts",
+                      "column": 55,
+                      "line": 73
+                    },
+                    "snippet": "  71 |   await expectAbortedWrite(page);\n  72 |   await waitForStoredContent(page, id, \"The original shared note.\");\n> 73 |   expect((await readSessionDraft(page, id))?.content).toBe(\"The older interrupted draft.\");\n     |                                                       ^\n  74 |   await page.goto(\"about:blank\");\n  75 |\n  76 |   const otherTab = await context.newPage();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/persistence.spec.ts",
+                        "column": 55,
+                        "line": 73
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"The older interrupted draft.\"\u001b[39m\nReceived: \u001b[31mundefined\u001b[39m\n\n  71 |   await expectAbortedWrite(page);\n  72 |   await waitForStoredContent(page, id, \"The original shared note.\");\n> 73 |   expect((await readSessionDraft(page, id))?.content).toBe(\"The older interrupted draft.\");\n     |                                                       ^\n  74 |   await page.goto(\"about:blank\");\n  75 |\n  76 |   const otherTab = await context.newPage();\n    at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/persistence.spec.ts:73:55"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T20:49:51.958Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/baseline-strengthened-verified/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-mobile-webkit/test-failed-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/baseline-strengthened-verified/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-mobile-webkit/video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/baseline-strengthened-verified/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-mobile-webkit/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/baseline-strengthened-verified/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-mobile-webkit/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/persistence.spec.ts",
+                    "column": 55,
+                    "line": 73
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "a5ef73a4e2a1baaea746-1d97d4e6581408c48af1",
+          "file": "persistence.spec.ts",
+          "line": 65,
+          "column": 5
+        },
+        {
+          "title": "an older session draft cannot resurrect a note deleted in another tab",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 9,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 2970,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"An interrupted draft that must stay deleted.\"\u001b[39m\nReceived: \u001b[31mundefined\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"An interrupted draft that must stay deleted.\"\u001b[39m\nReceived: \u001b[31mundefined\u001b[39m\n    at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/persistence.spec.ts:97:55",
+                    "location": {
+                      "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/persistence.spec.ts",
+                      "column": 55,
+                      "line": 97
+                    },
+                    "snippet": "   95 |   await expectAbortedWrite(page);\n   96 |   await waitForStoredContent(page, id, \"Delete this shared note.\");\n>  97 |   expect((await readSessionDraft(page, id))?.content).toBe(\"An interrupted draft that must stay deleted.\");\n      |                                                       ^\n   98 |   await page.goto(\"about:blank\");\n   99 |\n  100 |   const otherTab = await context.newPage();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/persistence.spec.ts",
+                        "column": 55,
+                        "line": 97
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"An interrupted draft that must stay deleted.\"\u001b[39m\nReceived: \u001b[31mundefined\u001b[39m\n\n   95 |   await expectAbortedWrite(page);\n   96 |   await waitForStoredContent(page, id, \"Delete this shared note.\");\n>  97 |   expect((await readSessionDraft(page, id))?.content).toBe(\"An interrupted draft that must stay deleted.\");\n      |                                                       ^\n   98 |   await page.goto(\"about:blank\");\n   99 |\n  100 |   const otherTab = await context.newPage();\n    at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/persistence.spec.ts:97:55"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T20:49:55.463Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/baseline-strengthened-verified/test-results/persistence-an-older-sessi-eb9b0-note-deleted-in-another-tab-mobile-webkit/test-failed-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/baseline-strengthened-verified/test-results/persistence-an-older-sessi-eb9b0-note-deleted-in-another-tab-mobile-webkit/video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/baseline-strengthened-verified/test-results/persistence-an-older-sessi-eb9b0-note-deleted-in-another-tab-mobile-webkit/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/baseline-strengthened-verified/test-results/persistence-an-older-sessi-eb9b0-note-deleted-in-another-tab-mobile-webkit/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/persistence.spec.ts",
+                    "column": 55,
+                    "line": 97
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "a5ef73a4e2a1baaea746-0aa3e954da924d6fbed3",
+          "file": "persistence.spec.ts",
+          "line": 89,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "regressions.spec.ts",
+      "file": "regressions.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "last edit survives reload before the former 500ms autosave delay",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 6929,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.cm-content[contenteditable=\"true\"]')\nExpected: \u001b[32m\"\u001b[7mThe final thought must survive reload\u001b[27m.\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mOriginal saved thought\u001b[27m.\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" locator('.cm-content[contenteditable=\"true\"]') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.cm-content[contenteditable=\"true\"]')\u001b[22m\n\u001b[2m    14 × locator resolved to <div translate=\"no\" role=\"textbox\" autocorrect=\"off\" spellcheck=\"false\" autocapitalize=\"off\" aria-multiline=\"true\" contenteditable=\"true\" data-language=\"markdown\" writingsuggestions=\"false\" aria-placeholder=\"Start typing\" class=\"cm-content cm-lineWrapping\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"Original saved thought.\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.cm-content[contenteditable=\"true\"]')\nExpected: \u001b[32m\"\u001b[7mThe final thought must survive reload\u001b[27m.\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mOriginal saved thought\u001b[27m.\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" locator('.cm-content[contenteditable=\"true\"]') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.cm-content[contenteditable=\"true\"]')\u001b[22m\n\u001b[2m    14 × locator resolved to <div translate=\"no\" role=\"textbox\" autocorrect=\"off\" spellcheck=\"false\" autocapitalize=\"off\" aria-multiline=\"true\" contenteditable=\"true\" data-language=\"markdown\" writingsuggestions=\"false\" aria-placeholder=\"Start typing\" class=\"cm-content cm-lineWrapping\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"Original saved thought.\"\u001b[22m\n\n    at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/regressions.spec.ts:32:30",
+                    "location": {
+                      "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/regressions.spec.ts",
+                      "column": 30,
+                      "line": 32
+                    },
+                    "snippet": "  30 |   expect(timing!.pagehideAt - timing!.inputAt).toBeLessThan(500);\n  31 |   await capture(page, testInfo, \"immediate-reload-result\");\n> 32 |   await expect(editor(page)).toHaveText(\"The final thought must survive reload.\");\n     |                              ^\n  33 |   await waitForStoredContent(page, id, \"The final thought must survive reload.\");\n  34 | });\n  35 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/regressions.spec.ts",
+                        "column": 30,
+                        "line": 32
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.cm-content[contenteditable=\"true\"]')\nExpected: \u001b[32m\"\u001b[7mThe final thought must survive reload\u001b[27m.\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mOriginal saved thought\u001b[27m.\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" locator('.cm-content[contenteditable=\"true\"]') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.cm-content[contenteditable=\"true\"]')\u001b[22m\n\u001b[2m    14 × locator resolved to <div translate=\"no\" role=\"textbox\" autocorrect=\"off\" spellcheck=\"false\" autocapitalize=\"off\" aria-multiline=\"true\" contenteditable=\"true\" data-language=\"markdown\" writingsuggestions=\"false\" aria-placeholder=\"Start typing\" class=\"cm-content cm-lineWrapping\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"Original saved thought.\"\u001b[22m\n\n\n  30 |   expect(timing!.pagehideAt - timing!.inputAt).toBeLessThan(500);\n  31 |   await capture(page, testInfo, \"immediate-reload-result\");\n> 32 |   await expect(editor(page)).toHaveText(\"The final thought must survive reload.\");\n     |                              ^\n  33 |   await waitForStoredContent(page, id, \"The final thought must survive reload.\");\n  34 | });\n  35 |\n    at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/regressions.spec.ts:32:30"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T20:49:19.739Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "reload-timing",
+                      "contentType": "application/json",
+                      "body": "eyJpbnB1dEF0IjoxNTI2Ljg5OTk5OTk5ODUwOTksInBhZ2VoaWRlQXQiOjE1NDQuODk5OTk5OTk4NTA5OX0="
+                    },
+                    {
+                      "name": "immediate-reload-result",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/baseline-strengthened-verified/test-results/regressions-last-edit-surv-407ae-former-500ms-autosave-delay-desktop-chromium/attachments/immediate-reload-result-763d9859f3fe75630413c7226c9b9419c7562759.png"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/baseline-strengthened-verified/test-results/regressions-last-edit-surv-407ae-former-500ms-autosave-delay-desktop-chromium/test-failed-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/baseline-strengthened-verified/test-results/regressions-last-edit-surv-407ae-former-500ms-autosave-delay-desktop-chromium/video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/baseline-strengthened-verified/test-results/regressions-last-edit-surv-407ae-former-500ms-autosave-delay-desktop-chromium/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/baseline-strengthened-verified/test-results/regressions-last-edit-surv-407ae-former-500ms-autosave-delay-desktop-chromium/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/regressions.spec.ts",
+                    "column": 30,
+                    "line": 32
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "a34af78d704591628420-3b9e29a570172fe33e03",
+          "file": "regressions.spec.ts",
+          "line": 4,
+          "column": 5
+        },
+        {
+          "title": "last edit survives reload before the former 500ms autosave delay",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 10,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 7127,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.cm-content[contenteditable=\"true\"]')\nExpected: \u001b[32m\"\u001b[7mThe final thought must survive reload\u001b[27m.\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mOriginal saved thought\u001b[27m.\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" locator('.cm-content[contenteditable=\"true\"]') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.cm-content[contenteditable=\"true\"]')\u001b[22m\n\u001b[2m    14 × locator resolved to <div translate=\"no\" role=\"textbox\" autocorrect=\"off\" spellcheck=\"false\" autocapitalize=\"off\" aria-multiline=\"true\" contenteditable=\"true\" data-language=\"markdown\" writingsuggestions=\"false\" aria-placeholder=\"Start typing\" class=\"cm-content cm-lineWrapping\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"Original saved thought.\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.cm-content[contenteditable=\"true\"]')\nExpected: \u001b[32m\"\u001b[7mThe final thought must survive reload\u001b[27m.\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mOriginal saved thought\u001b[27m.\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" locator('.cm-content[contenteditable=\"true\"]') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.cm-content[contenteditable=\"true\"]')\u001b[22m\n\u001b[2m    14 × locator resolved to <div translate=\"no\" role=\"textbox\" autocorrect=\"off\" spellcheck=\"false\" autocapitalize=\"off\" aria-multiline=\"true\" contenteditable=\"true\" data-language=\"markdown\" writingsuggestions=\"false\" aria-placeholder=\"Start typing\" class=\"cm-content cm-lineWrapping\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"Original saved thought.\"\u001b[22m\n\n    at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/regressions.spec.ts:32:30",
+                    "location": {
+                      "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/regressions.spec.ts",
+                      "column": 30,
+                      "line": 32
+                    },
+                    "snippet": "  30 |   expect(timing!.pagehideAt - timing!.inputAt).toBeLessThan(500);\n  31 |   await capture(page, testInfo, \"immediate-reload-result\");\n> 32 |   await expect(editor(page)).toHaveText(\"The final thought must survive reload.\");\n     |                              ^\n  33 |   await waitForStoredContent(page, id, \"The final thought must survive reload.\");\n  34 | });\n  35 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/regressions.spec.ts",
+                        "column": 30,
+                        "line": 32
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.cm-content[contenteditable=\"true\"]')\nExpected: \u001b[32m\"\u001b[7mThe final thought must survive reload\u001b[27m.\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mOriginal saved thought\u001b[27m.\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" locator('.cm-content[contenteditable=\"true\"]') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.cm-content[contenteditable=\"true\"]')\u001b[22m\n\u001b[2m    14 × locator resolved to <div translate=\"no\" role=\"textbox\" autocorrect=\"off\" spellcheck=\"false\" autocapitalize=\"off\" aria-multiline=\"true\" contenteditable=\"true\" data-language=\"markdown\" writingsuggestions=\"false\" aria-placeholder=\"Start typing\" class=\"cm-content cm-lineWrapping\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"Original saved thought.\"\u001b[22m\n\n\n  30 |   expect(timing!.pagehideAt - timing!.inputAt).toBeLessThan(500);\n  31 |   await capture(page, testInfo, \"immediate-reload-result\");\n> 32 |   await expect(editor(page)).toHaveText(\"The final thought must survive reload.\");\n     |                              ^\n  33 |   await waitForStoredContent(page, id, \"The final thought must survive reload.\");\n  34 | });\n  35 |\n    at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/regressions.spec.ts:32:30"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T20:49:59.146Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "reload-timing",
+                      "contentType": "application/json",
+                      "body": "eyJpbnB1dEF0IjoxNTg2LCJwYWdlaGlkZUF0IjoxNjExfQ=="
+                    },
+                    {
+                      "name": "immediate-reload-result",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/baseline-strengthened-verified/test-results/regressions-last-edit-surv-407ae-former-500ms-autosave-delay-mobile-webkit/attachments/immediate-reload-result-a29de5c6ef4bb81601b0af8c7443b15502144230.png"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/baseline-strengthened-verified/test-results/regressions-last-edit-surv-407ae-former-500ms-autosave-delay-mobile-webkit/test-failed-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/baseline-strengthened-verified/test-results/regressions-last-edit-surv-407ae-former-500ms-autosave-delay-mobile-webkit/video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/baseline-strengthened-verified/test-results/regressions-last-edit-surv-407ae-former-500ms-autosave-delay-mobile-webkit/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/baseline-strengthened-verified/test-results/regressions-last-edit-surv-407ae-former-500ms-autosave-delay-mobile-webkit/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/regressions.spec.ts",
+                    "column": 30,
+                    "line": 32
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "a34af78d704591628420-bead38ef3a076185f0a9",
+          "file": "regressions.spec.ts",
+          "line": 4,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "mobile.spec.ts",
+      "file": "mobile.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "mobile New Note closes the drawer and allows immediate typing",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 8517,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).not.\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('dialog', { name: 'Sidebar', exact: true })\nExpected: not visible\nReceived: visible\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"not toBeVisible\" getByRole('dialog', { name: 'Sidebar', exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: 'Sidebar', exact: true })\u001b[22m\n\u001b[2m    14 × locator resolved to <div role=\"dialog\" tabindex=\"-1\" id=\"radix-_r_6_\" data-state=\"open\" data-mobile=\"true\" data-slot=\"sidebar\" data-sidebar=\"sidebar\" aria-labelledby=\"radix-_r_7_\" aria-describedby=\"radix-_r_8_\" class=\"data-[state=open]:animate-in data-[state=closed]:animate-out fixed z-50 flex flex-col gap-4 shadow-lg transition ease-in-out data-[state=closed]:duration-300 data-[state=open]:duration-500 data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left inset-y-0 left-0 h-full border-r sm:max-w…>…</div>\u001b[22m\n\u001b[2m       - unexpected value \"visible\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).not.\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('dialog', { name: 'Sidebar', exact: true })\nExpected: not visible\nReceived: visible\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"not toBeVisible\" getByRole('dialog', { name: 'Sidebar', exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: 'Sidebar', exact: true })\u001b[22m\n\u001b[2m    14 × locator resolved to <div role=\"dialog\" tabindex=\"-1\" id=\"radix-_r_6_\" data-state=\"open\" data-mobile=\"true\" data-slot=\"sidebar\" data-sidebar=\"sidebar\" aria-labelledby=\"radix-_r_7_\" aria-describedby=\"radix-_r_8_\" class=\"data-[state=open]:animate-in data-[state=closed]:animate-out fixed z-50 flex flex-col gap-4 shadow-lg transition ease-in-out data-[state=closed]:duration-300 data-[state=open]:duration-500 data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left inset-y-0 left-0 h-full border-r sm:max-w…>…</div>\u001b[22m\n\u001b[2m       - unexpected value \"visible\"\u001b[22m\n\n    at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/mobile.spec.ts:39:28",
+                    "location": {
+                      "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/mobile.spec.ts",
+                      "column": 28,
+                      "line": 39
+                    },
+                    "snippet": "  37 |   expect(id).not.toBe(firstId);\n  38 |   await capture(page, testInfo, \"after-mobile-note-creation\");\n> 39 |   await expect(drawer).not.toBeVisible();\n     |                            ^\n  40 |   await expect(editor(page).locator(\".cm-placeholder\")).toBeVisible();\n  41 |   await editor(page).fill(\"Created from the mobile drawer.\");\n  42 |   await waitForStoredContent(page, id, \"Created from the mobile drawer.\");"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/mobile.spec.ts",
+                        "column": 28,
+                        "line": 39
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).not.\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('dialog', { name: 'Sidebar', exact: true })\nExpected: not visible\nReceived: visible\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"not toBeVisible\" getByRole('dialog', { name: 'Sidebar', exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: 'Sidebar', exact: true })\u001b[22m\n\u001b[2m    14 × locator resolved to <div role=\"dialog\" tabindex=\"-1\" id=\"radix-_r_6_\" data-state=\"open\" data-mobile=\"true\" data-slot=\"sidebar\" data-sidebar=\"sidebar\" aria-labelledby=\"radix-_r_7_\" aria-describedby=\"radix-_r_8_\" class=\"data-[state=open]:animate-in data-[state=closed]:animate-out fixed z-50 flex flex-col gap-4 shadow-lg transition ease-in-out data-[state=closed]:duration-300 data-[state=open]:duration-500 data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left inset-y-0 left-0 h-full border-r sm:max-w…>…</div>\u001b[22m\n\u001b[2m       - unexpected value \"visible\"\u001b[22m\n\n\n  37 |   expect(id).not.toBe(firstId);\n  38 |   await capture(page, testInfo, \"after-mobile-note-creation\");\n> 39 |   await expect(drawer).not.toBeVisible();\n     |                            ^\n  40 |   await expect(editor(page).locator(\".cm-placeholder\")).toBeVisible();\n  41 |   await editor(page).fill(\"Created from the mobile drawer.\");\n  42 |   await waitForStoredContent(page, id, \"Created from the mobile drawer.\");\n    at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/mobile.spec.ts:39:28"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T20:49:27.244Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "after-mobile-note-creation",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/baseline-strengthened-verified/test-results/mobile-mobile-New-Note-clo-7c0c5-and-allows-immediate-typing-mobile-webkit/attachments/after-mobile-note-creation-768ab8c36ef9bf18ac6554866422c8b56cae5e23.png"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/baseline-strengthened-verified/test-results/mobile-mobile-New-Note-clo-7c0c5-and-allows-immediate-typing-mobile-webkit/test-failed-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/baseline-strengthened-verified/test-results/mobile-mobile-New-Note-clo-7c0c5-and-allows-immediate-typing-mobile-webkit/video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/baseline-strengthened-verified/test-results/mobile-mobile-New-Note-clo-7c0c5-and-allows-immediate-typing-mobile-webkit/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/baseline-strengthened-verified/test-results/mobile-mobile-New-Note-clo-7c0c5-and-allows-immediate-typing-mobile-webkit/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/mobile.spec.ts",
+                    "column": 28,
+                    "line": 39
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "e79c838550b25e92508e-5bc9bf8072999a384df3",
+          "file": "mobile.spec.ts",
+          "line": 27,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-13T20:48:57.538Z",
+    "duration": 69106.69200000001,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 11,
+    "flaky": 0
+  }
+}

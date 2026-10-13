@@ -1,0 +1,11 @@
+$ playwright test tests/creation.spec.ts "--project=desktop-chromium"
+
+Running 3 tests using 1 worker
+
+(node:69871) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [desktop-chromium] › tests/creation.spec.ts:4:5 › the direct new-note route creates exactly one durable note (1.7s)
+  ✓  2 [desktop-chromium] › tests/creation.spec.ts:21:7 › a failed home note creation reports the failure (634ms)
+  ✓  3 [desktop-chromium] › tests/creation.spec.ts:21:7 › a failed direct note creation reports the failure (690ms)
+
+  3 passed (3.6s)

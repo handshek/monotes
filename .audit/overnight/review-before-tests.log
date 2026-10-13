@@ -1,0 +1,100 @@
+$ playwright test tests/creation.spec.ts "--project=desktop-chromium"
+
+Running 3 tests using 1 worker
+
+(node:69272) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [desktop-chromium] › tests/creation.spec.ts:4:5 › the direct new-note route creates exactly one durable note (6.9s)
+  ✘  2 [desktop-chromium] › tests/creation.spec.ts:21:7 › a failed home note creation reports the failure (6.0s)
+(node:69321) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  3 [desktop-chromium] › tests/creation.spec.ts:21:7 › a failed direct note creation reports the failure (5.6s)
+
+
+  1) [desktop-chromium] › tests/creation.spec.ts:21:7 › a failed home note creation reports the failure
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText('Couldn’t create note. Please try again.', { exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByText('Couldn’t create note. Please try again.', { exact: true }) with timeout 5000ms
+      - waiting for getByText('Couldn’t create note. Please try again.', { exact: true })
+
+
+      32 |       await page.getByRole("button", { name: "Create new note", exact: true }).click();
+      33 |     }
+    > 34 |     await expect(page.getByText("Couldn’t create note. Please try again.", { exact: true })).toBeVisible();
+         |                                                                                              ^
+      35 |     if (entry === "direct") {
+      36 |       await page.getByRole("link", { name: "Back to notes", exact: true }).click();
+      37 |     }
+        at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/creation.spec.ts:34:94
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .audit/overnight/review-before/test-results/creation-a-failed-home-note-creation-reports-the-failure-desktop-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    .audit/overnight/review-before/test-results/creation-a-failed-home-note-creation-reports-the-failure-desktop-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .audit/overnight/review-before/test-results/creation-a-failed-home-note-creation-reports-the-failure-desktop-chromium/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    .audit/overnight/review-before/test-results/creation-a-failed-home-note-creation-reports-the-failure-desktop-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace .audit/overnight/review-before/test-results/creation-a-failed-home-note-creation-reports-the-failure-desktop-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [desktop-chromium] › tests/creation.spec.ts:21:7 › a failed direct note creation reports the failure
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText('Couldn’t create note. Please try again.', { exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByText('Couldn’t create note. Please try again.', { exact: true }) with timeout 5000ms
+      - waiting for getByText('Couldn’t create note. Please try again.', { exact: true })
+
+
+      32 |       await page.getByRole("button", { name: "Create new note", exact: true }).click();
+      33 |     }
+    > 34 |     await expect(page.getByText("Couldn’t create note. Please try again.", { exact: true })).toBeVisible();
+         |                                                                                              ^
+      35 |     if (entry === "direct") {
+      36 |       await page.getByRole("link", { name: "Back to notes", exact: true }).click();
+      37 |     }
+        at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/creation.spec.ts:34:94
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .audit/overnight/review-before/test-results/creation-a-failed-direct-note-creation-reports-the-failure-desktop-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    .audit/overnight/review-before/test-results/creation-a-failed-direct-note-creation-reports-the-failure-desktop-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .audit/overnight/review-before/test-results/creation-a-failed-direct-note-creation-reports-the-failure-desktop-chromium/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    .audit/overnight/review-before/test-results/creation-a-failed-direct-note-creation-reports-the-failure-desktop-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace .audit/overnight/review-before/test-results/creation-a-failed-direct-note-creation-reports-the-failure-desktop-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    [desktop-chromium] › tests/creation.spec.ts:21:7 › a failed home note creation reports the failure
+    [desktop-chromium] › tests/creation.spec.ts:21:7 › a failed direct note creation reports the failure
+  1 passed (19.8s)
+error: script "test:e2e" exited with code 1

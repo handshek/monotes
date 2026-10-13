@@ -1,0 +1,32 @@
+$ playwright test
+
+Running 22 tests using 1 worker
+
+(node:67390) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 [desktop-chromium] › tests/core.spec.ts:4:5 › create, edit, reload, and search local notes (4.5s)
+  ✓   2 [desktop-chromium] › tests/core.spec.ts:35:5 › offline edits persist locally and survive reconnect and reload (878ms)
+  ✓   3 [desktop-chromium] › tests/persistence.spec.ts:33:5 › an empty newly created note survives reload (864ms)
+  ✓   4 [desktop-chromium] › tests/persistence.spec.ts:47:5 › failed local saves show failure and recover the draft after reload (1.0s)
+  ✓   5 [desktop-chromium] › tests/persistence.spec.ts:68:5 › an older session draft cannot replace a newer edit committed by another tab (1.1s)
+  ✓   6 [desktop-chromium] › tests/persistence.spec.ts:92:5 › an older session draft cannot resurrect a note deleted in another tab (1.6s)
+  ✓   7 [desktop-chromium] › tests/regressions.spec.ts:4:5 › last edit survives reload before the former 500ms autosave delay (872ms)
+  ✓   8 [desktop-chromium] › tests/regressions.spec.ts:36:5 › sidebar Search opens a focused search and finds the current note (2.0s)
+  ✓   9 [desktop-chromium] › tests/regressions.spec.ts:54:5 › a cross-tab edit reverted to the original content remains reverted after reload (2.7s)
+  ✓  10 [desktop-chromium] › tests/regressions.spec.ts:74:5 › a new note survives reload immediately after its first edit (839ms)
+(node:67595) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  11 [mobile-webkit] › tests/core.spec.ts:4:5 › create, edit, reload, and search local notes (3.9s)
+  ✓  12 [mobile-webkit] › tests/core.spec.ts:35:5 › offline edits persist locally and survive reconnect and reload (1.1s)
+  ✓  13 [mobile-webkit] › tests/mobile.spec.ts:4:5 › mobile note selection closes the drawer and exposes the editor (5.0s)
+  ✓  14 [mobile-webkit] › tests/mobile.spec.ts:27:5 › mobile New Note closes the drawer and allows immediate typing (2.5s)
+  ✓  15 [mobile-webkit] › tests/persistence.spec.ts:33:5 › an empty newly created note survives reload (1.0s)
+  ✓  16 [mobile-webkit] › tests/persistence.spec.ts:47:5 › failed local saves show failure and recover the draft after reload (1.1s)
+  ✓  17 [mobile-webkit] › tests/persistence.spec.ts:68:5 › an older session draft cannot replace a newer edit committed by another tab (1.4s)
+  ✓  18 [mobile-webkit] › tests/persistence.spec.ts:92:5 › an older session draft cannot resurrect a note deleted in another tab (2.8s)
+  ✓  19 [mobile-webkit] › tests/regressions.spec.ts:4:5 › last edit survives reload before the former 500ms autosave delay (967ms)
+  ✓  20 [mobile-webkit] › tests/regressions.spec.ts:36:5 › sidebar Search opens a focused search and finds the current note (2.9s)
+  ✓  21 [mobile-webkit] › tests/regressions.spec.ts:54:5 › a cross-tab edit reverted to the original content remains reverted after reload (3.8s)
+  ✓  22 [mobile-webkit] › tests/regressions.spec.ts:74:5 › a new note survives reload immediately after its first edit (947ms)
+
+  22 passed (45.3s)

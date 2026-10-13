@@ -5,12 +5,14 @@
 - [x] Read the Principles section of the poteto-mode skill.
 - [x] Phase A: Frame
 - [x] Phase B: Design the workflow
-- [ ] Phase C: Run the loop
-- [ ] Establish and prove browser harness on unchanged application code.
-- [ ] Reproduce and capture at most three selected defects.
-- [ ] Fix each demonstrated defect and verify its behavior before the next.
-- [ ] Phase D: Keep the audit trail
-- [ ] Phase E: Verify and hand back
+- [x] Phase C: Run the loop
+- [x] Establish and prove browser harness on unchanged application code.
+- [x] Reproduce and capture at most three selected defects.
+- [x] Fix each demonstrated defect and verify it with before-and-after checks.
+- [x] Phase D: Keep the audit trail
+- [ ] Phase E: Verify and hand back. Local verification complete; required T3 Claude Opus review blocked by project registration.
+- [x] Save local commits, evidence, and a resumable morning checkpoint.
+- [ ] Complete the exact-worktree T3 review and address confirmed findings.
 
 ## Contract
 
@@ -29,3 +31,7 @@ The initial data shape is NoteContent with id, content, updatedAt, and cloudStat
 Design exploration compares immediate IndexedDB writes with a synchronous recoverable draft record for reload safety. Sidebar exploration compares reuse of the existing home search with a new modal; prefer reuse if browser evidence proves it meets the need. Mobile closure compares route effects with action-owned dismissal, including same-note clicks.
 
 PStack uses Cursor-only subagent types and model slugs that native Codex does not support. The installed portability guide explicitly permits native equivalents. Use native read-only investigations and T3 Claude Opus for the required cross-provider review. The external control-ui/deslop skills are not installed; use browser verification and direct diff cleanup without claiming those integrations ran.
+
+## Checkpoint
+
+The final production suite passed 56/56 executions with no retries, skips, or flaky results. Production build, typecheck, app lint, and harness lint passed. Six existing app lint warnings remain. See MORNING-REVIEW.md for the evidence index, access gaps, and resume procedure. No product decision is outstanding. External review prevents declaring the goal complete.

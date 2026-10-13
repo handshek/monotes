@@ -1,0 +1,21 @@
+{
+  "status": "blocked",
+  "connection": "http://127.0.0.1:3774/mcp",
+  "provider": "claudeAgent",
+  "model": "claude-opus-5-5",
+  "runtimeMode": "approval-required",
+  "interactionMode": "plan",
+  "requiredCheckout": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes",
+  "projectRegistration": {
+    "code": "capability_denied",
+    "message": "Changing projects or environment settings needs a live full-access/default calling thread or a full-access client."
+  },
+  "exactWorktreeLaunch": {
+    "code": "invalid_request",
+    "message": "worktreePath must be one of the project's git worktrees. t3_worktree_list shows them."
+  },
+  "reviewCompleted": false,
+  "authenticationVerified": false,
+  "nextAction": "Register /Users/abhi/dev/monotes as a project in T3 Code, keeping the MCP connection Supervised. Then resume this goal to launch the prepared read-only Opus review in the existing worktree.",
+  "finalProjectRecheck": "Monotes still absent from T3 project list on 2026-10-13 UTC"
+}

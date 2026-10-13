@@ -1,0 +1,19 @@
+# Required T3 Claude Opus review
+
+Status is pending. Do not treat this prepared request as a completed review.
+
+Run in `/Users/abhi/.codex/worktrees/monotes-overnight/monotes`, branch `codex/monotes-overnight`. Confirm the resolved working directory and HEAD before reviewing. The original clean checkout was `/Users/abhi/dev/monotes` at `b6f605126121cf118f2707988c3178e11bf5599b`. It had no preexisting changes. All work in this branch belongs to this overnight pass. Use the committed changes from that baseline, including new files. Do not create a separate clean worktree.
+
+Use the authenticated Claude Opus provider selected from T3’s live catalog. The last catalog offered provider `claudeAgent`, model `claude-opus-5-5`. Authentication has not been exercised. Preserve the Supervised connection ceiling. Use runtime `approval-required` and interaction `plan`. Do not substitute another model.
+
+Perform a read-only review. Do not edit files, commit, push, deploy, modify configuration, or dispatch other reviewers. Do not invoke the AGENTS automatic-review policy recursively. If a command needs write approval, do not perform it. Ask for necessary missing read access and state the gap.
+
+The user asked for an overnight improvement pass in a fresh worktree from current HEAD. Establish and prove a repeatable browser harness before modifying the app. Focus on creating, editing, reloading, and searching notes, offline persistence, and desktop/mobile usability. Identify and fix up to three high-impact demonstrated problems. Preserve the minimal design. Require before-and-after evidence, relevant checks, local commits and a decision log. Verify cloud sync if access exists, otherwise report the gap. Leave work for morning review without merging or deploying.
+
+The three accepted groups are persistence loss, inert sidebar Search, and mobile drawer dismissal. IndexedDB remains committed storage. Per-tab session drafts protect same-tab reloads before async saves settle. Typed local revisions and transactional update-only writes prevent stale drafts overwriting newer notes or resurrecting deleted ones. Creation now writes the empty note before navigation. Failed creates/saves have visible feedback. Dexie observation replaces the obsolete broadcast hook and creation whitelist. Search reuses the existing home screen and focuses its input. Mobile note selection and creation dismiss the drawer.
+
+Inspect the complete diff and surrounding code, especially local-drafts.ts, local-notes.ts, useLocalNote.ts, src/lib/auto-sync.ts, notes-editor.tsx, notes-sidebar.tsx, notes-search-list.tsx, /new and /[id] routes, and tests. The exact changed-file list and implementation commit are in MORNING-REVIEW.md. New tests and scripts are part of the review.
+
+Evidence is under `.audit/overnight`. The unchanged baseline core harness passed 8/8 repeated executions before any app edits. Selected baseline regressions failed. The final production suite passed 56/56 executions across desktop Chromium and mobile WebKit, with no retries, skips, or flaky results. Build, app lint, harness lint, typecheck, and git diff --check passed. Six app lint warnings predate this work. See the final JSON report, logs, screenshot index, native-review.md, and tests/README.md for precise scope. Cloud sync is unverified because no authenticated session was available. Offline edits and reconnect reload pass; full offline page reload fails both before and after. Do not infer broader durability or cloud guarantees from these tests.
+
+Report only actionable correctness, regression, security, or maintainability defects. Include severity, exact file and line, a concrete trigger, and supporting evidence. Inspect surrounding code before concluding. Separate demonstrated issues from hypotheses. If there are no actionable findings, say so. State any verification limits. Return findings directly and finish the read-only review without a write plan.

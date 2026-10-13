@@ -1,0 +1,16 @@
+[
+  {
+    "name": "desktop-chromium",
+    "navigationSucceeded": false,
+    "editorAvailableOffline": false,
+    "reloadError": "reload: net::ERR_INTERNET_DISCONNECTED\nCall log:\n\u001b[2m  - waiting for navigation until \"load\"\u001b[22m\n",
+    "contentRecoveredAfterReconnect": true
+  },
+  {
+    "name": "mobile-webkit",
+    "navigationSucceeded": false,
+    "editorAvailableOffline": true,
+    "reloadError": "reload: WebKit encountered an internal error\nCall log:\n\u001b[2m  - waiting for navigation until \"load\"\u001b[22m\n",
+    "contentRecoveredAfterReconnect": true
+  }
+]

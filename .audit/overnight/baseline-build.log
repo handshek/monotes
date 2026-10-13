@@ -17,9 +17,9 @@ $ next build
 [baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
    Generating static pages using 9 workers (0/6) ...
 [baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
-   Generating static pages using 9 workers (1/6) 
-   Generating static pages using 9 workers (2/6) 
-   Generating static pages using 9 workers (4/6) 
+   Generating static pages using 9 workers (1/6)
+   Generating static pages using 9 workers (2/6)
+   Generating static pages using 9 workers (4/6)
  ✓ Generating static pages using 9 workers (6/6) in 372.3ms
    Finalizing page optimization ...
 
@@ -34,4 +34,3 @@ Route (app)
 ƒ Proxy (Middleware)
 
 ƒ  (Dynamic)  server-rendered on demand
-
