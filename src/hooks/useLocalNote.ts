@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useLiveQuery } from "dexie-react-hooks";
 import { getNote, saveNote } from "@/lib/local-notes";
-import type { NoteContent } from "@/lib/local-db";
+import type { LocalRevision, NoteContent } from "@/lib/local-db";
 import {
   clearPendingDraft,
   compareNoteRevisions,
@@ -24,6 +24,7 @@ export function useLocalNote(slug: string) {
   const [optimistic, setOptimistic] = useState<NoteContent | null>(null);
   const [isSaving, setIsSaving] = useState(false);
   const [saveError, setSaveError] = useState<string | null>(null);
+  const [replacedRevision, setReplacedRevision] = useState<LocalRevision | null>(null);
   const pendingRef = useRef<NoteDraft | null>(null);
   const activeSlugRef = useRef<string | null>(slug);
   const recoveredSlugRef = useRef<string | null>(null);
@@ -95,6 +96,9 @@ export function useLocalNote(slug: string) {
     if (pending?.id === slug && (!stored || compareNoteRevisions(stored, pending) >= 0)) {
       clearPendingDraft(pending);
       pendingRef.current = null;
+      if (stored && stored.content !== pending.content) {
+        setReplacedRevision(pending.localRevision);
+      }
       setIsSaving(false);
       setSaveError(null);
     }
@@ -134,6 +138,7 @@ export function useLocalNote(slug: string) {
     isLoading: note === undefined && !loadError,
     isSaving,
     saveError,
+    replacedRevision,
     loadError,
     setMarkdown,
     saveNow,

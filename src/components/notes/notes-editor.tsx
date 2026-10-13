@@ -22,7 +22,7 @@ interface NotesEditorProps {
 
 export default function NotesEditor({ noteId }: NotesEditorProps) {
   const id = noteId ?? "local-default";
-  const { note, setMarkdown, saveNow, saveError, loadError } = useLocalNote(id);
+  const { note, setMarkdown, saveNow, saveError, replacedRevision, loadError } = useLocalNote(id);
   const { syncNow, isSyncing, syncComplete } = useDebouncedCloudSync(
     note ? id : "",
     note?.content ?? "",
@@ -48,15 +48,23 @@ export default function NotesEditor({ noteId }: NotesEditorProps) {
     };
   }, [id, saveAndSync, registerSync, unregisterSync]);
 
+  const showUpdatedNotice = useCallback(() => {
+    toast("Updated from another tab", { id: `note-update-${id}` });
+  }, [id]);
+
+  useEffect(() => {
+    if (replacedRevision) showUpdatedNotice();
+  }, [replacedRevision, showUpdatedNotice]);
+
   const handleSave = useCallback(() => {
     void saveAndSync().then(
       (result) => result === "updated"
-        ? toast("Updated from another tab")
+        ? showUpdatedNotice()
         : toast.success("Saved"),
       () => toast.error("Couldn’t save note")
     );
     return true;
-  }, [saveAndSync]);
+  }, [saveAndSync, showUpdatedNotice]);
 
   // Handle Vim commands
   useEffect(() => {
