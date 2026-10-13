@@ -55,6 +55,9 @@ export function useLocalNote(slug: string) {
       }
       if (activeSlugRef.current !== draft.id) return saved;
       if (settled) {
+        if (saved && saved.content !== pending.content) {
+          setReplacedRevision(pending.localRevision);
+        }
         currentNoteRef.current = saved;
         setOptimistic(saved);
         setIsSaving(false);
