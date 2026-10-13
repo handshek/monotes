@@ -5,19 +5,32 @@ test("last edit survives reload before the former 500ms autosave delay", async (
   const id = await createNote(page);
   await editor(page).fill("Original saved thought.");
   await waitForStoredContent(page, id, "Original saved thought.");
+  await page.evaluate(() => {
+    let lastInputAt: number | undefined;
+    document.addEventListener("input", () => { lastInputAt = performance.now(); }, true);
+    window.addEventListener("pagehide", () => {
+      sessionStorage.setItem("monotes-test-reload-timing", JSON.stringify({
+        inputAt: lastInputAt,
+        pagehideAt: performance.now(),
+      }));
+    }, { once: true });
+  });
   await editor(page).fill("The final thought must survive reload.");
-  const editCompletedAt = Date.now();
-  const reload = page.reload();
-  const reloadStartedAt = Date.now();
-  await reload;
+  await page.reload();
+  const timing = await page.evaluate(() => JSON.parse(
+    sessionStorage.getItem("monotes-test-reload-timing") ?? "null",
+  ) as { inputAt: number; pagehideAt: number } | null);
   await testInfo.attach("reload-timing", {
-    body: JSON.stringify({ millisecondsAfterEdit: reloadStartedAt - editCompletedAt }),
+    body: JSON.stringify(timing),
     contentType: "application/json",
   });
-  expect(reloadStartedAt - editCompletedAt).toBeLessThan(500);
-  await capture(page, testInfo, "immediate-reload-result");
+  expect(timing).not.toBeNull();
+  expect(timing?.inputAt).toBeGreaterThan(0);
+  expect(timing!.pagehideAt - timing!.inputAt).toBeGreaterThanOrEqual(0);
+  expect(timing!.pagehideAt - timing!.inputAt).toBeLessThan(500);
   await expect(editor(page)).toHaveText("The final thought must survive reload.");
   await waitForStoredContent(page, id, "The final thought must survive reload.");
+  await capture(page, testInfo, "immediate-reload-result");
 });
 
 test("sidebar Search opens a focused search and finds the current note", async ({ page, isMobile }, testInfo) => {
@@ -26,9 +39,13 @@ test("sidebar Search opens a focused search and finds the current note", async (
   await waitForStoredContent(page, id, "Cobalt lighthouse search target.");
   await openSidebar(page, isMobile);
   await page.getByRole("button", { name: "Search", exact: true }).click();
-  await capture(page, testInfo, "after-sidebar-search");
   const search = page.getByRole("textbox", { name: "Search notes", exact: true });
   await expect(search).toBeVisible();
+  await expect(search).toBeFocused();
+  await capture(page, testInfo, "after-sidebar-search");
+  await page.getByRole("heading", { name: "Monotes", exact: true }).click();
+  await openSidebar(page, isMobile);
+  await page.getByRole("button", { name: "Search", exact: true }).click();
   await expect(search).toBeFocused();
   await search.fill("lighthouse");
   const results = page.getByRole("region", { name: "Search results (1)", exact: true });
@@ -52,9 +69,9 @@ test("a cross-tab edit reverted to the original content remains reverted after r
   // Both former 500ms save timers must expire before checking the final stored value.
   await page.waitForTimeout(750);
   await otherTab.reload();
-  await capture(otherTab, testInfo, "cross-tab-reversion-after-reload");
   await expect(editor(otherTab)).toHaveText("Original shared thought.");
   await waitForStoredContent(otherTab, id, "Original shared thought.");
+  await capture(otherTab, testInfo, "cross-tab-reversion-after-reload");
 });
 
 
@@ -62,7 +79,7 @@ test("a new note survives reload immediately after its first edit", async ({ pag
   const id = await createNote(page);
   await editor(page).fill("A new thought must survive its first reload.");
   await page.reload();
-  await capture(page, testInfo, "new-note-immediate-reload");
   await expect(editor(page)).toHaveText("A new thought must survive its first reload.");
   await waitForStoredContent(page, id, "A new thought must survive its first reload.");
+  await capture(page, testInfo, "new-note-immediate-reload");
 });

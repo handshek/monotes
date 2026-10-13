@@ -41,6 +41,7 @@ import { createNewNote } from "@/lib/local-notes";
 import { getDB } from "@/lib/local-db";
 import { useLiveQuery } from "dexie-react-hooks";
 import { generateSlug } from "@/lib/ids";
+import { toast } from "sonner";
 import { Authenticated, Unauthenticated, useQuery } from "convex/react";
 import { useAuthActions } from "@convex-dev/auth/react";
 import { useRouter, usePathname } from "next/navigation";
@@ -49,7 +50,7 @@ import { useNoteSync } from "@/contexts/note-sync-context";
 import { cn } from "@/lib/utils";
 
 export default function NotesSidebar() {
-  const { toggleSidebar } = useSidebar();
+  const { toggleSidebar, setOpenMobile } = useSidebar();
   const router = useRouter();
   const pathname = usePathname();
   const { signOut } = useAuthActions();
@@ -74,14 +75,20 @@ export default function NotesSidebar() {
   };
 
   const onCreateNew = async () => {
-    const slug = generateSlug();
-    const note = await createNewNote(slug);
-    router.push(`/${note.id}`);
+    try {
+      const slug = generateSlug();
+      const note = await createNewNote(slug);
+      setOpenMobile(false);
+      router.push(`/${note.id}`);
+    } catch {
+      toast.error("Could not create note. Please try again.");
+    }
   };
 
   const onSearch = () => {
-    // TODO: Implement search functionality
-    console.log("Search clicked");
+    setOpenMobile(false);
+    router.push("/?search=true");
+    document.getElementById("notes-search")?.focus();
   };
 
   const displayName = currentUser?.name || currentUser?.email || "User";
@@ -91,6 +98,9 @@ export default function NotesSidebar() {
     e: MouseEvent<HTMLAnchorElement>,
     targetNoteId: string,
   ) => {
+    if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    setOpenMobile(false);
+
     // Get current note ID from pathname
     const currentNoteIdFromPath = pathname?.replace(/^\//, "") || null;
 

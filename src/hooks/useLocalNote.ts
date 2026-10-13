@@ -1,104 +1,138 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { useLiveQuery } from "dexie-react-hooks";
 import { getNote, saveNote } from "@/lib/local-notes";
 import type { NoteContent } from "@/lib/local-db";
-import { isInCreationWhitelist } from "@/lib/creation-whitelist";
-import { useDebounced } from "./useDebounced";
-import { useCrossTabSync } from "./useCrossTabSync";
+import {
+  clearPendingDraft,
+  compareNoteRevisions,
+  createDraft,
+  readPendingDraft,
+  writePendingDraft,
+  type NoteDraft,
+} from "@/lib/local-drafts";
+
+const SAVE_ERROR = "Changes aren’t saved to this device. Keep this tab open and try saving again.";
 
 export function useLocalNote(slug: string) {
-  const [note, setNote] = useState<NoteContent | null | undefined>(undefined);
+  const observed = useLiveQuery(async () => {
+    try {
+      return { slug, note: await getNote(slug), error: null };
+    } catch {
+      return { slug, error: "Couldn’t load this note. Reload to try again." };
+    }
+  }, [slug]);
+  const [optimistic, setOptimistic] = useState<NoteContent | null>(null);
   const [isSaving, setIsSaving] = useState(false);
-  const lastSavedContentRef = useRef<string>("");
-
-  const handleCrossTabUpdate = useCallback((content: string) => {
-    setNote((prev) => (prev ? { ...prev, content } : prev));
-  }, []);
-
-  const { broadcast } = useCrossTabSync(slug, handleCrossTabUpdate);
+  const [saveError, setSaveError] = useState<string | null>(null);
+  const pendingRef = useRef<NoteDraft | null>(null);
+  const activeSlugRef = useRef<string | null>(slug);
+  const recoveredSlugRef = useRef<string | null>(null);
+  const currentNoteRef = useRef<NoteContent | null | undefined>(undefined);
+  const stored = observed?.slug === slug ? observed.note : undefined;
+  const loadError = observed?.slug === slug ? observed.error : null;
+  const note = stored === null
+    ? null
+    : optimistic?.id === slug && (!stored || compareNoteRevisions(optimistic, stored) > 0)
+      ? optimistic
+      : stored;
+  currentNoteRef.current = note;
 
   useEffect(() => {
-    if (!slug) {
-      setNote(undefined);
-      return;
-    }
-
-    (async () => {
-      const existing = await getNote(slug);
-      if (existing) {
-        setNote(existing);
-        // Track the loaded content as our baseline
-        lastSavedContentRef.current = existing.content;
-      } else if (isInCreationWhitelist(slug)) {
-        // Slug is whitelisted - create temp in-memory note for lazy persistence
-        const tempNote: NoteContent = {
-          id: slug,
-          content: "",
-          updatedAt: Date.now(),
-          cloudStatus: "local",
-        };
-        setNote(tempNote);
-        lastSavedContentRef.current = "";
-      } else {
-        setNote(null);
-      }
-    })();
+    activeSlugRef.current = slug;
+    return () => { activeSlugRef.current = null; };
   }, [slug]);
 
-  const saveNow = useCallback(
-    async (content?: string) => {
-      if (!note) return;
-
-      const contentToSave = content ?? note.content;
-
-      // Don't save if content hasn't changed from last saved state
-      if (contentToSave === lastSavedContentRef.current) {
-        return;
+  const persist = useCallback(async (draft: NoteDraft) => {
+    try {
+      const saved = await saveNote(draft);
+      clearPendingDraft(draft);
+      const pending = pendingRef.current;
+      const settled = pending?.id === draft.id && (!saved || compareNoteRevisions(saved, pending) >= 0);
+      if (settled) {
+        clearPendingDraft(pending);
+        pendingRef.current = null;
       }
-
-      setIsSaving(true);
-      try {
-        const updated = await saveNote(slug, contentToSave);
-        lastSavedContentRef.current = contentToSave;
-        // Only update timestamp to preserve current content and avoid race condition
-        setNote((prev) =>
-          prev
-            ? {
-                ...prev,
-                updatedAt: updated.updatedAt,
-              }
-            : prev
-        );
-      } finally {
+      if (activeSlugRef.current !== draft.id) return saved;
+      if (settled) {
+        currentNoteRef.current = saved;
+        setOptimistic(saved);
         setIsSaving(false);
+        setSaveError(null);
       }
-    },
-    [note, slug]
-  );
+      return saved;
+    } catch (error) {
+      const pending = pendingRef.current;
+      if (activeSlugRef.current === draft.id && pending && compareNoteRevisions(pending, draft) === 0) {
+        setIsSaving(false);
+        setSaveError(SAVE_ERROR);
+      }
+      throw error;
+    }
+  }, []);
 
-  const { debouncedFn: debouncedSave } = useDebounced(saveNow, 500);
+  useEffect(() => {
+    if (stored === undefined || recoveredSlugRef.current === slug) return;
+    recoveredSlugRef.current = slug;
+    const recovered = readPendingDraft(slug);
+    if (!recovered) return;
+    if (!stored || compareNoteRevisions(stored, recovered) >= 0) {
+      clearPendingDraft(recovered);
+      return;
+    }
+    const pending = pendingRef.current;
+    if (pending?.id === slug && compareNoteRevisions(pending, recovered) >= 0) return;
+    pendingRef.current = recovered;
+    const restored = { ...stored, ...recovered };
+    currentNoteRef.current = restored;
+    setOptimistic(restored);
+    setIsSaving(true);
+    void persist(recovered).catch(() => {});
+  }, [slug, stored, persist]);
 
-  const setMarkdown = useCallback(
-    (content: string) => {
-      setNote((prev) => (prev ? { ...prev, content } : prev));
+  useEffect(() => {
+    if (stored === undefined) return;
+    const pending = pendingRef.current;
+    if (pending?.id === slug && (!stored || compareNoteRevisions(stored, pending) >= 0)) {
+      clearPendingDraft(pending);
+      pendingRef.current = null;
+      setIsSaving(false);
+      setSaveError(null);
+    }
+    if (!stored) setOptimistic(null);
+  }, [slug, stored]);
 
-      // Always trigger debounced save to clear any pending timers
-      // The actual save will be skipped if content hasn't changed
-      debouncedSave(content);
+  const setMarkdown = useCallback((content: string) => {
+    const current = currentNoteRef.current;
+    if (!current || current.id !== slug || current.content === content) return;
+    const draft = createDraft(current, content);
+    const next = { ...current, ...draft };
+    pendingRef.current = draft;
+    currentNoteRef.current = next;
+    setOptimistic(next);
+    setIsSaving(true);
+    setSaveError(null);
+    writePendingDraft(draft);
+    void persist(draft).catch(() => {});
+  }, [slug, persist]);
 
-      // Broadcast the change to other tabs
-      broadcast(content);
-    },
-    [debouncedSave, broadcast]
-  );
+  const saveNow = useCallback(async () => {
+    if (currentNoteRef.current?.id !== slug) throw new Error("Note is unavailable");
+    let pending = pendingRef.current;
+    while (pending?.id === slug) {
+      setIsSaving(true);
+      const saved = await persist(pending);
+      if (!saved) throw new Error("This note was deleted");
+      pending = pendingRef.current;
+    }
+  }, [slug, persist]);
 
-  return useMemo(
-    () => ({
-      note,
-      isLoading: note === undefined,
-      isSaving,
-      setMarkdown,
-      saveNow,
-    }),
-    [note, isSaving, setMarkdown, saveNow]
-  );
+  return {
+    note,
+    isLoading: note === undefined && !loadError,
+    isSaving,
+    saveError,
+    loadError,
+    setMarkdown,
+    saveNow,
+  };
 }

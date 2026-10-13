@@ -22,9 +22,9 @@ interface NotesEditorProps {
 
 export default function NotesEditor({ noteId }: NotesEditorProps) {
   const id = noteId ?? "local-default";
-  const { note, setMarkdown, saveNow } = useLocalNote(id);
+  const { note, setMarkdown, saveNow, saveError, loadError } = useLocalNote(id);
   const { syncNow, isSyncing, syncComplete } = useDebouncedCloudSync(
-    id,
+    note ? id : "",
     note?.content ?? "",
     note?.cloudStatus ?? "local"
   );
@@ -35,19 +35,25 @@ export default function NotesEditor({ noteId }: NotesEditorProps) {
   // Track applied Vim mappings to cleanup later
   const appliedMappings = useRef<{ lhs: string; mode: string }[]>([]);
 
+  const saveAndSync = useCallback(async () => {
+    await saveNow();
+    await syncNow();
+  }, [saveNow, syncNow]);
+
   useEffect(() => {
-    registerSync(id, syncNow);
+    registerSync(id, saveAndSync);
     return () => {
       unregisterSync();
     };
-  }, [id, syncNow, registerSync, unregisterSync]);
+  }, [id, saveAndSync, registerSync, unregisterSync]);
 
   const handleSave = useCallback(() => {
-    saveNow();
-    syncNow();
-    toast.success("Saved");
+    void saveAndSync().then(
+      () => toast.success("Saved"),
+      () => toast.error("Couldn’t save note")
+    );
     return true;
-  }, [saveNow, syncNow]);
+  }, [saveAndSync]);
 
   // Handle Vim commands
   useEffect(() => {
@@ -105,7 +111,18 @@ export default function NotesEditor({ noteId }: NotesEditorProps) {
     return exts;
   }, [handleSave, settings.vimMode, settings.tabSize]);
 
-  if (!note) return null;
+  if (note === null) {
+    return (
+      <div className="py-12 text-center text-muted-foreground">
+        <div className="mb-4">❌ Note not found</div>
+        <div>This note doesn’t exist locally. Create a new one instead.</div>
+      </div>
+    );
+  }
+
+  if (!note) {
+    return loadError ? <p role="alert" className="py-12 text-center">{loadError}</p> : null;
+  }
 
   return (
     <div className="editor-shell" style={{ fontSize: settings.fontSize }}>
@@ -118,6 +135,12 @@ export default function NotesEditor({ noteId }: NotesEditorProps) {
           isSyncing={isSyncing}
           syncComplete={syncComplete}
         />
+        {saveError && (
+          <div role="alert" className="mb-4 text-sm text-destructive">
+            {saveError}{" "}
+            <button type="button" className="underline" onClick={handleSave}>Retry</button>
+          </div>
+        )}
         <CodeMirror
           placeholder={"Start typing"}
           className="cm-container md:max-w-4xl"

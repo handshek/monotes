@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";
 import { generateSlug } from "@/lib/ids";
+import { toast } from "sonner";
 import { getDB } from "@/lib/local-db";
 import { createNewNote } from "@/lib/local-notes";
 import { useSearchCloudNotes } from "@/lib/cloud-notes";
@@ -13,11 +14,22 @@ import { cn } from "@/lib/utils";
 import { useLiveQuery } from "dexie-react-hooks";
 import { PlusIcon } from "lucide-react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useCallback, useMemo, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useSidebar } from "@/components/ui/sidebar";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 export default function NotesSearchList() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const { openMobile } = useSidebar();
+  const searchInput = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (searchParams.has("search") && !openMobile) {
+      searchInput.current?.focus();
+    }
+  }, [searchParams, openMobile]);
+
   const [searchQuery, setSearchQuery] = useState("");
   const [debouncedQuery, setDebouncedQuery] = useState("");
   const [showAll, setShowAll] = useState(false);
@@ -38,9 +50,13 @@ export default function NotesSearchList() {
   };
 
   const onCreateNew = async () => {
-    const slug = generateSlug();
-    const note = await createNewNote(slug);
-    router.push(`/${note.id}`);
+    try {
+      const slug = generateSlug();
+      const note = await createNewNote(slug);
+      router.push(`/${note.id}`);
+    } catch {
+      toast.error("Could not create note. Please try again.");
+    }
   };
 
   const onSearchChange = (value: string) => {
@@ -105,6 +121,8 @@ export default function NotesSearchList() {
     <>
       <div className="flex gap-3 mb-8" role="search">
         <Input
+          ref={searchInput}
+          id="notes-search"
           placeholder="Search notes..."
           value={searchQuery}
           onChange={(e) => onSearchChange(e.target.value)}

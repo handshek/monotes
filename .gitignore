@@ -48,3 +48,4 @@ next-env.d.ts
 /playwright-report/
 /.audit/overnight/**/html/
 /.audit/overnight/**/test-results/
+/.audit/overnight/latest/

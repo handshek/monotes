@@ -1,5 +1,7 @@
 # Verify the core notes flows
 
+Use the project’s local `.env.local` configuration with a valid `NEXT_PUBLIC_CONVEX_URL` before building. These isolated local tests need no signed-in cloud account. Do not commit environment values.
+
 Install dependencies and the two browser engines.
 
 ```sh
@@ -23,7 +25,13 @@ MONOTES_BASE_URL=http://127.0.0.1:3107 MONOTES_EVIDENCE_DIR=.audit/overnight/bas
 
 Open `.audit/overnight/latest/html/index.html` for the default report. The same directory contains a JSON report, success screenshots, and failure screenshots, videos, and traces. Set `MONOTES_EVIDENCE_DIR` to preserve separate before and after runs.
 
-Run the passing core checks separately from the regressions.
+Repeat every case to check reproducibility.
+
+```sh
+bun run test:e2e -- --repeat-each=2
+```
+
+Run the core checks separately from the regressions.
 
 ```sh
 bun run test:e2e -- tests/core.spec.ts
@@ -31,7 +39,7 @@ bun run lint
 bun run typecheck
 ```
 
-The suite covers desktop Chromium and mobile WebKit. Desktop keyboard editing enters the default Vim insert mode. Mobile editing uses ordinary text input. The suite checks local creation, editing, reload, case-insensitive content search, offline edits followed by reconnect and reload, immediate reload durability, sidebar search, and mobile drawer navigation.
+The suite covers desktop Chromium and mobile WebKit. Desktop keyboard editing enters the default Vim insert mode. Mobile editing uses ordinary text input. The suite checks local creation, editing, reload, case-insensitive content search, offline edits followed by reconnect and reload, immediate reload durability, repeated sidebar search, and mobile drawer navigation. It also checks empty-note persistence, visible storage failures, draft recovery, and protection against stale drafts overwriting newer or deleted notes. Forced storage errors are confined to isolated test contexts.
 
 Offline persistence checks operate after the application has loaded. They do not establish that the application can boot or reload without a network connection. Cloud sync requires a separate authenticated account and is not claimed by these isolated local tests.
 

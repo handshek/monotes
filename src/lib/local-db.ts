@@ -1,9 +1,15 @@
 import Dexie, { Table } from "dexie";
 
+export interface LocalRevision {
+  clock: number;
+  actor: string;
+}
+
 export interface NoteContent {
   id: string;
   content: string;
   updatedAt: number;
+  localRevision?: LocalRevision;
   cloudStatus: "local" | "syncing" | "synced" | "ai-enabled";
 }
 

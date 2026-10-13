@@ -10,6 +10,7 @@ import ThemeToggeler from "@/components/theme-toggeler";
 import { useRouter } from "next/navigation";
 import { createNewNote } from "@/lib/local-notes";
 import { generateSlug } from "@/lib/ids";
+import { toast } from "sonner";
 import { useSidebar } from "@/components/ui/sidebar";
 import SettingsTrigger from "@/components/settings/settings-trigger";
 import { useDistractionFree } from "@/contexts/distraction-free-context";
@@ -22,9 +23,13 @@ export default function Navbar() {
   const { isDistracted, resetDistraction } = useDistractionFree();
 
   const onCreateNew = async () => {
-    const slug = generateSlug();
-    const note = await createNewNote(slug);
-    router.push(`/${note.id}`);
+    try {
+      const slug = generateSlug();
+      const note = await createNewNote(slug);
+      router.push(`/${note.id}`);
+    } catch {
+      toast.error("Could not create note. Please try again.");
+    }
   };
 
   useEffect(() => {

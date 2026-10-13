@@ -1,50 +1,36 @@
 import { getDB, type NoteContent } from "./local-db";
-import { removeFromCreationWhitelist } from "./creation-whitelist";
+import { compareNoteRevisions, createDraft, type NoteDraft } from "./local-drafts";
 
 export async function getNote(slug: string): Promise<NoteContent | null> {
-  const db = getDB();
-  const existingNote = await db.notes.get(slug);
+  const existingNote = await getDB().notes.get(slug);
   return existingNote ?? null;
 }
 
-export async function saveNote(
-  slug: string,
-  content: string
-): Promise<NoteContent> {
+export async function saveNote(draft: NoteDraft): Promise<NoteContent | null> {
   const db = getDB();
-  const existingNote = await db.notes.get(slug);
-  const now = Date.now();
-
-  const updatedNote: NoteContent = existingNote
-    ? { ...existingNote, content, updatedAt: now }
-    : {
-        id: slug,
-        content,
-        updatedAt: now,
-        cloudStatus: "local",
-      };
-
-  await db.notes.put(updatedNote);
-
-  removeFromCreationWhitelist(slug);
-
-  return updatedNote;
+  return db.transaction("rw", db.notes, async () => {
+    const existing = await db.notes.get(draft.id);
+    if (!existing || compareNoteRevisions(existing, draft) >= 0) {
+      return existing ?? null;
+    }
+    const updated = { ...existing, ...draft };
+    await db.notes.put(updated);
+    return updated;
+  });
 }
 
 export async function createNewNote(slug: string): Promise<NoteContent> {
-  // Note will be saved to IndexedDB on first edit
-  const { addToCreationWhitelist } = await import("./creation-whitelist");
-  addToCreationWhitelist(slug);
-
-  return {
+  const empty: NoteContent = {
     id: slug,
     content: "",
-    updatedAt: Date.now(),
+    updatedAt: 0,
     cloudStatus: "local",
   };
+  const note = { ...empty, ...createDraft(empty, "") };
+  await getDB().notes.add(note);
+  return note;
 }
 
 export async function listNotes(): Promise<NoteContent[]> {
-  const db = getDB();
-  return db.notes.orderBy("updatedAt").reverse().toArray();
+  return getDB().notes.orderBy("updatedAt").reverse().toArray();
 }
