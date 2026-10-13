@@ -118,12 +118,15 @@ export function useLocalNote(slug: string) {
   const saveNow = useCallback(async () => {
     if (currentNoteRef.current?.id !== slug) throw new Error("Note is unavailable");
     let pending = pendingRef.current;
+    let result: "saved" | "updated" = "saved";
     while (pending?.id === slug) {
       setIsSaving(true);
       const saved = await persist(pending);
       if (!saved) throw new Error("This note was deleted");
+      result = saved.content === pending.content ? "saved" : "updated";
       pending = pendingRef.current;
     }
+    return result;
   }, [slug, persist]);
 
   return {

@@ -36,12 +36,13 @@ export default function NotesEditor({ noteId }: NotesEditorProps) {
   const appliedMappings = useRef<{ lhs: string; mode: string }[]>([]);
 
   const saveAndSync = useCallback(async () => {
-    await saveNow();
+    const result = await saveNow();
     await syncNow();
+    return result;
   }, [saveNow, syncNow]);
 
   useEffect(() => {
-    registerSync(id, saveAndSync);
+    registerSync(id, async () => { await saveAndSync(); });
     return () => {
       unregisterSync();
     };
@@ -49,7 +50,9 @@ export default function NotesEditor({ noteId }: NotesEditorProps) {
 
   const handleSave = useCallback(() => {
     void saveAndSync().then(
-      () => toast.success("Saved"),
+      (result) => result === "updated"
+        ? toast("Updated from another tab")
+        : toast.success("Saved"),
       () => toast.error("Couldn’t save note")
     );
     return true;
