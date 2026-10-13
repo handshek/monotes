@@ -81,6 +81,9 @@ export function useLocalNote(slug: string) {
     if (!recovered) return;
     if (!stored || compareNoteRevisions(stored, recovered) >= 0) {
       clearPendingDraft(recovered);
+      if (stored && stored.content !== recovered.content) {
+        setReplacedRevision(recovered.localRevision);
+      }
       return;
     }
     const pending = pendingRef.current;

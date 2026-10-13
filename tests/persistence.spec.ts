@@ -65,29 +65,37 @@ test("failed local saves show failure and recover the draft after reload", async
   await capture(page, testInfo, "draft-recovered-after-reload");
 });
 
-test("an older session draft cannot replace a newer edit committed by another tab", async ({ page, context }, testInfo) => {
-  const id = await createNote(page);
-  await editor(page).fill("The original shared note.");
-  await waitForStoredContent(page, id, "The original shared note.");
-  await abortWritesForNote(page, id);
-  await editor(page).fill("The older interrupted draft.");
-  await expectAbortedWrite(page);
-  await waitForStoredContent(page, id, "The original shared note.");
-  expect((await readSessionDraft(page, id))?.content).toBe("The older interrupted draft.");
-  await page.goto("about:blank");
+for (const sameContent of [false, true]) {
+  test(sameContent
+    ? "an older session draft with already-saved content stays quiet"
+    : "an older session draft cannot replace a newer edit committed by another tab", async ({ page, context }, testInfo) => {
+    const id = await createNote(page);
+    await editor(page).fill("The original shared note.");
+    await waitForStoredContent(page, id, "The original shared note.");
+    await abortWritesForNote(page, id);
+    await editor(page).fill("The older interrupted draft.");
+    await expectAbortedWrite(page);
+    await waitForStoredContent(page, id, "The original shared note.");
+    expect((await readSessionDraft(page, id))?.content).toBe("The older interrupted draft.");
+    await page.goto("about:blank");
 
-  const otherTab = await context.newPage();
-  await otherTab.goto(`/${id}`);
-  await expect(editor(otherTab)).toHaveText("The original shared note.");
-  await editor(otherTab).fill("The newer committed thought wins.");
-  await waitForStoredContent(otherTab, id, "The newer committed thought wins.");
+    const otherTab = await context.newPage();
+    await otherTab.goto(`/${id}`);
+    await expect(editor(otherTab)).toHaveText("The original shared note.");
+    const expectedContent = sameContent ? "The older interrupted draft." : "The newer committed thought wins.";
+    await editor(otherTab).fill(expectedContent);
+    await waitForStoredContent(otherTab, id, expectedContent);
 
-  await page.goto(`/${id}`);
-  await expect(editor(page)).toHaveText("The newer committed thought wins.");
-  await expect.poll(() => readSessionDraft(page, id)).toBeNull();
-  await waitForStoredContent(page, id, "The newer committed thought wins.");
-  await capture(page, testInfo, "newer-committed-edit-preserved");
-});
+    await page.goto(`/${id}`);
+    await expect(editor(page)).toHaveText(expectedContent);
+    await expect.poll(() => readSessionDraft(page, id)).toBeNull();
+    await waitForStoredContent(page, id, expectedContent);
+    const updated = page.getByText("Updated from another tab", { exact: true });
+    if (sameContent) await expect(updated).not.toBeVisible();
+    else await expect.soft(updated).toBeVisible();
+    await capture(page, testInfo, "newer-committed-edit-preserved");
+  });
+}
 
 test("an older session draft cannot resurrect a note deleted in another tab", async ({ page, context, isMobile }, testInfo) => {
   const id = await createNote(page);
@@ -114,5 +122,6 @@ test("an older session draft cannot resurrect a note deleted in another tab", as
   await expect(editor(page)).not.toBeVisible();
   await expect.poll(() => readSessionDraft(page, id)).toBeNull();
   await expect.poll(() => readStoredNote(page, id)).toBeNull();
+  await expect(page.getByText("Updated from another tab", { exact: true })).not.toBeVisible();
   await capture(page, testInfo, "deleted-note-stays-deleted");
 });
