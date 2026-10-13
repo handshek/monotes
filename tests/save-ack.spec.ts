@@ -50,6 +50,7 @@ test("manual save does not acknowledge a pending draft displaced by another tab"
   const failure = page.getByText("Couldn’t save note", { exact: true });
   const updated = page.getByText("Updated from another tab", { exact: true });
   await expect(success.or(failure).or(updated)).toBeVisible();
+  await expect(editor(page)).toHaveText(newerContent);
   await capture(page, testInfo, "manual-save-after-newer-tab-commit");
   const observed = {
     pendingBefore,

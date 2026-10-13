@@ -185,9 +185,7 @@ export default function NotesSidebar() {
                     >
                       <span className="truncate text-sidebar-foreground/70 transition-colors">
                         {n.content?.trim()
-                          ? (n.content.trim().match(/[^\s\n]+/g) || [])
-                              .slice(0, 20)
-                              .join(" ")
+                          ? n.content.trim().split(/\s+/, 20).join(" ")
                           : n.id}
                       </span>
                     </Link>
