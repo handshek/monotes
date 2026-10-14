@@ -1,0 +1,359 @@
+{
+  "config": {
+    "argv": [
+      "/Users/abhi/.hermes/node/bin/node",
+      "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/node_modules/.bin/playwright",
+      "test",
+      "tests/search-dialog.spec.ts",
+      "--grep",
+      "search stays"
+    ],
+    "configFile": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/playwright.config.ts",
+    "rootDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/search-dialog/before/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop-chromium",
+        "name": "desktop-chromium",
+        "testDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests",
+        "testIgnore": [
+          "**/mobile.spec.ts"
+        ],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/search-dialog/before/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile-webkit",
+        "name": "mobile-webkit",
+        "testDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/search-dialog/before/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "desktop-chromium",
+        "testDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests",
+        "snapshotDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests",
+        "testIgnore": "**/mobile.spec.ts",
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 30000,
+        "use": {
+          "baseURL": "http://127.0.0.1:3000",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "video": "retain-on-failure",
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.8078.4 Safari/537.36",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          },
+          "screen": {
+            "width": 1920,
+            "height": 1080
+          },
+          "deviceScaleFactor": 1,
+          "isMobile": false,
+          "hasTouch": false,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "desktop-chromium"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/search-dialog/before/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "mobile-webkit",
+        "testDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests",
+        "snapshotDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 30000,
+        "use": {
+          "baseURL": "http://127.0.0.1:3000",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "video": "retain-on-failure",
+          "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.2 Mobile/15E148 Safari/604.1",
+          "viewport": {
+            "width": 390,
+            "height": 664
+          },
+          "screen": {
+            "width": 390,
+            "height": 844
+          },
+          "deviceScaleFactor": 3,
+          "isMobile": true,
+          "hasTouch": true,
+          "defaultBrowserType": "webkit"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "mobile-webkit"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": ".audit/search-dialog/before/report.json"
+        }
+      ],
+      [
+        "html",
+        {
+          "outputFolder": ".audit/search-dialog/before/html",
+          "open": "never"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "search-dialog.spec.ts",
+      "file": "search-dialog.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "search stays inside the current note and dismisses without losing edits",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 6494,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected pattern: \u001b[32m/\\/aSxsjB1M7j$/\u001b[39m\nReceived string:  \u001b[31m\"http://127.0.0.1:3000/?search=true\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveURL\" with timeout 5000ms\u001b[22m\n\u001b[2m    14 × locator resolved to <html lang=\"en\" class=\"light\">…</html>\u001b[22m\n\u001b[2m       - unexpected value \"http://127.0.0.1:3000/?search=true\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected pattern: \u001b[32m/\\/aSxsjB1M7j$/\u001b[39m\nReceived string:  \u001b[31m\"http://127.0.0.1:3000/?search=true\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveURL\" with timeout 5000ms\u001b[22m\n\u001b[2m    14 × locator resolved to <html lang=\"en\" class=\"light\">…</html>\u001b[22m\n\u001b[2m       - unexpected value \"http://127.0.0.1:3000/?search=true\"\u001b[22m\n\n    at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/search-dialog.spec.ts:11:22",
+                    "location": {
+                      "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/search-dialog.spec.ts",
+                      "column": 22,
+                      "line": 11
+                    },
+                    "snippet": "   9 |   await page.getByRole(\"button\", { name: \"Search\", exact: true }).click();\n  10 |   await capture(page, testInfo, \"search-opening\");\n> 11 |   await expect(page).toHaveURL(new RegExp(`/${id}$`));\n     |                      ^\n  12 |   const dialog = page.getByRole(\"dialog\", { name: \"Search notes\", exact: true });\n  13 |   const search = dialog.getByRole(\"textbox\", { name: \"Search notes\", exact: true });\n  14 |   await expect(dialog).toBeVisible();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/search-dialog.spec.ts",
+                        "column": 22,
+                        "line": 11
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected pattern: \u001b[32m/\\/aSxsjB1M7j$/\u001b[39m\nReceived string:  \u001b[31m\"http://127.0.0.1:3000/?search=true\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveURL\" with timeout 5000ms\u001b[22m\n\u001b[2m    14 × locator resolved to <html lang=\"en\" class=\"light\">…</html>\u001b[22m\n\u001b[2m       - unexpected value \"http://127.0.0.1:3000/?search=true\"\u001b[22m\n\n\n   9 |   await page.getByRole(\"button\", { name: \"Search\", exact: true }).click();\n  10 |   await capture(page, testInfo, \"search-opening\");\n> 11 |   await expect(page).toHaveURL(new RegExp(`/${id}$`));\n     |                      ^\n  12 |   const dialog = page.getByRole(\"dialog\", { name: \"Search notes\", exact: true });\n  13 |   const search = dialog.getByRole(\"textbox\", { name: \"Search notes\", exact: true });\n  14 |   await expect(dialog).toBeVisible();\n    at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/search-dialog.spec.ts:11:22"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T07:54:25.493Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "search-opening",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/search-dialog/before/test-results/search-dialog-search-stays-7e7f7-misses-without-losing-edits-desktop-chromium/attachments/search-opening-7d4f14ab36e93ca790ee64d62c3feaca4ba51ec0.png"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/search-dialog/before/test-results/search-dialog-search-stays-7e7f7-misses-without-losing-edits-desktop-chromium/test-failed-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/search-dialog/before/test-results/search-dialog-search-stays-7e7f7-misses-without-losing-edits-desktop-chromium/video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/search-dialog/before/test-results/search-dialog-search-stays-7e7f7-misses-without-losing-edits-desktop-chromium/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/search-dialog/before/test-results/search-dialog-search-stays-7e7f7-misses-without-losing-edits-desktop-chromium/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/search-dialog.spec.ts",
+                    "column": 22,
+                    "line": 11
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "c5e394b7ed4189b46c43-6c56b2ba054aebd667bf",
+          "file": "search-dialog.spec.ts",
+          "line": 4,
+          "column": 5
+        },
+        {
+          "title": "search stays inside the current note and dismisses without losing edits",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 7520,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected pattern: \u001b[32m/\\/nEXsBTSdnB$/\u001b[39m\nReceived string:  \u001b[31m\"http://127.0.0.1:3000/?search=true\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveURL\" with timeout 5000ms\u001b[22m\n\u001b[2m    14 × locator resolved to <html lang=\"en\" class=\"light\">…</html>\u001b[22m\n\u001b[2m       - unexpected value \"http://127.0.0.1:3000/?search=true\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected pattern: \u001b[32m/\\/nEXsBTSdnB$/\u001b[39m\nReceived string:  \u001b[31m\"http://127.0.0.1:3000/?search=true\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveURL\" with timeout 5000ms\u001b[22m\n\u001b[2m    14 × locator resolved to <html lang=\"en\" class=\"light\">…</html>\u001b[22m\n\u001b[2m       - unexpected value \"http://127.0.0.1:3000/?search=true\"\u001b[22m\n\n    at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/search-dialog.spec.ts:11:22",
+                    "location": {
+                      "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/search-dialog.spec.ts",
+                      "column": 22,
+                      "line": 11
+                    },
+                    "snippet": "   9 |   await page.getByRole(\"button\", { name: \"Search\", exact: true }).click();\n  10 |   await capture(page, testInfo, \"search-opening\");\n> 11 |   await expect(page).toHaveURL(new RegExp(`/${id}$`));\n     |                      ^\n  12 |   const dialog = page.getByRole(\"dialog\", { name: \"Search notes\", exact: true });\n  13 |   const search = dialog.getByRole(\"textbox\", { name: \"Search notes\", exact: true });\n  14 |   await expect(dialog).toBeVisible();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/search-dialog.spec.ts",
+                        "column": 22,
+                        "line": 11
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected pattern: \u001b[32m/\\/nEXsBTSdnB$/\u001b[39m\nReceived string:  \u001b[31m\"http://127.0.0.1:3000/?search=true\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveURL\" with timeout 5000ms\u001b[22m\n\u001b[2m    14 × locator resolved to <html lang=\"en\" class=\"light\">…</html>\u001b[22m\n\u001b[2m       - unexpected value \"http://127.0.0.1:3000/?search=true\"\u001b[22m\n\n\n   9 |   await page.getByRole(\"button\", { name: \"Search\", exact: true }).click();\n  10 |   await capture(page, testInfo, \"search-opening\");\n> 11 |   await expect(page).toHaveURL(new RegExp(`/${id}$`));\n     |                      ^\n  12 |   const dialog = page.getByRole(\"dialog\", { name: \"Search notes\", exact: true });\n  13 |   const search = dialog.getByRole(\"textbox\", { name: \"Search notes\", exact: true });\n  14 |   await expect(dialog).toBeVisible();\n    at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/search-dialog.spec.ts:11:22"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T07:54:32.366Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "search-opening",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/search-dialog/before/test-results/search-dialog-search-stays-7e7f7-misses-without-losing-edits-mobile-webkit/attachments/search-opening-34587a640f6db428e0c68b6b8593e1f10458563a.png"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/search-dialog/before/test-results/search-dialog-search-stays-7e7f7-misses-without-losing-edits-mobile-webkit/test-failed-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/search-dialog/before/test-results/search-dialog-search-stays-7e7f7-misses-without-losing-edits-mobile-webkit/video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/search-dialog/before/test-results/search-dialog-search-stays-7e7f7-misses-without-losing-edits-mobile-webkit/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/search-dialog/before/test-results/search-dialog-search-stays-7e7f7-misses-without-losing-edits-mobile-webkit/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/search-dialog.spec.ts",
+                    "column": 22,
+                    "line": 11
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "c5e394b7ed4189b46c43-53cc34cb99421208e8e0",
+          "file": "search-dialog.spec.ts",
+          "line": 4,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-14T07:54:25.323Z",
+    "duration": 14886.882,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

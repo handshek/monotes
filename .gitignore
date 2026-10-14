@@ -49,3 +49,7 @@ next-env.d.ts
 /.audit/overnight/**/html/
 /.audit/overnight/**/test-results/
 /.audit/overnight/latest/
+
+# In-place search verification
+/.audit/search-dialog/**/html/
+/.audit/search-dialog/**/test-results/

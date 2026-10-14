@@ -6,17 +6,14 @@ import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";
 import { generateSlug } from "@/lib/ids";
 import { toast } from "sonner";
-import { getDB } from "@/lib/local-db";
 import { createNewNote } from "@/lib/local-notes";
-import { useSearchCloudNotes } from "@/lib/cloud-notes";
-import { useDebounced } from "@/hooks/useDebounced";
 import { cn } from "@/lib/utils";
-import { useLiveQuery } from "dexie-react-hooks";
 import { PlusIcon } from "lucide-react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useSidebar } from "@/components/ui/sidebar";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { useNoteSearch } from "@/hooks/useNoteSearch";
 
 export default function NotesSearchList() {
   const router = useRouter();
@@ -31,13 +28,13 @@ export default function NotesSearchList() {
   }, [searchParams, openMobile]);
 
   const [searchQuery, setSearchQuery] = useState("");
-  const [debouncedQuery, setDebouncedQuery] = useState("");
   const [showAll, setShowAll] = useState(false);
 
-  const { debouncedFn: updateDebouncedQuery } = useDebounced(
-    useCallback((query: string) => setDebouncedQuery(query), []),
-    300,
-  );
+  const {
+    notes: mergedNotes,
+    query: debouncedQuery,
+    isLoading,
+  } = useNoteSearch(searchQuery);
 
   const getNotePreview = (content: string | undefined) => {
     if (!content?.trim()) return "Untitled note";
@@ -62,45 +59,7 @@ export default function NotesSearchList() {
   const onSearchChange = (value: string) => {
     setSearchQuery(value);
     setShowAll(false);
-    updateDebouncedQuery(value.trim());
   };
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const notes =
-    useLiveQuery(
-      () => getDB().notes.orderBy("updatedAt").reverse().toArray(),
-      [],
-    ) || [];
-
-  const cloudSearchResults = useSearchCloudNotes(debouncedQuery || undefined);
-
-  const filteredLocalNotes = useMemo(() => {
-    if (!debouncedQuery.trim()) {
-      return notes;
-    }
-
-    const query = debouncedQuery.toLowerCase();
-    return notes.filter((note) => note.content.toLowerCase().includes(query));
-  }, [debouncedQuery, notes]);
-
-  const mergedNotes = useMemo(() => {
-    if (!debouncedQuery.trim()) {
-      return filteredLocalNotes;
-    }
-
-    const localIds = new Set(filteredLocalNotes.map((note) => note.id));
-    const cloudOnly =
-      cloudSearchResults?.filter((note) => !localIds.has(note.noteId)) ?? [];
-
-    return [
-      ...filteredLocalNotes,
-      ...cloudOnly.map((note) => ({
-        id: note.noteId,
-        content: note.content,
-        updatedAt: note.updatedAt,
-      })),
-    ];
-  }, [cloudSearchResults, debouncedQuery, filteredLocalNotes]);
 
   const isSearching = debouncedQuery.trim().length > 0;
   const visibleNotes = useMemo(() => {
@@ -111,7 +70,6 @@ export default function NotesSearchList() {
 
   const hasMore = !isSearching && !showAll && mergedNotes.length > 6;
 
-  const isLoading = notes === undefined;
   const isEmpty = !isLoading && mergedNotes.length === 0;
   const sectionTitle = isSearching
     ? `Search results (${mergedNotes.length})`

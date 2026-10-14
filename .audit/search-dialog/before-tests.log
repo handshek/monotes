@@ -1,0 +1,106 @@
+$ playwright test tests/search-dialog.spec.ts --grep "search stays"
+
+Running 2 tests using 1 worker
+
+(node:14031) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 [desktop-chromium] › tests/search-dialog.spec.ts:4:5 › search stays inside the current note and dismisses without losing edits (6.5s)
+(node:14169) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  2 [mobile-webkit] › tests/search-dialog.spec.ts:4:5 › search stays inside the current note and dismisses without losing edits (7.5s)
+
+
+  1) [desktop-chromium] › tests/search-dialog.spec.ts:4:5 › search stays inside the current note and dismisses without losing edits
+
+    Error: expect(page).toHaveURL(expected) failed
+
+    Expected pattern: /\/aSxsjB1M7j$/
+    Received string:  "http://127.0.0.1:3000/?search=true"
+    Timeout: 5000ms
+
+    Call log:
+      - Expect "toHaveURL" with timeout 5000ms
+        14 × locator resolved to <html lang="en" class="light">…</html>
+           - unexpected value "http://127.0.0.1:3000/?search=true"
+
+
+       9 |   await page.getByRole("button", { name: "Search", exact: true }).click();
+      10 |   await capture(page, testInfo, "search-opening");
+    > 11 |   await expect(page).toHaveURL(new RegExp(`/${id}$`));
+         |                      ^
+      12 |   const dialog = page.getByRole("dialog", { name: "Search notes", exact: true });
+      13 |   const search = dialog.getByRole("textbox", { name: "Search notes", exact: true });
+      14 |   await expect(dialog).toBeVisible();
+        at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/search-dialog.spec.ts:11:22
+
+    attachment #1: search-opening (image/png) ──────────────────────────────────────────────────────
+    .audit/search-dialog/before/test-results/search-dialog-search-stays-7e7f7-misses-without-losing-edits-desktop-chromium/attachments/search-opening-7d4f14ab36e93ca790ee64d62c3feaca4ba51ec0.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .audit/search-dialog/before/test-results/search-dialog-search-stays-7e7f7-misses-without-losing-edits-desktop-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #3: video (video/webm) ──────────────────────────────────────────────────────────────
+    .audit/search-dialog/before/test-results/search-dialog-search-stays-7e7f7-misses-without-losing-edits-desktop-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .audit/search-dialog/before/test-results/search-dialog-search-stays-7e7f7-misses-without-losing-edits-desktop-chromium/error-context.md
+
+    attachment #5: trace (application/zip) ─────────────────────────────────────────────────────────
+    .audit/search-dialog/before/test-results/search-dialog-search-stays-7e7f7-misses-without-losing-edits-desktop-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace .audit/search-dialog/before/test-results/search-dialog-search-stays-7e7f7-misses-without-losing-edits-desktop-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [mobile-webkit] › tests/search-dialog.spec.ts:4:5 › search stays inside the current note and dismisses without losing edits
+
+    Error: expect(page).toHaveURL(expected) failed
+
+    Expected pattern: /\/nEXsBTSdnB$/
+    Received string:  "http://127.0.0.1:3000/?search=true"
+    Timeout: 5000ms
+
+    Call log:
+      - Expect "toHaveURL" with timeout 5000ms
+        14 × locator resolved to <html lang="en" class="light">…</html>
+           - unexpected value "http://127.0.0.1:3000/?search=true"
+
+
+       9 |   await page.getByRole("button", { name: "Search", exact: true }).click();
+      10 |   await capture(page, testInfo, "search-opening");
+    > 11 |   await expect(page).toHaveURL(new RegExp(`/${id}$`));
+         |                      ^
+      12 |   const dialog = page.getByRole("dialog", { name: "Search notes", exact: true });
+      13 |   const search = dialog.getByRole("textbox", { name: "Search notes", exact: true });
+      14 |   await expect(dialog).toBeVisible();
+        at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/search-dialog.spec.ts:11:22
+
+    attachment #1: search-opening (image/png) ──────────────────────────────────────────────────────
+    .audit/search-dialog/before/test-results/search-dialog-search-stays-7e7f7-misses-without-losing-edits-mobile-webkit/attachments/search-opening-34587a640f6db428e0c68b6b8593e1f10458563a.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .audit/search-dialog/before/test-results/search-dialog-search-stays-7e7f7-misses-without-losing-edits-mobile-webkit/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #3: video (video/webm) ──────────────────────────────────────────────────────────────
+    .audit/search-dialog/before/test-results/search-dialog-search-stays-7e7f7-misses-without-losing-edits-mobile-webkit/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .audit/search-dialog/before/test-results/search-dialog-search-stays-7e7f7-misses-without-losing-edits-mobile-webkit/error-context.md
+
+    attachment #5: trace (application/zip) ─────────────────────────────────────────────────────────
+    .audit/search-dialog/before/test-results/search-dialog-search-stays-7e7f7-misses-without-losing-edits-mobile-webkit/trace.zip
+    Usage:
+
+        npx playwright show-trace .audit/search-dialog/before/test-results/search-dialog-search-stays-7e7f7-misses-without-losing-edits-mobile-webkit/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    [desktop-chromium] › tests/search-dialog.spec.ts:4:5 › search stays inside the current note and dismisses without losing edits
+    [mobile-webkit] › tests/search-dialog.spec.ts:4:5 › search stays inside the current note and dismisses without losing edits
+error: script "test:e2e" exited with code 1

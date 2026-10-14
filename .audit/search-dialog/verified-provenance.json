@@ -1,0 +1,28 @@
+{
+  "baseline": "4e3e434b3b351ba6dae6f57289092fab9c5d92bf",
+  "recordedAt": "2026-10-14T07:58:54.649263+00:00",
+  "sha256": {
+    "src/components/notes/notes-search-dialog.tsx": "66ab97b8de4f86b7225a2f59bc022768e6a14801f8ed8de1417370e5d3a0bb24",
+    "src/hooks/useNoteSearch.ts": "558d71025f5f851ee80d109f58f95535696d76857a637c2cb95bed4b145c2651",
+    "src/components/notes/notes-sidebar.tsx": "252109463ac21dd0c9c0372446ccdb4dc113a4864c6ffb79b0d93607a14c2441",
+    "src/app/(notes)/notes-search-list.tsx": "654c2ed4a947283fb4b48af40bdef4b0e97f65c36b0fa93c5fd305b4564c248d",
+    "tests/search-dialog.spec.ts": "2b68e83e04eabebd35a9415e4685fe29579f15c2494529678e79e1c79b0f1b6b",
+    "tests/regressions.spec.ts": "aa4dd49bcca42d4a711ba181e04ea19a1825ced3adcd1a049d53d58ebcb97e30"
+  },
+  "verifiedAt": "2026-10-14T08:03:13.206014+00:00",
+  "buildId": "V1x87NOsX4O4iiyvkSyuw",
+  "results": {
+    "browserStats": {
+      "startTime": "2026-10-14T07:58:55.908Z",
+      "duration": 181580.502,
+      "expected": 96,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "lint": "pass with two pre-existing warnings",
+    "typecheck": "pass",
+    "freshProductionBuild": "pass",
+    "sourceHashesUnchangedAfterRun": true
+  }
+}

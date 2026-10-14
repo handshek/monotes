@@ -39,11 +39,14 @@ test("sidebar Search opens a focused search and finds the current note", async (
   await waitForStoredContent(page, id, "Cobalt lighthouse search target.");
   await openSidebar(page, isMobile);
   await page.getByRole("button", { name: "Search", exact: true }).click();
-  const search = page.getByRole("textbox", { name: "Search notes", exact: true });
+  const dialog = page.getByRole("dialog", { name: "Search notes", exact: true });
+  const search = dialog.getByRole("textbox", { name: "Search notes", exact: true });
+  await expect(page).toHaveURL(new RegExp(`/${id}$`));
   await expect(search).toBeVisible();
   await expect(search).toBeFocused();
   await capture(page, testInfo, "after-sidebar-search");
-  await page.getByRole("heading", { name: "Monotes", exact: true }).click();
+  await dialog.getByRole("button", { name: "Close", exact: true }).click();
+  await expect(dialog).toBeHidden();
   await openSidebar(page, isMobile);
   await page.getByRole("button", { name: "Search", exact: true }).click();
   await expect(search).toBeFocused();

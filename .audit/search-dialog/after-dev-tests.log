@@ -1,0 +1,67 @@
+$ playwright test tests/search-dialog.spec.ts tests/regressions.spec.ts --grep "search|Search"
+
+Running 6 tests using 1 worker
+
+(node:15341) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [desktop-chromium] › tests/regressions.spec.ts:36:5 › sidebar Search opens a focused search and finds the current note (2.4s)
+  ✓  2 [desktop-chromium] › tests/search-dialog.spec.ts:4:5 › search stays inside the current note and dismisses without losing edits (2.1s)
+  ✓  3 [desktop-chromium] › tests/search-dialog.spec.ts:41:5 › search filters local notes offline and opens a result with the keyboard (4.0s)
+(node:15489) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  4 [mobile-webkit] › tests/regressions.spec.ts:36:5 › sidebar Search opens a focused search and finds the current note (4.5s)
+  ✓  5 [mobile-webkit] › tests/search-dialog.spec.ts:4:5 › search stays inside the current note and dismisses without losing edits (4.0s)
+  ✘  6 [mobile-webkit] › tests/search-dialog.spec.ts:41:5 › search filters local notes offline and opens a result with the keyboard (9.7s)
+
+
+  1) [mobile-webkit] › tests/search-dialog.spec.ts:41:5 › search filters local notes offline and opens a result with the keyboard
+
+    Error: expect(locator).toBeFocused() failed
+
+    Locator:  getByRole('dialog', { name: 'Search notes', exact: true }).getByRole('link')
+    Expected: focused
+    Received: inactive
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toBeFocused" getByRole('dialog', { name: 'Search notes', exact: true }).getByRole('link') with timeout 5000ms
+      - waiting for getByRole('dialog', { name: 'Search notes', exact: true }).getByRole('link')
+        14 × locator resolved to <a href="/FgVXBAh1ts" class="block rounded-sm p-3 text-sm hover:bg-accent focus-visible:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-inset">…</a>
+           - unexpected value "inactive"
+
+
+      64 |   await context.setOffline(false);
+      65 |   await search.press("Tab");
+    > 66 |   await expect(dialog.getByRole("link")).toBeFocused();
+         |                                          ^
+      67 |   await page.keyboard.press("Enter");
+      68 |   await expect(dialog).toBeHidden();
+      69 |   await expect(page).toHaveURL(new RegExp(`/${targetId}$`));
+        at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/search-dialog.spec.ts:66:42
+
+    attachment #1: offline-search-result (image/png) ───────────────────────────────────────────────
+    .audit/search-dialog/after-dev/test-results/search-dialog-search-filte-64d24--a-result-with-the-keyboard-mobile-webkit/attachments/offline-search-result-543a1491dc23d4ce8233a6eb8b9d212fd1ea3884.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .audit/search-dialog/after-dev/test-results/search-dialog-search-filte-64d24--a-result-with-the-keyboard-mobile-webkit/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #3: video (video/webm) ──────────────────────────────────────────────────────────────
+    .audit/search-dialog/after-dev/test-results/search-dialog-search-filte-64d24--a-result-with-the-keyboard-mobile-webkit/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .audit/search-dialog/after-dev/test-results/search-dialog-search-filte-64d24--a-result-with-the-keyboard-mobile-webkit/error-context.md
+
+    attachment #5: trace (application/zip) ─────────────────────────────────────────────────────────
+    .audit/search-dialog/after-dev/test-results/search-dialog-search-filte-64d24--a-result-with-the-keyboard-mobile-webkit/trace.zip
+    Usage:
+
+        npx playwright show-trace .audit/search-dialog/after-dev/test-results/search-dialog-search-filte-64d24--a-result-with-the-keyboard-mobile-webkit/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [mobile-webkit] › tests/search-dialog.spec.ts:41:5 › search filters local notes offline and opens a result with the keyboard
+  5 passed (27.4s)
+error: script "test:e2e" exited with code 1

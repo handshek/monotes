@@ -1,0 +1,147 @@
+$ playwright test "--repeat-each=2"
+[WebServer] $ next build
+[WebServer] [baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[WebServer] (node:18875) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] [baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[WebServer] (node:18875) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:18884) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] [baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[WebServer] [baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[WebServer] [baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[WebServer] [baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[WebServer] [baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[WebServer] [baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[WebServer] [baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[WebServer] (node:18905) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:18900) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:18901) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:18902) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:18906) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:18904) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:18903) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] [baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[WebServer] (node:18909) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] $ next start --hostname "127.0.0.1" --port "3107"
+[WebServer] (node:18919) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] [baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+
+Running 96 tests using 1 worker
+
+(node:18920) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 [desktop-chromium] › tests/automatic-save.spec.ts:9:5 › automatic stale-save settlement explains replacement of the pending draft (2.4s)
+  ✓   2 [desktop-chromium] › tests/core.spec.ts:4:5 › create, edit, reload, and search local notes (3.3s)
+  ✓   3 [desktop-chromium] › tests/core.spec.ts:35:5 › offline edits persist locally and survive reconnect and reload (719ms)
+  ✓   4 [desktop-chromium] › tests/creation.spec.ts:4:5 › the direct new-note route creates exactly one durable note (652ms)
+  ✓   5 [desktop-chromium] › tests/creation.spec.ts:21:7 › a failed home note creation reports the failure (318ms)
+  ✓   6 [desktop-chromium] › tests/creation.spec.ts:21:7 › a failed direct note creation reports the failure (312ms)
+  ✓   7 [desktop-chromium] › tests/observed-save.spec.ts:29:7 › observing a newer remote edit explains why a failed pending draft disappeared (1.7s)
+  ✓   8 [desktop-chromium] › tests/observed-save.spec.ts:29:7 › observing the same pending text saved by another tab stays quiet (891ms)
+  ✓   9 [desktop-chromium] › tests/observed-save.spec.ts:81:5 › ordinary remote edits without a pending local draft stay quiet (1.7s)
+  ✓  10 [desktop-chromium] › tests/persistence.spec.ts:33:5 › an empty newly created note survives reload (748ms)
+  ✓  11 [desktop-chromium] › tests/persistence.spec.ts:47:5 › failed local saves show failure and recover the draft after reload (739ms)
+  ✓  12 [desktop-chromium] › tests/persistence.spec.ts:69:7 › an older session draft cannot replace a newer edit committed by another tab (856ms)
+  ✓  13 [desktop-chromium] › tests/persistence.spec.ts:69:7 › an older session draft with already-saved content stays quiet (902ms)
+  ✓  14 [desktop-chromium] › tests/persistence.spec.ts:100:5 › an older session draft cannot resurrect a note deleted in another tab (1.0s)
+  ✓  15 [desktop-chromium] › tests/regressions.spec.ts:4:5 › last edit survives reload before the former 500ms autosave delay (744ms)
+  ✓  16 [desktop-chromium] › tests/regressions.spec.ts:36:5 › sidebar Search opens a focused search and finds the current note (2.1s)
+  ✓  17 [desktop-chromium] › tests/regressions.spec.ts:61:5 › a cross-tab edit reverted to the original content remains reverted after reload (2.4s)
+  ✓  18 [desktop-chromium] › tests/regressions.spec.ts:81:5 › a new note survives reload immediately after its first edit (689ms)
+  ✓  19 [desktop-chromium] › tests/save-ack.spec.ts:7:5 › manual save does not acknowledge a pending draft displaced by another tab (1.7s)
+  ✓  20 [desktop-chromium] › tests/save-ack.spec.ts:78:5 › manual save acknowledges text that is actually durable (762ms)
+  ✓  21 [desktop-chromium] › tests/search-dialog.spec.ts:4:5 › search stays inside the current note and dismisses without losing edits (2.6s)
+  ✓  22 [desktop-chromium] › tests/search-dialog.spec.ts:42:5 › search filters local notes offline and opens a result with keyboard or touch (3.4s)
+  ✓  23 [desktop-chromium] › tests/sidebar-preview.spec.ts:4:5 › sidebar previews preserve the first twenty words and blank note fallback (631ms)
+(node:20444) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  24 [desktop-chromium] › tests/automatic-save.spec.ts:9:5 › automatic stale-save settlement explains replacement of the pending draft (2.3s)
+  ✓  25 [desktop-chromium] › tests/core.spec.ts:4:5 › create, edit, reload, and search local notes (3.3s)
+  ✓  26 [desktop-chromium] › tests/core.spec.ts:35:5 › offline edits persist locally and survive reconnect and reload (754ms)
+  ✓  27 [desktop-chromium] › tests/creation.spec.ts:4:5 › the direct new-note route creates exactly one durable note (651ms)
+  ✓  28 [desktop-chromium] › tests/creation.spec.ts:21:7 › a failed home note creation reports the failure (314ms)
+  ✓  29 [desktop-chromium] › tests/creation.spec.ts:21:7 › a failed direct note creation reports the failure (312ms)
+  ✓  30 [desktop-chromium] › tests/observed-save.spec.ts:29:7 › observing a newer remote edit explains why a failed pending draft disappeared (1.7s)
+  ✓  31 [desktop-chromium] › tests/observed-save.spec.ts:29:7 › observing the same pending text saved by another tab stays quiet (895ms)
+  ✓  32 [desktop-chromium] › tests/observed-save.spec.ts:81:5 › ordinary remote edits without a pending local draft stay quiet (1.7s)
+  ✓  33 [desktop-chromium] › tests/persistence.spec.ts:33:5 › an empty newly created note survives reload (713ms)
+  ✓  34 [desktop-chromium] › tests/persistence.spec.ts:47:5 › failed local saves show failure and recover the draft after reload (725ms)
+  ✓  35 [desktop-chromium] › tests/persistence.spec.ts:69:7 › an older session draft cannot replace a newer edit committed by another tab (832ms)
+  ✓  36 [desktop-chromium] › tests/persistence.spec.ts:69:7 › an older session draft with already-saved content stays quiet (838ms)
+  ✓  37 [desktop-chromium] › tests/persistence.spec.ts:100:5 › an older session draft cannot resurrect a note deleted in another tab (1.0s)
+  ✓  38 [desktop-chromium] › tests/regressions.spec.ts:4:5 › last edit survives reload before the former 500ms autosave delay (690ms)
+  ✓  39 [desktop-chromium] › tests/regressions.spec.ts:36:5 › sidebar Search opens a focused search and finds the current note (2.1s)
+  ✓  40 [desktop-chromium] › tests/regressions.spec.ts:61:5 › a cross-tab edit reverted to the original content remains reverted after reload (2.4s)
+  ✓  41 [desktop-chromium] › tests/regressions.spec.ts:81:5 › a new note survives reload immediately after its first edit (671ms)
+  ✓  42 [desktop-chromium] › tests/save-ack.spec.ts:7:5 › manual save does not acknowledge a pending draft displaced by another tab (1.8s)
+  ✓  43 [desktop-chromium] › tests/save-ack.spec.ts:78:5 › manual save acknowledges text that is actually durable (718ms)
+  ✓  44 [desktop-chromium] › tests/search-dialog.spec.ts:4:5 › search stays inside the current note and dismisses without losing edits (2.6s)
+  ✓  45 [desktop-chromium] › tests/search-dialog.spec.ts:42:5 › search filters local notes offline and opens a result with keyboard or touch (3.4s)
+  ✓  46 [desktop-chromium] › tests/sidebar-preview.spec.ts:4:5 › sidebar previews preserve the first twenty words and blank note fallback (628ms)
+(node:21129) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  47 [mobile-webkit] › tests/automatic-save.spec.ts:9:5 › automatic stale-save settlement explains replacement of the pending draft (3.1s)
+  ✓  48 [mobile-webkit] › tests/core.spec.ts:4:5 › create, edit, reload, and search local notes (3.7s)
+  ✓  49 [mobile-webkit] › tests/core.spec.ts:35:5 › offline edits persist locally and survive reconnect and reload (897ms)
+  ✓  50 [mobile-webkit] › tests/creation.spec.ts:4:5 › the direct new-note route creates exactly one durable note (742ms)
+  ✓  51 [mobile-webkit] › tests/creation.spec.ts:21:7 › a failed home note creation reports the failure (416ms)
+  ✓  52 [mobile-webkit] › tests/creation.spec.ts:21:7 › a failed direct note creation reports the failure (386ms)
+  ✓  53 [mobile-webkit] › tests/mobile.spec.ts:4:5 › mobile note selection closes the drawer and exposes the editor (5.2s)
+  ✓  54 [mobile-webkit] › tests/mobile.spec.ts:27:5 › mobile New Note closes the drawer and allows immediate typing (2.9s)
+  ✓  55 [mobile-webkit] › tests/observed-save.spec.ts:29:7 › observing a newer remote edit explains why a failed pending draft disappeared (3.0s)
+  ✓  56 [mobile-webkit] › tests/observed-save.spec.ts:29:7 › observing the same pending text saved by another tab stays quiet (1.2s)
+  ✓  57 [mobile-webkit] › tests/observed-save.spec.ts:81:5 › ordinary remote edits without a pending local draft stay quiet (2.4s)
+  ✓  58 [mobile-webkit] › tests/persistence.spec.ts:33:5 › an empty newly created note survives reload (958ms)
+  ✓  59 [mobile-webkit] › tests/persistence.spec.ts:47:5 › failed local saves show failure and recover the draft after reload (825ms)
+  ✓  60 [mobile-webkit] › tests/persistence.spec.ts:69:7 › an older session draft cannot replace a newer edit committed by another tab (1.3s)
+  ✓  61 [mobile-webkit] › tests/persistence.spec.ts:69:7 › an older session draft with already-saved content stays quiet (1.1s)
+  ✓  62 [mobile-webkit] › tests/persistence.spec.ts:100:5 › an older session draft cannot resurrect a note deleted in another tab (2.8s)
+  ✓  63 [mobile-webkit] › tests/regressions.spec.ts:4:5 › last edit survives reload before the former 500ms autosave delay (826ms)
+  ✓  64 [mobile-webkit] › tests/regressions.spec.ts:36:5 › sidebar Search opens a focused search and finds the current note (4.1s)
+  ✓  65 [mobile-webkit] › tests/regressions.spec.ts:61:5 › a cross-tab edit reverted to the original content remains reverted after reload (3.5s)
+  ✓  66 [mobile-webkit] › tests/regressions.spec.ts:81:5 › a new note survives reload immediately after its first edit (760ms)
+  ✓  67 [mobile-webkit] › tests/save-ack.spec.ts:7:5 › manual save does not acknowledge a pending draft displaced by another tab (2.9s)
+  ✓  68 [mobile-webkit] › tests/save-ack.spec.ts:78:5 › manual save acknowledges text that is actually durable (744ms)
+  ✓  69 [mobile-webkit] › tests/search-dialog.spec.ts:4:5 › search stays inside the current note and dismisses without losing edits (4.6s)
+  ✓  70 [mobile-webkit] › tests/search-dialog.spec.ts:42:5 › search filters local notes offline and opens a result with keyboard or touch (4.6s)
+  ✓  71 [mobile-webkit] › tests/sidebar-preview.spec.ts:4:5 › sidebar previews preserve the first twenty words and blank note fallback (2.4s)
+(node:22318) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  72 [mobile-webkit] › tests/automatic-save.spec.ts:9:5 › automatic stale-save settlement explains replacement of the pending draft (3.0s)
+  ✓  73 [mobile-webkit] › tests/core.spec.ts:4:5 › create, edit, reload, and search local notes (3.5s)
+  ✓  74 [mobile-webkit] › tests/core.spec.ts:35:5 › offline edits persist locally and survive reconnect and reload (797ms)
+  ✓  75 [mobile-webkit] › tests/creation.spec.ts:4:5 › the direct new-note route creates exactly one durable note (711ms)
+  ✓  76 [mobile-webkit] › tests/creation.spec.ts:21:7 › a failed home note creation reports the failure (343ms)
+  ✓  77 [mobile-webkit] › tests/creation.spec.ts:21:7 › a failed direct note creation reports the failure (345ms)
+  ✓  78 [mobile-webkit] › tests/mobile.spec.ts:4:5 › mobile note selection closes the drawer and exposes the editor (4.7s)
+  ✓  79 [mobile-webkit] › tests/mobile.spec.ts:27:5 › mobile New Note closes the drawer and allows immediate typing (2.8s)
+  ✓  80 [mobile-webkit] › tests/observed-save.spec.ts:29:7 › observing a newer remote edit explains why a failed pending draft disappeared (2.9s)
+  ✓  81 [mobile-webkit] › tests/observed-save.spec.ts:29:7 › observing the same pending text saved by another tab stays quiet (1.1s)
+  ✓  82 [mobile-webkit] › tests/observed-save.spec.ts:81:5 › ordinary remote edits without a pending local draft stay quiet (2.8s)
+  ✓  83 [mobile-webkit] › tests/persistence.spec.ts:33:5 › an empty newly created note survives reload (778ms)
+  ✓  84 [mobile-webkit] › tests/persistence.spec.ts:47:5 › failed local saves show failure and recover the draft after reload (806ms)
+  ✓  85 [mobile-webkit] › tests/persistence.spec.ts:69:7 › an older session draft cannot replace a newer edit committed by another tab (1.0s)
+  ✓  86 [mobile-webkit] › tests/persistence.spec.ts:69:7 › an older session draft with already-saved content stays quiet (1.0s)
+  ✓  87 [mobile-webkit] › tests/persistence.spec.ts:100:5 › an older session draft cannot resurrect a note deleted in another tab (2.5s)
+  ✓  88 [mobile-webkit] › tests/regressions.spec.ts:4:5 › last edit survives reload before the former 500ms autosave delay (741ms)
+  ✓  89 [mobile-webkit] › tests/regressions.spec.ts:36:5 › sidebar Search opens a focused search and finds the current note (4.1s)
+  ✓  90 [mobile-webkit] › tests/regressions.spec.ts:61:5 › a cross-tab edit reverted to the original content remains reverted after reload (3.6s)
+  ✓  91 [mobile-webkit] › tests/regressions.spec.ts:81:5 › a new note survives reload immediately after its first edit (703ms)
+  ✓  92 [mobile-webkit] › tests/save-ack.spec.ts:7:5 › manual save does not acknowledge a pending draft displaced by another tab (2.4s)
+  ✓  93 [mobile-webkit] › tests/save-ack.spec.ts:78:5 › manual save acknowledges text that is actually durable (755ms)
+  ✓  94 [mobile-webkit] › tests/search-dialog.spec.ts:4:5 › search stays inside the current note and dismisses without losing edits (4.6s)
+  ✓  95 [mobile-webkit] › tests/search-dialog.spec.ts:42:5 › search filters local notes offline and opens a result with keyboard or touch (4.6s)
+  ✓  96 [mobile-webkit] › tests/sidebar-preview.spec.ts:4:5 › sidebar previews preserve the first twenty words and blank note fallback (2.5s)
+
+  96 passed (3.0m)

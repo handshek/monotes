@@ -1,0 +1,39 @@
+{
+  "threadId": "mcp:6c27c1f6-ca81-4606-9e83-60fa00cfa722",
+  "run": {
+    "runId": "run:thread:mcp%3A6c27c1f6-ca81-4606-9e83-60fa00cfa722:ordinal:6",
+    "ordinal": 6,
+    "status": "completed",
+    "providerInstanceId": "claudeAgent",
+    "model": "claude-opus-5-5",
+    "requestedAt": "2026-10-14T08:03:16.331Z",
+    "startedAt": "2026-10-14T08:03:16.363Z",
+    "completedAt": "2026-10-14T08:19:32.123Z"
+  },
+  "provider": "claudeAgent",
+  "model": "claude-opus-5-5",
+  "worktreePath": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes",
+  "runtimeMode": "approval-required",
+  "interactionMode": "plan",
+  "status": "completed",
+  "pendingRequestCount": 0,
+  "verdictItemId": "turn-item:provider:claudeAgent:native-item:5ee0d61c-7de9-41ec-98c2-0ecdcf4df40f",
+  "providerRecovery": {
+    "observed": "Provider recovered: Claude API unknown.",
+    "recovered": true
+  },
+  "assessment": {
+    "correctnessFindings": 0,
+    "regressionFindings": 0,
+    "securityFindings": 0,
+    "lowItems": [
+      "Retain existing home search URL compatibility intentionally; record this in the decision log instead of adding a code comment.",
+      "Add a real desktop modified-click/new-tab assertion."
+    ]
+  },
+  "resolution": {
+    "oldSearchUrl": "Intentionally retained for existing direct/bookmarked URLs. No code comment added; decision recorded here and in README.md.",
+    "modifiedClickTest": "Added a real desktop Ctrl/Cmd-click that verifies the new tab loads the target note and the original dialog, route, and text remain intact. Passed twice.",
+    "followupReview": "Not requested: no product implementation changed after review, only test coverage and audit documentation. Relevant browser/static checks rerun."
+  }
+}

@@ -1,0 +1,16 @@
+$ playwright test tests/search-dialog.spec.ts tests/regressions.spec.ts --grep "search|Search"
+
+Running 6 tests using 1 worker
+
+(node:16716) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [desktop-chromium] › tests/regressions.spec.ts:36:5 › sidebar Search opens a focused search and finds the current note (2.7s)
+  ✓  2 [desktop-chromium] › tests/search-dialog.spec.ts:4:5 › search stays inside the current note and dismisses without losing edits (2.9s)
+  ✓  3 [desktop-chromium] › tests/search-dialog.spec.ts:42:5 › search filters local notes offline and opens a result with keyboard or touch (4.1s)
+(node:17638) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  4 [mobile-webkit] › tests/regressions.spec.ts:36:5 › sidebar Search opens a focused search and finds the current note (4.4s)
+  ✓  5 [mobile-webkit] › tests/search-dialog.spec.ts:4:5 › search stays inside the current note and dismisses without losing edits (4.8s)
+  ✓  6 [mobile-webkit] › tests/search-dialog.spec.ts:42:5 › search filters local notes offline and opens a result with keyboard or touch (4.8s)
+
+  6 passed (24.4s)

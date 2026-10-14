@@ -1,0 +1,127 @@
+$ playwright test "--repeat-each=2"
+[WebServer] $ next build
+[WebServer] [baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[WebServer] (node:15638) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] [baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[WebServer] (node:15638) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:15647) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] [baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[WebServer] [baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[WebServer] [baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[WebServer] [baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[WebServer] [baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[WebServer] [baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[WebServer] [baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[WebServer] (node:15661) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:15659) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:15664) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:15663) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:15665) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:15662) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:15660) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] [baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[WebServer] (node:15668) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] $ next start --hostname "127.0.0.1" --port "3107"
+[WebServer] (node:16029) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] [baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+
+Running 96 tests using 1 worker
+
+(node:16057) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 [desktop-chromium] › tests/automatic-save.spec.ts:9:5 › automatic stale-save settlement explains replacement of the pending draft (2.5s)
+  ✓   2 [desktop-chromium] › tests/core.spec.ts:4:5 › create, edit, reload, and search local notes (3.4s)
+  ✓   3 [desktop-chromium] › tests/core.spec.ts:35:5 › offline edits persist locally and survive reconnect and reload (741ms)
+  ✓   4 [desktop-chromium] › tests/creation.spec.ts:4:5 › the direct new-note route creates exactly one durable note (672ms)
+  ✓   5 [desktop-chromium] › tests/creation.spec.ts:21:7 › a failed home note creation reports the failure (314ms)
+  ✓   6 [desktop-chromium] › tests/creation.spec.ts:21:7 › a failed direct note creation reports the failure (309ms)
+  ✓   7 [desktop-chromium] › tests/observed-save.spec.ts:29:7 › observing a newer remote edit explains why a failed pending draft disappeared (1.7s)
+  ✓   8 [desktop-chromium] › tests/observed-save.spec.ts:29:7 › observing the same pending text saved by another tab stays quiet (916ms)
+  ✓   9 [desktop-chromium] › tests/observed-save.spec.ts:81:5 › ordinary remote edits without a pending local draft stay quiet (1.7s)
+  ✓  10 [desktop-chromium] › tests/persistence.spec.ts:33:5 › an empty newly created note survives reload (779ms)
+  ✓  11 [desktop-chromium] › tests/persistence.spec.ts:47:5 › failed local saves show failure and recover the draft after reload (725ms)
+  ✓  12 [desktop-chromium] › tests/persistence.spec.ts:69:7 › an older session draft cannot replace a newer edit committed by another tab (858ms)
+  ✓  13 [desktop-chromium] › tests/persistence.spec.ts:69:7 › an older session draft with already-saved content stays quiet (866ms)
+  ✓  14 [desktop-chromium] › tests/persistence.spec.ts:100:5 › an older session draft cannot resurrect a note deleted in another tab (1.2s)
+  ✓  15 [desktop-chromium] › tests/regressions.spec.ts:4:5 › last edit survives reload before the former 500ms autosave delay (694ms)
+  ✓  16 [desktop-chromium] › tests/regressions.spec.ts:36:5 › sidebar Search opens a focused search and finds the current note (2.1s)
+  ✓  17 [desktop-chromium] › tests/regressions.spec.ts:61:5 › a cross-tab edit reverted to the original content remains reverted after reload (2.4s)
+  ✓  18 [desktop-chromium] › tests/regressions.spec.ts:81:5 › a new note survives reload immediately after its first edit (689ms)
+  ✓  19 [desktop-chromium] › tests/save-ack.spec.ts:7:5 › manual save does not acknowledge a pending draft displaced by another tab (1.9s)
+  ✓  20 [desktop-chromium] › tests/save-ack.spec.ts:78:5 › manual save acknowledges text that is actually durable (736ms)
+  ✓  21 [desktop-chromium] › tests/search-dialog.spec.ts:4:5 › search stays inside the current note and dismisses without losing edits (1.9s)
+  ✓  22 [desktop-chromium] › tests/search-dialog.spec.ts:41:5 › search filters local notes offline and opens a result with the keyboard (3.5s)
+  ✓  23 [desktop-chromium] › tests/sidebar-preview.spec.ts:4:5 › sidebar previews preserve the first twenty words and blank note fallback (636ms)
+(node:16493) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  24 [desktop-chromium] › tests/automatic-save.spec.ts:9:5 › automatic stale-save settlement explains replacement of the pending draft (2.3s)
+  ✓  25 [desktop-chromium] › tests/core.spec.ts:4:5 › create, edit, reload, and search local notes (3.4s)
+  ✓  26 [desktop-chromium] › tests/core.spec.ts:35:5 › offline edits persist locally and survive reconnect and reload (722ms)
+  ✓  27 [desktop-chromium] › tests/creation.spec.ts:4:5 › the direct new-note route creates exactly one durable note (650ms)
+  ✓  28 [desktop-chromium] › tests/creation.spec.ts:21:7 › a failed home note creation reports the failure (318ms)
+  ✓  29 [desktop-chromium] › tests/creation.spec.ts:21:7 › a failed direct note creation reports the failure (315ms)
+  ✓  30 [desktop-chromium] › tests/observed-save.spec.ts:29:7 › observing a newer remote edit explains why a failed pending draft disappeared (1.7s)
+  ✓  31 [desktop-chromium] › tests/observed-save.spec.ts:29:7 › observing the same pending text saved by another tab stays quiet (893ms)
+  ✓  32 [desktop-chromium] › tests/observed-save.spec.ts:81:5 › ordinary remote edits without a pending local draft stay quiet (1.7s)
+  ✓  33 [desktop-chromium] › tests/persistence.spec.ts:33:5 › an empty newly created note survives reload (711ms)
+  ✓  34 [desktop-chromium] › tests/persistence.spec.ts:47:5 › failed local saves show failure and recover the draft after reload (722ms)
+  ✘  35 [desktop-chromium] › tests/persistence.spec.ts:69:7 › an older session draft cannot replace a newer edit committed by another tab (658ms)
+
+
+  1) [desktop-chromium] › tests/persistence.spec.ts:69:7 › an older session draft cannot replace a newer edit committed by another tab
+
+    Test was interrupted.
+
+    Error: page.goto: Test ended.
+    Call log:
+      - navigating to "http://127.0.0.1:3107/JYlhn77htH", waiting until "load"
+
+
+      81 |
+      82 |     const otherTab = await context.newPage();
+    > 83 |     await otherTab.goto(`/${id}`);
+         |                    ^
+      84 |     await expect(editor(otherTab)).toHaveText("The original shared note.");
+      85 |     const expectedContent = sameContent ? "The older interrupted draft." : "The newer committed thought wins.";
+      86 |     await editor(otherTab).fill(expectedContent);
+        at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/persistence.spec.ts:83:20
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .audit/search-dialog/verified/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-desktop-chromium-repeat1/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    .audit/search-dialog/verified/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-desktop-chromium-repeat1/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #3: video (video/webm) ──────────────────────────────────────────────────────────────
+    .audit/search-dialog/verified/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-desktop-chromium-repeat1/video-1.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .audit/search-dialog/verified/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-desktop-chromium-repeat1/error-context.md
+
+    attachment #5: trace (application/zip) ─────────────────────────────────────────────────────────
+    .audit/search-dialog/verified/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-desktop-chromium-repeat1/trace.zip
+    Usage:
+
+        npx playwright show-trace .audit/search-dialog/verified/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-desktop-chromium-repeat1/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 interrupted
+    [desktop-chromium] › tests/persistence.spec.ts:69:7 › an older session draft cannot replace a newer edit committed by another tab
+  61 did not run
+  34 passed (52.2s)
+error: script "test:e2e" exited with code 130
