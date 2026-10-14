@@ -1,0 +1,18 @@
+$ playwright test tests/sidebar-preview.spec.ts "--repeat-each=2"
+
+Running 4 tests using 1 worker
+
+(node:11518) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [desktop-chromium] › tests/sidebar-preview.spec.ts:4:5 › sidebar previews preserve the first twenty words and blank note fallback (924ms)
+(node:11524) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  2 [desktop-chromium] › tests/sidebar-preview.spec.ts:4:5 › sidebar previews preserve the first twenty words and blank note fallback (815ms)
+(node:11537) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  3 [mobile-webkit] › tests/sidebar-preview.spec.ts:4:5 › sidebar previews preserve the first twenty words and blank note fallback (2.6s)
+(node:11559) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  4 [mobile-webkit] › tests/sidebar-preview.spec.ts:4:5 › sidebar previews preserve the first twenty words and blank note fallback (2.5s)
+
+  4 passed (8.9s)

@@ -1,0 +1,4029 @@
+{
+  "config": {
+    "argv": [
+      "/Users/abhi/.hermes/node/bin/node",
+      "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/node_modules/.bin/playwright",
+      "test",
+      "--repeat-each=2"
+    ],
+    "configFile": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/playwright.config.ts",
+    "rootDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results",
+        "repeatEach": 2,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop-chromium",
+        "name": "desktop-chromium",
+        "testDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests",
+        "testIgnore": [
+          "**/mobile.spec.ts"
+        ],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results",
+        "repeatEach": 2,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile-webkit",
+        "name": "mobile-webkit",
+        "testDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results",
+        "repeatEach": 2,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "desktop-chromium",
+        "testDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests",
+        "snapshotDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests",
+        "testIgnore": "**/mobile.spec.ts",
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 30000,
+        "use": {
+          "baseURL": "http://127.0.0.1:3107",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "video": "retain-on-failure",
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.8078.4 Safari/537.36",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          },
+          "screen": {
+            "width": 1920,
+            "height": 1080
+          },
+          "deviceScaleFactor": 1,
+          "isMobile": false,
+          "hasTouch": false,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "desktop-chromium"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results",
+        "repeatEach": 2,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "mobile-webkit",
+        "testDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests",
+        "snapshotDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 30000,
+        "use": {
+          "baseURL": "http://127.0.0.1:3107",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "video": "retain-on-failure",
+          "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.2 Mobile/15E148 Safari/604.1",
+          "viewport": {
+            "width": 390,
+            "height": 664
+          },
+          "screen": {
+            "width": 390,
+            "height": 844
+          },
+          "deviceScaleFactor": 3,
+          "isMobile": true,
+          "hasTouch": true,
+          "defaultBrowserType": "webkit"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "mobile-webkit"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": ".audit/overnight/verified/report.json"
+        }
+      ],
+      [
+        "html",
+        {
+          "outputFolder": ".audit/overnight/verified/html",
+          "open": "never"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "automatic-save.spec.ts",
+      "file": "automatic-save.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "automatic stale-save settlement explains replacement of the pending draft",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2327,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:02:21.115Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "stale-editor-before-automatic-save",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-desktop-chromium/attachments/stale-editor-before-automatic-save-1d38281cdf22fd7b898b5955594988c913b20ef7.png"
+                    },
+                    {
+                      "name": "automatic-stale-save-result",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-desktop-chromium/attachments/automatic-stale-save-result-61f2381ef4c32ffb3364d231d36e156a4b2a348a.png"
+                    },
+                    {
+                      "name": "automatic-save.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJpbmplY3Rpb24iOiB7CiAgICAicmVtb3RlQ2xvY2tPZmZzZXRNcyI6IDYwMDAwLAogICAgInN1cHByZXNzZWRDaGFubmVsIjogIngtc3RvcmFnZW11dGF0ZWQtMSIKICB9LAogICJzdG9yZWRCZWZvcmUiOiB7CiAgICAiaWQiOiAielFFanRRM0dyWCIsCiAgICAiY29udGVudCI6ICJUaGUgbG9naWNhbGx5IG5ld2VyIGVkaXQgYWxyZWFkeSBjb21taXR0ZWQgYnkgYW5vdGhlciB0YWIuIiwKICAgICJ1cGRhdGVkQXQiOiAxNzkxOTI5MDAxOTc2LAogICAgImNsb3VkU3RhdHVzIjogImxvY2FsIiwKICAgICJsb2NhbFJldmlzaW9uIjogewogICAgICAiY2xvY2siOiAxNzkxOTI5MDAxOTc2LAogICAgICAiYWN0b3IiOiAiMzBiNDg5NzUtMmU5My00ODQ1LThlYmEtZjVjNzUxMzI3NDc3IgogICAgfQogIH0sCiAgImNhcHR1cmVkRHJhZnQiOiB7CiAgICAiaWQiOiAielFFanRRM0dyWCIsCiAgICAiY29udGVudCI6ICJUaGUgc3RhbGUgdGFiJ3MgYXV0b21hdGljIGRyYWZ0IG11c3Qgbm90IGRpc2FwcGVhciBzaWxlbnRseS4iLAogICAgInVwZGF0ZWRBdCI6IDE3OTE5Mjg5NDIwMzUsCiAgICAibG9jYWxSZXZpc2lvbiI6IHsKICAgICAgImNsb2NrIjogMTc5MTkyODk0MjAzNSwKICAgICAgImFjdG9yIjogIjY3MjgzMjg2LTZhMTItNDc4Ni1iZTk1LWNiMjY4OWE1MjJiMSIKICAgIH0KICB9LAogICJzdG9yZWRBZnRlciI6IHsKICAgICJpZCI6ICJ6UUVqdFEzR3JYIiwKICAgICJjb250ZW50IjogIlRoZSBsb2dpY2FsbHkgbmV3ZXIgZWRpdCBhbHJlYWR5IGNvbW1pdHRlZCBieSBhbm90aGVyIHRhYi4iLAogICAgInVwZGF0ZWRBdCI6IDE3OTE5MjkwMDE5NzYsCiAgICAiY2xvdWRTdGF0dXMiOiAibG9jYWwiLAogICAgImxvY2FsUmV2aXNpb24iOiB7CiAgICAgICJjbG9jayI6IDE3OTE5MjkwMDE5NzYsCiAgICAgICJhY3RvciI6ICIzMGI0ODk3NS0yZTkzLTQ4NDUtOGViYS1mNWM3NTEzMjc0NzciCiAgICB9CiAgfSwKICAiZWRpdG9yQ29udGVudCI6ICJUaGUgbG9naWNhbGx5IG5ld2VyIGVkaXQgYWxyZWFkeSBjb21taXR0ZWQgYnkgYW5vdGhlciB0YWIuIiwKICAicGVuZGluZ0FmdGVyIjogbnVsbCwKICAidXBkYXRlZFZpc2libGUiOiB0cnVlLAogICJzdWNjZXNzVmlzaWJsZSI6IGZhbHNlLAogICJmYWlsdXJlVmlzaWJsZSI6IGZhbHNlCn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "037275899b79a41523ee-4047bf6e50965d7a841d",
+          "file": "automatic-save.spec.ts",
+          "line": 9,
+          "column": 5
+        },
+        {
+          "title": "automatic stale-save settlement explains replacement of the pending draft",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2211,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:02:46.591Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "stale-editor-before-automatic-save",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-desktop-chromium-repeat1/attachments/stale-editor-before-automatic-save-f993e3c6282883b0734e9d9434f1d70244e3e6b1.png"
+                    },
+                    {
+                      "name": "automatic-stale-save-result",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-desktop-chromium-repeat1/attachments/automatic-stale-save-result-b1cf78f0a83032fc2c2d21585e42fc0059d0ee65.png"
+                    },
+                    {
+                      "name": "automatic-save.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJpbmplY3Rpb24iOiB7CiAgICAicmVtb3RlQ2xvY2tPZmZzZXRNcyI6IDYwMDAwLAogICAgInN1cHByZXNzZWRDaGFubmVsIjogIngtc3RvcmFnZW11dGF0ZWQtMSIKICB9LAogICJzdG9yZWRCZWZvcmUiOiB7CiAgICAiaWQiOiAiYnVPa0pDMkNHaiIsCiAgICAiY29udGVudCI6ICJUaGUgbG9naWNhbGx5IG5ld2VyIGVkaXQgYWxyZWFkeSBjb21taXR0ZWQgYnkgYW5vdGhlciB0YWIuIiwKICAgICJ1cGRhdGVkQXQiOiAxNzkxOTI5MDI3MzMxLAogICAgImNsb3VkU3RhdHVzIjogImxvY2FsIiwKICAgICJsb2NhbFJldmlzaW9uIjogewogICAgICAiY2xvY2siOiAxNzkxOTI5MDI3MzMxLAogICAgICAiYWN0b3IiOiAiOGU1NzkyZTctYmJjOS00NjVkLTg4MTYtMDcwZWNlYjBhNDc4IgogICAgfQogIH0sCiAgImNhcHR1cmVkRHJhZnQiOiB7CiAgICAiaWQiOiAiYnVPa0pDMkNHaiIsCiAgICAiY29udGVudCI6ICJUaGUgc3RhbGUgdGFiJ3MgYXV0b21hdGljIGRyYWZ0IG11c3Qgbm90IGRpc2FwcGVhciBzaWxlbnRseS4iLAogICAgInVwZGF0ZWRBdCI6IDE3OTE5Mjg5NjczODIsCiAgICAibG9jYWxSZXZpc2lvbiI6IHsKICAgICAgImNsb2NrIjogMTc5MTkyODk2NzM4MiwKICAgICAgImFjdG9yIjogIjgzZDYxOGJiLTZiNWItNDc1MC05N2RmLWMxYjRkMzY2Zjk1MCIKICAgIH0KICB9LAogICJzdG9yZWRBZnRlciI6IHsKICAgICJpZCI6ICJidU9rSkMyQ0dqIiwKICAgICJjb250ZW50IjogIlRoZSBsb2dpY2FsbHkgbmV3ZXIgZWRpdCBhbHJlYWR5IGNvbW1pdHRlZCBieSBhbm90aGVyIHRhYi4iLAogICAgInVwZGF0ZWRBdCI6IDE3OTE5MjkwMjczMzEsCiAgICAiY2xvdWRTdGF0dXMiOiAibG9jYWwiLAogICAgImxvY2FsUmV2aXNpb24iOiB7CiAgICAgICJjbG9jayI6IDE3OTE5MjkwMjczMzEsCiAgICAgICJhY3RvciI6ICI4ZTU3OTJlNy1iYmM5LTQ2NWQtODgxNi0wNzBlY2ViMGE0NzgiCiAgICB9CiAgfSwKICAiZWRpdG9yQ29udGVudCI6ICJUaGUgbG9naWNhbGx5IG5ld2VyIGVkaXQgYWxyZWFkeSBjb21taXR0ZWQgYnkgYW5vdGhlciB0YWIuIiwKICAicGVuZGluZ0FmdGVyIjogbnVsbCwKICAidXBkYXRlZFZpc2libGUiOiB0cnVlLAogICJzdWNjZXNzVmlzaWJsZSI6IGZhbHNlLAogICJmYWlsdXJlVmlzaWJsZSI6IGZhbHNlCn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "037275899b79a41523ee-cd7b0146c399aec5d484",
+          "file": "automatic-save.spec.ts",
+          "line": 9,
+          "column": 5
+        },
+        {
+          "title": "automatic stale-save settlement explains replacement of the pending draft",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3030,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:03:12.034Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "stale-editor-before-automatic-save",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-mobile-webkit/attachments/stale-editor-before-automatic-save-4de978e5391360d5804c781751987c3173b13ff4.png"
+                    },
+                    {
+                      "name": "automatic-stale-save-result",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-mobile-webkit/attachments/automatic-stale-save-result-c8f1f94622e982e2d836683fa93664102dbdd3b1.png"
+                    },
+                    {
+                      "name": "automatic-save.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJpbmplY3Rpb24iOiB7CiAgICAicmVtb3RlQ2xvY2tPZmZzZXRNcyI6IDYwMDAwLAogICAgInN1cHByZXNzZWRDaGFubmVsIjogIngtc3RvcmFnZW11dGF0ZWQtMSIKICB9LAogICJzdG9yZWRCZWZvcmUiOiB7CiAgICAiaWQiOiAidEN1Q0swTjNzRyIsCiAgICAiY29udGVudCI6ICJUaGUgbG9naWNhbGx5IG5ld2VyIGVkaXQgYWxyZWFkeSBjb21taXR0ZWQgYnkgYW5vdGhlciB0YWIuIiwKICAgICJ1cGRhdGVkQXQiOiAxNzkxOTI5MDUzMTIyLAogICAgImNsb3VkU3RhdHVzIjogImxvY2FsIiwKICAgICJsb2NhbFJldmlzaW9uIjogewogICAgICAiY2xvY2siOiAxNzkxOTI5MDUzMTIyLAogICAgICAiYWN0b3IiOiAiYzM2MmRjZDYtM2IzYS00YmM0LTg0OGItYjlkNWEzNWIzN2VjIgogICAgfQogIH0sCiAgImNhcHR1cmVkRHJhZnQiOiB7CiAgICAiaWQiOiAidEN1Q0swTjNzRyIsCiAgICAiY29udGVudCI6ICJUaGUgc3RhbGUgdGFiJ3MgYXV0b21hdGljIGRyYWZ0IG11c3Qgbm90IGRpc2FwcGVhciBzaWxlbnRseS4iLAogICAgInVwZGF0ZWRBdCI6IDE3OTE5Mjg5OTMxNzIsCiAgICAibG9jYWxSZXZpc2lvbiI6IHsKICAgICAgImNsb2NrIjogMTc5MTkyODk5MzE3MiwKICAgICAgImFjdG9yIjogIjcwMGI4MzBjLTExMWEtNGNkNy04NDVmLTNmNGU2NDYyM2NjMCIKICAgIH0KICB9LAogICJzdG9yZWRBZnRlciI6IHsKICAgICJpZCI6ICJ0Q3VDSzBOM3NHIiwKICAgICJjb250ZW50IjogIlRoZSBsb2dpY2FsbHkgbmV3ZXIgZWRpdCBhbHJlYWR5IGNvbW1pdHRlZCBieSBhbm90aGVyIHRhYi4iLAogICAgInVwZGF0ZWRBdCI6IDE3OTE5MjkwNTMxMjIsCiAgICAiY2xvdWRTdGF0dXMiOiAibG9jYWwiLAogICAgImxvY2FsUmV2aXNpb24iOiB7CiAgICAgICJjbG9jayI6IDE3OTE5MjkwNTMxMjIsCiAgICAgICJhY3RvciI6ICJjMzYyZGNkNi0zYjNhLTRiYzQtODQ4Yi1iOWQ1YTM1YjM3ZWMiCiAgICB9CiAgfSwKICAiZWRpdG9yQ29udGVudCI6ICJUaGUgbG9naWNhbGx5IG5ld2VyIGVkaXQgYWxyZWFkeSBjb21taXR0ZWQgYnkgYW5vdGhlciB0YWIuIiwKICAicGVuZGluZ0FmdGVyIjogbnVsbCwKICAidXBkYXRlZFZpc2libGUiOiB0cnVlLAogICJzdWNjZXNzVmlzaWJsZSI6IGZhbHNlLAogICJmYWlsdXJlVmlzaWJsZSI6IGZhbHNlCn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "037275899b79a41523ee-1de6317d2486ebaa9d4e",
+          "file": "automatic-save.spec.ts",
+          "line": 9,
+          "column": 5
+        },
+        {
+          "title": "automatic stale-save settlement explains replacement of the pending draft",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2957,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:03:56.664Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "stale-editor-before-automatic-save",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-mobile-webkit-repeat1/attachments/stale-editor-before-automatic-save-954e71d875c9e7301ebac0c6629ac921388998ce.png"
+                    },
+                    {
+                      "name": "automatic-stale-save-result",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-mobile-webkit-repeat1/attachments/automatic-stale-save-result-9c116b1298acb5f46f1245723458c6087c11cb81.png"
+                    },
+                    {
+                      "name": "automatic-save.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJpbmplY3Rpb24iOiB7CiAgICAicmVtb3RlQ2xvY2tPZmZzZXRNcyI6IDYwMDAwLAogICAgInN1cHByZXNzZWRDaGFubmVsIjogIngtc3RvcmFnZW11dGF0ZWQtMSIKICB9LAogICJzdG9yZWRCZWZvcmUiOiB7CiAgICAiaWQiOiAiUXI1cXAwTUxVUyIsCiAgICAiY29udGVudCI6ICJUaGUgbG9naWNhbGx5IG5ld2VyIGVkaXQgYWxyZWFkeSBjb21taXR0ZWQgYnkgYW5vdGhlciB0YWIuIiwKICAgICJ1cGRhdGVkQXQiOiAxNzkxOTI5MDk3NzAxLAogICAgImNsb3VkU3RhdHVzIjogImxvY2FsIiwKICAgICJsb2NhbFJldmlzaW9uIjogewogICAgICAiY2xvY2siOiAxNzkxOTI5MDk3NzAxLAogICAgICAiYWN0b3IiOiAiOTM0NjkyNWQtZDY1ZS00Y2JjLTg1ZGItNDVhOWQwYmVlNDVjIgogICAgfQogIH0sCiAgImNhcHR1cmVkRHJhZnQiOiB7CiAgICAiaWQiOiAiUXI1cXAwTUxVUyIsCiAgICAiY29udGVudCI6ICJUaGUgc3RhbGUgdGFiJ3MgYXV0b21hdGljIGRyYWZ0IG11c3Qgbm90IGRpc2FwcGVhciBzaWxlbnRseS4iLAogICAgInVwZGF0ZWRBdCI6IDE3OTE5MjkwMzc3NTQsCiAgICAibG9jYWxSZXZpc2lvbiI6IHsKICAgICAgImNsb2NrIjogMTc5MTkyOTAzNzc1NCwKICAgICAgImFjdG9yIjogIjA0NTMwYjAxLWRkOTItNGVjNi1hMTQ3LWMzZGQ3OTM4MmM3YyIKICAgIH0KICB9LAogICJzdG9yZWRBZnRlciI6IHsKICAgICJpZCI6ICJRcjVxcDBNTFVTIiwKICAgICJjb250ZW50IjogIlRoZSBsb2dpY2FsbHkgbmV3ZXIgZWRpdCBhbHJlYWR5IGNvbW1pdHRlZCBieSBhbm90aGVyIHRhYi4iLAogICAgInVwZGF0ZWRBdCI6IDE3OTE5MjkwOTc3MDEsCiAgICAiY2xvdWRTdGF0dXMiOiAibG9jYWwiLAogICAgImxvY2FsUmV2aXNpb24iOiB7CiAgICAgICJjbG9jayI6IDE3OTE5MjkwOTc3MDEsCiAgICAgICJhY3RvciI6ICI5MzQ2OTI1ZC1kNjVlLTRjYmMtODVkYi00NWE5ZDBiZWU0NWMiCiAgICB9CiAgfSwKICAiZWRpdG9yQ29udGVudCI6ICJUaGUgbG9naWNhbGx5IG5ld2VyIGVkaXQgYWxyZWFkeSBjb21taXR0ZWQgYnkgYW5vdGhlciB0YWIuIiwKICAicGVuZGluZ0FmdGVyIjogbnVsbCwKICAidXBkYXRlZFZpc2libGUiOiB0cnVlLAogICJzdWNjZXNzVmlzaWJsZSI6IGZhbHNlLAogICJmYWlsdXJlVmlzaWJsZSI6IGZhbHNlCn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "037275899b79a41523ee-2c1914d15722e8b66cc7",
+          "file": "automatic-save.spec.ts",
+          "line": 9,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "core.spec.ts",
+      "file": "core.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "create, edit, reload, and search local notes",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3395,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:02:23.522Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "saved-and-reloaded-note",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/core-create-edit-reload-and-search-local-notes-desktop-chromium/attachments/saved-and-reloaded-note-e7f9473ce56c319a80dc79180fc7f264c0bdb28b.png"
+                    },
+                    {
+                      "name": "search-finds-edited-content",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/core-create-edit-reload-and-search-local-notes-desktop-chromium/attachments/search-finds-edited-content-212e06e8ab40a99dde15fc942cd70db9dc43ef22.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d064c8ac994e44e7c99b-7ba8131253c0798cf327",
+          "file": "core.spec.ts",
+          "line": 4,
+          "column": 5
+        },
+        {
+          "title": "offline edits persist locally and survive reconnect and reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 712,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:02:26.920Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "offline-edit-stored",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/core-offline-edits-persist-3478b-urvive-reconnect-and-reload-desktop-chromium/attachments/offline-edit-stored-8d0d239d8d4c6375b8815ede5948d7b111495c9a.png"
+                    },
+                    {
+                      "name": "offline-edit-after-reconnect",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/core-offline-edits-persist-3478b-urvive-reconnect-and-reload-desktop-chromium/attachments/offline-edit-after-reconnect-998920c9943a54f041e6114db5f660fc170a7ab8.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d064c8ac994e44e7c99b-cfca9bf9fc5aee95c7f3",
+          "file": "core.spec.ts",
+          "line": 35,
+          "column": 5
+        },
+        {
+          "title": "create, edit, reload, and search local notes",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3369,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:02:48.872Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "saved-and-reloaded-note",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/core-create-edit-reload-and-search-local-notes-desktop-chromium-repeat1/attachments/saved-and-reloaded-note-5ad3e6d89f1ddf989a9a34e58e67a1cb9c9c34ff.png"
+                    },
+                    {
+                      "name": "search-finds-edited-content",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/core-create-edit-reload-and-search-local-notes-desktop-chromium-repeat1/attachments/search-finds-edited-content-591a1e74082d57a50e3fda5ce36a9a178f540853.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d064c8ac994e44e7c99b-0d5b6a64409fea1959b6",
+          "file": "core.spec.ts",
+          "line": 4,
+          "column": 5
+        },
+        {
+          "title": "offline edits persist locally and survive reconnect and reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 718,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:02:52.245Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "offline-edit-stored",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/core-offline-edits-persist-3478b-urvive-reconnect-and-reload-desktop-chromium-repeat1/attachments/offline-edit-stored-3ee02255c558688d58c1f941f9935aebdeaa3eca.png"
+                    },
+                    {
+                      "name": "offline-edit-after-reconnect",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/core-offline-edits-persist-3478b-urvive-reconnect-and-reload-desktop-chromium-repeat1/attachments/offline-edit-after-reconnect-1206eea687b0d4af42684f4eb05de57d08a87bb0.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d064c8ac994e44e7c99b-58af9cf06ecfe3306376",
+          "file": "core.spec.ts",
+          "line": 35,
+          "column": 5
+        },
+        {
+          "title": "create, edit, reload, and search local notes",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3535,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:03:15.189Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "saved-and-reloaded-note",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/core-create-edit-reload-and-search-local-notes-mobile-webkit/attachments/saved-and-reloaded-note-f868e9f939b0da05d9fee921d422bf8523f61bc2.png"
+                    },
+                    {
+                      "name": "search-finds-edited-content",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/core-create-edit-reload-and-search-local-notes-mobile-webkit/attachments/search-finds-edited-content-ef6d30290055f6101e11816cc79cf384eed2d6d4.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d064c8ac994e44e7c99b-79909d2f69ed26dd6274",
+          "file": "core.spec.ts",
+          "line": 4,
+          "column": 5
+        },
+        {
+          "title": "offline edits persist locally and survive reconnect and reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 796,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:03:18.729Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "offline-edit-stored",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/core-offline-edits-persist-3478b-urvive-reconnect-and-reload-mobile-webkit/attachments/offline-edit-stored-9e0a5264419e2a16b60bffd6328131abb9bc73e4.png"
+                    },
+                    {
+                      "name": "offline-edit-after-reconnect",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/core-offline-edits-persist-3478b-urvive-reconnect-and-reload-mobile-webkit/attachments/offline-edit-after-reconnect-4c94dc6d9078083990ce503c8e7b92db2e1151e6.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d064c8ac994e44e7c99b-102c44586e2f1dda9d8f",
+          "file": "core.spec.ts",
+          "line": 35,
+          "column": 5
+        },
+        {
+          "title": "create, edit, reload, and search local notes",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3507,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:03:59.744Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "saved-and-reloaded-note",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/core-create-edit-reload-and-search-local-notes-mobile-webkit-repeat1/attachments/saved-and-reloaded-note-d538b439ec79f447a4c9e20ce4806ae8253d4ea5.png"
+                    },
+                    {
+                      "name": "search-finds-edited-content",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/core-create-edit-reload-and-search-local-notes-mobile-webkit-repeat1/attachments/search-finds-edited-content-183d7a2ef9e4780e7842d46b3b511a10cf6c23be.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d064c8ac994e44e7c99b-60ca3c212b63eb6b3b20",
+          "file": "core.spec.ts",
+          "line": 4,
+          "column": 5
+        },
+        {
+          "title": "offline edits persist locally and survive reconnect and reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 791,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:04:03.255Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "offline-edit-stored",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/core-offline-edits-persist-3478b-urvive-reconnect-and-reload-mobile-webkit-repeat1/attachments/offline-edit-stored-80de23169f1700a16d5614cd478ccecd32f5296b.png"
+                    },
+                    {
+                      "name": "offline-edit-after-reconnect",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/core-offline-edits-persist-3478b-urvive-reconnect-and-reload-mobile-webkit-repeat1/attachments/offline-edit-after-reconnect-615bbf1b633f36cb0f4531019f7ce9ca269240b1.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d064c8ac994e44e7c99b-c087f3cb2adb506188b6",
+          "file": "core.spec.ts",
+          "line": 35,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "creation.spec.ts",
+      "file": "creation.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "the direct new-note route creates exactly one durable note",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 644,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:02:27.637Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "notes-after-direct-creation",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/creation-the-direct-new-no-925c8-es-exactly-one-durable-note-desktop-chromium/attachments/notes-after-direct-creation-9506d24d4c08e7538d5d54a8844ce5342d2b3c0a.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1c32b4a3a2ad83297ea5-598f9eb2dc110e008e53",
+          "file": "creation.spec.ts",
+          "line": 4,
+          "column": 5
+        },
+        {
+          "title": "a failed home note creation reports the failure",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 310,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:02:28.285Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "failed-creation-keeps-list-intact",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/creation-a-failed-home-note-creation-reports-the-failure-desktop-chromium/attachments/failed-creation-keeps-list-intact-14bdd42200bdb1677f48ed66552326a235445dd8.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1c32b4a3a2ad83297ea5-4310888a1b6f31453c5c",
+          "file": "creation.spec.ts",
+          "line": 21,
+          "column": 7
+        },
+        {
+          "title": "a failed direct note creation reports the failure",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 293,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:02:28.598Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "failed-creation-keeps-list-intact",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/creation-a-failed-direct-note-creation-reports-the-failure-desktop-chromium/attachments/failed-creation-keeps-list-intact-f003baf09c6b71622bec61ddf5d1e0f700d370f7.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1c32b4a3a2ad83297ea5-96ea54b7473f813c2bdc",
+          "file": "creation.spec.ts",
+          "line": 21,
+          "column": 7
+        },
+        {
+          "title": "the direct new-note route creates exactly one durable note",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 646,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:02:52.967Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "notes-after-direct-creation",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/creation-the-direct-new-no-925c8-es-exactly-one-durable-note-desktop-chromium-repeat1/attachments/notes-after-direct-creation-a997329487072397267d7be5b75d55b43deb8bc0.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1c32b4a3a2ad83297ea5-23c69893972c9fba89f9",
+          "file": "creation.spec.ts",
+          "line": 4,
+          "column": 5
+        },
+        {
+          "title": "a failed home note creation reports the failure",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 312,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:02:53.615Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "failed-creation-keeps-list-intact",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/creation-a-failed-home-note-creation-reports-the-failure-desktop-chromium-repeat1/attachments/failed-creation-keeps-list-intact-06240e875bf5a32395109894b2a55f8a4cdca390.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1c32b4a3a2ad83297ea5-d07626c2e8c2e2f6b7a1",
+          "file": "creation.spec.ts",
+          "line": 21,
+          "column": 7
+        },
+        {
+          "title": "a failed direct note creation reports the failure",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 296,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:02:53.930Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "failed-creation-keeps-list-intact",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/creation-a-failed-direct-note-creation-reports-the-failure-desktop-chromium-repeat1/attachments/failed-creation-keeps-list-intact-4e8067e2ecbc0872f7297bc64cae51f0630780b1.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1c32b4a3a2ad83297ea5-4fcca6ddd878b3e2a4e0",
+          "file": "creation.spec.ts",
+          "line": 21,
+          "column": 7
+        },
+        {
+          "title": "the direct new-note route creates exactly one durable note",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 732,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:03:19.530Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "notes-after-direct-creation",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/creation-the-direct-new-no-925c8-es-exactly-one-durable-note-mobile-webkit/attachments/notes-after-direct-creation-0698c7fc339659e5450cf9b3bd1004bfc6f1ad2e.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1c32b4a3a2ad83297ea5-a07877fcac4180723fba",
+          "file": "creation.spec.ts",
+          "line": 4,
+          "column": 5
+        },
+        {
+          "title": "a failed home note creation reports the failure",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 346,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:03:20.266Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "failed-creation-keeps-list-intact",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/creation-a-failed-home-note-creation-reports-the-failure-mobile-webkit/attachments/failed-creation-keeps-list-intact-40f8df9a926df86eeaa62cae0cf0ab8304670a0a.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1c32b4a3a2ad83297ea5-445472166799cae54de9",
+          "file": "creation.spec.ts",
+          "line": 21,
+          "column": 7
+        },
+        {
+          "title": "a failed direct note creation reports the failure",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 362,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:03:20.616Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "failed-creation-keeps-list-intact",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/creation-a-failed-direct-note-creation-reports-the-failure-mobile-webkit/attachments/failed-creation-keeps-list-intact-5466d509a0932d7bd846bbd16c9548fbfde3db20.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1c32b4a3a2ad83297ea5-a735cfdd3c292b73c81f",
+          "file": "creation.spec.ts",
+          "line": 21,
+          "column": 7
+        },
+        {
+          "title": "the direct new-note route creates exactly one durable note",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 703,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:04:04.052Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "notes-after-direct-creation",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/creation-the-direct-new-no-925c8-es-exactly-one-durable-note-mobile-webkit-repeat1/attachments/notes-after-direct-creation-a05ee672f0f3ba4da16696f59bd83db2783cd7bf.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1c32b4a3a2ad83297ea5-f8b2ceae970386762a78",
+          "file": "creation.spec.ts",
+          "line": 4,
+          "column": 5
+        },
+        {
+          "title": "a failed home note creation reports the failure",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 334,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:04:04.759Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "failed-creation-keeps-list-intact",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/creation-a-failed-home-note-creation-reports-the-failure-mobile-webkit-repeat1/attachments/failed-creation-keeps-list-intact-0dc522f999874600ff061386f40fe438933f524f.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1c32b4a3a2ad83297ea5-e8bb15a6e6f4901ccf98",
+          "file": "creation.spec.ts",
+          "line": 21,
+          "column": 7
+        },
+        {
+          "title": "a failed direct note creation reports the failure",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 346,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:04:05.097Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "failed-creation-keeps-list-intact",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/creation-a-failed-direct-note-creation-reports-the-failure-mobile-webkit-repeat1/attachments/failed-creation-keeps-list-intact-c39d1d5664cd6b741fccb808ee511aab31cb7079.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1c32b4a3a2ad83297ea5-3ce3154d58c990195acc",
+          "file": "creation.spec.ts",
+          "line": 21,
+          "column": 7
+        }
+      ]
+    },
+    {
+      "title": "observed-save.spec.ts",
+      "file": "observed-save.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "observing a newer remote edit explains why a failed pending draft disappeared",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1687,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:02:28.896Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "failed-local-draft-before-remote-update",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-desktop-chromium/attachments/failed-local-draft-before-remote-update-6cde841710903c52d76d6f41edad47b62265e789.png"
+                    },
+                    {
+                      "name": "observed-remote-save-result",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-desktop-chromium/attachments/observed-remote-save-result-11eb3007e25ea2837050d84aa3802c55bef6dc27.png"
+                    },
+                    {
+                      "name": "observed-save.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJzYW1lQ29udGVudCI6IGZhbHNlLAogICJwZW5kaW5nQmVmb3JlIjogewogICAgImlkIjogImZCb0hOaXNwc3IiLAogICAgImNvbnRlbnQiOiAiVGhlIGxvY2FsIGRyYWZ0IHRoYXQgaGFzIG5vdCBiZWVuIHNhdmVkIHlldC4iLAogICAgInVwZGF0ZWRBdCI6IDE3OTE5Mjg5NDk0MjMsCiAgICAibG9jYWxSZXZpc2lvbiI6IHsKICAgICAgImNsb2NrIjogMTc5MTkyODk0OTQyMywKICAgICAgImFjdG9yIjogIjFiMTAwZTRiLTNlNDEtNDVmNy05ZGU3LTk5NDYzZDNhOTYzMSIKICAgIH0KICB9LAogICJwZW5kaW5nQWZ0ZXIiOiBudWxsLAogICJzdG9yZWRBZnRlciI6IHsKICAgICJpZCI6ICJmQm9ITmlzcHNyIiwKICAgICJjb250ZW50IjogIlRoZSBuZXdlciB0ZXh0IGNvbW1pdHRlZCBieSBhbm90aGVyIHRhYi4iLAogICAgInVwZGF0ZWRBdCI6IDE3OTE5Mjg5NDk1OTAsCiAgICAiY2xvdWRTdGF0dXMiOiAibG9jYWwiLAogICAgImxvY2FsUmV2aXNpb24iOiB7CiAgICAgICJjbG9jayI6IDE3OTE5Mjg5NDk1OTAsCiAgICAgICJhY3RvciI6ICIxYzRmYzEyYy0wYzNlLTRjYzItYTc1OC0zYTE0ZmJmZDVjNGEiCiAgICB9CiAgfSwKICAiZWRpdG9yQ29udGVudCI6ICJUaGUgbmV3ZXIgdGV4dCBjb21taXR0ZWQgYnkgYW5vdGhlciB0YWIuIiwKICAiZmFpbHVyZVZpc2libGUiOiBmYWxzZSwKICAidXBkYXRlZFZpc2libGUiOiB0cnVlLAogICJzdWNjZXNzVmlzaWJsZSI6IGZhbHNlCn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a34a33a794423052296a-8f8fb33e288b29e2ede0",
+          "file": "observed-save.spec.ts",
+          "line": 29,
+          "column": 7
+        },
+        {
+          "title": "observing the same pending text saved by another tab stays quiet",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 894,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:02:30.585Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "failed-local-draft-before-remote-update",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/observed-save-observing-th-99462--by-another-tab-stays-quiet-desktop-chromium/attachments/failed-local-draft-before-remote-update-47a94923ead0e29d55456da6e029a2343fb56da8.png"
+                    },
+                    {
+                      "name": "observed-remote-save-result",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/observed-save-observing-th-99462--by-another-tab-stays-quiet-desktop-chromium/attachments/observed-remote-save-result-c3c18ce33364872bd55275c6f028edde2657e7a2.png"
+                    },
+                    {
+                      "name": "observed-save.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJzYW1lQ29udGVudCI6IHRydWUsCiAgInBlbmRpbmdCZWZvcmUiOiB7CiAgICAiaWQiOiAiMm1DeXdTbWFuNyIsCiAgICAiY29udGVudCI6ICJUaGUgbG9jYWwgZHJhZnQgdGhhdCBoYXMgbm90IGJlZW4gc2F2ZWQgeWV0LiIsCiAgICAidXBkYXRlZEF0IjogMTc5MTkyODk1MTExMiwKICAgICJsb2NhbFJldmlzaW9uIjogewogICAgICAiY2xvY2siOiAxNzkxOTI4OTUxMTEyLAogICAgICAiYWN0b3IiOiAiZjVhYzUzNWEtZGQyMC00ZjE5LWIzYjYtYTFkNDRjZjJkMjcxIgogICAgfQogIH0sCiAgInBlbmRpbmdBZnRlciI6IG51bGwsCiAgInN0b3JlZEFmdGVyIjogewogICAgImlkIjogIjJtQ3l3U21hbjciLAogICAgImNvbnRlbnQiOiAiVGhlIGxvY2FsIGRyYWZ0IHRoYXQgaGFzIG5vdCBiZWVuIHNhdmVkIHlldC4iLAogICAgInVwZGF0ZWRBdCI6IDE3OTE5Mjg5NTEyNzksCiAgICAiY2xvdWRTdGF0dXMiOiAibG9jYWwiLAogICAgImxvY2FsUmV2aXNpb24iOiB7CiAgICAgICJjbG9jayI6IDE3OTE5Mjg5NTEyNzksCiAgICAgICJhY3RvciI6ICJlMzM1ZTIzMi0zZDM4LTQzMjMtOTZmYS0yYzc4MjFhZWM0NDUiCiAgICB9CiAgfSwKICAiZWRpdG9yQ29udGVudCI6ICJUaGUgbG9jYWwgZHJhZnQgdGhhdCBoYXMgbm90IGJlZW4gc2F2ZWQgeWV0LiIsCiAgImZhaWx1cmVWaXNpYmxlIjogZmFsc2UsCiAgInVwZGF0ZWRWaXNpYmxlIjogZmFsc2UsCiAgInN1Y2Nlc3NWaXNpYmxlIjogZmFsc2UKfQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a34a33a794423052296a-dc0c5a5e3e4f5bbbb613",
+          "file": "observed-save.spec.ts",
+          "line": 29,
+          "column": 7
+        },
+        {
+          "title": "ordinary remote edits without a pending local draft stay quiet",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1656,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:02:31.483Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "ordinary-remote-edit-stays-quiet",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/observed-save-ordinary-rem-ee034-ding-local-draft-stay-quiet-desktop-chromium/attachments/ordinary-remote-edit-stays-quiet-7bdef0fd25f895221342f484a52cd53b904d49df.png"
+                    },
+                    {
+                      "name": "ordinary-remote-edit.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJlZGl0b3JDb250ZW50IjogIlRoZSBuZXdlciB0ZXh0IGNvbW1pdHRlZCBieSBhbm90aGVyIHRhYi4iLAogICJzdG9yZWRBZnRlciI6IHsKICAgICJpZCI6ICJXbURxUFd6d1Z0IiwKICAgICJjb250ZW50IjogIlRoZSBuZXdlciB0ZXh0IGNvbW1pdHRlZCBieSBhbm90aGVyIHRhYi4iLAogICAgInVwZGF0ZWRBdCI6IDE3OTE5Mjg5NTIxNDEsCiAgICAiY2xvdWRTdGF0dXMiOiAibG9jYWwiLAogICAgImxvY2FsUmV2aXNpb24iOiB7CiAgICAgICJjbG9jayI6IDE3OTE5Mjg5NTIxNDEsCiAgICAgICJhY3RvciI6ICI0YmI2ZDExOC03ZWVjLTQ4NGMtYWQyNy0zYzgwZmI4NWM4NmIiCiAgICB9CiAgfSwKICAicGVuZGluZ0RyYWZ0IjogbnVsbAp9"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a34a33a794423052296a-bb52e1937a556e75b7e4",
+          "file": "observed-save.spec.ts",
+          "line": 81,
+          "column": 5
+        },
+        {
+          "title": "observing a newer remote edit explains why a failed pending draft disappeared",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1706,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:02:54.230Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "failed-local-draft-before-remote-update",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-desktop-chromium-repeat1/attachments/failed-local-draft-before-remote-update-54a86638dd8f4dadfbfc0362683c16a24a85b374.png"
+                    },
+                    {
+                      "name": "observed-remote-save-result",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-desktop-chromium-repeat1/attachments/observed-remote-save-result-403b9081895507c55cc22a7da0d726826f9c5cfe.png"
+                    },
+                    {
+                      "name": "observed-save.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJzYW1lQ29udGVudCI6IGZhbHNlLAogICJwZW5kaW5nQmVmb3JlIjogewogICAgImlkIjogIk1Fb0ZqRjRjOU8iLAogICAgImNvbnRlbnQiOiAiVGhlIGxvY2FsIGRyYWZ0IHRoYXQgaGFzIG5vdCBiZWVuIHNhdmVkIHlldC4iLAogICAgInVwZGF0ZWRBdCI6IDE3OTE5Mjg5NzQ3NTYsCiAgICAibG9jYWxSZXZpc2lvbiI6IHsKICAgICAgImNsb2NrIjogMTc5MTkyODk3NDc1NiwKICAgICAgImFjdG9yIjogIjI3ZmIzNGM1LTQ0MDgtNGNiYi04ZDNkLWJmNmI2YTEwODAxMiIKICAgIH0KICB9LAogICJwZW5kaW5nQWZ0ZXIiOiBudWxsLAogICJzdG9yZWRBZnRlciI6IHsKICAgICJpZCI6ICJNRW9GakY0YzlPIiwKICAgICJjb250ZW50IjogIlRoZSBuZXdlciB0ZXh0IGNvbW1pdHRlZCBieSBhbm90aGVyIHRhYi4iLAogICAgInVwZGF0ZWRBdCI6IDE3OTE5Mjg5NzQ5MjYsCiAgICAiY2xvdWRTdGF0dXMiOiAibG9jYWwiLAogICAgImxvY2FsUmV2aXNpb24iOiB7CiAgICAgICJjbG9jayI6IDE3OTE5Mjg5NzQ5MjYsCiAgICAgICJhY3RvciI6ICIwOTkyYmEzZC1mMDNiLTQxZTMtOTU0MS03Y2I5MjYwNzYzMzciCiAgICB9CiAgfSwKICAiZWRpdG9yQ29udGVudCI6ICJUaGUgbmV3ZXIgdGV4dCBjb21taXR0ZWQgYnkgYW5vdGhlciB0YWIuIiwKICAiZmFpbHVyZVZpc2libGUiOiBmYWxzZSwKICAidXBkYXRlZFZpc2libGUiOiB0cnVlLAogICJzdWNjZXNzVmlzaWJsZSI6IGZhbHNlCn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a34a33a794423052296a-986896d5c516dcb3a427",
+          "file": "observed-save.spec.ts",
+          "line": 29,
+          "column": 7
+        },
+        {
+          "title": "observing the same pending text saved by another tab stays quiet",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 892,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:02:55.940Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "failed-local-draft-before-remote-update",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/observed-save-observing-th-99462--by-another-tab-stays-quiet-desktop-chromium-repeat1/attachments/failed-local-draft-before-remote-update-46e665a0c3ba127d84eec96eb1b21050b571e751.png"
+                    },
+                    {
+                      "name": "observed-remote-save-result",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/observed-save-observing-th-99462--by-another-tab-stays-quiet-desktop-chromium-repeat1/attachments/observed-remote-save-result-624302411016d0154611f5cbb1d167e96a8d4ff0.png"
+                    },
+                    {
+                      "name": "observed-save.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJzYW1lQ29udGVudCI6IHRydWUsCiAgInBlbmRpbmdCZWZvcmUiOiB7CiAgICAiaWQiOiAiMWZCblBNbXZYdSIsCiAgICAiY29udGVudCI6ICJUaGUgbG9jYWwgZHJhZnQgdGhhdCBoYXMgbm90IGJlZW4gc2F2ZWQgeWV0LiIsCiAgICAidXBkYXRlZEF0IjogMTc5MTkyODk3NjQ2NiwKICAgICJsb2NhbFJldmlzaW9uIjogewogICAgICAiY2xvY2siOiAxNzkxOTI4OTc2NDY2LAogICAgICAiYWN0b3IiOiAiNGFmOTAxZjEtZDIzNi00NjY0LWFlZWYtZTQ1ODYwNjFlNzQxIgogICAgfQogIH0sCiAgInBlbmRpbmdBZnRlciI6IG51bGwsCiAgInN0b3JlZEFmdGVyIjogewogICAgImlkIjogIjFmQm5QTW12WHUiLAogICAgImNvbnRlbnQiOiAiVGhlIGxvY2FsIGRyYWZ0IHRoYXQgaGFzIG5vdCBiZWVuIHNhdmVkIHlldC4iLAogICAgInVwZGF0ZWRBdCI6IDE3OTE5Mjg5NzY2MzMsCiAgICAiY2xvdWRTdGF0dXMiOiAibG9jYWwiLAogICAgImxvY2FsUmV2aXNpb24iOiB7CiAgICAgICJjbG9jayI6IDE3OTE5Mjg5NzY2MzMsCiAgICAgICJhY3RvciI6ICI3MDQ2NmJiNS1kY2Y4LTRmOGQtYTAyOC0yYTRjYTg5NTY2YWYiCiAgICB9CiAgfSwKICAiZWRpdG9yQ29udGVudCI6ICJUaGUgbG9jYWwgZHJhZnQgdGhhdCBoYXMgbm90IGJlZW4gc2F2ZWQgeWV0LiIsCiAgImZhaWx1cmVWaXNpYmxlIjogZmFsc2UsCiAgInVwZGF0ZWRWaXNpYmxlIjogZmFsc2UsCiAgInN1Y2Nlc3NWaXNpYmxlIjogZmFsc2UKfQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a34a33a794423052296a-0b9b25337d5e35437503",
+          "file": "observed-save.spec.ts",
+          "line": 29,
+          "column": 7
+        },
+        {
+          "title": "ordinary remote edits without a pending local draft stay quiet",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1654,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:02:56.835Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "ordinary-remote-edit-stays-quiet",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/observed-save-ordinary-rem-ee034-ding-local-draft-stay-quiet-desktop-chromium-repeat1/attachments/ordinary-remote-edit-stays-quiet-32ff0d716f4ff012ab9007f064720f9305d70a7d.png"
+                    },
+                    {
+                      "name": "ordinary-remote-edit.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJlZGl0b3JDb250ZW50IjogIlRoZSBuZXdlciB0ZXh0IGNvbW1pdHRlZCBieSBhbm90aGVyIHRhYi4iLAogICJzdG9yZWRBZnRlciI6IHsKICAgICJpZCI6ICIwRzUxUG9XM0tyIiwKICAgICJjb250ZW50IjogIlRoZSBuZXdlciB0ZXh0IGNvbW1pdHRlZCBieSBhbm90aGVyIHRhYi4iLAogICAgInVwZGF0ZWRBdCI6IDE3OTE5Mjg5Nzc0OTMsCiAgICAiY2xvdWRTdGF0dXMiOiAibG9jYWwiLAogICAgImxvY2FsUmV2aXNpb24iOiB7CiAgICAgICJjbG9jayI6IDE3OTE5Mjg5Nzc0OTMsCiAgICAgICJhY3RvciI6ICJmNGQxOWFkNS0xZjgyLTRlOTYtYWQxMC02OGJiMTk2ODllZTUiCiAgICB9CiAgfSwKICAicGVuZGluZ0RyYWZ0IjogbnVsbAp9"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a34a33a794423052296a-79013ded4f28821a5cf3",
+          "file": "observed-save.spec.ts",
+          "line": 81,
+          "column": 5
+        },
+        {
+          "title": "observing a newer remote edit explains why a failed pending draft disappeared",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2896,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:03:28.020Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "failed-local-draft-before-remote-update",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-mobile-webkit/attachments/failed-local-draft-before-remote-update-3564c8a41084d93e1de10774547086585b5f927b.png"
+                    },
+                    {
+                      "name": "observed-remote-save-result",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-mobile-webkit/attachments/observed-remote-save-result-3b299c15842952ced649e6a5cfba24d16210f84b.png"
+                    },
+                    {
+                      "name": "observed-save.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJzYW1lQ29udGVudCI6IGZhbHNlLAogICJwZW5kaW5nQmVmb3JlIjogewogICAgImlkIjogIlUyb3h6UnVMbU0iLAogICAgImNvbnRlbnQiOiAiVGhlIGxvY2FsIGRyYWZ0IHRoYXQgaGFzIG5vdCBiZWVuIHNhdmVkIHlldC4iLAogICAgInVwZGF0ZWRBdCI6IDE3OTE5MjkwMDg2MzMsCiAgICAibG9jYWxSZXZpc2lvbiI6IHsKICAgICAgImNsb2NrIjogMTc5MTkyOTAwODYzMywKICAgICAgImFjdG9yIjogIjM3OTAzN2EwLTE1ZjctNDY0YS05MjI5LWE4Y2NkMWMxYjk4ZiIKICAgIH0KICB9LAogICJwZW5kaW5nQWZ0ZXIiOiBudWxsLAogICJzdG9yZWRBZnRlciI6IHsKICAgICJpZCI6ICJVMm94elJ1TG1NIiwKICAgICJjb250ZW50IjogIlRoZSBuZXdlciB0ZXh0IGNvbW1pdHRlZCBieSBhbm90aGVyIHRhYi4iLAogICAgInVwZGF0ZWRBdCI6IDE3OTE5MjkwMDg5MDEsCiAgICAiY2xvdWRTdGF0dXMiOiAibG9jYWwiLAogICAgImxvY2FsUmV2aXNpb24iOiB7CiAgICAgICJjbG9jayI6IDE3OTE5MjkwMDg5MDEsCiAgICAgICJhY3RvciI6ICI2MWNhYWJhYS1hYTQwLTQ5NmYtYjk0Zi02YTMxMzdkYzRhNWUiCiAgICB9CiAgfSwKICAiZWRpdG9yQ29udGVudCI6ICJUaGUgbmV3ZXIgdGV4dCBjb21taXR0ZWQgYnkgYW5vdGhlciB0YWIuIiwKICAiZmFpbHVyZVZpc2libGUiOiBmYWxzZSwKICAidXBkYXRlZFZpc2libGUiOiB0cnVlLAogICJzdWNjZXNzVmlzaWJsZSI6IGZhbHNlCn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a34a33a794423052296a-fb7ae3945f9e157d88f5",
+          "file": "observed-save.spec.ts",
+          "line": 29,
+          "column": 7
+        },
+        {
+          "title": "observing the same pending text saved by another tab stays quiet",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1087,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:03:30.920Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "failed-local-draft-before-remote-update",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/observed-save-observing-th-99462--by-another-tab-stays-quiet-mobile-webkit/attachments/failed-local-draft-before-remote-update-af06dd4c41334047e5cc18fb6685567c90bab6a5.png"
+                    },
+                    {
+                      "name": "observed-remote-save-result",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/observed-save-observing-th-99462--by-another-tab-stays-quiet-mobile-webkit/attachments/observed-remote-save-result-62e6ef00c822b50386e1dbd2cf4e38d59a4f3f29.png"
+                    },
+                    {
+                      "name": "observed-save.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJzYW1lQ29udGVudCI6IHRydWUsCiAgInBlbmRpbmdCZWZvcmUiOiB7CiAgICAiaWQiOiAiVm1rS1ZWM0xQYiIsCiAgICAiY29udGVudCI6ICJUaGUgbG9jYWwgZHJhZnQgdGhhdCBoYXMgbm90IGJlZW4gc2F2ZWQgeWV0LiIsCiAgICAidXBkYXRlZEF0IjogMTc5MTkyOTAxMTU1MCwKICAgICJsb2NhbFJldmlzaW9uIjogewogICAgICAiY2xvY2siOiAxNzkxOTI5MDExNTUwLAogICAgICAiYWN0b3IiOiAiOWUxOTZiMTktOGFhOS00NjAwLTg3YzItM2EzMjcwYzQ5NmIwIgogICAgfQogIH0sCiAgInBlbmRpbmdBZnRlciI6IG51bGwsCiAgInN0b3JlZEFmdGVyIjogewogICAgImlkIjogIlZta0tWVjNMUGIiLAogICAgImNvbnRlbnQiOiAiVGhlIGxvY2FsIGRyYWZ0IHRoYXQgaGFzIG5vdCBiZWVuIHNhdmVkIHlldC4iLAogICAgInVwZGF0ZWRBdCI6IDE3OTE5MjkwMTE4MjIsCiAgICAiY2xvdWRTdGF0dXMiOiAibG9jYWwiLAogICAgImxvY2FsUmV2aXNpb24iOiB7CiAgICAgICJjbG9jayI6IDE3OTE5MjkwMTE4MjIsCiAgICAgICJhY3RvciI6ICJhYTk0ODdhYi05ODZmLTQzODMtYmE3ZC03MjUyNjVjZmJiOWUiCiAgICB9CiAgfSwKICAiZWRpdG9yQ29udGVudCI6ICJUaGUgbG9jYWwgZHJhZnQgdGhhdCBoYXMgbm90IGJlZW4gc2F2ZWQgeWV0LiIsCiAgImZhaWx1cmVWaXNpYmxlIjogZmFsc2UsCiAgInVwZGF0ZWRWaXNpYmxlIjogZmFsc2UsCiAgInN1Y2Nlc3NWaXNpYmxlIjogZmFsc2UKfQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a34a33a794423052296a-6003cbb48c2bae6ce813",
+          "file": "observed-save.spec.ts",
+          "line": 29,
+          "column": 7
+        },
+        {
+          "title": "ordinary remote edits without a pending local draft stay quiet",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2817,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:03:32.013Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "ordinary-remote-edit-stays-quiet",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/observed-save-ordinary-rem-ee034-ding-local-draft-stay-quiet-mobile-webkit/attachments/ordinary-remote-edit-stays-quiet-a575f61268aad6409a8927a281dcb9406349e520.png"
+                    },
+                    {
+                      "name": "ordinary-remote-edit.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJlZGl0b3JDb250ZW50IjogIlRoZSBuZXdlciB0ZXh0IGNvbW1pdHRlZCBieSBhbm90aGVyIHRhYi4iLAogICJzdG9yZWRBZnRlciI6IHsKICAgICJpZCI6ICJHcjlmMkNJd3lRIiwKICAgICJjb250ZW50IjogIlRoZSBuZXdlciB0ZXh0IGNvbW1pdHRlZCBieSBhbm90aGVyIHRhYi4iLAogICAgInVwZGF0ZWRBdCI6IDE3OTE5MjkwMTI4MzQsCiAgICAiY2xvdWRTdGF0dXMiOiAibG9jYWwiLAogICAgImxvY2FsUmV2aXNpb24iOiB7CiAgICAgICJjbG9jayI6IDE3OTE5MjkwMTI4MzQsCiAgICAgICJhY3RvciI6ICJlNWNlMjcwOC0yNzQ5LTQ1NjUtYWZjNC1jNjJmMTZhOTQ5ZDQiCiAgICB9CiAgfSwKICAicGVuZGluZ0RyYWZ0IjogbnVsbAp9"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a34a33a794423052296a-db285319d3d5f1d4d3c4",
+          "file": "observed-save.spec.ts",
+          "line": 81,
+          "column": 5
+        },
+        {
+          "title": "observing a newer remote edit explains why a failed pending draft disappeared",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2892,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:04:12.972Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "failed-local-draft-before-remote-update",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-mobile-webkit-repeat1/attachments/failed-local-draft-before-remote-update-3ccd7e4eca8b276880b6f6e1a714cbe82b916b6b.png"
+                    },
+                    {
+                      "name": "observed-remote-save-result",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-mobile-webkit-repeat1/attachments/observed-remote-save-result-84d64fbc828cc8578ec18b1b02576766cbfd3eb1.png"
+                    },
+                    {
+                      "name": "observed-save.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJzYW1lQ29udGVudCI6IGZhbHNlLAogICJwZW5kaW5nQmVmb3JlIjogewogICAgImlkIjogIkdEZjZwSnV5TDYiLAogICAgImNvbnRlbnQiOiAiVGhlIGxvY2FsIGRyYWZ0IHRoYXQgaGFzIG5vdCBiZWVuIHNhdmVkIHlldC4iLAogICAgInVwZGF0ZWRBdCI6IDE3OTE5MjkwNTM1ODMsCiAgICAibG9jYWxSZXZpc2lvbiI6IHsKICAgICAgImNsb2NrIjogMTc5MTkyOTA1MzU4MywKICAgICAgImFjdG9yIjogImVkM2UxZGI5LWFjMDEtNDM5ZS05MDk0LTk2ODEzN2Y2NmY5NyIKICAgIH0KICB9LAogICJwZW5kaW5nQWZ0ZXIiOiBudWxsLAogICJzdG9yZWRBZnRlciI6IHsKICAgICJpZCI6ICJHRGY2cEp1eUw2IiwKICAgICJjb250ZW50IjogIlRoZSBuZXdlciB0ZXh0IGNvbW1pdHRlZCBieSBhbm90aGVyIHRhYi4iLAogICAgInVwZGF0ZWRBdCI6IDE3OTE5MjkwNTM4MzksCiAgICAiY2xvdWRTdGF0dXMiOiAibG9jYWwiLAogICAgImxvY2FsUmV2aXNpb24iOiB7CiAgICAgICJjbG9jayI6IDE3OTE5MjkwNTM4MzksCiAgICAgICJhY3RvciI6ICJhYTM0NjFmYy1mYWE0LTQ1N2EtOWM0ZS0zZmY4YThjOWI1ZTAiCiAgICB9CiAgfSwKICAiZWRpdG9yQ29udGVudCI6ICJUaGUgbmV3ZXIgdGV4dCBjb21taXR0ZWQgYnkgYW5vdGhlciB0YWIuIiwKICAiZmFpbHVyZVZpc2libGUiOiBmYWxzZSwKICAidXBkYXRlZFZpc2libGUiOiB0cnVlLAogICJzdWNjZXNzVmlzaWJsZSI6IGZhbHNlCn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a34a33a794423052296a-fd0e448a65cd3fdb7e40",
+          "file": "observed-save.spec.ts",
+          "line": 29,
+          "column": 7
+        },
+        {
+          "title": "observing the same pending text saved by another tab stays quiet",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1063,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:04:15.868Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "failed-local-draft-before-remote-update",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/observed-save-observing-th-99462--by-another-tab-stays-quiet-mobile-webkit-repeat1/attachments/failed-local-draft-before-remote-update-d013f13b1ec456664aa0a17ed550d221921924c2.png"
+                    },
+                    {
+                      "name": "observed-remote-save-result",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/observed-save-observing-th-99462--by-another-tab-stays-quiet-mobile-webkit-repeat1/attachments/observed-remote-save-result-c61423f79a6a1b253928dc798a80624f5efea9a2.png"
+                    },
+                    {
+                      "name": "observed-save.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJzYW1lQ29udGVudCI6IHRydWUsCiAgInBlbmRpbmdCZWZvcmUiOiB7CiAgICAiaWQiOiAiZjU2T1pRMzdFdyIsCiAgICAiY29udGVudCI6ICJUaGUgbG9jYWwgZHJhZnQgdGhhdCBoYXMgbm90IGJlZW4gc2F2ZWQgeWV0LiIsCiAgICAidXBkYXRlZEF0IjogMTc5MTkyOTA1NjQ3OSwKICAgICJsb2NhbFJldmlzaW9uIjogewogICAgICAiY2xvY2siOiAxNzkxOTI5MDU2NDc5LAogICAgICAiYWN0b3IiOiAiNzlkZWE4NGMtZjBjZi00NDQ0LThkMWUtMzRiOTZhMDQ1NzlhIgogICAgfQogIH0sCiAgInBlbmRpbmdBZnRlciI6IG51bGwsCiAgInN0b3JlZEFmdGVyIjogewogICAgImlkIjogImY1Nk9aUTM3RXciLAogICAgImNvbnRlbnQiOiAiVGhlIGxvY2FsIGRyYWZ0IHRoYXQgaGFzIG5vdCBiZWVuIHNhdmVkIHlldC4iLAogICAgInVwZGF0ZWRBdCI6IDE3OTE5MjkwNTY3NDYsCiAgICAiY2xvdWRTdGF0dXMiOiAibG9jYWwiLAogICAgImxvY2FsUmV2aXNpb24iOiB7CiAgICAgICJjbG9jayI6IDE3OTE5MjkwNTY3NDYsCiAgICAgICJhY3RvciI6ICI0ZWMxMDFkMi0xNTE2LTQ0ODktOGU1Zi0xMmM2ZjFhZTk0ZTQiCiAgICB9CiAgfSwKICAiZWRpdG9yQ29udGVudCI6ICJUaGUgbG9jYWwgZHJhZnQgdGhhdCBoYXMgbm90IGJlZW4gc2F2ZWQgeWV0LiIsCiAgImZhaWx1cmVWaXNpYmxlIjogZmFsc2UsCiAgInVwZGF0ZWRWaXNpYmxlIjogZmFsc2UsCiAgInN1Y2Nlc3NWaXNpYmxlIjogZmFsc2UKfQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a34a33a794423052296a-d03ea2c02b65217cd470",
+          "file": "observed-save.spec.ts",
+          "line": 29,
+          "column": 7
+        },
+        {
+          "title": "ordinary remote edits without a pending local draft stay quiet",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2845,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:04:16.936Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "ordinary-remote-edit-stays-quiet",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/observed-save-ordinary-rem-ee034-ding-local-draft-stay-quiet-mobile-webkit-repeat1/attachments/ordinary-remote-edit-stays-quiet-b9b9ea8de5b87028f741971adc103ec35c17d36f.png"
+                    },
+                    {
+                      "name": "ordinary-remote-edit.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJlZGl0b3JDb250ZW50IjogIlRoZSBuZXdlciB0ZXh0IGNvbW1pdHRlZCBieSBhbm90aGVyIHRhYi4iLAogICJzdG9yZWRBZnRlciI6IHsKICAgICJpZCI6ICJHdWZvUWtVUmtrIiwKICAgICJjb250ZW50IjogIlRoZSBuZXdlciB0ZXh0IGNvbW1pdHRlZCBieSBhbm90aGVyIHRhYi4iLAogICAgInVwZGF0ZWRBdCI6IDE3OTE5MjkwNTc3NTQsCiAgICAiY2xvdWRTdGF0dXMiOiAibG9jYWwiLAogICAgImxvY2FsUmV2aXNpb24iOiB7CiAgICAgICJjbG9jayI6IDE3OTE5MjkwNTc3NTQsCiAgICAgICJhY3RvciI6ICI1MzFkMWExMi01MzdkLTRhNjctODQ4NC03NTQ5ZGM3MWI0ZjgiCiAgICB9CiAgfSwKICAicGVuZGluZ0RyYWZ0IjogbnVsbAp9"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a34a33a794423052296a-67d880b3f4ecdc4fe4c7",
+          "file": "observed-save.spec.ts",
+          "line": 81,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "persistence.spec.ts",
+      "file": "persistence.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "an empty newly created note survives reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 711,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:02:33.143Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "empty-note-after-reload",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/persistence-an-empty-newly-created-note-survives-reload-desktop-chromium/attachments/empty-note-after-reload-3cb231b53d996d3257e643884eeca336df7d1112.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a5ef73a4e2a1baaea746-a4f09c02719285b69f12",
+          "file": "persistence.spec.ts",
+          "line": 33,
+          "column": 5
+        },
+        {
+          "title": "failed local saves show failure and recover the draft after reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 719,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:02:33.858Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "forced-local-save-failure",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/persistence-failed-local-s-064e0-over-the-draft-after-reload-desktop-chromium/attachments/forced-local-save-failure-ea32a50e2a157b1743e05092b2722d771be6aedf.png"
+                    },
+                    {
+                      "name": "draft-recovered-after-reload",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/persistence-failed-local-s-064e0-over-the-draft-after-reload-desktop-chromium/attachments/draft-recovered-after-reload-3b3c81777d6d03df15bb99bedf55904a5cfc1a20.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a5ef73a4e2a1baaea746-9af49e9d3c8910b9d963",
+          "file": "persistence.spec.ts",
+          "line": 47,
+          "column": 5
+        },
+        {
+          "title": "an older session draft cannot replace a newer edit committed by another tab",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 838,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:02:34.579Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "newer-committed-edit-preserved",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-desktop-chromium/attachments/newer-committed-edit-preserved-8fac694511ff2bea205ca6099742093a18d8b9d6.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a5ef73a4e2a1baaea746-dfa8d40b487efc49b0ff",
+          "file": "persistence.spec.ts",
+          "line": 69,
+          "column": 7
+        },
+        {
+          "title": "an older session draft with already-saved content stays quiet",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 831,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:02:35.420Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "newer-committed-edit-preserved",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/persistence-an-older-sessi-241ef-y-saved-content-stays-quiet-desktop-chromium/attachments/newer-committed-edit-preserved-cba873d107431a097d1811666b990f14bbcbf3b4.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a5ef73a4e2a1baaea746-80dd33028cc2658a8dc2",
+          "file": "persistence.spec.ts",
+          "line": 69,
+          "column": 7
+        },
+        {
+          "title": "an older session draft cannot resurrect a note deleted in another tab",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1383,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:02:36.255Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "deleted-note-stays-deleted",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/persistence-an-older-sessi-eb9b0-note-deleted-in-another-tab-desktop-chromium/attachments/deleted-note-stays-deleted-f8b52201f9d8f287d411db4180887c7f4ace9c1b.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a5ef73a4e2a1baaea746-82ceb4de6ef9f0f91ee9",
+          "file": "persistence.spec.ts",
+          "line": 100,
+          "column": 5
+        },
+        {
+          "title": "an empty newly created note survives reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 711,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:02:58.493Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "empty-note-after-reload",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/persistence-an-empty-newly-created-note-survives-reload-desktop-chromium-repeat1/attachments/empty-note-after-reload-560e6d58bfc2203f6f9ffd06f6d772915b9a6381.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a5ef73a4e2a1baaea746-6b70a19a2edeb2c81b46",
+          "file": "persistence.spec.ts",
+          "line": 33,
+          "column": 5
+        },
+        {
+          "title": "failed local saves show failure and recover the draft after reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 719,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:02:59.207Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "forced-local-save-failure",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/persistence-failed-local-s-064e0-over-the-draft-after-reload-desktop-chromium-repeat1/attachments/forced-local-save-failure-9a91fe236944a3ed1bdd368bbca3f481700d82c7.png"
+                    },
+                    {
+                      "name": "draft-recovered-after-reload",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/persistence-failed-local-s-064e0-over-the-draft-after-reload-desktop-chromium-repeat1/attachments/draft-recovered-after-reload-cfa18c52733082f45579c8c1f2bcee5997b37908.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a5ef73a4e2a1baaea746-bb1ecb0126aa754ef649",
+          "file": "persistence.spec.ts",
+          "line": 47,
+          "column": 5
+        },
+        {
+          "title": "an older session draft cannot replace a newer edit committed by another tab",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 847,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:02:59.929Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "newer-committed-edit-preserved",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-desktop-chromium-repeat1/attachments/newer-committed-edit-preserved-613e521dc3ef7a6e82aa6af50d54777c42202c73.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a5ef73a4e2a1baaea746-fe3281c552095c833e4c",
+          "file": "persistence.spec.ts",
+          "line": 69,
+          "column": 7
+        },
+        {
+          "title": "an older session draft with already-saved content stays quiet",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 840,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:03:00.779Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "newer-committed-edit-preserved",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/persistence-an-older-sessi-241ef-y-saved-content-stays-quiet-desktop-chromium-repeat1/attachments/newer-committed-edit-preserved-1db6d999b62689d2540b60f4a8f8e36d38d0399b.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a5ef73a4e2a1baaea746-58a47b55da332b61c916",
+          "file": "persistence.spec.ts",
+          "line": 69,
+          "column": 7
+        },
+        {
+          "title": "an older session draft cannot resurrect a note deleted in another tab",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1405,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:03:01.622Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "deleted-note-stays-deleted",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/persistence-an-older-sessi-eb9b0-note-deleted-in-another-tab-desktop-chromium-repeat1/attachments/deleted-note-stays-deleted-774e954375ba9621b4041db23e7ae87c31b9acce.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a5ef73a4e2a1baaea746-b780af04232809c24fad",
+          "file": "persistence.spec.ts",
+          "line": 100,
+          "column": 5
+        },
+        {
+          "title": "an empty newly created note survives reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 757,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:03:34.838Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "empty-note-after-reload",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/persistence-an-empty-newly-created-note-survives-reload-mobile-webkit/attachments/empty-note-after-reload-94c324510540a210f2571d99cfa843efb18edd78.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a5ef73a4e2a1baaea746-4010856baef5823a6293",
+          "file": "persistence.spec.ts",
+          "line": 33,
+          "column": 5
+        },
+        {
+          "title": "failed local saves show failure and recover the draft after reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 804,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:03:35.598Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "forced-local-save-failure",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/persistence-failed-local-s-064e0-over-the-draft-after-reload-mobile-webkit/attachments/forced-local-save-failure-405cb1fcb060e8b2377f6dffd15882ca7bd3136f.png"
+                    },
+                    {
+                      "name": "draft-recovered-after-reload",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/persistence-failed-local-s-064e0-over-the-draft-after-reload-mobile-webkit/attachments/draft-recovered-after-reload-bdf9b8b7264f991dcc9d5d16064ea97514ac081f.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a5ef73a4e2a1baaea746-78b7642ba0ae13cb5a97",
+          "file": "persistence.spec.ts",
+          "line": 47,
+          "column": 5
+        },
+        {
+          "title": "an older session draft cannot replace a newer edit committed by another tab",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 998,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:03:36.406Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "newer-committed-edit-preserved",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-mobile-webkit/attachments/newer-committed-edit-preserved-9433df96edc24d7c5aed974e4c021e7a90a6e323.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a5ef73a4e2a1baaea746-1d97d4e6581408c48af1",
+          "file": "persistence.spec.ts",
+          "line": 69,
+          "column": 7
+        },
+        {
+          "title": "an older session draft with already-saved content stays quiet",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1010,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:03:37.408Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "newer-committed-edit-preserved",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/persistence-an-older-sessi-241ef-y-saved-content-stays-quiet-mobile-webkit/attachments/newer-committed-edit-preserved-1b73048dd143b56e44fec495bb0a09f552d9b552.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a5ef73a4e2a1baaea746-db0d84e2a9366e2f4fcd",
+          "file": "persistence.spec.ts",
+          "line": 69,
+          "column": 7
+        },
+        {
+          "title": "an older session draft cannot resurrect a note deleted in another tab",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2631,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:03:38.423Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "deleted-note-stays-deleted",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/persistence-an-older-sessi-eb9b0-note-deleted-in-another-tab-mobile-webkit/attachments/deleted-note-stays-deleted-039ddbd77ff4a553abd702de4727b4e3805cfaae.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a5ef73a4e2a1baaea746-0aa3e954da924d6fbed3",
+          "file": "persistence.spec.ts",
+          "line": 100,
+          "column": 5
+        },
+        {
+          "title": "an empty newly created note survives reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 778,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:04:19.787Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "empty-note-after-reload",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/persistence-an-empty-newly-created-note-survives-reload-mobile-webkit-repeat1/attachments/empty-note-after-reload-1e502a7d71eee9ad45c995dce699f9435bc19219.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a5ef73a4e2a1baaea746-8035acef3e5f3ff74d43",
+          "file": "persistence.spec.ts",
+          "line": 33,
+          "column": 5
+        },
+        {
+          "title": "failed local saves show failure and recover the draft after reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 837,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:04:20.568Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "forced-local-save-failure",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/persistence-failed-local-s-064e0-over-the-draft-after-reload-mobile-webkit-repeat1/attachments/forced-local-save-failure-59ed26cd3843fb46b7a38e2a3056f58610a6e3d8.png"
+                    },
+                    {
+                      "name": "draft-recovered-after-reload",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/persistence-failed-local-s-064e0-over-the-draft-after-reload-mobile-webkit-repeat1/attachments/draft-recovered-after-reload-88efd8d29b7c50661101f77cd16017237c7d3452.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a5ef73a4e2a1baaea746-0b8b3c5a0438b7a385ed",
+          "file": "persistence.spec.ts",
+          "line": 47,
+          "column": 5
+        },
+        {
+          "title": "an older session draft cannot replace a newer edit committed by another tab",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1013,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:04:21.409Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "newer-committed-edit-preserved",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-mobile-webkit-repeat1/attachments/newer-committed-edit-preserved-9fff1f4d6b039cbdfe4ba43deb262e6b7bffd885.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a5ef73a4e2a1baaea746-f17e09fce2e63b09f34d",
+          "file": "persistence.spec.ts",
+          "line": 69,
+          "column": 7
+        },
+        {
+          "title": "an older session draft with already-saved content stays quiet",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1002,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:04:22.426Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "newer-committed-edit-preserved",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/persistence-an-older-sessi-241ef-y-saved-content-stays-quiet-mobile-webkit-repeat1/attachments/newer-committed-edit-preserved-617ff4d9a020a8bf1f4c303d04b1675a7c5d1205.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a5ef73a4e2a1baaea746-d89ec4bd443f36b88d1d",
+          "file": "persistence.spec.ts",
+          "line": 69,
+          "column": 7
+        },
+        {
+          "title": "an older session draft cannot resurrect a note deleted in another tab",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2493,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:04:23.433Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "deleted-note-stays-deleted",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/persistence-an-older-sessi-eb9b0-note-deleted-in-another-tab-mobile-webkit-repeat1/attachments/deleted-note-stays-deleted-03d1b57680d69258ccfbc443e6759d091fa29a2e.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a5ef73a4e2a1baaea746-0b661681c1044c2c8f73",
+          "file": "persistence.spec.ts",
+          "line": 100,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "regressions.spec.ts",
+      "file": "regressions.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "last edit survives reload before the former 500ms autosave delay",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 695,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:02:37.642Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "reload-timing",
+                      "contentType": "application/json",
+                      "body": "eyJpbnB1dEF0Ijo1MDQuMzk5OTk5OTk4NTA5OSwicGFnZWhpZGVBdCI6NTIwLjIwMDAwMDAwMjk4MDJ9"
+                    },
+                    {
+                      "name": "immediate-reload-result",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/regressions-last-edit-surv-407ae-former-500ms-autosave-delay-desktop-chromium/attachments/immediate-reload-result-41a24a8d36965caefb0d9dc02f79b2369726b5d0.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a34af78d704591628420-3b9e29a570172fe33e03",
+          "file": "regressions.spec.ts",
+          "line": 4,
+          "column": 5
+        },
+        {
+          "title": "sidebar Search opens a focused search and finds the current note",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1886,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:02:38.341Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "after-sidebar-search",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/regressions-sidebar-Search-7ebcb--and-finds-the-current-note-desktop-chromium/attachments/after-sidebar-search-c512cc8b00fe4a5d025b4f06c0c69e6c3d6eb81e.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a34af78d704591628420-eb0bf6704c2f3d6b6c56",
+          "file": "regressions.spec.ts",
+          "line": 36,
+          "column": 5
+        },
+        {
+          "title": "a cross-tab edit reverted to the original content remains reverted after reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2379,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:02:40.230Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "cross-tab-reversion-after-reload",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/regressions-a-cross-tab-ed-17c56-mains-reverted-after-reload-desktop-chromium/attachments/cross-tab-reversion-after-reload-9a90041802e9b772e0d673e199da3de713595e4d.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a34af78d704591628420-b85787a8ba8e9a3d6e75",
+          "file": "regressions.spec.ts",
+          "line": 58,
+          "column": 5
+        },
+        {
+          "title": "a new note survives reload immediately after its first edit",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 670,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:02:42.612Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "new-note-immediate-reload",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/regressions-a-new-note-sur-ae012-iately-after-its-first-edit-desktop-chromium/attachments/new-note-immediate-reload-1534fdfee172fc3f6d7b1e269953f57b7066f8ba.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a34af78d704591628420-4fd80c39f903ce84766a",
+          "file": "regressions.spec.ts",
+          "line": 78,
+          "column": 5
+        },
+        {
+          "title": "last edit survives reload before the former 500ms autosave delay",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 685,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:03:03.031Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "reload-timing",
+                      "contentType": "application/json",
+                      "body": "eyJpbnB1dEF0Ijo1MDAuMDk5OTk5OTk0MDM5NTQsInBhZ2VoaWRlQXQiOjUwOS4wOTk5OTk5OTQwMzk1NH0="
+                    },
+                    {
+                      "name": "immediate-reload-result",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/regressions-last-edit-surv-407ae-former-500ms-autosave-delay-desktop-chromium-repeat1/attachments/immediate-reload-result-03d5db205d0ddc2a75d5a43d0c6c119ac7aa7c46.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a34af78d704591628420-e7c859af4fa3125e9039",
+          "file": "regressions.spec.ts",
+          "line": 4,
+          "column": 5
+        },
+        {
+          "title": "sidebar Search opens a focused search and finds the current note",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1884,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:03:03.719Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "after-sidebar-search",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/regressions-sidebar-Search-7ebcb--and-finds-the-current-note-desktop-chromium-repeat1/attachments/after-sidebar-search-c4888b777e6a12a2e217edca10a5db72baf54dd0.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a34af78d704591628420-3ee4632f2046f7fa0feb",
+          "file": "regressions.spec.ts",
+          "line": 36,
+          "column": 5
+        },
+        {
+          "title": "a cross-tab edit reverted to the original content remains reverted after reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2383,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:03:05.606Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "cross-tab-reversion-after-reload",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/regressions-a-cross-tab-ed-17c56-mains-reverted-after-reload-desktop-chromium-repeat1/attachments/cross-tab-reversion-after-reload-2d39c1e6ef729e8a53562d3c3959062dc28e4c19.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a34af78d704591628420-be96c005982093dd90f9",
+          "file": "regressions.spec.ts",
+          "line": 58,
+          "column": 5
+        },
+        {
+          "title": "a new note survives reload immediately after its first edit",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 670,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:03:07.992Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "new-note-immediate-reload",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/regressions-a-new-note-sur-ae012-iately-after-its-first-edit-desktop-chromium-repeat1/attachments/new-note-immediate-reload-f66bd183729ede5633271c4a08235ac67f47ab77.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a34af78d704591628420-f23c14a03b53fd9ac54c",
+          "file": "regressions.spec.ts",
+          "line": 78,
+          "column": 5
+        },
+        {
+          "title": "last edit survives reload before the former 500ms autosave delay",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 837,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:03:41.061Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "reload-timing",
+                      "contentType": "application/json",
+                      "body": "eyJpbnB1dEF0Ijo1NjIsInBhZ2VoaWRlQXQiOjU5NX0="
+                    },
+                    {
+                      "name": "immediate-reload-result",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/regressions-last-edit-surv-407ae-former-500ms-autosave-delay-mobile-webkit/attachments/immediate-reload-result-57306510bd5cbd4aa42b1e32dc517225f1055b59.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a34af78d704591628420-bead38ef3a076185f0a9",
+          "file": "regressions.spec.ts",
+          "line": 4,
+          "column": 5
+        },
+        {
+          "title": "sidebar Search opens a focused search and finds the current note",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4592,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:03:41.902Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "after-sidebar-search",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/regressions-sidebar-Search-7ebcb--and-finds-the-current-note-mobile-webkit/attachments/after-sidebar-search-b6af44bb33c63fb66712f07fbab11d13db7a5f2a.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a34af78d704591628420-9a50dfb2bd006f89ad95",
+          "file": "regressions.spec.ts",
+          "line": 36,
+          "column": 5
+        },
+        {
+          "title": "a cross-tab edit reverted to the original content remains reverted after reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3566,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:03:46.497Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "cross-tab-reversion-after-reload",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/regressions-a-cross-tab-ed-17c56-mains-reverted-after-reload-mobile-webkit/attachments/cross-tab-reversion-after-reload-71200ac4c38e1c5a9dad230c1a5e898bf794452d.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a34af78d704591628420-d984769159611498ee0c",
+          "file": "regressions.spec.ts",
+          "line": 58,
+          "column": 5
+        },
+        {
+          "title": "a new note survives reload immediately after its first edit",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 728,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:03:50.068Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "new-note-immediate-reload",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/regressions-a-new-note-sur-ae012-iately-after-its-first-edit-mobile-webkit/attachments/new-note-immediate-reload-ee7da1654daf4b78357ba615effa62240a2936a4.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a34af78d704591628420-5d2f829561208c40431d",
+          "file": "regressions.spec.ts",
+          "line": 78,
+          "column": 5
+        },
+        {
+          "title": "last edit survives reload before the former 500ms autosave delay",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 779,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:04:25.932Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "reload-timing",
+                      "contentType": "application/json",
+                      "body": "eyJpbnB1dEF0Ijo1MTcsInBhZ2VoaWRlQXQiOjU0MH0="
+                    },
+                    {
+                      "name": "immediate-reload-result",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/regressions-last-edit-surv-407ae-former-500ms-autosave-delay-mobile-webkit-repeat1/attachments/immediate-reload-result-2e7f8c1870c9d79f744b6cb95f5e1a272087687f.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a34af78d704591628420-9322c0e69457b898e2cf",
+          "file": "regressions.spec.ts",
+          "line": 4,
+          "column": 5
+        },
+        {
+          "title": "sidebar Search opens a focused search and finds the current note",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4618,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:04:26.715Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "after-sidebar-search",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/regressions-sidebar-Search-7ebcb--and-finds-the-current-note-mobile-webkit-repeat1/attachments/after-sidebar-search-404fd2a47dcd6b3e62cfcdb4f05583fab04bf787.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a34af78d704591628420-9edf2ffd435f8c6b07fb",
+          "file": "regressions.spec.ts",
+          "line": 36,
+          "column": 5
+        },
+        {
+          "title": "a cross-tab edit reverted to the original content remains reverted after reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3538,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:04:31.337Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "cross-tab-reversion-after-reload",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/regressions-a-cross-tab-ed-17c56-mains-reverted-after-reload-mobile-webkit-repeat1/attachments/cross-tab-reversion-after-reload-1d57fac2aacf5842eafd79f7c077ad5ebe45cf35.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a34af78d704591628420-231c4c2bc3a759d81cc8",
+          "file": "regressions.spec.ts",
+          "line": 58,
+          "column": 5
+        },
+        {
+          "title": "a new note survives reload immediately after its first edit",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 711,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:04:34.880Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "new-note-immediate-reload",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/regressions-a-new-note-sur-ae012-iately-after-its-first-edit-mobile-webkit-repeat1/attachments/new-note-immediate-reload-b4400f865a6e9d49f11c6e8494dfea91af35a099.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a34af78d704591628420-fc0c13772bed3f1eabd0",
+          "file": "regressions.spec.ts",
+          "line": 78,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "save-ack.spec.ts",
+      "file": "save-ack.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "manual save does not acknowledge a pending draft displaced by another tab",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1773,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:02:43.287Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "pending-draft-before-manual-save",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/save-ack-manual-save-does--21623-ft-displaced-by-another-tab-desktop-chromium/attachments/pending-draft-before-manual-save-1d0da858d452395100446cc28a88b7db34d329d5.png"
+                    },
+                    {
+                      "name": "manual-save-after-newer-tab-commit",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/save-ack-manual-save-does--21623-ft-displaced-by-another-tab-desktop-chromium/attachments/manual-save-after-newer-tab-commit-43e43933a3c467f06c5c9474debb7d6736414589.png"
+                    },
+                    {
+                      "name": "save-ack-observed.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJwZW5kaW5nQmVmb3JlIjogewogICAgImlkIjogIm5iOG1udmJGNlQiLAogICAgImNvbnRlbnQiOiAiVGhpcyB0YWIncyBwZW5kaW5nIGRyYWZ0IG5lZWRzIGFuIGhvbmVzdCBzYXZlIHJlc3VsdC4iLAogICAgInVwZGF0ZWRBdCI6IDE3OTE5Mjg5NjM4MTUsCiAgICAibG9jYWxSZXZpc2lvbiI6IHsKICAgICAgImNsb2NrIjogMTc5MTkyODk2MzgxNSwKICAgICAgImFjdG9yIjogIjViZmJhOGRlLTNmN2EtNDQzMC05YzU4LTdhNTIwNDQ1M2Y3OSIKICAgIH0KICB9LAogICJzdG9yZWRBZnRlciI6IHsKICAgICJpZCI6ICJuYjhtbnZiRjZUIiwKICAgICJjb250ZW50IjogIlRoZSBuZXdlciBlZGl0IGNvbW1pdHRlZCBieSB0aGUgb3RoZXIgdGFiLiIsCiAgICAidXBkYXRlZEF0IjogMTc5MTkyODk2Mzk3OSwKICAgICJjbG91ZFN0YXR1cyI6ICJsb2NhbCIsCiAgICAibG9jYWxSZXZpc2lvbiI6IHsKICAgICAgImNsb2NrIjogMTc5MTkyODk2Mzk3OSwKICAgICAgImFjdG9yIjogImQyYjA2OGVlLWM5MWUtNDE0Ni1hODU5LTM3OTJlMWQzMDkxZSIKICAgIH0KICB9LAogICJlZGl0b3JDb250ZW50IjogIlRoZSBuZXdlciBlZGl0IGNvbW1pdHRlZCBieSB0aGUgb3RoZXIgdGFiLiIsCiAgInN1Y2Nlc3NWaXNpYmxlIjogZmFsc2UsCiAgImZhaWx1cmVWaXNpYmxlIjogZmFsc2UsCiAgInVwZGF0ZWRWaXNpYmxlIjogdHJ1ZSwKICAicGVuZGluZ0RyYWZ0IjogbnVsbAp9"
+                    },
+                    {
+                      "name": "newer-note-after-reload",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/save-ack-manual-save-does--21623-ft-displaced-by-another-tab-desktop-chromium/attachments/newer-note-after-reload-9b59d114eee69f80023ac0ea0d9237291969c652.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "063e6e13aed75f6b6926-aec258b296a3ba6c5ac8",
+          "file": "save-ack.spec.ts",
+          "line": 7,
+          "column": 5
+        },
+        {
+          "title": "manual save acknowledges text that is actually durable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 716,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:02:45.063Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "ordinary-manual-save-acknowledged",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/save-ack-manual-save-ackno-f3878-xt-that-is-actually-durable-desktop-chromium/attachments/ordinary-manual-save-acknowledged-e3f19dae59b9f96c155e05447bb89a44cc9efe45.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "063e6e13aed75f6b6926-8197a52311dc9e352066",
+          "file": "save-ack.spec.ts",
+          "line": 78,
+          "column": 5
+        },
+        {
+          "title": "manual save does not acknowledge a pending draft displaced by another tab",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1822,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:03:08.666Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "pending-draft-before-manual-save",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/save-ack-manual-save-does--21623-ft-displaced-by-another-tab-desktop-chromium-repeat1/attachments/pending-draft-before-manual-save-e43194598819a6c473c206f141250093aa09b3fd.png"
+                    },
+                    {
+                      "name": "manual-save-after-newer-tab-commit",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/save-ack-manual-save-does--21623-ft-displaced-by-another-tab-desktop-chromium-repeat1/attachments/manual-save-after-newer-tab-commit-6336b6da7c5a9255d19ed0aba1deafe539e02ccb.png"
+                    },
+                    {
+                      "name": "save-ack-observed.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJwZW5kaW5nQmVmb3JlIjogewogICAgImlkIjogIkUxMUJmWG13Y2wiLAogICAgImNvbnRlbnQiOiAiVGhpcyB0YWIncyBwZW5kaW5nIGRyYWZ0IG5lZWRzIGFuIGhvbmVzdCBzYXZlIHJlc3VsdC4iLAogICAgInVwZGF0ZWRBdCI6IDE3OTE5Mjg5ODkxOTIsCiAgICAibG9jYWxSZXZpc2lvbiI6IHsKICAgICAgImNsb2NrIjogMTc5MTkyODk4OTE5MiwKICAgICAgImFjdG9yIjogIjg0YzgyZmJmLWFhZDUtNGRlNS1hYzBjLThmYjYwZDY0NmQ1ZCIKICAgIH0KICB9LAogICJzdG9yZWRBZnRlciI6IHsKICAgICJpZCI6ICJFMTFCZlhtd2NsIiwKICAgICJjb250ZW50IjogIlRoZSBuZXdlciBlZGl0IGNvbW1pdHRlZCBieSB0aGUgb3RoZXIgdGFiLiIsCiAgICAidXBkYXRlZEF0IjogMTc5MTkyODk4OTM5NSwKICAgICJjbG91ZFN0YXR1cyI6ICJsb2NhbCIsCiAgICAibG9jYWxSZXZpc2lvbiI6IHsKICAgICAgImNsb2NrIjogMTc5MTkyODk4OTM5NSwKICAgICAgImFjdG9yIjogImJjZDM4YTQ3LTc0MWItNGQ5ZS04M2U3LWFlOTNmOGEwYjkxNiIKICAgIH0KICB9LAogICJlZGl0b3JDb250ZW50IjogIlRoZSBuZXdlciBlZGl0IGNvbW1pdHRlZCBieSB0aGUgb3RoZXIgdGFiLiIsCiAgInN1Y2Nlc3NWaXNpYmxlIjogZmFsc2UsCiAgImZhaWx1cmVWaXNpYmxlIjogZmFsc2UsCiAgInVwZGF0ZWRWaXNpYmxlIjogdHJ1ZSwKICAicGVuZGluZ0RyYWZ0IjogbnVsbAp9"
+                    },
+                    {
+                      "name": "newer-note-after-reload",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/save-ack-manual-save-does--21623-ft-displaced-by-another-tab-desktop-chromium-repeat1/attachments/newer-note-after-reload-64bacbd8134f28a5bb2b84ca9a11aa4e6e962342.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "063e6e13aed75f6b6926-bb9accd09cdd26d56ddc",
+          "file": "save-ack.spec.ts",
+          "line": 7,
+          "column": 5
+        },
+        {
+          "title": "manual save acknowledges text that is actually durable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 727,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:03:10.492Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "ordinary-manual-save-acknowledged",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/save-ack-manual-save-ackno-f3878-xt-that-is-actually-durable-desktop-chromium-repeat1/attachments/ordinary-manual-save-acknowledged-6beaa845ef797bc930a8693fda079fb914fc4088.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "063e6e13aed75f6b6926-dde289faaf3a84c344a7",
+          "file": "save-ack.spec.ts",
+          "line": 78,
+          "column": 5
+        },
+        {
+          "title": "manual save does not acknowledge a pending draft displaced by another tab",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2461,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:03:50.801Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "pending-draft-before-manual-save",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/save-ack-manual-save-does--21623-ft-displaced-by-another-tab-mobile-webkit/attachments/pending-draft-before-manual-save-e67ade7ad7c195a995ba14f3b75bb9b515426d7c.png"
+                    },
+                    {
+                      "name": "manual-save-after-newer-tab-commit",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/save-ack-manual-save-does--21623-ft-displaced-by-another-tab-mobile-webkit/attachments/manual-save-after-newer-tab-commit-ca3b77e448eb6ee69678dcf1567ec1f293ab5022.png"
+                    },
+                    {
+                      "name": "save-ack-observed.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJwZW5kaW5nQmVmb3JlIjogewogICAgImlkIjogIjZBZnNkMEFBYzgiLAogICAgImNvbnRlbnQiOiAiVGhpcyB0YWIncyBwZW5kaW5nIGRyYWZ0IG5lZWRzIGFuIGhvbmVzdCBzYXZlIHJlc3VsdC4iLAogICAgInVwZGF0ZWRBdCI6IDE3OTE5MjkwMzE0NTEsCiAgICAibG9jYWxSZXZpc2lvbiI6IHsKICAgICAgImNsb2NrIjogMTc5MTkyOTAzMTQ1MSwKICAgICAgImFjdG9yIjogImQxYjIwOTIyLWZlNTItNGE2Ni1iYzUyLTNhODk3NjM0MDc1YSIKICAgIH0KICB9LAogICJzdG9yZWRBZnRlciI6IHsKICAgICJpZCI6ICI2QWZzZDBBQWM4IiwKICAgICJjb250ZW50IjogIlRoZSBuZXdlciBlZGl0IGNvbW1pdHRlZCBieSB0aGUgb3RoZXIgdGFiLiIsCiAgICAidXBkYXRlZEF0IjogMTc5MTkyOTAzMTcxMSwKICAgICJjbG91ZFN0YXR1cyI6ICJsb2NhbCIsCiAgICAibG9jYWxSZXZpc2lvbiI6IHsKICAgICAgImNsb2NrIjogMTc5MTkyOTAzMTcxMSwKICAgICAgImFjdG9yIjogIjE0Mzk3ZGI0LWVmMjAtNDE3ZC05YzVjLTYwNDFhNGVkOGI5NiIKICAgIH0KICB9LAogICJlZGl0b3JDb250ZW50IjogIlRoZSBuZXdlciBlZGl0IGNvbW1pdHRlZCBieSB0aGUgb3RoZXIgdGFiLiIsCiAgInN1Y2Nlc3NWaXNpYmxlIjogZmFsc2UsCiAgImZhaWx1cmVWaXNpYmxlIjogZmFsc2UsCiAgInVwZGF0ZWRWaXNpYmxlIjogdHJ1ZSwKICAicGVuZGluZ0RyYWZ0IjogbnVsbAp9"
+                    },
+                    {
+                      "name": "newer-note-after-reload",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/save-ack-manual-save-does--21623-ft-displaced-by-another-tab-mobile-webkit/attachments/newer-note-after-reload-a6917390ff8c6ea12080836a8a6e5b9b2045cc58.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "063e6e13aed75f6b6926-12c5a7b75b6794c17f52",
+          "file": "save-ack.spec.ts",
+          "line": 7,
+          "column": 5
+        },
+        {
+          "title": "manual save acknowledges text that is actually durable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 769,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:03:53.266Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "ordinary-manual-save-acknowledged",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/save-ack-manual-save-ackno-f3878-xt-that-is-actually-durable-mobile-webkit/attachments/ordinary-manual-save-acknowledged-190b6c98b8819f5059b2528105895e3e306739cf.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "063e6e13aed75f6b6926-83825a21b29cebeeb9b7",
+          "file": "save-ack.spec.ts",
+          "line": 78,
+          "column": 5
+        },
+        {
+          "title": "manual save does not acknowledge a pending draft displaced by another tab",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2918,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:04:35.596Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "pending-draft-before-manual-save",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/save-ack-manual-save-does--21623-ft-displaced-by-another-tab-mobile-webkit-repeat1/attachments/pending-draft-before-manual-save-983db0ee6ca59c49538763211c4e0c2fe38c9517.png"
+                    },
+                    {
+                      "name": "manual-save-after-newer-tab-commit",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/save-ack-manual-save-does--21623-ft-displaced-by-another-tab-mobile-webkit-repeat1/attachments/manual-save-after-newer-tab-commit-96aa95cf95163c84478cf1d793c2500a4900bc6a.png"
+                    },
+                    {
+                      "name": "save-ack-observed.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJwZW5kaW5nQmVmb3JlIjogewogICAgImlkIjogInYzeEppZWJXUGQiLAogICAgImNvbnRlbnQiOiAiVGhpcyB0YWIncyBwZW5kaW5nIGRyYWZ0IG5lZWRzIGFuIGhvbmVzdCBzYXZlIHJlc3VsdC4iLAogICAgInVwZGF0ZWRBdCI6IDE3OTE5MjkwNzYyNDAsCiAgICAibG9jYWxSZXZpc2lvbiI6IHsKICAgICAgImNsb2NrIjogMTc5MTkyOTA3NjI0MCwKICAgICAgImFjdG9yIjogImRiM2ZkYmFkLTQ1ODMtNDMzYi05NGFkLTc5OWRkMTA5MGJkZSIKICAgIH0KICB9LAogICJzdG9yZWRBZnRlciI6IHsKICAgICJpZCI6ICJ2M3hKaWViV1BkIiwKICAgICJjb250ZW50IjogIlRoZSBuZXdlciBlZGl0IGNvbW1pdHRlZCBieSB0aGUgb3RoZXIgdGFiLiIsCiAgICAidXBkYXRlZEF0IjogMTc5MTkyOTA3NjQ3MiwKICAgICJjbG91ZFN0YXR1cyI6ICJsb2NhbCIsCiAgICAibG9jYWxSZXZpc2lvbiI6IHsKICAgICAgImNsb2NrIjogMTc5MTkyOTA3NjQ3MiwKICAgICAgImFjdG9yIjogImY5ZmY5YmY0LWMxZWItNGUwYS05ODY3LWI5YzgzZjk1OTNlOSIKICAgIH0KICB9LAogICJlZGl0b3JDb250ZW50IjogIlRoZSBuZXdlciBlZGl0IGNvbW1pdHRlZCBieSB0aGUgb3RoZXIgdGFiLiIsCiAgInN1Y2Nlc3NWaXNpYmxlIjogZmFsc2UsCiAgImZhaWx1cmVWaXNpYmxlIjogZmFsc2UsCiAgInVwZGF0ZWRWaXNpYmxlIjogdHJ1ZSwKICAicGVuZGluZ0RyYWZ0IjogbnVsbAp9"
+                    },
+                    {
+                      "name": "newer-note-after-reload",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/save-ack-manual-save-does--21623-ft-displaced-by-another-tab-mobile-webkit-repeat1/attachments/newer-note-after-reload-3587363fe52f7337a10366b4af7ea11f4dcb1a98.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "063e6e13aed75f6b6926-1cb54301b0fbaaecc458",
+          "file": "save-ack.spec.ts",
+          "line": 7,
+          "column": 5
+        },
+        {
+          "title": "manual save acknowledges text that is actually durable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 755,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:04:38.518Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "ordinary-manual-save-acknowledged",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/save-ack-manual-save-ackno-f3878-xt-that-is-actually-durable-mobile-webkit-repeat1/attachments/ordinary-manual-save-acknowledged-79694c0954699ad36faac0d71fe8203a9ab92674.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "063e6e13aed75f6b6926-3f6339d8827f2a0d4835",
+          "file": "save-ack.spec.ts",
+          "line": 78,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "sidebar-preview.spec.ts",
+      "file": "sidebar-preview.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "sidebar previews preserve the first twenty words and blank note fallback",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 616,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:02:45.783Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4bfb38332e366334bc62-e5b26a59c15695b243cb",
+          "file": "sidebar-preview.spec.ts",
+          "line": 4,
+          "column": 5
+        },
+        {
+          "title": "sidebar previews preserve the first twenty words and blank note fallback",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 616,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:03:11.222Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4bfb38332e366334bc62-56239c83fbaccc44dc14",
+          "file": "sidebar-preview.spec.ts",
+          "line": 4,
+          "column": 5
+        },
+        {
+          "title": "sidebar previews preserve the first twenty words and blank note fallback",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2434,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:03:54.043Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4bfb38332e366334bc62-bda0d25d2b0ff03e5757",
+          "file": "sidebar-preview.spec.ts",
+          "line": 4,
+          "column": 5
+        },
+        {
+          "title": "sidebar previews preserve the first twenty words and blank note fallback",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2386,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:04:39.277Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4bfb38332e366334bc62-e5180663a30506757610",
+          "file": "sidebar-preview.spec.ts",
+          "line": 4,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "mobile.spec.ts",
+      "file": "mobile.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "mobile note selection closes the drawer and exposes the editor",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4702,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:03:20.982Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "after-mobile-note-selection",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/mobile-mobile-note-selecti-61f51-awer-and-exposes-the-editor-mobile-webkit/attachments/after-mobile-note-selection-48ec3bd0d2a513f466fca554a114756f7d6ff35c.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e79c838550b25e92508e-69db830db73df8b78806",
+          "file": "mobile.spec.ts",
+          "line": 4,
+          "column": 5
+        },
+        {
+          "title": "mobile New Note closes the drawer and allows immediate typing",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2327,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:03:25.688Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "after-mobile-note-creation",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/mobile-mobile-New-Note-clo-7c0c5-and-allows-immediate-typing-mobile-webkit/attachments/after-mobile-note-creation-1f073d1a5447762fedef1442d63fc95c7a89c8e4.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e79c838550b25e92508e-5bc9bf8072999a384df3",
+          "file": "mobile.spec.ts",
+          "line": 27,
+          "column": 5
+        },
+        {
+          "title": "mobile note selection closes the drawer and exposes the editor",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5198,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:04:05.448Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "after-mobile-note-selection",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/mobile-mobile-note-selecti-61f51-awer-and-exposes-the-editor-mobile-webkit-repeat1/attachments/after-mobile-note-selection-9a2510faebce6bb44996d924df2825f4370b8138.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e79c838550b25e92508e-f29cbd19653169c2593e",
+          "file": "mobile.spec.ts",
+          "line": 4,
+          "column": 5
+        },
+        {
+          "title": "mobile New Note closes the drawer and allows immediate typing",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2317,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:04:10.650Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "after-mobile-note-creation",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/verified/test-results/mobile-mobile-New-Note-clo-7c0c5-and-allows-immediate-typing-mobile-webkit-repeat1/attachments/after-mobile-note-creation-bf37ca7a31284c7eecff1c7f84258b997236f742.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e79c838550b25e92508e-9d59c69e68cbff0cc614",
+          "file": "mobile.spec.ts",
+          "line": 27,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-13T22:02:20.913Z",
+    "duration": 140794.408,
+    "expected": 88,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

@@ -1,0 +1,570 @@
+{
+  "config": {
+    "argv": [
+      "/Users/abhi/.hermes/node/bin/node",
+      "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/node_modules/.bin/playwright",
+      "test",
+      "tests/save-ack.spec.ts",
+      "--repeat-each=2"
+    ],
+    "configFile": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/playwright.config.ts",
+    "rootDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/save-ack/after-strengthened/test-results",
+        "repeatEach": 2,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop-chromium",
+        "name": "desktop-chromium",
+        "testDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests",
+        "testIgnore": [
+          "**/mobile.spec.ts"
+        ],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/save-ack/after-strengthened/test-results",
+        "repeatEach": 2,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile-webkit",
+        "name": "mobile-webkit",
+        "testDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/save-ack/after-strengthened/test-results",
+        "repeatEach": 2,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "desktop-chromium",
+        "testDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests",
+        "snapshotDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests",
+        "testIgnore": "**/mobile.spec.ts",
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 30000,
+        "use": {
+          "baseURL": "http://127.0.0.1:3107",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "video": "retain-on-failure",
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.8078.4 Safari/537.36",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          },
+          "screen": {
+            "width": 1920,
+            "height": 1080
+          },
+          "deviceScaleFactor": 1,
+          "isMobile": false,
+          "hasTouch": false,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "desktop-chromium"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/save-ack/after-strengthened/test-results",
+        "repeatEach": 2,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "mobile-webkit",
+        "testDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests",
+        "snapshotDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 30000,
+        "use": {
+          "baseURL": "http://127.0.0.1:3107",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "video": "retain-on-failure",
+          "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.2 Mobile/15E148 Safari/604.1",
+          "viewport": {
+            "width": 390,
+            "height": 664
+          },
+          "screen": {
+            "width": 390,
+            "height": 844
+          },
+          "deviceScaleFactor": 3,
+          "isMobile": true,
+          "hasTouch": true,
+          "defaultBrowserType": "webkit"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "mobile-webkit"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": ".audit/overnight/save-ack/after-strengthened/report.json"
+        }
+      ],
+      [
+        "html",
+        {
+          "outputFolder": ".audit/overnight/save-ack/after-strengthened/html",
+          "open": "never"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "save-ack.spec.ts",
+      "file": "save-ack.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "manual save does not acknowledge a pending draft displaced by another tab",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2092,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T21:31:42.870Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "pending-draft-before-manual-save",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/save-ack/after-strengthened/test-results/save-ack-manual-save-does--21623-ft-displaced-by-another-tab-desktop-chromium/attachments/pending-draft-before-manual-save-7addb597d3d43f52c6c92bacef6df529f8d23fb7.png"
+                    },
+                    {
+                      "name": "manual-save-after-newer-tab-commit",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/save-ack/after-strengthened/test-results/save-ack-manual-save-does--21623-ft-displaced-by-another-tab-desktop-chromium/attachments/manual-save-after-newer-tab-commit-77df44b68807fc6cae8cd7295ad956ffda9f5171.png"
+                    },
+                    {
+                      "name": "save-ack-observed.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJwZW5kaW5nQmVmb3JlIjogewogICAgImlkIjogInVFczJvcHo1d0oiLAogICAgImNvbnRlbnQiOiAiVGhpcyB0YWIncyBwZW5kaW5nIGRyYWZ0IG5lZWRzIGFuIGhvbmVzdCBzYXZlIHJlc3VsdC4iLAogICAgInVwZGF0ZWRBdCI6IDE3OTE5MjcxMDM2OTgsCiAgICAibG9jYWxSZXZpc2lvbiI6IHsKICAgICAgImNsb2NrIjogMTc5MTkyNzEwMzY5OCwKICAgICAgImFjdG9yIjogIjYwYmZjODUwLTRmNGMtNDEzYy1hOTI2LWM1NGIwYjNhYzJkMCIKICAgIH0KICB9LAogICJzdG9yZWRBZnRlciI6IHsKICAgICJpZCI6ICJ1RXMyb3B6NXdKIiwKICAgICJjb250ZW50IjogIlRoZSBuZXdlciBlZGl0IGNvbW1pdHRlZCBieSB0aGUgb3RoZXIgdGFiLiIsCiAgICAidXBkYXRlZEF0IjogMTc5MTkyNzEwMzg5NywKICAgICJjbG91ZFN0YXR1cyI6ICJsb2NhbCIsCiAgICAibG9jYWxSZXZpc2lvbiI6IHsKICAgICAgImNsb2NrIjogMTc5MTkyNzEwMzg5NywKICAgICAgImFjdG9yIjogIjczMjRhOTEzLTNiMmMtNDRlMi04NWEwLTQ4OTk1ZTdiZmFjOSIKICAgIH0KICB9LAogICJlZGl0b3JDb250ZW50IjogIlRoZSBuZXdlciBlZGl0IGNvbW1pdHRlZCBieSB0aGUgb3RoZXIgdGFiLiIsCiAgInN1Y2Nlc3NWaXNpYmxlIjogZmFsc2UsCiAgImZhaWx1cmVWaXNpYmxlIjogZmFsc2UsCiAgInVwZGF0ZWRWaXNpYmxlIjogdHJ1ZSwKICAicGVuZGluZ0RyYWZ0IjogbnVsbAp9"
+                    },
+                    {
+                      "name": "newer-note-after-reload",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/save-ack/after-strengthened/test-results/save-ack-manual-save-does--21623-ft-displaced-by-another-tab-desktop-chromium/attachments/newer-note-after-reload-ae93c4dcfc981b82f6e6d164b73a32b0ec5ef19f.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "063e6e13aed75f6b6926-aec258b296a3ba6c5ac8",
+          "file": "save-ack.spec.ts",
+          "line": 7,
+          "column": 5
+        },
+        {
+          "title": "manual save acknowledges text that is actually durable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 866,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T21:31:45.089Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "ordinary-manual-save-acknowledged",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/save-ack/after-strengthened/test-results/save-ack-manual-save-ackno-f3878-xt-that-is-actually-durable-desktop-chromium/attachments/ordinary-manual-save-acknowledged-c97b9b42043cf5a1281fe655302cc17870b88b1e.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "063e6e13aed75f6b6926-8197a52311dc9e352066",
+          "file": "save-ack.spec.ts",
+          "line": 78,
+          "column": 5
+        },
+        {
+          "title": "manual save does not acknowledge a pending draft displaced by another tab",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1992,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T21:31:46.286Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "pending-draft-before-manual-save",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/save-ack/after-strengthened/test-results/save-ack-manual-save-does--21623-ft-displaced-by-another-tab-desktop-chromium-repeat1/attachments/pending-draft-before-manual-save-6e59059a208bb060660764d36385f07b156a40a3.png"
+                    },
+                    {
+                      "name": "manual-save-after-newer-tab-commit",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/save-ack/after-strengthened/test-results/save-ack-manual-save-does--21623-ft-displaced-by-another-tab-desktop-chromium-repeat1/attachments/manual-save-after-newer-tab-commit-5116cfa6c036052a88b69a3afbabce6a90727d45.png"
+                    },
+                    {
+                      "name": "save-ack-observed.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJwZW5kaW5nQmVmb3JlIjogewogICAgImlkIjogImw4cnJqSlo4bEoiLAogICAgImNvbnRlbnQiOiAiVGhpcyB0YWIncyBwZW5kaW5nIGRyYWZ0IG5lZWRzIGFuIGhvbmVzdCBzYXZlIHJlc3VsdC4iLAogICAgInVwZGF0ZWRBdCI6IDE3OTE5MjcxMDcwMzcsCiAgICAibG9jYWxSZXZpc2lvbiI6IHsKICAgICAgImNsb2NrIjogMTc5MTkyNzEwNzAzNywKICAgICAgImFjdG9yIjogIjU3Y2EwNzliLWIxNjYtNDZlMC04OThiLTczNTUyOTIyNTEzMSIKICAgIH0KICB9LAogICJzdG9yZWRBZnRlciI6IHsKICAgICJpZCI6ICJsOHJyakpaOGxKIiwKICAgICJjb250ZW50IjogIlRoZSBuZXdlciBlZGl0IGNvbW1pdHRlZCBieSB0aGUgb3RoZXIgdGFiLiIsCiAgICAidXBkYXRlZEF0IjogMTc5MTkyNzEwNzIzMiwKICAgICJjbG91ZFN0YXR1cyI6ICJsb2NhbCIsCiAgICAibG9jYWxSZXZpc2lvbiI6IHsKICAgICAgImNsb2NrIjogMTc5MTkyNzEwNzIzMiwKICAgICAgImFjdG9yIjogImQxZTM4NmNjLTkzNDgtNDVkMS1hZTQ2LTg1NDlkNGZmZmJkOCIKICAgIH0KICB9LAogICJlZGl0b3JDb250ZW50IjogIlRoZSBuZXdlciBlZGl0IGNvbW1pdHRlZCBieSB0aGUgb3RoZXIgdGFiLiIsCiAgInN1Y2Nlc3NWaXNpYmxlIjogZmFsc2UsCiAgImZhaWx1cmVWaXNpYmxlIjogZmFsc2UsCiAgInVwZGF0ZWRWaXNpYmxlIjogdHJ1ZSwKICAicGVuZGluZ0RyYWZ0IjogbnVsbAp9"
+                    },
+                    {
+                      "name": "newer-note-after-reload",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/save-ack/after-strengthened/test-results/save-ack-manual-save-does--21623-ft-displaced-by-another-tab-desktop-chromium-repeat1/attachments/newer-note-after-reload-d0034a718af8dda5bb672d069b81efaa980a6d19.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "063e6e13aed75f6b6926-bb9accd09cdd26d56ddc",
+          "file": "save-ack.spec.ts",
+          "line": 7,
+          "column": 5
+        },
+        {
+          "title": "manual save acknowledges text that is actually durable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 833,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T21:31:48.391Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "ordinary-manual-save-acknowledged",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/save-ack/after-strengthened/test-results/save-ack-manual-save-ackno-f3878-xt-that-is-actually-durable-desktop-chromium-repeat1/attachments/ordinary-manual-save-acknowledged-a1ca0384405602394788ee28bb4dbb19dc92ea98.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "063e6e13aed75f6b6926-dde289faaf3a84c344a7",
+          "file": "save-ack.spec.ts",
+          "line": 78,
+          "column": 5
+        },
+        {
+          "title": "manual save does not acknowledge a pending draft displaced by another tab",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3016,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T21:31:49.568Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "pending-draft-before-manual-save",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/save-ack/after-strengthened/test-results/save-ack-manual-save-does--21623-ft-displaced-by-another-tab-mobile-webkit/attachments/pending-draft-before-manual-save-914b71ff5dfdeb7c79201baf7c4d0d27a9f31d67.png"
+                    },
+                    {
+                      "name": "manual-save-after-newer-tab-commit",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/save-ack/after-strengthened/test-results/save-ack-manual-save-does--21623-ft-displaced-by-another-tab-mobile-webkit/attachments/manual-save-after-newer-tab-commit-f40b2912c8fe3e2ff3cd822f64729763b93c07da.png"
+                    },
+                    {
+                      "name": "save-ack-observed.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJwZW5kaW5nQmVmb3JlIjogewogICAgImlkIjogIkpvSTRwa2NWNDciLAogICAgImNvbnRlbnQiOiAiVGhpcyB0YWIncyBwZW5kaW5nIGRyYWZ0IG5lZWRzIGFuIGhvbmVzdCBzYXZlIHJlc3VsdC4iLAogICAgInVwZGF0ZWRBdCI6IDE3OTE5MjcxMTA4NTIsCiAgICAibG9jYWxSZXZpc2lvbiI6IHsKICAgICAgImNsb2NrIjogMTc5MTkyNzExMDg1MiwKICAgICAgImFjdG9yIjogImZiOThjYmM2LTA0MzYtNGVmZS1hOWU0LWQ1N2Y3MzI3MTlhOCIKICAgIH0KICB9LAogICJzdG9yZWRBZnRlciI6IHsKICAgICJpZCI6ICJKb0k0cGtjVjQ3IiwKICAgICJjb250ZW50IjogIlRoZSBuZXdlciBlZGl0IGNvbW1pdHRlZCBieSB0aGUgb3RoZXIgdGFiLiIsCiAgICAidXBkYXRlZEF0IjogMTc5MTkyNzExMTE2MSwKICAgICJjbG91ZFN0YXR1cyI6ICJsb2NhbCIsCiAgICAibG9jYWxSZXZpc2lvbiI6IHsKICAgICAgImNsb2NrIjogMTc5MTkyNzExMTE2MSwKICAgICAgImFjdG9yIjogIjU2YTdmNzU2LTAwY2UtNGZlMy1iODY3LTJkNzVlMzc3NGRmNyIKICAgIH0KICB9LAogICJlZGl0b3JDb250ZW50IjogIlRoZSBuZXdlciBlZGl0IGNvbW1pdHRlZCBieSB0aGUgb3RoZXIgdGFiLiIsCiAgInN1Y2Nlc3NWaXNpYmxlIjogZmFsc2UsCiAgImZhaWx1cmVWaXNpYmxlIjogZmFsc2UsCiAgInVwZGF0ZWRWaXNpYmxlIjogdHJ1ZSwKICAicGVuZGluZ0RyYWZ0IjogbnVsbAp9"
+                    },
+                    {
+                      "name": "newer-note-after-reload",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/save-ack/after-strengthened/test-results/save-ack-manual-save-does--21623-ft-displaced-by-another-tab-mobile-webkit/attachments/newer-note-after-reload-04eefc7865d1621f4f028bc4a3308054c648df19.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "063e6e13aed75f6b6926-12c5a7b75b6794c17f52",
+          "file": "save-ack.spec.ts",
+          "line": 7,
+          "column": 5
+        },
+        {
+          "title": "manual save acknowledges text that is actually durable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 978,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T21:31:52.828Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "ordinary-manual-save-acknowledged",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/save-ack/after-strengthened/test-results/save-ack-manual-save-ackno-f3878-xt-that-is-actually-durable-mobile-webkit/attachments/ordinary-manual-save-acknowledged-36c26c1dd8534180dab95f41bb757469948d9f0b.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "063e6e13aed75f6b6926-83825a21b29cebeeb9b7",
+          "file": "save-ack.spec.ts",
+          "line": 78,
+          "column": 5
+        },
+        {
+          "title": "manual save does not acknowledge a pending draft displaced by another tab",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2817,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T21:31:54.182Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "pending-draft-before-manual-save",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/save-ack/after-strengthened/test-results/save-ack-manual-save-does--21623-ft-displaced-by-another-tab-mobile-webkit-repeat1/attachments/pending-draft-before-manual-save-932522ed686476e4be073abb2a72f831f1717baf.png"
+                    },
+                    {
+                      "name": "manual-save-after-newer-tab-commit",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/save-ack/after-strengthened/test-results/save-ack-manual-save-does--21623-ft-displaced-by-another-tab-mobile-webkit-repeat1/attachments/manual-save-after-newer-tab-commit-5b0f3f83fd4d132d72b7e138d0e8d78c27f13bbe.png"
+                    },
+                    {
+                      "name": "save-ack-observed.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJwZW5kaW5nQmVmb3JlIjogewogICAgImlkIjogIlhQZ3UzR2FybDIiLAogICAgImNvbnRlbnQiOiAiVGhpcyB0YWIncyBwZW5kaW5nIGRyYWZ0IG5lZWRzIGFuIGhvbmVzdCBzYXZlIHJlc3VsdC4iLAogICAgInVwZGF0ZWRBdCI6IDE3OTE5MjcxMTUyMDcsCiAgICAibG9jYWxSZXZpc2lvbiI6IHsKICAgICAgImNsb2NrIjogMTc5MTkyNzExNTIwNywKICAgICAgImFjdG9yIjogImZhZjkwNjY4LTIyMjgtNDUwMi1hYWRmLTE5YWMxODY2YjJmYyIKICAgIH0KICB9LAogICJzdG9yZWRBZnRlciI6IHsKICAgICJpZCI6ICJYUGd1M0dhcmwyIiwKICAgICJjb250ZW50IjogIlRoZSBuZXdlciBlZGl0IGNvbW1pdHRlZCBieSB0aGUgb3RoZXIgdGFiLiIsCiAgICAidXBkYXRlZEF0IjogMTc5MTkyNzExNTUyMywKICAgICJjbG91ZFN0YXR1cyI6ICJsb2NhbCIsCiAgICAibG9jYWxSZXZpc2lvbiI6IHsKICAgICAgImNsb2NrIjogMTc5MTkyNzExNTUyMywKICAgICAgImFjdG9yIjogIjljNmRhNzQ2LWI0MWYtNDE5MS1hYmNlLTdlNjg4MDdkNzBmMSIKICAgIH0KICB9LAogICJlZGl0b3JDb250ZW50IjogIlRoZSBuZXdlciBlZGl0IGNvbW1pdHRlZCBieSB0aGUgb3RoZXIgdGFiLiIsCiAgInN1Y2Nlc3NWaXNpYmxlIjogZmFsc2UsCiAgImZhaWx1cmVWaXNpYmxlIjogZmFsc2UsCiAgInVwZGF0ZWRWaXNpYmxlIjogdHJ1ZSwKICAicGVuZGluZ0RyYWZ0IjogbnVsbAp9"
+                    },
+                    {
+                      "name": "newer-note-after-reload",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/save-ack/after-strengthened/test-results/save-ack-manual-save-does--21623-ft-displaced-by-another-tab-mobile-webkit-repeat1/attachments/newer-note-after-reload-5f9529889af5cd2c1368e1fd30de79479e9e7332.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "063e6e13aed75f6b6926-1cb54301b0fbaaecc458",
+          "file": "save-ack.spec.ts",
+          "line": 7,
+          "column": 5
+        },
+        {
+          "title": "manual save acknowledges text that is actually durable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 968,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T21:31:57.183Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "ordinary-manual-save-acknowledged",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/save-ack/after-strengthened/test-results/save-ack-manual-save-ackno-f3878-xt-that-is-actually-durable-mobile-webkit-repeat1/attachments/ordinary-manual-save-acknowledged-a8051fe4c48b22ea4b1b1e6b43b957191869b562.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "063e6e13aed75f6b6926-3f6339d8827f2a0d4835",
+          "file": "save-ack.spec.ts",
+          "line": 78,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-13T21:31:42.396Z",
+    "duration": 15787.205999999998,
+    "expected": 8,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

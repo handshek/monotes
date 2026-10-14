@@ -1,0 +1,252 @@
+$ playwright test tests/automatic-save.spec.ts "--repeat-each=2"
+
+Running 4 tests using 1 worker
+
+(node:29644) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 [desktop-chromium] › tests/automatic-save.spec.ts:9:5 › automatic stale-save settlement explains replacement of the pending draft (7.9s)
+(node:29822) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  2 [desktop-chromium] › tests/automatic-save.spec.ts:9:5 › automatic stale-save settlement explains replacement of the pending draft (7.7s)
+(node:30089) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  3 [mobile-webkit] › tests/automatic-save.spec.ts:9:5 › automatic stale-save settlement explains replacement of the pending draft (9.0s)
+(node:30162) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  4 [mobile-webkit] › tests/automatic-save.spec.ts:9:5 › automatic stale-save settlement explains replacement of the pending draft (8.5s)
+
+
+  1) [desktop-chromium] › tests/automatic-save.spec.ts:9:5 › automatic stale-save settlement explains replacement of the pending draft
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText('Updated from another tab', { exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "soft toBeVisible" getByText('Updated from another tab', { exact: true }) with timeout 5000ms
+      - waiting for getByText('Updated from another tab', { exact: true })
+
+
+      50 |   await expect.poll(() => page.evaluate((noteId) => sessionStorage.getItem(`monotes-draft:${noteId}`), id)).toBeNull();
+      51 |   const updated = page.getByText("Updated from another tab", { exact: true });
+    > 52 |   await expect.soft(updated).toBeVisible();
+         |                              ^
+      53 |   await capture(page, testInfo, "automatic-stale-save-result");
+      54 |   await testInfo.attach("automatic-save.json", {
+      55 |     body: JSON.stringify({
+        at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/automatic-save.spec.ts:52:30
+
+    attachment #1: stale-editor-before-automatic-save (image/png) ──────────────────────────────────
+    .audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-desktop-chromium/attachments/stale-editor-before-automatic-save-b03921f4a21ab991da905729779c9272a029697d.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: automatic-stale-save-result (image/png) ─────────────────────────────────────────
+    .audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-desktop-chromium/attachments/automatic-stale-save-result-d6486e90b6238dd85b181d4ffff1c442fceb73aa.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #4: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-desktop-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #5: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-desktop-chromium/test-failed-2.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #6: video (video/webm) ──────────────────────────────────────────────────────────────
+    .audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-desktop-chromium/video-1.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #7: video (video/webm) ──────────────────────────────────────────────────────────────
+    .audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-desktop-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-desktop-chromium/error-context.md
+
+    attachment #9: trace (application/zip) ─────────────────────────────────────────────────────────
+    .audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-desktop-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace .audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-desktop-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [desktop-chromium] › tests/automatic-save.spec.ts:9:5 › automatic stale-save settlement explains replacement of the pending draft
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText('Updated from another tab', { exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "soft toBeVisible" getByText('Updated from another tab', { exact: true }) with timeout 5000ms
+      - waiting for getByText('Updated from another tab', { exact: true })
+
+
+      50 |   await expect.poll(() => page.evaluate((noteId) => sessionStorage.getItem(`monotes-draft:${noteId}`), id)).toBeNull();
+      51 |   const updated = page.getByText("Updated from another tab", { exact: true });
+    > 52 |   await expect.soft(updated).toBeVisible();
+         |                              ^
+      53 |   await capture(page, testInfo, "automatic-stale-save-result");
+      54 |   await testInfo.attach("automatic-save.json", {
+      55 |     body: JSON.stringify({
+        at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/automatic-save.spec.ts:52:30
+
+    attachment #1: stale-editor-before-automatic-save (image/png) ──────────────────────────────────
+    .audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-desktop-chromium-repeat1/attachments/stale-editor-before-automatic-save-9767d24efa13e33231c10f8fcb560a1dee6b0151.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: automatic-stale-save-result (image/png) ─────────────────────────────────────────
+    .audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-desktop-chromium-repeat1/attachments/automatic-stale-save-result-4c96de4ba8519e00047405b53bf4305d4a5b5475.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #4: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-desktop-chromium-repeat1/test-failed-2.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #5: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-desktop-chromium-repeat1/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #6: video (video/webm) ──────────────────────────────────────────────────────────────
+    .audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-desktop-chromium-repeat1/video-1.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #7: video (video/webm) ──────────────────────────────────────────────────────────────
+    .audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-desktop-chromium-repeat1/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-desktop-chromium-repeat1/error-context.md
+
+    attachment #9: trace (application/zip) ─────────────────────────────────────────────────────────
+    .audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-desktop-chromium-repeat1/trace.zip
+    Usage:
+
+        npx playwright show-trace .audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-desktop-chromium-repeat1/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [mobile-webkit] › tests/automatic-save.spec.ts:9:5 › automatic stale-save settlement explains replacement of the pending draft
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText('Updated from another tab', { exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "soft toBeVisible" getByText('Updated from another tab', { exact: true }) with timeout 5000ms
+      - waiting for getByText('Updated from another tab', { exact: true })
+
+
+      50 |   await expect.poll(() => page.evaluate((noteId) => sessionStorage.getItem(`monotes-draft:${noteId}`), id)).toBeNull();
+      51 |   const updated = page.getByText("Updated from another tab", { exact: true });
+    > 52 |   await expect.soft(updated).toBeVisible();
+         |                              ^
+      53 |   await capture(page, testInfo, "automatic-stale-save-result");
+      54 |   await testInfo.attach("automatic-save.json", {
+      55 |     body: JSON.stringify({
+        at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/automatic-save.spec.ts:52:30
+
+    attachment #1: stale-editor-before-automatic-save (image/png) ──────────────────────────────────
+    .audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-mobile-webkit/attachments/stale-editor-before-automatic-save-e4da1b2b916809174ab7f25d1925cbe0f55be1e0.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: automatic-stale-save-result (image/png) ─────────────────────────────────────────
+    .audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-mobile-webkit/attachments/automatic-stale-save-result-c2d63a42087e2e46832b62977daf93c594cfce5a.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #4: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-mobile-webkit/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #5: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-mobile-webkit/test-failed-2.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #6: video (video/webm) ──────────────────────────────────────────────────────────────
+    .audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-mobile-webkit/video-1.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #7: video (video/webm) ──────────────────────────────────────────────────────────────
+    .audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-mobile-webkit/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-mobile-webkit/error-context.md
+
+    attachment #9: trace (application/zip) ─────────────────────────────────────────────────────────
+    .audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-mobile-webkit/trace.zip
+    Usage:
+
+        npx playwright show-trace .audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-mobile-webkit/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) [mobile-webkit] › tests/automatic-save.spec.ts:9:5 › automatic stale-save settlement explains replacement of the pending draft
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText('Updated from another tab', { exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "soft toBeVisible" getByText('Updated from another tab', { exact: true }) with timeout 5000ms
+      - waiting for getByText('Updated from another tab', { exact: true })
+
+
+      50 |   await expect.poll(() => page.evaluate((noteId) => sessionStorage.getItem(`monotes-draft:${noteId}`), id)).toBeNull();
+      51 |   const updated = page.getByText("Updated from another tab", { exact: true });
+    > 52 |   await expect.soft(updated).toBeVisible();
+         |                              ^
+      53 |   await capture(page, testInfo, "automatic-stale-save-result");
+      54 |   await testInfo.attach("automatic-save.json", {
+      55 |     body: JSON.stringify({
+        at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/automatic-save.spec.ts:52:30
+
+    attachment #1: stale-editor-before-automatic-save (image/png) ──────────────────────────────────
+    .audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-mobile-webkit-repeat1/attachments/stale-editor-before-automatic-save-1ddb4dfce722cbb5606fcf778d627deac838138d.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: automatic-stale-save-result (image/png) ─────────────────────────────────────────
+    .audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-mobile-webkit-repeat1/attachments/automatic-stale-save-result-e6f090cec12a52ddd905f73c652f9d078cdb6b3e.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #4: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-mobile-webkit-repeat1/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #5: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-mobile-webkit-repeat1/test-failed-2.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #6: video (video/webm) ──────────────────────────────────────────────────────────────
+    .audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-mobile-webkit-repeat1/video-1.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #7: video (video/webm) ──────────────────────────────────────────────────────────────
+    .audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-mobile-webkit-repeat1/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-mobile-webkit-repeat1/error-context.md
+
+    attachment #9: trace (application/zip) ─────────────────────────────────────────────────────────
+    .audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-mobile-webkit-repeat1/trace.zip
+    Usage:
+
+        npx playwright show-trace .audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-mobile-webkit-repeat1/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4 failed
+    [desktop-chromium] › tests/automatic-save.spec.ts:9:5 › automatic stale-save settlement explains replacement of the pending draft
+    [desktop-chromium] › tests/automatic-save.spec.ts:9:5 › automatic stale-save settlement explains replacement of the pending draft
+    [mobile-webkit] › tests/automatic-save.spec.ts:9:5 › automatic stale-save settlement explains replacement of the pending draft
+    [mobile-webkit] › tests/automatic-save.spec.ts:9:5 › automatic stale-save settlement explains replacement of the pending draft
+error: script "test:e2e" exited with code 1

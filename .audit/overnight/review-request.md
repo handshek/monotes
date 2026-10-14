@@ -1,4 +1,6 @@
-# Required T3 Claude Opus review
+# Original T3 Claude Opus review brief
+
+Historical prompt prepared before the first review. Claude completed it after access was restored. Correction: the six-warning provenance claim below was inaccurate; four warnings arose from generated files newly included in lint scope. The corrected scope passes with two warnings in unchanged authored files. See opus-review.md and the follow-up brief for the final disposition.
 
 Status is pending. Do not treat this prepared request as a completed review.
 

@@ -1,7 +1,9 @@
 M	.gitignore
 M	bun.lock
+M	eslint.config.mjs
 M	package.json
 A	playwright.config.ts
+A	scripts/benchmark-notes.ts
 A	scripts/check-offline-shell.ts
 M	src/app/(notes)/[id]/page.tsx
 M	src/app/(notes)/navbar.tsx
@@ -16,9 +18,13 @@ M	src/lib/local-db.ts
 A	src/lib/local-drafts.ts
 M	src/lib/local-notes.ts
 A	tests/README.md
+A	tests/automatic-save.spec.ts
 A	tests/core.spec.ts
 A	tests/creation.spec.ts
 A	tests/mobile.spec.ts
 A	tests/notes-helpers.ts
+A	tests/observed-save.spec.ts
 A	tests/persistence.spec.ts
 A	tests/regressions.spec.ts
+A	tests/save-ack.spec.ts
+A	tests/sidebar-preview.spec.ts

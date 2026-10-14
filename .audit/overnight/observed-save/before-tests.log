@@ -1,0 +1,269 @@
+$ playwright test tests/observed-save.spec.ts "--repeat-each=2"
+
+Running 12 tests using 1 worker
+
+(node:25639) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   1 [desktop-chromium] › tests/observed-save.spec.ts:29:7 › observing a newer remote edit explains why a failed pending draft disappeared (7.2s)
+(node:25694) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   2 [desktop-chromium] › tests/observed-save.spec.ts:29:7 › observing the same pending text saved by another tab stays quiet (1.2s)
+  ✓   3 [desktop-chromium] › tests/observed-save.spec.ts:81:5 › ordinary remote edits without a pending local draft stay quiet (1.9s)
+(node:25726) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   4 [desktop-chromium] › tests/observed-save.spec.ts:29:7 › observing a newer remote edit explains why a failed pending draft disappeared (7.1s)
+(node:25831) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   5 [desktop-chromium] › tests/observed-save.spec.ts:29:7 › observing the same pending text saved by another tab stays quiet (1.2s)
+  ✓   6 [desktop-chromium] › tests/observed-save.spec.ts:81:5 › ordinary remote edits without a pending local draft stay quiet (1.9s)
+(node:25857) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   7 [mobile-webkit] › tests/observed-save.spec.ts:29:7 › observing a newer remote edit explains why a failed pending draft disappeared (7.9s)
+(node:25901) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   8 [mobile-webkit] › tests/observed-save.spec.ts:29:7 › observing the same pending text saved by another tab stays quiet (1.6s)
+  ✓   9 [mobile-webkit] › tests/observed-save.spec.ts:81:5 › ordinary remote edits without a pending local draft stay quiet (2.6s)
+(node:26417) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  10 [mobile-webkit] › tests/observed-save.spec.ts:29:7 › observing a newer remote edit explains why a failed pending draft disappeared (8.0s)
+(node:26463) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  11 [mobile-webkit] › tests/observed-save.spec.ts:29:7 › observing the same pending text saved by another tab stays quiet (1.5s)
+  ✓  12 [mobile-webkit] › tests/observed-save.spec.ts:81:5 › ordinary remote edits without a pending local draft stay quiet (2.6s)
+
+
+  1) [desktop-chromium] › tests/observed-save.spec.ts:29:7 › observing a newer remote edit explains why a failed pending draft disappeared
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText('Updated from another tab', { exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "soft toBeVisible" getByText('Updated from another tab', { exact: true }) with timeout 5000ms
+      - waiting for getByText('Updated from another tab', { exact: true })
+
+
+      56 |     await page.evaluate(() => new Promise<void>((resolve) => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))));
+      57 |     if (!sameContent) {
+    > 58 |       await expect.soft(updated).toBeVisible();
+         |                                  ^
+      59 |     } else {
+      60 |       await expect(updated).not.toBeVisible();
+      61 |     }
+        at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/observed-save.spec.ts:58:34
+
+    attachment #1: failed-local-draft-before-remote-update (image/png) ─────────────────────────────
+    .audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-desktop-chromium/attachments/failed-local-draft-before-remote-update-157ef0cc484572e2cb749285eb4aeb8ff0a81064.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: observed-remote-save-result (image/png) ─────────────────────────────────────────
+    .audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-desktop-chromium/attachments/observed-remote-save-result-6beae816450bfb641a37140c1293d76c31ba1d2c.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #4: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-desktop-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #5: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-desktop-chromium/test-failed-2.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #6: video (video/webm) ──────────────────────────────────────────────────────────────
+    .audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-desktop-chromium/video-1.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #7: video (video/webm) ──────────────────────────────────────────────────────────────
+    .audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-desktop-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-desktop-chromium/error-context.md
+
+    attachment #9: trace (application/zip) ─────────────────────────────────────────────────────────
+    .audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-desktop-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace .audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-desktop-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [desktop-chromium] › tests/observed-save.spec.ts:29:7 › observing a newer remote edit explains why a failed pending draft disappeared
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText('Updated from another tab', { exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "soft toBeVisible" getByText('Updated from another tab', { exact: true }) with timeout 5000ms
+      - waiting for getByText('Updated from another tab', { exact: true })
+
+
+      56 |     await page.evaluate(() => new Promise<void>((resolve) => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))));
+      57 |     if (!sameContent) {
+    > 58 |       await expect.soft(updated).toBeVisible();
+         |                                  ^
+      59 |     } else {
+      60 |       await expect(updated).not.toBeVisible();
+      61 |     }
+        at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/observed-save.spec.ts:58:34
+
+    attachment #1: failed-local-draft-before-remote-update (image/png) ─────────────────────────────
+    .audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-desktop-chromium-repeat1/attachments/failed-local-draft-before-remote-update-08308040a5d6c7b7daeed3f3e7c33e6a350f3489.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: observed-remote-save-result (image/png) ─────────────────────────────────────────
+    .audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-desktop-chromium-repeat1/attachments/observed-remote-save-result-c1d9b282295fe87a913ea1d04af85fef473b4fd9.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #4: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-desktop-chromium-repeat1/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #5: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-desktop-chromium-repeat1/test-failed-2.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #6: video (video/webm) ──────────────────────────────────────────────────────────────
+    .audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-desktop-chromium-repeat1/video-1.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #7: video (video/webm) ──────────────────────────────────────────────────────────────
+    .audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-desktop-chromium-repeat1/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-desktop-chromium-repeat1/error-context.md
+
+    attachment #9: trace (application/zip) ─────────────────────────────────────────────────────────
+    .audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-desktop-chromium-repeat1/trace.zip
+    Usage:
+
+        npx playwright show-trace .audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-desktop-chromium-repeat1/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [mobile-webkit] › tests/observed-save.spec.ts:29:7 › observing a newer remote edit explains why a failed pending draft disappeared
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText('Updated from another tab', { exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "soft toBeVisible" getByText('Updated from another tab', { exact: true }) with timeout 5000ms
+      - waiting for getByText('Updated from another tab', { exact: true })
+
+
+      56 |     await page.evaluate(() => new Promise<void>((resolve) => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))));
+      57 |     if (!sameContent) {
+    > 58 |       await expect.soft(updated).toBeVisible();
+         |                                  ^
+      59 |     } else {
+      60 |       await expect(updated).not.toBeVisible();
+      61 |     }
+        at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/observed-save.spec.ts:58:34
+
+    attachment #1: failed-local-draft-before-remote-update (image/png) ─────────────────────────────
+    .audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-mobile-webkit/attachments/failed-local-draft-before-remote-update-e5d5e65d1087b7c7aa861d0c3decffd5b38b8a9c.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: observed-remote-save-result (image/png) ─────────────────────────────────────────
+    .audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-mobile-webkit/attachments/observed-remote-save-result-805ba683fba8b140ed8ce00cabbab488a1dc8aab.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #4: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-mobile-webkit/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #5: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-mobile-webkit/test-failed-2.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #6: video (video/webm) ──────────────────────────────────────────────────────────────
+    .audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-mobile-webkit/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #7: video (video/webm) ──────────────────────────────────────────────────────────────
+    .audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-mobile-webkit/video-1.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-mobile-webkit/error-context.md
+
+    attachment #9: trace (application/zip) ─────────────────────────────────────────────────────────
+    .audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-mobile-webkit/trace.zip
+    Usage:
+
+        npx playwright show-trace .audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-mobile-webkit/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) [mobile-webkit] › tests/observed-save.spec.ts:29:7 › observing a newer remote edit explains why a failed pending draft disappeared
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText('Updated from another tab', { exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "soft toBeVisible" getByText('Updated from another tab', { exact: true }) with timeout 5000ms
+      - waiting for getByText('Updated from another tab', { exact: true })
+
+
+      56 |     await page.evaluate(() => new Promise<void>((resolve) => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))));
+      57 |     if (!sameContent) {
+    > 58 |       await expect.soft(updated).toBeVisible();
+         |                                  ^
+      59 |     } else {
+      60 |       await expect(updated).not.toBeVisible();
+      61 |     }
+        at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/observed-save.spec.ts:58:34
+
+    attachment #1: failed-local-draft-before-remote-update (image/png) ─────────────────────────────
+    .audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-mobile-webkit-repeat1/attachments/failed-local-draft-before-remote-update-78a7e58b13b2092b5533bb922f3015752f3fb873.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: observed-remote-save-result (image/png) ─────────────────────────────────────────
+    .audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-mobile-webkit-repeat1/attachments/observed-remote-save-result-1cad70e1dc799031111c061371918fa183c88dfc.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #4: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-mobile-webkit-repeat1/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #5: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-mobile-webkit-repeat1/test-failed-2.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #6: video (video/webm) ──────────────────────────────────────────────────────────────
+    .audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-mobile-webkit-repeat1/video-1.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #7: video (video/webm) ──────────────────────────────────────────────────────────────
+    .audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-mobile-webkit-repeat1/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-mobile-webkit-repeat1/error-context.md
+
+    attachment #9: trace (application/zip) ─────────────────────────────────────────────────────────
+    .audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-mobile-webkit-repeat1/trace.zip
+    Usage:
+
+        npx playwright show-trace .audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-mobile-webkit-repeat1/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4 failed
+    [desktop-chromium] › tests/observed-save.spec.ts:29:7 › observing a newer remote edit explains why a failed pending draft disappeared
+    [desktop-chromium] › tests/observed-save.spec.ts:29:7 › observing a newer remote edit explains why a failed pending draft disappeared
+    [mobile-webkit] › tests/observed-save.spec.ts:29:7 › observing a newer remote edit explains why a failed pending draft disappeared
+    [mobile-webkit] › tests/observed-save.spec.ts:29:7 › observing a newer remote edit explains why a failed pending draft disappeared
+  8 passed (49.9s)
+error: script "test:e2e" exited with code 1

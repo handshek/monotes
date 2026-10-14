@@ -1,0 +1,252 @@
+{
+  "stats": {
+    "startTime": "2026-10-13T21:45:40.049Z",
+    "duration": 49907.837999999996,
+    "expected": 8,
+    "skipped": 0,
+    "unexpected": 4,
+    "flaky": 0
+  },
+  "observations": [
+    {
+      "project": "desktop-chromium",
+      "test": "observing a newer remote edit explains why a failed pending draft disappeared",
+      "status": "failed",
+      "sameContent": false,
+      "pendingBefore": {
+        "id": "WNZlxxnVkG",
+        "content": "The local draft that has not been saved yet.",
+        "updatedAt": 1791927941383,
+        "localRevision": {
+          "clock": 1791927941383,
+          "actor": "97d559fa-f40c-4227-a145-805dbf7258a0"
+        }
+      },
+      "pendingAfter": null,
+      "storedAfter": {
+        "id": "WNZlxxnVkG",
+        "content": "The newer text committed by another tab.",
+        "updatedAt": 1791927941667,
+        "cloudStatus": "local",
+        "localRevision": {
+          "clock": 1791927941667,
+          "actor": "4447f26f-d319-4e03-b955-fd24a32eebf0"
+        }
+      },
+      "editorContent": "The newer text committed by another tab.",
+      "failureVisible": false,
+      "updatedVisible": false,
+      "successVisible": false
+    },
+    {
+      "project": "desktop-chromium",
+      "test": "observing the same pending text saved by another tab stays quiet",
+      "status": "passed",
+      "sameContent": true,
+      "pendingBefore": {
+        "id": "SdT1ap0dO0",
+        "content": "The local draft that has not been saved yet.",
+        "updatedAt": 1791927949211,
+        "localRevision": {
+          "clock": 1791927949211,
+          "actor": "71064f15-063f-4b3a-ba90-ada3aeebf9aa"
+        }
+      },
+      "pendingAfter": null,
+      "storedAfter": {
+        "id": "SdT1ap0dO0",
+        "content": "The local draft that has not been saved yet.",
+        "updatedAt": 1791927949437,
+        "cloudStatus": "local",
+        "localRevision": {
+          "clock": 1791927949437,
+          "actor": "f817ce43-a75a-4270-8275-913d9e7174de"
+        }
+      },
+      "editorContent": "The local draft that has not been saved yet.",
+      "failureVisible": false,
+      "updatedVisible": false,
+      "successVisible": false
+    },
+    {
+      "project": "desktop-chromium",
+      "test": "observing a newer remote edit explains why a failed pending draft disappeared",
+      "status": "failed",
+      "sameContent": false,
+      "pendingBefore": {
+        "id": "YzeHPiUuEO",
+        "content": "The local draft that has not been saved yet.",
+        "updatedAt": 1791927952887,
+        "localRevision": {
+          "clock": 1791927952887,
+          "actor": "77424159-74f3-464e-8b97-f195e384e550"
+        }
+      },
+      "pendingAfter": null,
+      "storedAfter": {
+        "id": "YzeHPiUuEO",
+        "content": "The newer text committed by another tab.",
+        "updatedAt": 1791927953118,
+        "cloudStatus": "local",
+        "localRevision": {
+          "clock": 1791927953118,
+          "actor": "2903836e-4cb6-4bbc-8668-a17387a69dd6"
+        }
+      },
+      "editorContent": "The newer text committed by another tab.",
+      "failureVisible": false,
+      "updatedVisible": false,
+      "successVisible": false
+    },
+    {
+      "project": "desktop-chromium",
+      "test": "observing the same pending text saved by another tab stays quiet",
+      "status": "passed",
+      "sameContent": true,
+      "pendingBefore": {
+        "id": "iacDaL4SoY",
+        "content": "The local draft that has not been saved yet.",
+        "updatedAt": 1791927960623,
+        "localRevision": {
+          "clock": 1791927960623,
+          "actor": "e419e089-d56e-4b4b-9ee3-fcbd2d1c58c3"
+        }
+      },
+      "pendingAfter": null,
+      "storedAfter": {
+        "id": "iacDaL4SoY",
+        "content": "The local draft that has not been saved yet.",
+        "updatedAt": 1791927960854,
+        "cloudStatus": "local",
+        "localRevision": {
+          "clock": 1791927960854,
+          "actor": "7d9b6f69-047d-4e6f-a7f8-cd7043e8e183"
+        }
+      },
+      "editorContent": "The local draft that has not been saved yet.",
+      "failureVisible": false,
+      "updatedVisible": false,
+      "successVisible": false
+    },
+    {
+      "project": "mobile-webkit",
+      "test": "observing a newer remote edit explains why a failed pending draft disappeared",
+      "status": "failed",
+      "sameContent": false,
+      "pendingBefore": {
+        "id": "huKc6RGxF0",
+        "content": "The local draft that has not been saved yet.",
+        "updatedAt": 1791927964546,
+        "localRevision": {
+          "clock": 1791927964546,
+          "actor": "d738a3e7-1c19-4dd3-9b92-4be11657a607"
+        }
+      },
+      "pendingAfter": null,
+      "storedAfter": {
+        "id": "huKc6RGxF0",
+        "content": "The newer text committed by another tab.",
+        "updatedAt": 1791927964929,
+        "cloudStatus": "local",
+        "localRevision": {
+          "clock": 1791927964929,
+          "actor": "b20be7bd-f4b5-42a7-bbe9-9b13fd581e98"
+        }
+      },
+      "editorContent": "The newer text committed by another tab.",
+      "failureVisible": false,
+      "updatedVisible": false,
+      "successVisible": false
+    },
+    {
+      "project": "mobile-webkit",
+      "test": "observing the same pending text saved by another tab stays quiet",
+      "status": "passed",
+      "sameContent": true,
+      "pendingBefore": {
+        "id": "gkO0ZVz3Wu",
+        "content": "The local draft that has not been saved yet.",
+        "updatedAt": 1791927973177,
+        "localRevision": {
+          "clock": 1791927973177,
+          "actor": "5a8d8279-ba9b-4139-9f93-14377f54469f"
+        }
+      },
+      "pendingAfter": null,
+      "storedAfter": {
+        "id": "gkO0ZVz3Wu",
+        "content": "The local draft that has not been saved yet.",
+        "updatedAt": 1791927973536,
+        "cloudStatus": "local",
+        "localRevision": {
+          "clock": 1791927973536,
+          "actor": "2f5d1d55-af3a-4aee-a5d2-a12348124d6a"
+        }
+      },
+      "editorContent": "The local draft that has not been saved yet.",
+      "failureVisible": false,
+      "updatedVisible": false,
+      "successVisible": false
+    },
+    {
+      "project": "mobile-webkit",
+      "test": "observing a newer remote edit explains why a failed pending draft disappeared",
+      "status": "failed",
+      "sameContent": false,
+      "pendingBefore": {
+        "id": "HlS9GhW5Jk",
+        "content": "The local draft that has not been saved yet.",
+        "updatedAt": 1791927978019,
+        "localRevision": {
+          "clock": 1791927978019,
+          "actor": "a3f5e9b1-cab8-4b9b-97ab-78a385c74bb1"
+        }
+      },
+      "pendingAfter": null,
+      "storedAfter": {
+        "id": "HlS9GhW5Jk",
+        "content": "The newer text committed by another tab.",
+        "updatedAt": 1791927978384,
+        "cloudStatus": "local",
+        "localRevision": {
+          "clock": 1791927978384,
+          "actor": "bb36221c-7b5b-48f7-9598-89d865a178d5"
+        }
+      },
+      "editorContent": "The newer text committed by another tab.",
+      "failureVisible": false,
+      "updatedVisible": false,
+      "successVisible": false
+    },
+    {
+      "project": "mobile-webkit",
+      "test": "observing the same pending text saved by another tab stays quiet",
+      "status": "passed",
+      "sameContent": true,
+      "pendingBefore": {
+        "id": "sKM3rCoRYk",
+        "content": "The local draft that has not been saved yet.",
+        "updatedAt": 1791927986617,
+        "localRevision": {
+          "clock": 1791927986617,
+          "actor": "9aaa2a0f-c9a0-4f0a-ad22-7013f77bb726"
+        }
+      },
+      "pendingAfter": null,
+      "storedAfter": {
+        "id": "sKM3rCoRYk",
+        "content": "The local draft that has not been saved yet.",
+        "updatedAt": 1791927986981,
+        "cloudStatus": "local",
+        "localRevision": {
+          "clock": 1791927986981,
+          "actor": "55fe9ddb-f701-4ed6-b626-7d18f0388d33"
+        }
+      },
+      "editorContent": "The local draft that has not been saved yet.",
+      "failureVisible": false,
+      "updatedVisible": false,
+      "successVisible": false
+    }
+  ]
+}

@@ -10,9 +10,9 @@
 - [x] Reproduce and capture at most three selected defects.
 - [x] Fix each demonstrated defect and verify it with before-and-after checks.
 - [x] Phase D: Keep the audit trail
-- [ ] Phase E: Verify and hand back. Local verification complete; required T3 Claude Opus review blocked by project registration.
+- [x] Phase E: Verify and hand back. All 88 browser checks pass. The exact-worktree Opus review and follow-ups are complete with no remaining actionable findings.
 - [x] Save local commits, evidence, and a resumable morning checkpoint.
-- [ ] Complete the exact-worktree T3 review and address confirmed findings.
+- [x] Complete the exact-worktree T3 review and address confirmed findings.
 
 ## Contract
 
@@ -34,4 +34,4 @@ PStack uses Cursor-only subagent types and model slugs that native Codex does no
 
 ## Checkpoint
 
-The final production suite passed 56/56 executions with no retries, skips, or flaky results. Production build, typecheck, app lint, and harness lint passed. Six existing app lint warnings remain. See MORNING-REVIEW.md for the evidence index, access gaps, and resume procedure. No product decision is outstanding. External review prevents declaring the goal complete.
+The final production suite passed 88/88 executions with no retries, skips, or flaky results. Production build, typecheck, app lint, and benchmark-harness lint passed. Two warnings remain in unchanged authored source; the earlier six-warning provenance claim was corrected. The exact-worktree Opus review and follow-ups completed. Confirmed findings were independently reproduced and addressed. The final completed verdict reports no findings. See MORNING-REVIEW.md for evidence and access gaps. No product decision is outstanding.

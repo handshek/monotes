@@ -1,0 +1,27 @@
+ M .audit/overnight/MORNING-REVIEW.md
+ M .audit/overnight/decisions.tsv
+ M .audit/overnight/evidence/README.md
+ M .audit/overnight/external-review.json
+ M .audit/overnight/native-review.md
+ M .audit/overnight/plan.md
+ M .audit/overnight/review-request.md
+ M tests/README.md
+?? .audit/overnight/evidence/after-save-ack.png
+?? .audit/overnight/followup-build.log
+?? .audit/overnight/followup-lint.log
+?? .audit/overnight/followup-tests.log
+?? .audit/overnight/followup-typecheck.log
+?? .audit/overnight/followup/
+?? .audit/overnight/observed-save/
+?? .audit/overnight/opus-followup-review.md
+?? .audit/overnight/opus-review.md
+?? .audit/overnight/perf-review/
+?? .audit/overnight/post-review-build.log
+?? .audit/overnight/post-review-lint.log
+?? .audit/overnight/post-review-tests.log
+?? .audit/overnight/post-review-typecheck.log
+?? .audit/overnight/post-review/
+?? .audit/overnight/review-followup-request.md
+?? .audit/overnight/review-reproduction-build.log
+?? .audit/overnight/save-ack/
+?? scripts/benchmark-notes.ts

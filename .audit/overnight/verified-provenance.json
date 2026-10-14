@@ -1,0 +1,18 @@
+{
+  "recordedAt": "2026-10-13T22:02:17.485317+00:00",
+  "checkout": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes",
+  "head": "2ba234c3c06db51385b27b3e9cf987af948e1792",
+  "sourceChanges": "",
+  "buildId": "AvnklLNuc4pb2iGZsMxZ1",
+  "sha256": {
+    "src/hooks/useLocalNote.ts": "d5b5bdff58bfb1a413163aa2f3640d01843768065d3f45622932d7689a2aa7e7",
+    "src/components/notes/notes-editor.tsx": "9ba23f68f739962e4ac9044b755aed52704b36bac30da455763307029c1d205e",
+    "src/components/notes/notes-sidebar.tsx": "ea9be46b106005245e7a4dfdbb3e220608ce8fc8990ecd5235277392ecd3626a",
+    "tests/observed-save.spec.ts": "a69289ba815e2278503351991686d72620f16e7556570485fc30cc47302c88e1",
+    "tests/automatic-save.spec.ts": "649017d8a124dccf1e4bb9ef92933e8d47ea96438b587bcc20de7e023d2ef5d9",
+    "tests/persistence.spec.ts": "168823202c08e9ddde4449beed95f2c923afacb699211997948c68dcbd44662e",
+    "scripts/benchmark-notes.ts": "c068552fcd75d9feed64ef17eebe85aa647c84c6f026ba076111111a384ac6ee"
+  },
+  "server": "Fresh next start on port3107 after verified-build.log passed",
+  "command": "MONOTES_BASE_URL=http://127.0.0.1:3107 MONOTES_EVIDENCE_DIR=.audit/overnight/verified bun run test:e2e --repeat-each=2"
+}

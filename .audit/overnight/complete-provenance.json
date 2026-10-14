@@ -1,0 +1,16 @@
+{
+  "recordedAt": "2026-10-13T21:52:21.358614+00:00",
+  "checkout": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes",
+  "head": "4be3e38f8b8be9ed6f1367806ebd51b5957d8281",
+  "sourceChanges": "",
+  "buildId": "33RyGfBhw6wrM3FU5E8lC",
+  "sha256": {
+    "src/hooks/useLocalNote.ts": "6cc6742bf08162805d81f5d0f4bc377381192437e4cbd8f363a8dc08da9a850b",
+    "src/components/notes/notes-editor.tsx": "9ba23f68f739962e4ac9044b755aed52704b36bac30da455763307029c1d205e",
+    "src/components/notes/notes-sidebar.tsx": "ea9be46b106005245e7a4dfdbb3e220608ce8fc8990ecd5235277392ecd3626a",
+    "tests/observed-save.spec.ts": "a69289ba815e2278503351991686d72620f16e7556570485fc30cc47302c88e1",
+    "tests/automatic-save.spec.ts": "649017d8a124dccf1e4bb9ef92933e8d47ea96438b587bcc20de7e023d2ef5d9"
+  },
+  "server": "Fresh next start on port3107 after complete-build.log passed",
+  "command": "MONOTES_BASE_URL=http://127.0.0.1:3107 MONOTES_EVIDENCE_DIR=.audit/overnight/complete bun run test:e2e --repeat-each=2"
+}

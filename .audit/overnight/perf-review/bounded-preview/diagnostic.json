@@ -1,0 +1,213 @@
+{
+  "claimUnderTest": "Bounded sidebar preview extraction removes full-body regex work while preserving first 20 words; no typing-speed claim.",
+  "methodology": "1 interleaved A/B pairs in fresh contexts, real keyboard input at 80 ms per character; browser event-to-next-animation-frame is a responsiveness proxy, not a direct paint measurement. Exact stored result is checked. Separate diagnostic runs instrument regex/IndexedDB and collect CPU profiles; their times are excluded.",
+  "baseline": "d3308196207778ebc13ab2b05efa4413837b0292",
+  "current": "8a44e4c82c410c9f5ce92b294bdb522d58a1fadd",
+  "labels": {
+    "baseline": "reviewed persistence implementation",
+    "current": "bounded preview correction"
+  },
+  "runsPerSide": 1,
+  "diagnosticVersion": 2,
+  "build": "Both isolated snapshots use next build --webpack with identical installed dependencies, then next start.",
+  "noteCount": 200,
+  "noteBytes": 20480,
+  "totalSeedBytes": 4096000,
+  "tabs": 2,
+  "delayMs": 80,
+  "typedCharacters": 120,
+  "diagnostic": true,
+  "machine": {
+    "cpuCount": 10,
+    "cpuModel": "Apple M5",
+    "platform": "darwin",
+    "architecture": "arm64",
+    "loadStart": [
+      5.369140625,
+      6.1689453125,
+      6.19580078125
+    ]
+  },
+  "results": [
+    {
+      "side": "baseline",
+      "run": 1,
+      "typingMs": 10287.930917,
+      "savedMs": 10293.467709,
+      "verifiedContentLength": 20607,
+      "verifiedNoteCount": 200,
+      "errors": [],
+      "load": [
+        5.84033203125,
+        6.22705078125,
+        6.21484375
+      ],
+      "active": {
+        "active": false,
+        "inputs": 120,
+        "keydowns": 120,
+        "inputToFrame": {
+          "count": 120,
+          "p50": 7.5,
+          "p95": 15.600000001490116,
+          "max": 16.100000001490116
+        },
+        "keydownToFrame": {
+          "count": 120,
+          "p50": 7.799999997019768,
+          "p95": 16,
+          "max": 16.399999998509884
+        },
+        "frames": {
+          "count": 677,
+          "p50": 16.699999999999818,
+          "p95": 16.700000000000728,
+          "max": 16.80000000000109
+        },
+        "longTasks": {
+          "count": 0,
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "previousFrame": 13377.8,
+        "scans": 24000,
+        "scannedCharacters": 491528082,
+        "scanMilliseconds": 735.800000064075,
+        "boundedPreviewSplits": 0,
+        "splitMilliseconds": 0,
+        "puts": 120,
+        "cursorSteps": 24000,
+        "indexQueries": 120
+      },
+      "idle": {
+        "active": false,
+        "inputs": 0,
+        "keydowns": 0,
+        "inputToFrame": {
+          "count": 0,
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "keydownToFrame": {
+          "count": 0,
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "frames": {
+          "count": 676,
+          "p50": 16.699999999999818,
+          "p95": 16.700000000000728,
+          "max": 33.30000000000018
+        },
+        "longTasks": {
+          "count": 0,
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "previousFrame": 13244.8,
+        "scans": 24000,
+        "scannedCharacters": 491528082,
+        "scanMilliseconds": 724.8000000491738,
+        "boundedPreviewSplits": 0,
+        "splitMilliseconds": 0,
+        "puts": 0,
+        "cursorSteps": 24000,
+        "indexQueries": 120
+      }
+    },
+    {
+      "side": "current",
+      "run": 1,
+      "typingMs": 10222.894792000001,
+      "savedMs": 10232.178208,
+      "verifiedContentLength": 20607,
+      "verifiedNoteCount": 200,
+      "errors": [],
+      "load": [
+        5.67236328125,
+        6.1669921875,
+        6.19287109375
+      ],
+      "active": {
+        "active": false,
+        "inputs": 120,
+        "keydowns": 120,
+        "inputToFrame": {
+          "count": 120,
+          "p50": 8.799999997019768,
+          "p95": 15.899999998509884,
+          "max": 16.400000005960464
+        },
+        "keydownToFrame": {
+          "count": 120,
+          "p50": 9.199999995529652,
+          "p95": 16.299999997019768,
+          "max": 16.899999998509884
+        },
+        "frames": {
+          "count": 674,
+          "p50": 16.699999999999818,
+          "p95": 16.700000000000728,
+          "max": 16.80000000000109
+        },
+        "longTasks": {
+          "count": 0,
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "previousFrame": 13353,
+        "scans": 0,
+        "scannedCharacters": 0,
+        "scanMilliseconds": 0,
+        "boundedPreviewSplits": 24000,
+        "splitMilliseconds": 11.5,
+        "puts": 120,
+        "cursorSteps": 24000,
+        "indexQueries": 120
+      },
+      "idle": {
+        "active": false,
+        "inputs": 0,
+        "keydowns": 0,
+        "inputToFrame": {
+          "count": 0,
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "keydownToFrame": {
+          "count": 0,
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "frames": {
+          "count": 673,
+          "p50": 16.699999999999818,
+          "p95": 16.700000000000728,
+          "max": 16.80000000000109
+        },
+        "longTasks": {
+          "count": 0,
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "previousFrame": 13196.8,
+        "scans": 0,
+        "scannedCharacters": 0,
+        "scanMilliseconds": 0,
+        "boundedPreviewSplits": 24000,
+        "splitMilliseconds": 11.900000043213367,
+        "puts": 0,
+        "cursorSteps": 24000,
+        "indexQueries": 120
+      }
+    }
+  ]
+}

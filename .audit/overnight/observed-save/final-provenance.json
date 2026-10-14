@@ -1,0 +1,15 @@
+{
+  "recordedAt": "2026-10-13T21:48:05.690837+00:00",
+  "checkout": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes",
+  "head": "5b93094db76d80b6b36c2ecd4bcb509af6753d0b",
+  "sourceChanges": "",
+  "buildId": "dA77SjOUA4s4A7chPfH1e",
+  "sha256": {
+    "src/hooks/useLocalNote.ts": "f3a00108e68dbb736252a748c43ac2d0a19c60a09f3636abd04e232e17011b1d",
+    "src/components/notes/notes-editor.tsx": "9ba23f68f739962e4ac9044b755aed52704b36bac30da455763307029c1d205e",
+    "src/components/notes/notes-sidebar.tsx": "ea9be46b106005245e7a4dfdbb3e220608ce8fc8990ecd5235277392ecd3626a",
+    "tests/observed-save.spec.ts": "a69289ba815e2278503351991686d72620f16e7556570485fc30cc47302c88e1"
+  },
+  "server": "Fresh next start on3107, after final-build.log passed",
+  "command": "MONOTES_BASE_URL=http://127.0.0.1:3107 MONOTES_EVIDENCE_DIR=.audit/overnight/observed-save/final bun run test:e2e --repeat-each=2"
+}

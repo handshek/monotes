@@ -1,0 +1,22 @@
+$ playwright test tests/save-ack.spec.ts "--repeat-each=2"
+
+Running 8 tests using 1 worker
+
+(node:9057) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [desktop-chromium] › tests/save-ack.spec.ts:7:5 › manual save does not acknowledge a pending draft displaced by another tab (2.1s)
+  ✓  2 [desktop-chromium] › tests/save-ack.spec.ts:78:5 › manual save acknowledges text that is actually durable (866ms)
+(node:9536) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  3 [desktop-chromium] › tests/save-ack.spec.ts:7:5 › manual save does not acknowledge a pending draft displaced by another tab (2.0s)
+  ✓  4 [desktop-chromium] › tests/save-ack.spec.ts:78:5 › manual save acknowledges text that is actually durable (833ms)
+(node:9553) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  5 [mobile-webkit] › tests/save-ack.spec.ts:7:5 › manual save does not acknowledge a pending draft displaced by another tab (3.0s)
+  ✓  6 [mobile-webkit] › tests/save-ack.spec.ts:78:5 › manual save acknowledges text that is actually durable (978ms)
+(node:9586) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  7 [mobile-webkit] › tests/save-ack.spec.ts:7:5 › manual save does not acknowledge a pending draft displaced by another tab (2.8s)
+  ✓  8 [mobile-webkit] › tests/save-ack.spec.ts:78:5 › manual save acknowledges text that is actually durable (968ms)
+
+  8 passed (15.8s)

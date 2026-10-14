@@ -1,0 +1,606 @@
+{
+  "config": {
+    "argv": [
+      "/Users/abhi/.hermes/node/bin/node",
+      "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/node_modules/.bin/playwright",
+      "test",
+      "tests/automatic-save.spec.ts",
+      "--repeat-each=2"
+    ],
+    "configFile": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/playwright.config.ts",
+    "rootDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/automatic-save/before/test-results",
+        "repeatEach": 2,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop-chromium",
+        "name": "desktop-chromium",
+        "testDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests",
+        "testIgnore": [
+          "**/mobile.spec.ts"
+        ],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/automatic-save/before/test-results",
+        "repeatEach": 2,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile-webkit",
+        "name": "mobile-webkit",
+        "testDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/automatic-save/before/test-results",
+        "repeatEach": 2,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "desktop-chromium",
+        "testDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests",
+        "snapshotDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests",
+        "testIgnore": "**/mobile.spec.ts",
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 30000,
+        "use": {
+          "baseURL": "http://127.0.0.1:3107",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "video": "retain-on-failure",
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.8078.4 Safari/537.36",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          },
+          "screen": {
+            "width": 1920,
+            "height": 1080
+          },
+          "deviceScaleFactor": 1,
+          "isMobile": false,
+          "hasTouch": false,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "desktop-chromium"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/automatic-save/before/test-results",
+        "repeatEach": 2,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "mobile-webkit",
+        "testDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests",
+        "snapshotDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 30000,
+        "use": {
+          "baseURL": "http://127.0.0.1:3107",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "video": "retain-on-failure",
+          "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.2 Mobile/15E148 Safari/604.1",
+          "viewport": {
+            "width": 390,
+            "height": 664
+          },
+          "screen": {
+            "width": 390,
+            "height": 844
+          },
+          "deviceScaleFactor": 3,
+          "isMobile": true,
+          "hasTouch": true,
+          "defaultBrowserType": "webkit"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "mobile-webkit"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": ".audit/overnight/automatic-save/before/report.json"
+        }
+      ],
+      [
+        "html",
+        {
+          "outputFolder": ".audit/overnight/automatic-save/before/html",
+          "open": "never"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "automatic-save.spec.ts",
+      "file": "automatic-save.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "automatic stale-save settlement explains replacement of the pending draft",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 7881,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Updated from another tab', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"soft toBeVisible\" getByText('Updated from another tab', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Updated from another tab', { exact: true })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Updated from another tab', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"soft toBeVisible\" getByText('Updated from another tab', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Updated from another tab', { exact: true })\u001b[22m\n\n    at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/automatic-save.spec.ts:52:30",
+                    "location": {
+                      "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/automatic-save.spec.ts",
+                      "column": 30,
+                      "line": 52
+                    },
+                    "snippet": "  50 |   await expect.poll(() => page.evaluate((noteId) => sessionStorage.getItem(`monotes-draft:${noteId}`), id)).toBeNull();\n  51 |   const updated = page.getByText(\"Updated from another tab\", { exact: true });\n> 52 |   await expect.soft(updated).toBeVisible();\n     |                              ^\n  53 |   await capture(page, testInfo, \"automatic-stale-save-result\");\n  54 |   await testInfo.attach(\"automatic-save.json\", {\n  55 |     body: JSON.stringify({"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/automatic-save.spec.ts",
+                        "column": 30,
+                        "line": 52
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Updated from another tab', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"soft toBeVisible\" getByText('Updated from another tab', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Updated from another tab', { exact: true })\u001b[22m\n\n\n  50 |   await expect.poll(() => page.evaluate((noteId) => sessionStorage.getItem(`monotes-draft:${noteId}`), id)).toBeNull();\n  51 |   const updated = page.getByText(\"Updated from another tab\", { exact: true });\n> 52 |   await expect.soft(updated).toBeVisible();\n     |                              ^\n  53 |   await capture(page, testInfo, \"automatic-stale-save-result\");\n  54 |   await testInfo.attach(\"automatic-save.json\", {\n  55 |     body: JSON.stringify({\n    at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/automatic-save.spec.ts:52:30"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T21:50:10.390Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "stale-editor-before-automatic-save",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-desktop-chromium/attachments/stale-editor-before-automatic-save-b03921f4a21ab991da905729779c9272a029697d.png"
+                    },
+                    {
+                      "name": "automatic-stale-save-result",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-desktop-chromium/attachments/automatic-stale-save-result-d6486e90b6238dd85b181d4ffff1c442fceb73aa.png"
+                    },
+                    {
+                      "name": "automatic-save.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJpbmplY3Rpb24iOiB7CiAgICAicmVtb3RlQ2xvY2tPZmZzZXRNcyI6IDYwMDAwLAogICAgInN1cHByZXNzZWRDaGFubmVsIjogIngtc3RvcmFnZW11dGF0ZWQtMSIKICB9LAogICJzdG9yZWRCZWZvcmUiOiB7CiAgICAiaWQiOiAibEVxaXpRdVl4eCIsCiAgICAiY29udGVudCI6ICJUaGUgbG9naWNhbGx5IG5ld2VyIGVkaXQgYWxyZWFkeSBjb21taXR0ZWQgYnkgYW5vdGhlciB0YWIuIiwKICAgICJ1cGRhdGVkQXQiOiAxNzkxOTI4MjcxNTc5LAogICAgImNsb3VkU3RhdHVzIjogImxvY2FsIiwKICAgICJsb2NhbFJldmlzaW9uIjogewogICAgICAiY2xvY2siOiAxNzkxOTI4MjcxNTc5LAogICAgICAiYWN0b3IiOiAiOTExZWYxMjItNjQ5Mi00MjFkLTk2YzYtNjVjYmNlYzczODU4IgogICAgfQogIH0sCiAgImNhcHR1cmVkRHJhZnQiOiB7CiAgICAiaWQiOiAibEVxaXpRdVl4eCIsCiAgICAiY29udGVudCI6ICJUaGUgc3RhbGUgdGFiJ3MgYXV0b21hdGljIGRyYWZ0IG11c3Qgbm90IGRpc2FwcGVhciBzaWxlbnRseS4iLAogICAgInVwZGF0ZWRBdCI6IDE3OTE5MjgyMTE2NDMsCiAgICAibG9jYWxSZXZpc2lvbiI6IHsKICAgICAgImNsb2NrIjogMTc5MTkyODIxMTY0MywKICAgICAgImFjdG9yIjogIjY1YzRiZWEzLWM4NjEtNDZlNC1hOTM4LWY1MjlkODNhYTczMyIKICAgIH0KICB9LAogICJzdG9yZWRBZnRlciI6IHsKICAgICJpZCI6ICJsRXFpelF1WXh4IiwKICAgICJjb250ZW50IjogIlRoZSBsb2dpY2FsbHkgbmV3ZXIgZWRpdCBhbHJlYWR5IGNvbW1pdHRlZCBieSBhbm90aGVyIHRhYi4iLAogICAgInVwZGF0ZWRBdCI6IDE3OTE5MjgyNzE1NzksCiAgICAiY2xvdWRTdGF0dXMiOiAibG9jYWwiLAogICAgImxvY2FsUmV2aXNpb24iOiB7CiAgICAgICJjbG9jayI6IDE3OTE5MjgyNzE1NzksCiAgICAgICJhY3RvciI6ICI5MTFlZjEyMi02NDkyLTQyMWQtOTZjNi02NWNiY2VjNzM4NTgiCiAgICB9CiAgfSwKICAiZWRpdG9yQ29udGVudCI6ICJUaGUgbG9naWNhbGx5IG5ld2VyIGVkaXQgYWxyZWFkeSBjb21taXR0ZWQgYnkgYW5vdGhlciB0YWIuIiwKICAicGVuZGluZ0FmdGVyIjogbnVsbCwKICAidXBkYXRlZFZpc2libGUiOiBmYWxzZSwKICAic3VjY2Vzc1Zpc2libGUiOiBmYWxzZSwKICAiZmFpbHVyZVZpc2libGUiOiBmYWxzZQp9"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-desktop-chromium/test-failed-1.png"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-desktop-chromium/test-failed-2.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-desktop-chromium/video-1.webm"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-desktop-chromium/video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-desktop-chromium/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-desktop-chromium/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/automatic-save.spec.ts",
+                    "column": 30,
+                    "line": 52
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "037275899b79a41523ee-4047bf6e50965d7a841d",
+          "file": "automatic-save.spec.ts",
+          "line": 9,
+          "column": 5
+        },
+        {
+          "title": "automatic stale-save settlement explains replacement of the pending draft",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 7710,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Updated from another tab', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"soft toBeVisible\" getByText('Updated from another tab', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Updated from another tab', { exact: true })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Updated from another tab', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"soft toBeVisible\" getByText('Updated from another tab', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Updated from another tab', { exact: true })\u001b[22m\n\n    at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/automatic-save.spec.ts:52:30",
+                    "location": {
+                      "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/automatic-save.spec.ts",
+                      "column": 30,
+                      "line": 52
+                    },
+                    "snippet": "  50 |   await expect.poll(() => page.evaluate((noteId) => sessionStorage.getItem(`monotes-draft:${noteId}`), id)).toBeNull();\n  51 |   const updated = page.getByText(\"Updated from another tab\", { exact: true });\n> 52 |   await expect.soft(updated).toBeVisible();\n     |                              ^\n  53 |   await capture(page, testInfo, \"automatic-stale-save-result\");\n  54 |   await testInfo.attach(\"automatic-save.json\", {\n  55 |     body: JSON.stringify({"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/automatic-save.spec.ts",
+                        "column": 30,
+                        "line": 52
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Updated from another tab', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"soft toBeVisible\" getByText('Updated from another tab', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Updated from another tab', { exact: true })\u001b[22m\n\n\n  50 |   await expect.poll(() => page.evaluate((noteId) => sessionStorage.getItem(`monotes-draft:${noteId}`), id)).toBeNull();\n  51 |   const updated = page.getByText(\"Updated from another tab\", { exact: true });\n> 52 |   await expect.soft(updated).toBeVisible();\n     |                              ^\n  53 |   await capture(page, testInfo, \"automatic-stale-save-result\");\n  54 |   await testInfo.attach(\"automatic-save.json\", {\n  55 |     body: JSON.stringify({\n    at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/automatic-save.spec.ts:52:30"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T21:50:18.991Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "stale-editor-before-automatic-save",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-desktop-chromium-repeat1/attachments/stale-editor-before-automatic-save-9767d24efa13e33231c10f8fcb560a1dee6b0151.png"
+                    },
+                    {
+                      "name": "automatic-stale-save-result",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-desktop-chromium-repeat1/attachments/automatic-stale-save-result-4c96de4ba8519e00047405b53bf4305d4a5b5475.png"
+                    },
+                    {
+                      "name": "automatic-save.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJpbmplY3Rpb24iOiB7CiAgICAicmVtb3RlQ2xvY2tPZmZzZXRNcyI6IDYwMDAwLAogICAgInN1cHByZXNzZWRDaGFubmVsIjogIngtc3RvcmFnZW11dGF0ZWQtMSIKICB9LAogICJzdG9yZWRCZWZvcmUiOiB7CiAgICAiaWQiOiAiNE9yNDlidkt2ZCIsCiAgICAiY29udGVudCI6ICJUaGUgbG9naWNhbGx5IG5ld2VyIGVkaXQgYWxyZWFkeSBjb21taXR0ZWQgYnkgYW5vdGhlciB0YWIuIiwKICAgICJ1cGRhdGVkQXQiOiAxNzkxOTI4MjgwMDE4LAogICAgImNsb3VkU3RhdHVzIjogImxvY2FsIiwKICAgICJsb2NhbFJldmlzaW9uIjogewogICAgICAiY2xvY2siOiAxNzkxOTI4MjgwMDE4LAogICAgICAiYWN0b3IiOiAiNjMxM2EwZjAtMTQ2MS00MzZmLTlmNGQtMWQ0MWE0NmI4ZmZjIgogICAgfQogIH0sCiAgImNhcHR1cmVkRHJhZnQiOiB7CiAgICAiaWQiOiAiNE9yNDlidkt2ZCIsCiAgICAiY29udGVudCI6ICJUaGUgc3RhbGUgdGFiJ3MgYXV0b21hdGljIGRyYWZ0IG11c3Qgbm90IGRpc2FwcGVhciBzaWxlbnRseS4iLAogICAgInVwZGF0ZWRBdCI6IDE3OTE5MjgyMjAwODksCiAgICAibG9jYWxSZXZpc2lvbiI6IHsKICAgICAgImNsb2NrIjogMTc5MTkyODIyMDA4OSwKICAgICAgImFjdG9yIjogIjE3NjEwNTcwLWUzZDctNDhmNS05YWFjLWJiNDE2MTY2N2JiMiIKICAgIH0KICB9LAogICJzdG9yZWRBZnRlciI6IHsKICAgICJpZCI6ICI0T3I0OWJ2S3ZkIiwKICAgICJjb250ZW50IjogIlRoZSBsb2dpY2FsbHkgbmV3ZXIgZWRpdCBhbHJlYWR5IGNvbW1pdHRlZCBieSBhbm90aGVyIHRhYi4iLAogICAgInVwZGF0ZWRBdCI6IDE3OTE5MjgyODAwMTgsCiAgICAiY2xvdWRTdGF0dXMiOiAibG9jYWwiLAogICAgImxvY2FsUmV2aXNpb24iOiB7CiAgICAgICJjbG9jayI6IDE3OTE5MjgyODAwMTgsCiAgICAgICJhY3RvciI6ICI2MzEzYTBmMC0xNDYxLTQzNmYtOWY0ZC0xZDQxYTQ2YjhmZmMiCiAgICB9CiAgfSwKICAiZWRpdG9yQ29udGVudCI6ICJUaGUgbG9naWNhbGx5IG5ld2VyIGVkaXQgYWxyZWFkeSBjb21taXR0ZWQgYnkgYW5vdGhlciB0YWIuIiwKICAicGVuZGluZ0FmdGVyIjogbnVsbCwKICAidXBkYXRlZFZpc2libGUiOiBmYWxzZSwKICAic3VjY2Vzc1Zpc2libGUiOiBmYWxzZSwKICAiZmFpbHVyZVZpc2libGUiOiBmYWxzZQp9"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-desktop-chromium-repeat1/test-failed-2.png"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-desktop-chromium-repeat1/test-failed-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-desktop-chromium-repeat1/video-1.webm"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-desktop-chromium-repeat1/video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-desktop-chromium-repeat1/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-desktop-chromium-repeat1/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/automatic-save.spec.ts",
+                    "column": 30,
+                    "line": 52
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "037275899b79a41523ee-cd7b0146c399aec5d484",
+          "file": "automatic-save.spec.ts",
+          "line": 9,
+          "column": 5
+        },
+        {
+          "title": "automatic stale-save settlement explains replacement of the pending draft",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 9029,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Updated from another tab', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"soft toBeVisible\" getByText('Updated from another tab', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Updated from another tab', { exact: true })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Updated from another tab', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"soft toBeVisible\" getByText('Updated from another tab', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Updated from another tab', { exact: true })\u001b[22m\n\n    at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/automatic-save.spec.ts:52:30",
+                    "location": {
+                      "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/automatic-save.spec.ts",
+                      "column": 30,
+                      "line": 52
+                    },
+                    "snippet": "  50 |   await expect.poll(() => page.evaluate((noteId) => sessionStorage.getItem(`monotes-draft:${noteId}`), id)).toBeNull();\n  51 |   const updated = page.getByText(\"Updated from another tab\", { exact: true });\n> 52 |   await expect.soft(updated).toBeVisible();\n     |                              ^\n  53 |   await capture(page, testInfo, \"automatic-stale-save-result\");\n  54 |   await testInfo.attach(\"automatic-save.json\", {\n  55 |     body: JSON.stringify({"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/automatic-save.spec.ts",
+                        "column": 30,
+                        "line": 52
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Updated from another tab', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"soft toBeVisible\" getByText('Updated from another tab', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Updated from another tab', { exact: true })\u001b[22m\n\n\n  50 |   await expect.poll(() => page.evaluate((noteId) => sessionStorage.getItem(`monotes-draft:${noteId}`), id)).toBeNull();\n  51 |   const updated = page.getByText(\"Updated from another tab\", { exact: true });\n> 52 |   await expect.soft(updated).toBeVisible();\n     |                              ^\n  53 |   await capture(page, testInfo, \"automatic-stale-save-result\");\n  54 |   await testInfo.attach(\"automatic-save.json\", {\n  55 |     body: JSON.stringify({\n    at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/automatic-save.spec.ts:52:30"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T21:50:27.510Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "stale-editor-before-automatic-save",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-mobile-webkit/attachments/stale-editor-before-automatic-save-e4da1b2b916809174ab7f25d1925cbe0f55be1e0.png"
+                    },
+                    {
+                      "name": "automatic-stale-save-result",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-mobile-webkit/attachments/automatic-stale-save-result-c2d63a42087e2e46832b62977daf93c594cfce5a.png"
+                    },
+                    {
+                      "name": "automatic-save.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJpbmplY3Rpb24iOiB7CiAgICAicmVtb3RlQ2xvY2tPZmZzZXRNcyI6IDYwMDAwLAogICAgInN1cHByZXNzZWRDaGFubmVsIjogIngtc3RvcmFnZW11dGF0ZWQtMSIKICB9LAogICJzdG9yZWRCZWZvcmUiOiB7CiAgICAiaWQiOiAidjIycFZTejNlNSIsCiAgICAiY29udGVudCI6ICJUaGUgbG9naWNhbGx5IG5ld2VyIGVkaXQgYWxyZWFkeSBjb21taXR0ZWQgYnkgYW5vdGhlciB0YWIuIiwKICAgICJ1cGRhdGVkQXQiOiAxNzkxOTI4Mjg5MjkyLAogICAgImNsb3VkU3RhdHVzIjogImxvY2FsIiwKICAgICJsb2NhbFJldmlzaW9uIjogewogICAgICAiY2xvY2siOiAxNzkxOTI4Mjg5MjkyLAogICAgICAiYWN0b3IiOiAiYjA2NmMxNDAtODYyZi00YmY1LWI3NGEtMDFlNTI0YjlkMTEwIgogICAgfQogIH0sCiAgImNhcHR1cmVkRHJhZnQiOiB7CiAgICAiaWQiOiAidjIycFZTejNlNSIsCiAgICAiY29udGVudCI6ICJUaGUgc3RhbGUgdGFiJ3MgYXV0b21hdGljIGRyYWZ0IG11c3Qgbm90IGRpc2FwcGVhciBzaWxlbnRseS4iLAogICAgInVwZGF0ZWRBdCI6IDE3OTE5MjgyMjk0NjAsCiAgICAibG9jYWxSZXZpc2lvbiI6IHsKICAgICAgImNsb2NrIjogMTc5MTkyODIyOTQ2MCwKICAgICAgImFjdG9yIjogImRhMzBkMzVmLWU5OWEtNGRiOS1iY2UzLWUxODFkZGNlZDljNyIKICAgIH0KICB9LAogICJzdG9yZWRBZnRlciI6IHsKICAgICJpZCI6ICJ2MjJwVlN6M2U1IiwKICAgICJjb250ZW50IjogIlRoZSBsb2dpY2FsbHkgbmV3ZXIgZWRpdCBhbHJlYWR5IGNvbW1pdHRlZCBieSBhbm90aGVyIHRhYi4iLAogICAgInVwZGF0ZWRBdCI6IDE3OTE5MjgyODkyOTIsCiAgICAiY2xvdWRTdGF0dXMiOiAibG9jYWwiLAogICAgImxvY2FsUmV2aXNpb24iOiB7CiAgICAgICJjbG9jayI6IDE3OTE5MjgyODkyOTIsCiAgICAgICJhY3RvciI6ICJiMDY2YzE0MC04NjJmLTRiZjUtYjc0YS0wMWU1MjRiOWQxMTAiCiAgICB9CiAgfSwKICAiZWRpdG9yQ29udGVudCI6ICJUaGUgbG9naWNhbGx5IG5ld2VyIGVkaXQgYWxyZWFkeSBjb21taXR0ZWQgYnkgYW5vdGhlciB0YWIuIiwKICAicGVuZGluZ0FmdGVyIjogbnVsbCwKICAidXBkYXRlZFZpc2libGUiOiBmYWxzZSwKICAic3VjY2Vzc1Zpc2libGUiOiBmYWxzZSwKICAiZmFpbHVyZVZpc2libGUiOiBmYWxzZQp9"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-mobile-webkit/test-failed-1.png"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-mobile-webkit/test-failed-2.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-mobile-webkit/video-1.webm"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-mobile-webkit/video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-mobile-webkit/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-mobile-webkit/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/automatic-save.spec.ts",
+                    "column": 30,
+                    "line": 52
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "037275899b79a41523ee-1de6317d2486ebaa9d4e",
+          "file": "automatic-save.spec.ts",
+          "line": 9,
+          "column": 5
+        },
+        {
+          "title": "automatic stale-save settlement explains replacement of the pending draft",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 8516,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Updated from another tab', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"soft toBeVisible\" getByText('Updated from another tab', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Updated from another tab', { exact: true })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Updated from another tab', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"soft toBeVisible\" getByText('Updated from another tab', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Updated from another tab', { exact: true })\u001b[22m\n\n    at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/automatic-save.spec.ts:52:30",
+                    "location": {
+                      "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/automatic-save.spec.ts",
+                      "column": 30,
+                      "line": 52
+                    },
+                    "snippet": "  50 |   await expect.poll(() => page.evaluate((noteId) => sessionStorage.getItem(`monotes-draft:${noteId}`), id)).toBeNull();\n  51 |   const updated = page.getByText(\"Updated from another tab\", { exact: true });\n> 52 |   await expect.soft(updated).toBeVisible();\n     |                              ^\n  53 |   await capture(page, testInfo, \"automatic-stale-save-result\");\n  54 |   await testInfo.attach(\"automatic-save.json\", {\n  55 |     body: JSON.stringify({"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/automatic-save.spec.ts",
+                        "column": 30,
+                        "line": 52
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Updated from another tab', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"soft toBeVisible\" getByText('Updated from another tab', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Updated from another tab', { exact: true })\u001b[22m\n\n\n  50 |   await expect.poll(() => page.evaluate((noteId) => sessionStorage.getItem(`monotes-draft:${noteId}`), id)).toBeNull();\n  51 |   const updated = page.getByText(\"Updated from another tab\", { exact: true });\n> 52 |   await expect.soft(updated).toBeVisible();\n     |                              ^\n  53 |   await capture(page, testInfo, \"automatic-stale-save-result\");\n  54 |   await testInfo.attach(\"automatic-save.json\", {\n  55 |     body: JSON.stringify({\n    at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/automatic-save.spec.ts:52:30"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T21:50:37.308Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "stale-editor-before-automatic-save",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-mobile-webkit-repeat1/attachments/stale-editor-before-automatic-save-1ddb4dfce722cbb5606fcf778d627deac838138d.png"
+                    },
+                    {
+                      "name": "automatic-stale-save-result",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-mobile-webkit-repeat1/attachments/automatic-stale-save-result-e6f090cec12a52ddd905f73c652f9d078cdb6b3e.png"
+                    },
+                    {
+                      "name": "automatic-save.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJpbmplY3Rpb24iOiB7CiAgICAicmVtb3RlQ2xvY2tPZmZzZXRNcyI6IDYwMDAwLAogICAgInN1cHByZXNzZWRDaGFubmVsIjogIngtc3RvcmFnZW11dGF0ZWQtMSIKICB9LAogICJzdG9yZWRCZWZvcmUiOiB7CiAgICAiaWQiOiAic0RwWVRzZHZuTyIsCiAgICAiY29udGVudCI6ICJUaGUgbG9naWNhbGx5IG5ld2VyIGVkaXQgYWxyZWFkeSBjb21taXR0ZWQgYnkgYW5vdGhlciB0YWIuIiwKICAgICJ1cGRhdGVkQXQiOiAxNzkxOTI4Mjk4NzQ3LAogICAgImNsb3VkU3RhdHVzIjogImxvY2FsIiwKICAgICJsb2NhbFJldmlzaW9uIjogewogICAgICAiY2xvY2siOiAxNzkxOTI4Mjk4NzQ3LAogICAgICAiYWN0b3IiOiAiZDRhYWY5OGEtMjBhYi00Y2U2LWJmYWEtNzZjMTgzYjI5ZTlhIgogICAgfQogIH0sCiAgImNhcHR1cmVkRHJhZnQiOiB7CiAgICAiaWQiOiAic0RwWVRzZHZuTyIsCiAgICAiY29udGVudCI6ICJUaGUgc3RhbGUgdGFiJ3MgYXV0b21hdGljIGRyYWZ0IG11c3Qgbm90IGRpc2FwcGVhciBzaWxlbnRseS4iLAogICAgInVwZGF0ZWRBdCI6IDE3OTE5MjgyMzg4MzYsCiAgICAibG9jYWxSZXZpc2lvbiI6IHsKICAgICAgImNsb2NrIjogMTc5MTkyODIzODgzNiwKICAgICAgImFjdG9yIjogImZkMGMxN2Q0LTc3YTUtNGU5Mi1iZTU5LTk5ZTRjYTNlYjQxMiIKICAgIH0KICB9LAogICJzdG9yZWRBZnRlciI6IHsKICAgICJpZCI6ICJzRHBZVHNkdm5PIiwKICAgICJjb250ZW50IjogIlRoZSBsb2dpY2FsbHkgbmV3ZXIgZWRpdCBhbHJlYWR5IGNvbW1pdHRlZCBieSBhbm90aGVyIHRhYi4iLAogICAgInVwZGF0ZWRBdCI6IDE3OTE5MjgyOTg3NDcsCiAgICAiY2xvdWRTdGF0dXMiOiAibG9jYWwiLAogICAgImxvY2FsUmV2aXNpb24iOiB7CiAgICAgICJjbG9jayI6IDE3OTE5MjgyOTg3NDcsCiAgICAgICJhY3RvciI6ICJkNGFhZjk4YS0yMGFiLTRjZTYtYmZhYS03NmMxODNiMjllOWEiCiAgICB9CiAgfSwKICAiZWRpdG9yQ29udGVudCI6ICJUaGUgbG9naWNhbGx5IG5ld2VyIGVkaXQgYWxyZWFkeSBjb21taXR0ZWQgYnkgYW5vdGhlciB0YWIuIiwKICAicGVuZGluZ0FmdGVyIjogbnVsbCwKICAidXBkYXRlZFZpc2libGUiOiBmYWxzZSwKICAic3VjY2Vzc1Zpc2libGUiOiBmYWxzZSwKICAiZmFpbHVyZVZpc2libGUiOiBmYWxzZQp9"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-mobile-webkit-repeat1/test-failed-1.png"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-mobile-webkit-repeat1/test-failed-2.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-mobile-webkit-repeat1/video-1.webm"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-mobile-webkit-repeat1/video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-mobile-webkit-repeat1/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/automatic-save/before/test-results/automatic-save-automatic-s-729ba-cement-of-the-pending-draft-mobile-webkit-repeat1/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/automatic-save.spec.ts",
+                    "column": 30,
+                    "line": 52
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "037275899b79a41523ee-2c1914d15722e8b66cc7",
+          "file": "automatic-save.spec.ts",
+          "line": 9,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-13T21:50:09.759Z",
+    "duration": 36440.861000000004,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 4,
+    "flaky": 0
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "checkout": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes",
+  "head": "5b93094db76d80b6b36c2ecd4bcb509af6753d0b",
+  "runtime": "http://127.0.0.1:3107",
+  "scope": "Real UI and IndexedDB; tab B's clock is offset 60 seconds and its Dexie broadcast suppressed to deterministically exercise a stale automatic save; no claim about race frequency"
+}

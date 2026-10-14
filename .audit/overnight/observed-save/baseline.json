@@ -1,0 +1,6 @@
+{
+  "checkout": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes",
+  "head": "8a44e4c82c410c9f5ce92b294bdb522d58a1fadd",
+  "runtime": "http://127.0.0.1:3107",
+  "scope": "Real UI plus real IndexedDB; one put transaction aborted only for the pending-draft setup; normal Dexie broadcasts retained"
+}

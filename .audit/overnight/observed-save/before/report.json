@@ -1,0 +1,986 @@
+{
+  "config": {
+    "argv": [
+      "/Users/abhi/.hermes/node/bin/node",
+      "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/node_modules/.bin/playwright",
+      "test",
+      "tests/observed-save.spec.ts",
+      "--repeat-each=2"
+    ],
+    "configFile": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/playwright.config.ts",
+    "rootDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/observed-save/before/test-results",
+        "repeatEach": 2,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop-chromium",
+        "name": "desktop-chromium",
+        "testDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests",
+        "testIgnore": [
+          "**/mobile.spec.ts"
+        ],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/observed-save/before/test-results",
+        "repeatEach": 2,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile-webkit",
+        "name": "mobile-webkit",
+        "testDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/observed-save/before/test-results",
+        "repeatEach": 2,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "desktop-chromium",
+        "testDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests",
+        "snapshotDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests",
+        "testIgnore": "**/mobile.spec.ts",
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 30000,
+        "use": {
+          "baseURL": "http://127.0.0.1:3107",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "video": "retain-on-failure",
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.8078.4 Safari/537.36",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          },
+          "screen": {
+            "width": 1920,
+            "height": 1080
+          },
+          "deviceScaleFactor": 1,
+          "isMobile": false,
+          "hasTouch": false,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "desktop-chromium"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/observed-save/before/test-results",
+        "repeatEach": 2,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "mobile-webkit",
+        "testDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests",
+        "snapshotDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 30000,
+        "use": {
+          "baseURL": "http://127.0.0.1:3107",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "video": "retain-on-failure",
+          "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.2 Mobile/15E148 Safari/604.1",
+          "viewport": {
+            "width": 390,
+            "height": 664
+          },
+          "screen": {
+            "width": 390,
+            "height": 844
+          },
+          "deviceScaleFactor": 3,
+          "isMobile": true,
+          "hasTouch": true,
+          "defaultBrowserType": "webkit"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "mobile-webkit"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": ".audit/overnight/observed-save/before/report.json"
+        }
+      ],
+      [
+        "html",
+        {
+          "outputFolder": ".audit/overnight/observed-save/before/html",
+          "open": "never"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "observed-save.spec.ts",
+      "file": "observed-save.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "observing a newer remote edit explains why a failed pending draft disappeared",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 7237,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Updated from another tab', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"soft toBeVisible\" getByText('Updated from another tab', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Updated from another tab', { exact: true })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Updated from another tab', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"soft toBeVisible\" getByText('Updated from another tab', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Updated from another tab', { exact: true })\u001b[22m\n\n    at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/observed-save.spec.ts:58:34",
+                    "location": {
+                      "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/observed-save.spec.ts",
+                      "column": 34,
+                      "line": 58
+                    },
+                    "snippet": "  56 |     await page.evaluate(() => new Promise<void>((resolve) => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))));\n  57 |     if (!sameContent) {\n> 58 |       await expect.soft(updated).toBeVisible();\n     |                                  ^\n  59 |     } else {\n  60 |       await expect(updated).not.toBeVisible();\n  61 |     }"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/observed-save.spec.ts",
+                        "column": 34,
+                        "line": 58
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Updated from another tab', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"soft toBeVisible\" getByText('Updated from another tab', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Updated from another tab', { exact: true })\u001b[22m\n\n\n  56 |     await page.evaluate(() => new Promise<void>((resolve) => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))));\n  57 |     if (!sameContent) {\n> 58 |       await expect.soft(updated).toBeVisible();\n     |                                  ^\n  59 |     } else {\n  60 |       await expect(updated).not.toBeVisible();\n  61 |     }\n    at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/observed-save.spec.ts:58:34"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T21:45:40.538Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "failed-local-draft-before-remote-update",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-desktop-chromium/attachments/failed-local-draft-before-remote-update-157ef0cc484572e2cb749285eb4aeb8ff0a81064.png"
+                    },
+                    {
+                      "name": "observed-remote-save-result",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-desktop-chromium/attachments/observed-remote-save-result-6beae816450bfb641a37140c1293d76c31ba1d2c.png"
+                    },
+                    {
+                      "name": "observed-save.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJzYW1lQ29udGVudCI6IGZhbHNlLAogICJwZW5kaW5nQmVmb3JlIjogewogICAgImlkIjogIldOWmx4eG5Wa0ciLAogICAgImNvbnRlbnQiOiAiVGhlIGxvY2FsIGRyYWZ0IHRoYXQgaGFzIG5vdCBiZWVuIHNhdmVkIHlldC4iLAogICAgInVwZGF0ZWRBdCI6IDE3OTE5Mjc5NDEzODMsCiAgICAibG9jYWxSZXZpc2lvbiI6IHsKICAgICAgImNsb2NrIjogMTc5MTkyNzk0MTM4MywKICAgICAgImFjdG9yIjogIjk3ZDU1OWZhLWY0MGMtNDIyNy1hMTQ1LTgwNWRiZjcyNThhMCIKICAgIH0KICB9LAogICJwZW5kaW5nQWZ0ZXIiOiBudWxsLAogICJzdG9yZWRBZnRlciI6IHsKICAgICJpZCI6ICJXTlpseHhuVmtHIiwKICAgICJjb250ZW50IjogIlRoZSBuZXdlciB0ZXh0IGNvbW1pdHRlZCBieSBhbm90aGVyIHRhYi4iLAogICAgInVwZGF0ZWRBdCI6IDE3OTE5Mjc5NDE2NjcsCiAgICAiY2xvdWRTdGF0dXMiOiAibG9jYWwiLAogICAgImxvY2FsUmV2aXNpb24iOiB7CiAgICAgICJjbG9jayI6IDE3OTE5Mjc5NDE2NjcsCiAgICAgICJhY3RvciI6ICI0NDQ3ZjI2Zi1kMzE5LTRlMDMtYjk1NS1mZDI0YTMyZWViZjAiCiAgICB9CiAgfSwKICAiZWRpdG9yQ29udGVudCI6ICJUaGUgbmV3ZXIgdGV4dCBjb21taXR0ZWQgYnkgYW5vdGhlciB0YWIuIiwKICAiZmFpbHVyZVZpc2libGUiOiBmYWxzZSwKICAidXBkYXRlZFZpc2libGUiOiBmYWxzZSwKICAic3VjY2Vzc1Zpc2libGUiOiBmYWxzZQp9"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-desktop-chromium/test-failed-1.png"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-desktop-chromium/test-failed-2.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-desktop-chromium/video-1.webm"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-desktop-chromium/video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-desktop-chromium/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-desktop-chromium/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/observed-save.spec.ts",
+                    "column": 34,
+                    "line": 58
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "a34a33a794423052296a-8f8fb33e288b29e2ede0",
+          "file": "observed-save.spec.ts",
+          "line": 29,
+          "column": 7
+        },
+        {
+          "title": "observing the same pending text saved by another tab stays quiet",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1218,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T21:45:48.414Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "failed-local-draft-before-remote-update",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/observed-save/before/test-results/observed-save-observing-th-99462--by-another-tab-stays-quiet-desktop-chromium/attachments/failed-local-draft-before-remote-update-9eeb3d33cc0bd37d914d95aaeda27e2cac8e9162.png"
+                    },
+                    {
+                      "name": "observed-remote-save-result",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/observed-save/before/test-results/observed-save-observing-th-99462--by-another-tab-stays-quiet-desktop-chromium/attachments/observed-remote-save-result-85e424106d9a15245ebf9f361a892341d8856ab6.png"
+                    },
+                    {
+                      "name": "observed-save.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJzYW1lQ29udGVudCI6IHRydWUsCiAgInBlbmRpbmdCZWZvcmUiOiB7CiAgICAiaWQiOiAiU2RUMWFwMGRPMCIsCiAgICAiY29udGVudCI6ICJUaGUgbG9jYWwgZHJhZnQgdGhhdCBoYXMgbm90IGJlZW4gc2F2ZWQgeWV0LiIsCiAgICAidXBkYXRlZEF0IjogMTc5MTkyNzk0OTIxMSwKICAgICJsb2NhbFJldmlzaW9uIjogewogICAgICAiY2xvY2siOiAxNzkxOTI3OTQ5MjExLAogICAgICAiYWN0b3IiOiAiNzEwNjRmMTUtMDYzZi00YjNhLWJhOTAtYWRhM2FlZWJmOWFhIgogICAgfQogIH0sCiAgInBlbmRpbmdBZnRlciI6IG51bGwsCiAgInN0b3JlZEFmdGVyIjogewogICAgImlkIjogIlNkVDFhcDBkTzAiLAogICAgImNvbnRlbnQiOiAiVGhlIGxvY2FsIGRyYWZ0IHRoYXQgaGFzIG5vdCBiZWVuIHNhdmVkIHlldC4iLAogICAgInVwZGF0ZWRBdCI6IDE3OTE5Mjc5NDk0MzcsCiAgICAiY2xvdWRTdGF0dXMiOiAibG9jYWwiLAogICAgImxvY2FsUmV2aXNpb24iOiB7CiAgICAgICJjbG9jayI6IDE3OTE5Mjc5NDk0MzcsCiAgICAgICJhY3RvciI6ICJmODE3Y2U0My1hNzVhLTQyNzAtODI3NS05MTNkOWU3MTc0ZGUiCiAgICB9CiAgfSwKICAiZWRpdG9yQ29udGVudCI6ICJUaGUgbG9jYWwgZHJhZnQgdGhhdCBoYXMgbm90IGJlZW4gc2F2ZWQgeWV0LiIsCiAgImZhaWx1cmVWaXNpYmxlIjogZmFsc2UsCiAgInVwZGF0ZWRWaXNpYmxlIjogZmFsc2UsCiAgInN1Y2Nlc3NWaXNpYmxlIjogZmFsc2UKfQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a34a33a794423052296a-dc0c5a5e3e4f5bbbb613",
+          "file": "observed-save.spec.ts",
+          "line": 29,
+          "column": 7
+        },
+        {
+          "title": "ordinary remote edits without a pending local draft stay quiet",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1943,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T21:45:49.769Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "ordinary-remote-edit-stays-quiet",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/observed-save/before/test-results/observed-save-ordinary-rem-ee034-ding-local-draft-stay-quiet-desktop-chromium/attachments/ordinary-remote-edit-stays-quiet-b88c209dcea0ac6bc65716e35afb296feeff8e24.png"
+                    },
+                    {
+                      "name": "ordinary-remote-edit.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJlZGl0b3JDb250ZW50IjogIlRoZSBuZXdlciB0ZXh0IGNvbW1pdHRlZCBieSBhbm90aGVyIHRhYi4iLAogICJzdG9yZWRBZnRlciI6IHsKICAgICJpZCI6ICI0QTNPamNkRWhFIiwKICAgICJjb250ZW50IjogIlRoZSBuZXdlciB0ZXh0IGNvbW1pdHRlZCBieSBhbm90aGVyIHRhYi4iLAogICAgInVwZGF0ZWRBdCI6IDE3OTE5Mjc5NTA1OTYsCiAgICAiY2xvdWRTdGF0dXMiOiAibG9jYWwiLAogICAgImxvY2FsUmV2aXNpb24iOiB7CiAgICAgICJjbG9jayI6IDE3OTE5Mjc5NTA1OTYsCiAgICAgICJhY3RvciI6ICIzOGM2NTJmMC0xZTMxLTQyODgtOTU5Zi1mNTBkYzc0NWY2NjQiCiAgICB9CiAgfSwKICAicGVuZGluZ0RyYWZ0IjogbnVsbAp9"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a34a33a794423052296a-bb52e1937a556e75b7e4",
+          "file": "observed-save.spec.ts",
+          "line": 81,
+          "column": 5
+        },
+        {
+          "title": "observing a newer remote edit explains why a failed pending draft disappeared",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 7106,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Updated from another tab', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"soft toBeVisible\" getByText('Updated from another tab', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Updated from another tab', { exact: true })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Updated from another tab', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"soft toBeVisible\" getByText('Updated from another tab', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Updated from another tab', { exact: true })\u001b[22m\n\n    at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/observed-save.spec.ts:58:34",
+                    "location": {
+                      "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/observed-save.spec.ts",
+                      "column": 34,
+                      "line": 58
+                    },
+                    "snippet": "  56 |     await page.evaluate(() => new Promise<void>((resolve) => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))));\n  57 |     if (!sameContent) {\n> 58 |       await expect.soft(updated).toBeVisible();\n     |                                  ^\n  59 |     } else {\n  60 |       await expect(updated).not.toBeVisible();\n  61 |     }"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/observed-save.spec.ts",
+                        "column": 34,
+                        "line": 58
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Updated from another tab', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"soft toBeVisible\" getByText('Updated from another tab', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Updated from another tab', { exact: true })\u001b[22m\n\n\n  56 |     await page.evaluate(() => new Promise<void>((resolve) => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))));\n  57 |     if (!sameContent) {\n> 58 |       await expect.soft(updated).toBeVisible();\n     |                                  ^\n  59 |     } else {\n  60 |       await expect(updated).not.toBeVisible();\n  61 |     }\n    at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/observed-save.spec.ts:58:34"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T21:45:52.099Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "failed-local-draft-before-remote-update",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-desktop-chromium-repeat1/attachments/failed-local-draft-before-remote-update-08308040a5d6c7b7daeed3f3e7c33e6a350f3489.png"
+                    },
+                    {
+                      "name": "observed-remote-save-result",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-desktop-chromium-repeat1/attachments/observed-remote-save-result-c1d9b282295fe87a913ea1d04af85fef473b4fd9.png"
+                    },
+                    {
+                      "name": "observed-save.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJzYW1lQ29udGVudCI6IGZhbHNlLAogICJwZW5kaW5nQmVmb3JlIjogewogICAgImlkIjogIll6ZUhQaVV1RU8iLAogICAgImNvbnRlbnQiOiAiVGhlIGxvY2FsIGRyYWZ0IHRoYXQgaGFzIG5vdCBiZWVuIHNhdmVkIHlldC4iLAogICAgInVwZGF0ZWRBdCI6IDE3OTE5Mjc5NTI4ODcsCiAgICAibG9jYWxSZXZpc2lvbiI6IHsKICAgICAgImNsb2NrIjogMTc5MTkyNzk1Mjg4NywKICAgICAgImFjdG9yIjogIjc3NDI0MTU5LTc0ZjMtNDY0ZS04Yjk3LWYxOTVlMzg0ZTU1MCIKICAgIH0KICB9LAogICJwZW5kaW5nQWZ0ZXIiOiBudWxsLAogICJzdG9yZWRBZnRlciI6IHsKICAgICJpZCI6ICJZemVIUGlVdUVPIiwKICAgICJjb250ZW50IjogIlRoZSBuZXdlciB0ZXh0IGNvbW1pdHRlZCBieSBhbm90aGVyIHRhYi4iLAogICAgInVwZGF0ZWRBdCI6IDE3OTE5Mjc5NTMxMTgsCiAgICAiY2xvdWRTdGF0dXMiOiAibG9jYWwiLAogICAgImxvY2FsUmV2aXNpb24iOiB7CiAgICAgICJjbG9jayI6IDE3OTE5Mjc5NTMxMTgsCiAgICAgICJhY3RvciI6ICIyOTAzODM2ZS00Y2I2LTRiYmMtODY2OC1hMTczODdhNjlkZDYiCiAgICB9CiAgfSwKICAiZWRpdG9yQ29udGVudCI6ICJUaGUgbmV3ZXIgdGV4dCBjb21taXR0ZWQgYnkgYW5vdGhlciB0YWIuIiwKICAiZmFpbHVyZVZpc2libGUiOiBmYWxzZSwKICAidXBkYXRlZFZpc2libGUiOiBmYWxzZSwKICAic3VjY2Vzc1Zpc2libGUiOiBmYWxzZQp9"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-desktop-chromium-repeat1/test-failed-1.png"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-desktop-chromium-repeat1/test-failed-2.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-desktop-chromium-repeat1/video-1.webm"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-desktop-chromium-repeat1/video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-desktop-chromium-repeat1/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-desktop-chromium-repeat1/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/observed-save.spec.ts",
+                    "column": 34,
+                    "line": 58
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "a34a33a794423052296a-986896d5c516dcb3a427",
+          "file": "observed-save.spec.ts",
+          "line": 29,
+          "column": 7
+        },
+        {
+          "title": "observing the same pending text saved by another tab stays quiet",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1231,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T21:45:59.821Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "failed-local-draft-before-remote-update",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/observed-save/before/test-results/observed-save-observing-th-99462--by-another-tab-stays-quiet-desktop-chromium-repeat1/attachments/failed-local-draft-before-remote-update-43286d168ff1c92561b97808a2e6e2ffea4462b7.png"
+                    },
+                    {
+                      "name": "observed-remote-save-result",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/observed-save/before/test-results/observed-save-observing-th-99462--by-another-tab-stays-quiet-desktop-chromium-repeat1/attachments/observed-remote-save-result-d2eaf2fe7b6c64dd5c9c99c84ae9b54ac18bbaf2.png"
+                    },
+                    {
+                      "name": "observed-save.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJzYW1lQ29udGVudCI6IHRydWUsCiAgInBlbmRpbmdCZWZvcmUiOiB7CiAgICAiaWQiOiAiaWFjRGFMNFNvWSIsCiAgICAiY29udGVudCI6ICJUaGUgbG9jYWwgZHJhZnQgdGhhdCBoYXMgbm90IGJlZW4gc2F2ZWQgeWV0LiIsCiAgICAidXBkYXRlZEF0IjogMTc5MTkyNzk2MDYyMywKICAgICJsb2NhbFJldmlzaW9uIjogewogICAgICAiY2xvY2siOiAxNzkxOTI3OTYwNjIzLAogICAgICAiYWN0b3IiOiAiZTQxOWUwODktZDU2ZS00YjRiLTllZTMtZmNiZDJkMWM1OGMzIgogICAgfQogIH0sCiAgInBlbmRpbmdBZnRlciI6IG51bGwsCiAgInN0b3JlZEFmdGVyIjogewogICAgImlkIjogImlhY0RhTDRTb1kiLAogICAgImNvbnRlbnQiOiAiVGhlIGxvY2FsIGRyYWZ0IHRoYXQgaGFzIG5vdCBiZWVuIHNhdmVkIHlldC4iLAogICAgInVwZGF0ZWRBdCI6IDE3OTE5Mjc5NjA4NTQsCiAgICAiY2xvdWRTdGF0dXMiOiAibG9jYWwiLAogICAgImxvY2FsUmV2aXNpb24iOiB7CiAgICAgICJjbG9jayI6IDE3OTE5Mjc5NjA4NTQsCiAgICAgICJhY3RvciI6ICI3ZDliNmY2OS0wNDdkLTRlNmYtYTdmOC1jZDcwNDNlOGUxODMiCiAgICB9CiAgfSwKICAiZWRpdG9yQ29udGVudCI6ICJUaGUgbG9jYWwgZHJhZnQgdGhhdCBoYXMgbm90IGJlZW4gc2F2ZWQgeWV0LiIsCiAgImZhaWx1cmVWaXNpYmxlIjogZmFsc2UsCiAgInVwZGF0ZWRWaXNpYmxlIjogZmFsc2UsCiAgInN1Y2Nlc3NWaXNpYmxlIjogZmFsc2UKfQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a34a33a794423052296a-0b9b25337d5e35437503",
+          "file": "observed-save.spec.ts",
+          "line": 29,
+          "column": 7
+        },
+        {
+          "title": "ordinary remote edits without a pending local draft stay quiet",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1879,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T21:46:01.179Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "ordinary-remote-edit-stays-quiet",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/observed-save/before/test-results/observed-save-ordinary-rem-ee034-ding-local-draft-stay-quiet-desktop-chromium-repeat1/attachments/ordinary-remote-edit-stays-quiet-0d6447e82ef6f56794bec9401402c02178329a6f.png"
+                    },
+                    {
+                      "name": "ordinary-remote-edit.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJlZGl0b3JDb250ZW50IjogIlRoZSBuZXdlciB0ZXh0IGNvbW1pdHRlZCBieSBhbm90aGVyIHRhYi4iLAogICJzdG9yZWRBZnRlciI6IHsKICAgICJpZCI6ICJiMnpFWUs3a1B3IiwKICAgICJjb250ZW50IjogIlRoZSBuZXdlciB0ZXh0IGNvbW1pdHRlZCBieSBhbm90aGVyIHRhYi4iLAogICAgInVwZGF0ZWRBdCI6IDE3OTE5Mjc5NjE5NjYsCiAgICAiY2xvdWRTdGF0dXMiOiAibG9jYWwiLAogICAgImxvY2FsUmV2aXNpb24iOiB7CiAgICAgICJjbG9jayI6IDE3OTE5Mjc5NjE5NjYsCiAgICAgICJhY3RvciI6ICIxYmIwYjFiMy0zOTU1LTRkNzEtOGM1ZS01MWQxOGIxZDc0OWUiCiAgICB9CiAgfSwKICAicGVuZGluZ0RyYWZ0IjogbnVsbAp9"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a34a33a794423052296a-79013ded4f28821a5cf3",
+          "file": "observed-save.spec.ts",
+          "line": 81,
+          "column": 5
+        },
+        {
+          "title": "observing a newer remote edit explains why a failed pending draft disappeared",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 7947,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Updated from another tab', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"soft toBeVisible\" getByText('Updated from another tab', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Updated from another tab', { exact: true })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Updated from another tab', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"soft toBeVisible\" getByText('Updated from another tab', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Updated from another tab', { exact: true })\u001b[22m\n\n    at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/observed-save.spec.ts:58:34",
+                    "location": {
+                      "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/observed-save.spec.ts",
+                      "column": 34,
+                      "line": 58
+                    },
+                    "snippet": "  56 |     await page.evaluate(() => new Promise<void>((resolve) => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))));\n  57 |     if (!sameContent) {\n> 58 |       await expect.soft(updated).toBeVisible();\n     |                                  ^\n  59 |     } else {\n  60 |       await expect(updated).not.toBeVisible();\n  61 |     }"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/observed-save.spec.ts",
+                        "column": 34,
+                        "line": 58
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Updated from another tab', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"soft toBeVisible\" getByText('Updated from another tab', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Updated from another tab', { exact: true })\u001b[22m\n\n\n  56 |     await page.evaluate(() => new Promise<void>((resolve) => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))));\n  57 |     if (!sameContent) {\n> 58 |       await expect.soft(updated).toBeVisible();\n     |                                  ^\n  59 |     } else {\n  60 |       await expect(updated).not.toBeVisible();\n  61 |     }\n    at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/observed-save.spec.ts:58:34"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T21:46:03.453Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "failed-local-draft-before-remote-update",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-mobile-webkit/attachments/failed-local-draft-before-remote-update-e5d5e65d1087b7c7aa861d0c3decffd5b38b8a9c.png"
+                    },
+                    {
+                      "name": "observed-remote-save-result",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-mobile-webkit/attachments/observed-remote-save-result-805ba683fba8b140ed8ce00cabbab488a1dc8aab.png"
+                    },
+                    {
+                      "name": "observed-save.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJzYW1lQ29udGVudCI6IGZhbHNlLAogICJwZW5kaW5nQmVmb3JlIjogewogICAgImlkIjogImh1S2M2Ukd4RjAiLAogICAgImNvbnRlbnQiOiAiVGhlIGxvY2FsIGRyYWZ0IHRoYXQgaGFzIG5vdCBiZWVuIHNhdmVkIHlldC4iLAogICAgInVwZGF0ZWRBdCI6IDE3OTE5Mjc5NjQ1NDYsCiAgICAibG9jYWxSZXZpc2lvbiI6IHsKICAgICAgImNsb2NrIjogMTc5MTkyNzk2NDU0NiwKICAgICAgImFjdG9yIjogImQ3MzhhM2U3LTFjMTktNGRkMy05YjkyLTRiZTExNjU3YTYwNyIKICAgIH0KICB9LAogICJwZW5kaW5nQWZ0ZXIiOiBudWxsLAogICJzdG9yZWRBZnRlciI6IHsKICAgICJpZCI6ICJodUtjNlJHeEYwIiwKICAgICJjb250ZW50IjogIlRoZSBuZXdlciB0ZXh0IGNvbW1pdHRlZCBieSBhbm90aGVyIHRhYi4iLAogICAgInVwZGF0ZWRBdCI6IDE3OTE5Mjc5NjQ5MjksCiAgICAiY2xvdWRTdGF0dXMiOiAibG9jYWwiLAogICAgImxvY2FsUmV2aXNpb24iOiB7CiAgICAgICJjbG9jayI6IDE3OTE5Mjc5NjQ5MjksCiAgICAgICJhY3RvciI6ICJiMjBiZTdiZC1mNGI1LTQyYTctYmJlOS05YjEzZmQ1ODFlOTgiCiAgICB9CiAgfSwKICAiZWRpdG9yQ29udGVudCI6ICJUaGUgbmV3ZXIgdGV4dCBjb21taXR0ZWQgYnkgYW5vdGhlciB0YWIuIiwKICAiZmFpbHVyZVZpc2libGUiOiBmYWxzZSwKICAidXBkYXRlZFZpc2libGUiOiBmYWxzZSwKICAic3VjY2Vzc1Zpc2libGUiOiBmYWxzZQp9"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-mobile-webkit/test-failed-1.png"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-mobile-webkit/test-failed-2.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-mobile-webkit/video.webm"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-mobile-webkit/video-1.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-mobile-webkit/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-mobile-webkit/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/observed-save.spec.ts",
+                    "column": 34,
+                    "line": 58
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "a34a33a794423052296a-fb7ae3945f9e157d88f5",
+          "file": "observed-save.spec.ts",
+          "line": 29,
+          "column": 7
+        },
+        {
+          "title": "observing the same pending text saved by another tab stays quiet",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1550,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T21:46:12.109Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "failed-local-draft-before-remote-update",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/observed-save/before/test-results/observed-save-observing-th-99462--by-another-tab-stays-quiet-mobile-webkit/attachments/failed-local-draft-before-remote-update-4ca87575507d9ba4f22956a80926d98d42d24450.png"
+                    },
+                    {
+                      "name": "observed-remote-save-result",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/observed-save/before/test-results/observed-save-observing-th-99462--by-another-tab-stays-quiet-mobile-webkit/attachments/observed-remote-save-result-2c736a0892f2db252fc84a2f49ec85e89b22ec50.png"
+                    },
+                    {
+                      "name": "observed-save.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJzYW1lQ29udGVudCI6IHRydWUsCiAgInBlbmRpbmdCZWZvcmUiOiB7CiAgICAiaWQiOiAiZ2tPMFpWejNXdSIsCiAgICAiY29udGVudCI6ICJUaGUgbG9jYWwgZHJhZnQgdGhhdCBoYXMgbm90IGJlZW4gc2F2ZWQgeWV0LiIsCiAgICAidXBkYXRlZEF0IjogMTc5MTkyNzk3MzE3NywKICAgICJsb2NhbFJldmlzaW9uIjogewogICAgICAiY2xvY2siOiAxNzkxOTI3OTczMTc3LAogICAgICAiYWN0b3IiOiAiNWE4ZDgyNzktYmE5Yi00MTM5LTlmOTMtMTQzNzdmNTQ0NjlmIgogICAgfQogIH0sCiAgInBlbmRpbmdBZnRlciI6IG51bGwsCiAgInN0b3JlZEFmdGVyIjogewogICAgImlkIjogImdrTzBaVnozV3UiLAogICAgImNvbnRlbnQiOiAiVGhlIGxvY2FsIGRyYWZ0IHRoYXQgaGFzIG5vdCBiZWVuIHNhdmVkIHlldC4iLAogICAgInVwZGF0ZWRBdCI6IDE3OTE5Mjc5NzM1MzYsCiAgICAiY2xvdWRTdGF0dXMiOiAibG9jYWwiLAogICAgImxvY2FsUmV2aXNpb24iOiB7CiAgICAgICJjbG9jayI6IDE3OTE5Mjc5NzM1MzYsCiAgICAgICJhY3RvciI6ICIyZjVkMWQ1NS1hZjNhLTRhZWUtYTVkMi1hMTIzNDgxMjRkNmEiCiAgICB9CiAgfSwKICAiZWRpdG9yQ29udGVudCI6ICJUaGUgbG9jYWwgZHJhZnQgdGhhdCBoYXMgbm90IGJlZW4gc2F2ZWQgeWV0LiIsCiAgImZhaWx1cmVWaXNpYmxlIjogZmFsc2UsCiAgInVwZGF0ZWRWaXNpYmxlIjogZmFsc2UsCiAgInN1Y2Nlc3NWaXNpYmxlIjogZmFsc2UKfQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a34a33a794423052296a-6003cbb48c2bae6ce813",
+          "file": "observed-save.spec.ts",
+          "line": 29,
+          "column": 7
+        },
+        {
+          "title": "ordinary remote edits without a pending local draft stay quiet",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2641,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T21:46:13.865Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "ordinary-remote-edit-stays-quiet",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/observed-save/before/test-results/observed-save-ordinary-rem-ee034-ding-local-draft-stay-quiet-mobile-webkit/attachments/ordinary-remote-edit-stays-quiet-0a80a069de790f0761b7b43706a0d743dc8e58de.png"
+                    },
+                    {
+                      "name": "ordinary-remote-edit.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJlZGl0b3JDb250ZW50IjogIlRoZSBuZXdlciB0ZXh0IGNvbW1pdHRlZCBieSBhbm90aGVyIHRhYi4iLAogICJzdG9yZWRBZnRlciI6IHsKICAgICJpZCI6ICJSbTFqWm5wVDFQIiwKICAgICJjb250ZW50IjogIlRoZSBuZXdlciB0ZXh0IGNvbW1pdHRlZCBieSBhbm90aGVyIHRhYi4iLAogICAgInVwZGF0ZWRBdCI6IDE3OTE5Mjc5NzQ5MjIsCiAgICAiY2xvdWRTdGF0dXMiOiAibG9jYWwiLAogICAgImxvY2FsUmV2aXNpb24iOiB7CiAgICAgICJjbG9jayI6IDE3OTE5Mjc5NzQ5MjIsCiAgICAgICJhY3RvciI6ICI4ZGQ0OTYzZi0xODU3LTQ0ZWYtOGJlYi1iMGEwYTA2YzExN2MiCiAgICB9CiAgfSwKICAicGVuZGluZ0RyYWZ0IjogbnVsbAp9"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a34a33a794423052296a-db285319d3d5f1d4d3c4",
+          "file": "observed-save.spec.ts",
+          "line": 81,
+          "column": 5
+        },
+        {
+          "title": "observing a newer remote edit explains why a failed pending draft disappeared",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 7974,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Updated from another tab', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"soft toBeVisible\" getByText('Updated from another tab', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Updated from another tab', { exact: true })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Updated from another tab', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"soft toBeVisible\" getByText('Updated from another tab', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Updated from another tab', { exact: true })\u001b[22m\n\n    at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/observed-save.spec.ts:58:34",
+                    "location": {
+                      "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/observed-save.spec.ts",
+                      "column": 34,
+                      "line": 58
+                    },
+                    "snippet": "  56 |     await page.evaluate(() => new Promise<void>((resolve) => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))));\n  57 |     if (!sameContent) {\n> 58 |       await expect.soft(updated).toBeVisible();\n     |                                  ^\n  59 |     } else {\n  60 |       await expect(updated).not.toBeVisible();\n  61 |     }"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/observed-save.spec.ts",
+                        "column": 34,
+                        "line": 58
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Updated from another tab', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"soft toBeVisible\" getByText('Updated from another tab', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Updated from another tab', { exact: true })\u001b[22m\n\n\n  56 |     await page.evaluate(() => new Promise<void>((resolve) => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))));\n  57 |     if (!sameContent) {\n> 58 |       await expect.soft(updated).toBeVisible();\n     |                                  ^\n  59 |     } else {\n  60 |       await expect(updated).not.toBeVisible();\n  61 |     }\n    at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/observed-save.spec.ts:58:34"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T21:46:16.910Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "failed-local-draft-before-remote-update",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-mobile-webkit-repeat1/attachments/failed-local-draft-before-remote-update-78a7e58b13b2092b5533bb922f3015752f3fb873.png"
+                    },
+                    {
+                      "name": "observed-remote-save-result",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-mobile-webkit-repeat1/attachments/observed-remote-save-result-1cad70e1dc799031111c061371918fa183c88dfc.png"
+                    },
+                    {
+                      "name": "observed-save.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJzYW1lQ29udGVudCI6IGZhbHNlLAogICJwZW5kaW5nQmVmb3JlIjogewogICAgImlkIjogIkhsUzlHaFc1SmsiLAogICAgImNvbnRlbnQiOiAiVGhlIGxvY2FsIGRyYWZ0IHRoYXQgaGFzIG5vdCBiZWVuIHNhdmVkIHlldC4iLAogICAgInVwZGF0ZWRBdCI6IDE3OTE5Mjc5NzgwMTksCiAgICAibG9jYWxSZXZpc2lvbiI6IHsKICAgICAgImNsb2NrIjogMTc5MTkyNzk3ODAxOSwKICAgICAgImFjdG9yIjogImEzZjVlOWIxLWNhYjgtNGI5Yi05N2FiLTc4YTM4NWM3NGJiMSIKICAgIH0KICB9LAogICJwZW5kaW5nQWZ0ZXIiOiBudWxsLAogICJzdG9yZWRBZnRlciI6IHsKICAgICJpZCI6ICJIbFM5R2hXNUprIiwKICAgICJjb250ZW50IjogIlRoZSBuZXdlciB0ZXh0IGNvbW1pdHRlZCBieSBhbm90aGVyIHRhYi4iLAogICAgInVwZGF0ZWRBdCI6IDE3OTE5Mjc5NzgzODQsCiAgICAiY2xvdWRTdGF0dXMiOiAibG9jYWwiLAogICAgImxvY2FsUmV2aXNpb24iOiB7CiAgICAgICJjbG9jayI6IDE3OTE5Mjc5NzgzODQsCiAgICAgICJhY3RvciI6ICJiYjM2MjIxYy03YjViLTQ4ZjctOTU5OC04OWQ4NjVhMTc4ZDUiCiAgICB9CiAgfSwKICAiZWRpdG9yQ29udGVudCI6ICJUaGUgbmV3ZXIgdGV4dCBjb21taXR0ZWQgYnkgYW5vdGhlciB0YWIuIiwKICAiZmFpbHVyZVZpc2libGUiOiBmYWxzZSwKICAidXBkYXRlZFZpc2libGUiOiBmYWxzZSwKICAic3VjY2Vzc1Zpc2libGUiOiBmYWxzZQp9"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-mobile-webkit-repeat1/test-failed-1.png"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-mobile-webkit-repeat1/test-failed-2.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-mobile-webkit-repeat1/video-1.webm"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-mobile-webkit-repeat1/video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-mobile-webkit-repeat1/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/observed-save/before/test-results/observed-save-observing-a--0f2a5-d-pending-draft-disappeared-mobile-webkit-repeat1/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/observed-save.spec.ts",
+                    "column": 34,
+                    "line": 58
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "a34a33a794423052296a-fd0e448a65cd3fdb7e40",
+          "file": "observed-save.spec.ts",
+          "line": 29,
+          "column": 7
+        },
+        {
+          "title": "observing the same pending text saved by another tab stays quiet",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1543,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T21:46:25.560Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "failed-local-draft-before-remote-update",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/observed-save/before/test-results/observed-save-observing-th-99462--by-another-tab-stays-quiet-mobile-webkit-repeat1/attachments/failed-local-draft-before-remote-update-7c2880ab08f47a84788d8ebca23c442b2f5aff03.png"
+                    },
+                    {
+                      "name": "observed-remote-save-result",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/observed-save/before/test-results/observed-save-observing-th-99462--by-another-tab-stays-quiet-mobile-webkit-repeat1/attachments/observed-remote-save-result-19847518f353c06037656fa0af4d8a0a6561d745.png"
+                    },
+                    {
+                      "name": "observed-save.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJzYW1lQ29udGVudCI6IHRydWUsCiAgInBlbmRpbmdCZWZvcmUiOiB7CiAgICAiaWQiOiAic0tNM3JDb1JZayIsCiAgICAiY29udGVudCI6ICJUaGUgbG9jYWwgZHJhZnQgdGhhdCBoYXMgbm90IGJlZW4gc2F2ZWQgeWV0LiIsCiAgICAidXBkYXRlZEF0IjogMTc5MTkyNzk4NjYxNywKICAgICJsb2NhbFJldmlzaW9uIjogewogICAgICAiY2xvY2siOiAxNzkxOTI3OTg2NjE3LAogICAgICAiYWN0b3IiOiAiOWFhYTJhMGYtYzlhMC00ZjBhLWFkMjItNzAxM2Y3N2JiNzI2IgogICAgfQogIH0sCiAgInBlbmRpbmdBZnRlciI6IG51bGwsCiAgInN0b3JlZEFmdGVyIjogewogICAgImlkIjogInNLTTNyQ29SWWsiLAogICAgImNvbnRlbnQiOiAiVGhlIGxvY2FsIGRyYWZ0IHRoYXQgaGFzIG5vdCBiZWVuIHNhdmVkIHlldC4iLAogICAgInVwZGF0ZWRBdCI6IDE3OTE5Mjc5ODY5ODEsCiAgICAiY2xvdWRTdGF0dXMiOiAibG9jYWwiLAogICAgImxvY2FsUmV2aXNpb24iOiB7CiAgICAgICJjbG9jayI6IDE3OTE5Mjc5ODY5ODEsCiAgICAgICJhY3RvciI6ICI1NWZlOWRkYi1mNzAxLTRlZDYtYjYyNi03ZDE4ZjAzODhkMzMiCiAgICB9CiAgfSwKICAiZWRpdG9yQ29udGVudCI6ICJUaGUgbG9jYWwgZHJhZnQgdGhhdCBoYXMgbm90IGJlZW4gc2F2ZWQgeWV0LiIsCiAgImZhaWx1cmVWaXNpYmxlIjogZmFsc2UsCiAgInVwZGF0ZWRWaXNpYmxlIjogZmFsc2UsCiAgInN1Y2Nlc3NWaXNpYmxlIjogZmFsc2UKfQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a34a33a794423052296a-d03ea2c02b65217cd470",
+          "file": "observed-save.spec.ts",
+          "line": 29,
+          "column": 7
+        },
+        {
+          "title": "ordinary remote edits without a pending local draft stay quiet",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2618,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T21:46:27.306Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "ordinary-remote-edit-stays-quiet",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/observed-save/before/test-results/observed-save-ordinary-rem-ee034-ding-local-draft-stay-quiet-mobile-webkit-repeat1/attachments/ordinary-remote-edit-stays-quiet-aa2d69f529f6ed101c3fac87acbe5160aeda3acd.png"
+                    },
+                    {
+                      "name": "ordinary-remote-edit.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJlZGl0b3JDb250ZW50IjogIlRoZSBuZXdlciB0ZXh0IGNvbW1pdHRlZCBieSBhbm90aGVyIHRhYi4iLAogICJzdG9yZWRBZnRlciI6IHsKICAgICJpZCI6ICJxU2hDMWc5U3pYIiwKICAgICJjb250ZW50IjogIlRoZSBuZXdlciB0ZXh0IGNvbW1pdHRlZCBieSBhbm90aGVyIHRhYi4iLAogICAgInVwZGF0ZWRBdCI6IDE3OTE5Mjc5ODgzNDYsCiAgICAiY2xvdWRTdGF0dXMiOiAibG9jYWwiLAogICAgImxvY2FsUmV2aXNpb24iOiB7CiAgICAgICJjbG9jayI6IDE3OTE5Mjc5ODgzNDYsCiAgICAgICJhY3RvciI6ICI4NzY5ZDc4Yy0wOTlkLTRjN2YtOTI0Zi0zOTc0ZGVjOWY0MjUiCiAgICB9CiAgfSwKICAicGVuZGluZ0RyYWZ0IjogbnVsbAp9"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a34a33a794423052296a-67d880b3f4ecdc4fe4c7",
+          "file": "observed-save.spec.ts",
+          "line": 81,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-13T21:45:40.049Z",
+    "duration": 49907.837999999996,
+    "expected": 8,
+    "skipped": 0,
+    "unexpected": 4,
+    "flaky": 0
+  }
+}

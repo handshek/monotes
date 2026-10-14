@@ -1,0 +1,131 @@
+{
+  "files": [
+    {
+      "path": "scripts/benchmark-notes.ts",
+      "bytes": 12518
+    },
+    {
+      "path": ".audit/overnight/perf-review/README.md",
+      "bytes": 8074
+    },
+    {
+      "path": ".audit/overnight/perf-review/analyze.py",
+      "bytes": 4108
+    },
+    {
+      "path": ".audit/overnight/perf-review/baseline-1-active.cpuprofile",
+      "bytes": 444386
+    },
+    {
+      "path": ".audit/overnight/perf-review/baseline-1-idle.cpuprofile",
+      "bytes": 114748
+    },
+    {
+      "path": ".audit/overnight/perf-review/baseline-build.log",
+      "bytes": 2708
+    },
+    {
+      "path": ".audit/overnight/perf-review/baseline-server.log",
+      "bytes": 315
+    },
+    {
+      "path": ".audit/overnight/perf-review/bounded-preview/README.md",
+      "bytes": 5639
+    },
+    {
+      "path": ".audit/overnight/perf-review/bounded-preview/analysis.log",
+      "bytes": 5454
+    },
+    {
+      "path": ".audit/overnight/perf-review/bounded-preview/baseline-1-active.cpuprofile",
+      "bytes": 465253
+    },
+    {
+      "path": ".audit/overnight/perf-review/bounded-preview/baseline-1-idle.cpuprofile",
+      "bytes": 290332
+    },
+    {
+      "path": ".audit/overnight/perf-review/bounded-preview/build.log",
+      "bytes": 2708
+    },
+    {
+      "path": ".audit/overnight/perf-review/bounded-preview/current-1-active.cpuprofile",
+      "bytes": 459640
+    },
+    {
+      "path": ".audit/overnight/perf-review/bounded-preview/current-1-idle.cpuprofile",
+      "bytes": 297131
+    },
+    {
+      "path": ".audit/overnight/perf-review/bounded-preview/diagnostic.json",
+      "bytes": 5695
+    },
+    {
+      "path": ".audit/overnight/perf-review/bounded-preview/diagnostic.log",
+      "bytes": 2608
+    },
+    {
+      "path": ".audit/overnight/perf-review/bounded-preview/profile-summary.json",
+      "bytes": 15852
+    },
+    {
+      "path": ".audit/overnight/perf-review/bounded-preview/server.log",
+      "bytes": 315
+    },
+    {
+      "path": ".audit/overnight/perf-review/bounded-preview/summary.json",
+      "bytes": 1331
+    },
+    {
+      "path": ".audit/overnight/perf-review/bounded-preview/timing.json",
+      "bytes": 22859
+    },
+    {
+      "path": ".audit/overnight/perf-review/bounded-preview/timing.log",
+      "bytes": 12463
+    },
+    {
+      "path": ".audit/overnight/perf-review/current-1-active.cpuprofile",
+      "bytes": 518853
+    },
+    {
+      "path": ".audit/overnight/perf-review/current-1-idle.cpuprofile",
+      "bytes": 298176
+    },
+    {
+      "path": ".audit/overnight/perf-review/current-build.log",
+      "bytes": 2708
+    },
+    {
+      "path": ".audit/overnight/perf-review/current-server.log",
+      "bytes": 315
+    },
+    {
+      "path": ".audit/overnight/perf-review/diagnostic.json",
+      "bytes": 5363
+    },
+    {
+      "path": ".audit/overnight/perf-review/diagnostic.log",
+      "bytes": 2436
+    },
+    {
+      "path": ".audit/overnight/perf-review/profile-summary.json",
+      "bytes": 14961
+    },
+    {
+      "path": ".audit/overnight/perf-review/summary.json",
+      "bytes": 1312
+    },
+    {
+      "path": ".audit/overnight/perf-review/timing.json",
+      "bytes": 21378
+    },
+    {
+      "path": ".audit/overnight/perf-review/timing.log",
+      "bytes": 11457
+    }
+  ],
+  "totalBytes": 3051096,
+  "exclusions": "Root-owned preview-before browser artifacts and harness-lint log are not this subagent contribution.",
+  "note": "Final byte counts include root updates to the replay output default, documentation, and whitespace normalization of logs."
+}

@@ -1,0 +1,888 @@
+{
+  "config": {
+    "argv": [
+      "/Users/abhi/.hermes/node/bin/node",
+      "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/node_modules/.bin/playwright",
+      "test",
+      "tests/persistence.spec.ts",
+      "--grep",
+      "an older session draft",
+      "--repeat-each=2"
+    ],
+    "configFile": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/playwright.config.ts",
+    "rootDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/recovery-notice/before/test-results",
+        "repeatEach": 2,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop-chromium",
+        "name": "desktop-chromium",
+        "testDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests",
+        "testIgnore": [
+          "**/mobile.spec.ts"
+        ],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/recovery-notice/before/test-results",
+        "repeatEach": 2,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile-webkit",
+        "name": "mobile-webkit",
+        "testDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/recovery-notice/before/test-results",
+        "repeatEach": 2,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "desktop-chromium",
+        "testDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests",
+        "snapshotDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests",
+        "testIgnore": "**/mobile.spec.ts",
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 30000,
+        "use": {
+          "baseURL": "http://127.0.0.1:3107",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "video": "retain-on-failure",
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.8078.4 Safari/537.36",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          },
+          "screen": {
+            "width": 1920,
+            "height": 1080
+          },
+          "deviceScaleFactor": 1,
+          "isMobile": false,
+          "hasTouch": false,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "desktop-chromium"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/recovery-notice/before/test-results",
+        "repeatEach": 2,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "mobile-webkit",
+        "testDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests",
+        "snapshotDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 30000,
+        "use": {
+          "baseURL": "http://127.0.0.1:3107",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "video": "retain-on-failure",
+          "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.2 Mobile/15E148 Safari/604.1",
+          "viewport": {
+            "width": 390,
+            "height": 664
+          },
+          "screen": {
+            "width": 390,
+            "height": 844
+          },
+          "deviceScaleFactor": 3,
+          "isMobile": true,
+          "hasTouch": true,
+          "defaultBrowserType": "webkit"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "mobile-webkit"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": ".audit/overnight/recovery-notice/before/report.json"
+        }
+      ],
+      [
+        "html",
+        {
+          "outputFolder": ".audit/overnight/recovery-notice/before/html",
+          "open": "never"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "persistence.spec.ts",
+      "file": "persistence.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "an older session draft cannot replace a newer edit committed by another tab",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 6007,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Updated from another tab', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"soft toBeVisible\" getByText('Updated from another tab', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Updated from another tab', { exact: true })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Updated from another tab', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"soft toBeVisible\" getByText('Updated from another tab', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Updated from another tab', { exact: true })\u001b[22m\n\n    at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/persistence.spec.ts:95:35",
+                    "location": {
+                      "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/persistence.spec.ts",
+                      "column": 35,
+                      "line": 95
+                    },
+                    "snippet": "  93 |   const updated = page.getByText(\"Updated from another tab\", { exact: true });\n  94 |   if (sameContent) await expect(updated).not.toBeVisible();\n> 95 |   else await expect.soft(updated).toBeVisible();\n     |                                   ^\n  96 |   await capture(page, testInfo, \"newer-committed-edit-preserved\");\n  97 | });\n  98 | }"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/persistence.spec.ts",
+                        "column": 35,
+                        "line": 95
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Updated from another tab', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"soft toBeVisible\" getByText('Updated from another tab', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Updated from another tab', { exact: true })\u001b[22m\n\n\n  93 |   const updated = page.getByText(\"Updated from another tab\", { exact: true });\n  94 |   if (sameContent) await expect(updated).not.toBeVisible();\n> 95 |   else await expect.soft(updated).toBeVisible();\n     |                                   ^\n  96 |   await capture(page, testInfo, \"newer-committed-edit-preserved\");\n  97 | });\n  98 | }\n    at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/persistence.spec.ts:95:35"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T21:59:51.055Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "newer-committed-edit-preserved",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-desktop-chromium/attachments/newer-committed-edit-preserved-21ec3603b361fac18d3c73d2ea5d67a3c55aa6c2.png"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-desktop-chromium/test-failed-2.png"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-desktop-chromium/test-failed-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-desktop-chromium/video-1.webm"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-desktop-chromium/video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-desktop-chromium/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-desktop-chromium/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/persistence.spec.ts",
+                    "column": 35,
+                    "line": 95
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "a5ef73a4e2a1baaea746-dfa8d40b487efc49b0ff",
+          "file": "persistence.spec.ts",
+          "line": 69,
+          "column": 7
+        },
+        {
+          "title": "an older session draft with already-saved content stays quiet",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 851,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T21:59:57.330Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "newer-committed-edit-preserved",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-241ef-y-saved-content-stays-quiet-desktop-chromium/attachments/newer-committed-edit-preserved-03fd2307b3d575f4ba5714c4880c5f280d4e4972.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a5ef73a4e2a1baaea746-80dd33028cc2658a8dc2",
+          "file": "persistence.spec.ts",
+          "line": 69,
+          "column": 7
+        },
+        {
+          "title": "an older session draft cannot resurrect a note deleted in another tab",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1000,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T21:59:58.246Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "deleted-note-stays-deleted",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-eb9b0-note-deleted-in-another-tab-desktop-chromium/attachments/deleted-note-stays-deleted-6fc49e18891272c1dc27c867e588e96dc55a046a.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a5ef73a4e2a1baaea746-82ceb4de6ef9f0f91ee9",
+          "file": "persistence.spec.ts",
+          "line": 100,
+          "column": 5
+        },
+        {
+          "title": "an older session draft cannot replace a newer edit committed by another tab",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 5919,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Updated from another tab', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"soft toBeVisible\" getByText('Updated from another tab', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Updated from another tab', { exact: true })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Updated from another tab', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"soft toBeVisible\" getByText('Updated from another tab', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Updated from another tab', { exact: true })\u001b[22m\n\n    at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/persistence.spec.ts:95:35",
+                    "location": {
+                      "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/persistence.spec.ts",
+                      "column": 35,
+                      "line": 95
+                    },
+                    "snippet": "  93 |   const updated = page.getByText(\"Updated from another tab\", { exact: true });\n  94 |   if (sameContent) await expect(updated).not.toBeVisible();\n> 95 |   else await expect.soft(updated).toBeVisible();\n     |                                   ^\n  96 |   await capture(page, testInfo, \"newer-committed-edit-preserved\");\n  97 | });\n  98 | }"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/persistence.spec.ts",
+                        "column": 35,
+                        "line": 95
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Updated from another tab', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"soft toBeVisible\" getByText('Updated from another tab', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Updated from another tab', { exact: true })\u001b[22m\n\n\n  93 |   const updated = page.getByText(\"Updated from another tab\", { exact: true });\n  94 |   if (sameContent) await expect(updated).not.toBeVisible();\n> 95 |   else await expect.soft(updated).toBeVisible();\n     |                                   ^\n  96 |   await capture(page, testInfo, \"newer-committed-edit-preserved\");\n  97 | });\n  98 | }\n    at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/persistence.spec.ts:95:35"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T21:59:59.409Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "newer-committed-edit-preserved",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-desktop-chromium-repeat1/attachments/newer-committed-edit-preserved-d4d8a923ba7ee0663367d7e64ba370752d07a4cf.png"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-desktop-chromium-repeat1/test-failed-2.png"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-desktop-chromium-repeat1/test-failed-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-desktop-chromium-repeat1/video-1.webm"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-desktop-chromium-repeat1/video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-desktop-chromium-repeat1/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-desktop-chromium-repeat1/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/persistence.spec.ts",
+                    "column": 35,
+                    "line": 95
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "a5ef73a4e2a1baaea746-fe3281c552095c833e4c",
+          "file": "persistence.spec.ts",
+          "line": 69,
+          "column": 7
+        },
+        {
+          "title": "an older session draft with already-saved content stays quiet",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 874,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:00:05.589Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "newer-committed-edit-preserved",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-241ef-y-saved-content-stays-quiet-desktop-chromium-repeat1/attachments/newer-committed-edit-preserved-9eef01de13f6ba76e04a01b3f6255f0186f264ca.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a5ef73a4e2a1baaea746-58a47b55da332b61c916",
+          "file": "persistence.spec.ts",
+          "line": 69,
+          "column": 7
+        },
+        {
+          "title": "an older session draft cannot resurrect a note deleted in another tab",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 973,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:00:06.528Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "deleted-note-stays-deleted",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-eb9b0-note-deleted-in-another-tab-desktop-chromium-repeat1/attachments/deleted-note-stays-deleted-bd0e2902fdb376d312b894e82637fc3001cdb5e6.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a5ef73a4e2a1baaea746-b780af04232809c24fad",
+          "file": "persistence.spec.ts",
+          "line": 100,
+          "column": 5
+        },
+        {
+          "title": "an older session draft cannot replace a newer edit committed by another tab",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 6175,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Updated from another tab', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"soft toBeVisible\" getByText('Updated from another tab', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Updated from another tab', { exact: true })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Updated from another tab', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"soft toBeVisible\" getByText('Updated from another tab', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Updated from another tab', { exact: true })\u001b[22m\n\n    at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/persistence.spec.ts:95:35",
+                    "location": {
+                      "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/persistence.spec.ts",
+                      "column": 35,
+                      "line": 95
+                    },
+                    "snippet": "  93 |   const updated = page.getByText(\"Updated from another tab\", { exact: true });\n  94 |   if (sameContent) await expect(updated).not.toBeVisible();\n> 95 |   else await expect.soft(updated).toBeVisible();\n     |                                   ^\n  96 |   await capture(page, testInfo, \"newer-committed-edit-preserved\");\n  97 | });\n  98 | }"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/persistence.spec.ts",
+                        "column": 35,
+                        "line": 95
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Updated from another tab', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"soft toBeVisible\" getByText('Updated from another tab', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Updated from another tab', { exact: true })\u001b[22m\n\n\n  93 |   const updated = page.getByText(\"Updated from another tab\", { exact: true });\n  94 |   if (sameContent) await expect(updated).not.toBeVisible();\n> 95 |   else await expect.soft(updated).toBeVisible();\n     |                                   ^\n  96 |   await capture(page, testInfo, \"newer-committed-edit-preserved\");\n  97 | });\n  98 | }\n    at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/persistence.spec.ts:95:35"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:00:07.660Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "newer-committed-edit-preserved",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-mobile-webkit/attachments/newer-committed-edit-preserved-933752008c99d44ede9ceb99c57c52a70e70dc1c.png"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-mobile-webkit/test-failed-1.png"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-mobile-webkit/test-failed-2.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-mobile-webkit/video-1.webm"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-mobile-webkit/video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-mobile-webkit/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-mobile-webkit/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/persistence.spec.ts",
+                    "column": 35,
+                    "line": 95
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "a5ef73a4e2a1baaea746-1d97d4e6581408c48af1",
+          "file": "persistence.spec.ts",
+          "line": 69,
+          "column": 7
+        },
+        {
+          "title": "an older session draft with already-saved content stays quiet",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1125,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:00:14.163Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "newer-committed-edit-preserved",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-241ef-y-saved-content-stays-quiet-mobile-webkit/attachments/newer-committed-edit-preserved-7e49d26f04714628bc62eead6b29ac6d4ec0a1fb.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a5ef73a4e2a1baaea746-db0d84e2a9366e2f4fcd",
+          "file": "persistence.spec.ts",
+          "line": 69,
+          "column": 7
+        },
+        {
+          "title": "an older session draft cannot resurrect a note deleted in another tab",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2626,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:00:15.402Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "deleted-note-stays-deleted",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-eb9b0-note-deleted-in-another-tab-mobile-webkit/attachments/deleted-note-stays-deleted-eb770dc9d2333a822c47bf4fe6d8ef76ece654ad.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a5ef73a4e2a1baaea746-0aa3e954da924d6fbed3",
+          "file": "persistence.spec.ts",
+          "line": 100,
+          "column": 5
+        },
+        {
+          "title": "an older session draft cannot replace a newer edit committed by another tab",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 6200,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Updated from another tab', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"soft toBeVisible\" getByText('Updated from another tab', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Updated from another tab', { exact: true })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Updated from another tab', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"soft toBeVisible\" getByText('Updated from another tab', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Updated from another tab', { exact: true })\u001b[22m\n\n    at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/persistence.spec.ts:95:35",
+                    "location": {
+                      "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/persistence.spec.ts",
+                      "column": 35,
+                      "line": 95
+                    },
+                    "snippet": "  93 |   const updated = page.getByText(\"Updated from another tab\", { exact: true });\n  94 |   if (sameContent) await expect(updated).not.toBeVisible();\n> 95 |   else await expect.soft(updated).toBeVisible();\n     |                                   ^\n  96 |   await capture(page, testInfo, \"newer-committed-edit-preserved\");\n  97 | });\n  98 | }"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/persistence.spec.ts",
+                        "column": 35,
+                        "line": 95
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Updated from another tab', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"soft toBeVisible\" getByText('Updated from another tab', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Updated from another tab', { exact: true })\u001b[22m\n\n\n  93 |   const updated = page.getByText(\"Updated from another tab\", { exact: true });\n  94 |   if (sameContent) await expect(updated).not.toBeVisible();\n> 95 |   else await expect.soft(updated).toBeVisible();\n     |                                   ^\n  96 |   await capture(page, testInfo, \"newer-committed-edit-preserved\");\n  97 | });\n  98 | }\n    at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/persistence.spec.ts:95:35"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:00:18.193Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "newer-committed-edit-preserved",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-mobile-webkit-repeat1/attachments/newer-committed-edit-preserved-70350eabdd4b3b12b64a4792df2b01cfbeca6462.png"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-mobile-webkit-repeat1/test-failed-1.png"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-mobile-webkit-repeat1/test-failed-2.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-mobile-webkit-repeat1/video-1.webm"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-mobile-webkit-repeat1/video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-mobile-webkit-repeat1/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-mobile-webkit-repeat1/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/persistence.spec.ts",
+                    "column": 35,
+                    "line": 95
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "a5ef73a4e2a1baaea746-f17e09fce2e63b09f34d",
+          "file": "persistence.spec.ts",
+          "line": 69,
+          "column": 7
+        },
+        {
+          "title": "an older session draft with already-saved content stays quiet",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1151,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:00:24.724Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "newer-committed-edit-preserved",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-241ef-y-saved-content-stays-quiet-mobile-webkit-repeat1/attachments/newer-committed-edit-preserved-77a19758616195b7627f69aeab72684e6f138f8a.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a5ef73a4e2a1baaea746-d89ec4bd443f36b88d1d",
+          "file": "persistence.spec.ts",
+          "line": 69,
+          "column": 7
+        },
+        {
+          "title": "an older session draft cannot resurrect a note deleted in another tab",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2562,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-13T22:00:25.988Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "deleted-note-stays-deleted",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-eb9b0-note-deleted-in-another-tab-mobile-webkit-repeat1/attachments/deleted-note-stays-deleted-f3c96d171227effa0547dc9f545f7b8ac789eb3c.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a5ef73a4e2a1baaea746-0b661681c1044c2c8f73",
+          "file": "persistence.spec.ts",
+          "line": 100,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-13T21:59:50.863Z",
+    "duration": 37708.463,
+    "expected": 8,
+    "skipped": 0,
+    "unexpected": 4,
+    "flaky": 0
+  }
+}

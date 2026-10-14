@@ -1,0 +1,180 @@
+{
+  "stats": {
+    "startTime": "2026-10-13T21:50:09.759Z",
+    "duration": 36440.861000000004,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 4,
+    "flaky": 0
+  },
+  "observations": [
+    {
+      "project": "desktop-chromium",
+      "status": "failed",
+      "injection": {
+        "remoteClockOffsetMs": 60000,
+        "suppressedChannel": "x-storagemutated-1"
+      },
+      "storedBefore": {
+        "id": "lEqizQuYxx",
+        "content": "The logically newer edit already committed by another tab.",
+        "updatedAt": 1791928271579,
+        "cloudStatus": "local",
+        "localRevision": {
+          "clock": 1791928271579,
+          "actor": "911ef122-6492-421d-96c6-65cbcec73858"
+        }
+      },
+      "capturedDraft": {
+        "id": "lEqizQuYxx",
+        "content": "The stale tab's automatic draft must not disappear silently.",
+        "updatedAt": 1791928211643,
+        "localRevision": {
+          "clock": 1791928211643,
+          "actor": "65c4bea3-c861-46e4-a938-f529d83aa733"
+        }
+      },
+      "storedAfter": {
+        "id": "lEqizQuYxx",
+        "content": "The logically newer edit already committed by another tab.",
+        "updatedAt": 1791928271579,
+        "cloudStatus": "local",
+        "localRevision": {
+          "clock": 1791928271579,
+          "actor": "911ef122-6492-421d-96c6-65cbcec73858"
+        }
+      },
+      "editorContent": "The logically newer edit already committed by another tab.",
+      "pendingAfter": null,
+      "updatedVisible": false,
+      "successVisible": false,
+      "failureVisible": false
+    },
+    {
+      "project": "desktop-chromium",
+      "status": "failed",
+      "injection": {
+        "remoteClockOffsetMs": 60000,
+        "suppressedChannel": "x-storagemutated-1"
+      },
+      "storedBefore": {
+        "id": "4Or49bvKvd",
+        "content": "The logically newer edit already committed by another tab.",
+        "updatedAt": 1791928280018,
+        "cloudStatus": "local",
+        "localRevision": {
+          "clock": 1791928280018,
+          "actor": "6313a0f0-1461-436f-9f4d-1d41a46b8ffc"
+        }
+      },
+      "capturedDraft": {
+        "id": "4Or49bvKvd",
+        "content": "The stale tab's automatic draft must not disappear silently.",
+        "updatedAt": 1791928220089,
+        "localRevision": {
+          "clock": 1791928220089,
+          "actor": "17610570-e3d7-48f5-9aac-bb4161667bb2"
+        }
+      },
+      "storedAfter": {
+        "id": "4Or49bvKvd",
+        "content": "The logically newer edit already committed by another tab.",
+        "updatedAt": 1791928280018,
+        "cloudStatus": "local",
+        "localRevision": {
+          "clock": 1791928280018,
+          "actor": "6313a0f0-1461-436f-9f4d-1d41a46b8ffc"
+        }
+      },
+      "editorContent": "The logically newer edit already committed by another tab.",
+      "pendingAfter": null,
+      "updatedVisible": false,
+      "successVisible": false,
+      "failureVisible": false
+    },
+    {
+      "project": "mobile-webkit",
+      "status": "failed",
+      "injection": {
+        "remoteClockOffsetMs": 60000,
+        "suppressedChannel": "x-storagemutated-1"
+      },
+      "storedBefore": {
+        "id": "v22pVSz3e5",
+        "content": "The logically newer edit already committed by another tab.",
+        "updatedAt": 1791928289292,
+        "cloudStatus": "local",
+        "localRevision": {
+          "clock": 1791928289292,
+          "actor": "b066c140-862f-4bf5-b74a-01e524b9d110"
+        }
+      },
+      "capturedDraft": {
+        "id": "v22pVSz3e5",
+        "content": "The stale tab's automatic draft must not disappear silently.",
+        "updatedAt": 1791928229460,
+        "localRevision": {
+          "clock": 1791928229460,
+          "actor": "da30d35f-e99a-4db9-bce3-e181ddced9c7"
+        }
+      },
+      "storedAfter": {
+        "id": "v22pVSz3e5",
+        "content": "The logically newer edit already committed by another tab.",
+        "updatedAt": 1791928289292,
+        "cloudStatus": "local",
+        "localRevision": {
+          "clock": 1791928289292,
+          "actor": "b066c140-862f-4bf5-b74a-01e524b9d110"
+        }
+      },
+      "editorContent": "The logically newer edit already committed by another tab.",
+      "pendingAfter": null,
+      "updatedVisible": false,
+      "successVisible": false,
+      "failureVisible": false
+    },
+    {
+      "project": "mobile-webkit",
+      "status": "failed",
+      "injection": {
+        "remoteClockOffsetMs": 60000,
+        "suppressedChannel": "x-storagemutated-1"
+      },
+      "storedBefore": {
+        "id": "sDpYTsdvnO",
+        "content": "The logically newer edit already committed by another tab.",
+        "updatedAt": 1791928298747,
+        "cloudStatus": "local",
+        "localRevision": {
+          "clock": 1791928298747,
+          "actor": "d4aaf98a-20ab-4ce6-bfaa-76c183b29e9a"
+        }
+      },
+      "capturedDraft": {
+        "id": "sDpYTsdvnO",
+        "content": "The stale tab's automatic draft must not disappear silently.",
+        "updatedAt": 1791928238836,
+        "localRevision": {
+          "clock": 1791928238836,
+          "actor": "fd0c17d4-77a5-4e92-be59-99e4ca3eb412"
+        }
+      },
+      "storedAfter": {
+        "id": "sDpYTsdvnO",
+        "content": "The logically newer edit already committed by another tab.",
+        "updatedAt": 1791928298747,
+        "cloudStatus": "local",
+        "localRevision": {
+          "clock": 1791928298747,
+          "actor": "d4aaf98a-20ab-4ce6-bfaa-76c183b29e9a"
+        }
+      },
+      "editorContent": "The logically newer edit already committed by another tab.",
+      "pendingAfter": null,
+      "updatedVisible": false,
+      "successVisible": false,
+      "failureVisible": false
+    }
+  ]
+}

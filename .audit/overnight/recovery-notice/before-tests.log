@@ -1,0 +1,253 @@
+$ playwright test tests/persistence.spec.ts --grep "an older session draft" "--repeat-each=2"
+
+Running 12 tests using 1 worker
+
+(node:39086) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   1 [desktop-chromium] › tests/persistence.spec.ts:69:7 › an older session draft cannot replace a newer edit committed by another tab (6.0s)
+(node:39193) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   2 [desktop-chromium] › tests/persistence.spec.ts:69:7 › an older session draft with already-saved content stays quiet (851ms)
+  ✓   3 [desktop-chromium] › tests/persistence.spec.ts:100:5 › an older session draft cannot resurrect a note deleted in another tab (1.0s)
+(node:39212) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   4 [desktop-chromium] › tests/persistence.spec.ts:69:7 › an older session draft cannot replace a newer edit committed by another tab (5.9s)
+(node:39238) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   5 [desktop-chromium] › tests/persistence.spec.ts:69:7 › an older session draft with already-saved content stays quiet (874ms)
+  ✓   6 [desktop-chromium] › tests/persistence.spec.ts:100:5 › an older session draft cannot resurrect a note deleted in another tab (973ms)
+(node:39251) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   7 [mobile-webkit] › tests/persistence.spec.ts:69:7 › an older session draft cannot replace a newer edit committed by another tab (6.2s)
+(node:39287) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   8 [mobile-webkit] › tests/persistence.spec.ts:69:7 › an older session draft with already-saved content stays quiet (1.1s)
+  ✓   9 [mobile-webkit] › tests/persistence.spec.ts:100:5 › an older session draft cannot resurrect a note deleted in another tab (2.6s)
+(node:39435) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  10 [mobile-webkit] › tests/persistence.spec.ts:69:7 › an older session draft cannot replace a newer edit committed by another tab (6.2s)
+(node:39486) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  11 [mobile-webkit] › tests/persistence.spec.ts:69:7 › an older session draft with already-saved content stays quiet (1.2s)
+  ✓  12 [mobile-webkit] › tests/persistence.spec.ts:100:5 › an older session draft cannot resurrect a note deleted in another tab (2.6s)
+
+
+  1) [desktop-chromium] › tests/persistence.spec.ts:69:7 › an older session draft cannot replace a newer edit committed by another tab
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText('Updated from another tab', { exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "soft toBeVisible" getByText('Updated from another tab', { exact: true }) with timeout 5000ms
+      - waiting for getByText('Updated from another tab', { exact: true })
+
+
+      93 |   const updated = page.getByText("Updated from another tab", { exact: true });
+      94 |   if (sameContent) await expect(updated).not.toBeVisible();
+    > 95 |   else await expect.soft(updated).toBeVisible();
+         |                                   ^
+      96 |   await capture(page, testInfo, "newer-committed-edit-preserved");
+      97 | });
+      98 | }
+        at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/persistence.spec.ts:95:35
+
+    attachment #1: newer-committed-edit-preserved (image/png) ──────────────────────────────────────
+    .audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-desktop-chromium/attachments/newer-committed-edit-preserved-21ec3603b361fac18d3c73d2ea5d67a3c55aa6c2.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-desktop-chromium/test-failed-2.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #3: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-desktop-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #4: video (video/webm) ──────────────────────────────────────────────────────────────
+    .audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-desktop-chromium/video-1.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #5: video (video/webm) ──────────────────────────────────────────────────────────────
+    .audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-desktop-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-desktop-chromium/error-context.md
+
+    attachment #7: trace (application/zip) ─────────────────────────────────────────────────────────
+    .audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-desktop-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace .audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-desktop-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [desktop-chromium] › tests/persistence.spec.ts:69:7 › an older session draft cannot replace a newer edit committed by another tab
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText('Updated from another tab', { exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "soft toBeVisible" getByText('Updated from another tab', { exact: true }) with timeout 5000ms
+      - waiting for getByText('Updated from another tab', { exact: true })
+
+
+      93 |   const updated = page.getByText("Updated from another tab", { exact: true });
+      94 |   if (sameContent) await expect(updated).not.toBeVisible();
+    > 95 |   else await expect.soft(updated).toBeVisible();
+         |                                   ^
+      96 |   await capture(page, testInfo, "newer-committed-edit-preserved");
+      97 | });
+      98 | }
+        at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/persistence.spec.ts:95:35
+
+    attachment #1: newer-committed-edit-preserved (image/png) ──────────────────────────────────────
+    .audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-desktop-chromium-repeat1/attachments/newer-committed-edit-preserved-d4d8a923ba7ee0663367d7e64ba370752d07a4cf.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-desktop-chromium-repeat1/test-failed-2.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #3: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-desktop-chromium-repeat1/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #4: video (video/webm) ──────────────────────────────────────────────────────────────
+    .audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-desktop-chromium-repeat1/video-1.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #5: video (video/webm) ──────────────────────────────────────────────────────────────
+    .audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-desktop-chromium-repeat1/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-desktop-chromium-repeat1/error-context.md
+
+    attachment #7: trace (application/zip) ─────────────────────────────────────────────────────────
+    .audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-desktop-chromium-repeat1/trace.zip
+    Usage:
+
+        npx playwright show-trace .audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-desktop-chromium-repeat1/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [mobile-webkit] › tests/persistence.spec.ts:69:7 › an older session draft cannot replace a newer edit committed by another tab
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText('Updated from another tab', { exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "soft toBeVisible" getByText('Updated from another tab', { exact: true }) with timeout 5000ms
+      - waiting for getByText('Updated from another tab', { exact: true })
+
+
+      93 |   const updated = page.getByText("Updated from another tab", { exact: true });
+      94 |   if (sameContent) await expect(updated).not.toBeVisible();
+    > 95 |   else await expect.soft(updated).toBeVisible();
+         |                                   ^
+      96 |   await capture(page, testInfo, "newer-committed-edit-preserved");
+      97 | });
+      98 | }
+        at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/persistence.spec.ts:95:35
+
+    attachment #1: newer-committed-edit-preserved (image/png) ──────────────────────────────────────
+    .audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-mobile-webkit/attachments/newer-committed-edit-preserved-933752008c99d44ede9ceb99c57c52a70e70dc1c.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-mobile-webkit/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #3: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-mobile-webkit/test-failed-2.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #4: video (video/webm) ──────────────────────────────────────────────────────────────
+    .audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-mobile-webkit/video-1.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #5: video (video/webm) ──────────────────────────────────────────────────────────────
+    .audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-mobile-webkit/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-mobile-webkit/error-context.md
+
+    attachment #7: trace (application/zip) ─────────────────────────────────────────────────────────
+    .audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-mobile-webkit/trace.zip
+    Usage:
+
+        npx playwright show-trace .audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-mobile-webkit/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) [mobile-webkit] › tests/persistence.spec.ts:69:7 › an older session draft cannot replace a newer edit committed by another tab
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText('Updated from another tab', { exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "soft toBeVisible" getByText('Updated from another tab', { exact: true }) with timeout 5000ms
+      - waiting for getByText('Updated from another tab', { exact: true })
+
+
+      93 |   const updated = page.getByText("Updated from another tab", { exact: true });
+      94 |   if (sameContent) await expect(updated).not.toBeVisible();
+    > 95 |   else await expect.soft(updated).toBeVisible();
+         |                                   ^
+      96 |   await capture(page, testInfo, "newer-committed-edit-preserved");
+      97 | });
+      98 | }
+        at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/persistence.spec.ts:95:35
+
+    attachment #1: newer-committed-edit-preserved (image/png) ──────────────────────────────────────
+    .audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-mobile-webkit-repeat1/attachments/newer-committed-edit-preserved-70350eabdd4b3b12b64a4792df2b01cfbeca6462.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-mobile-webkit-repeat1/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #3: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-mobile-webkit-repeat1/test-failed-2.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #4: video (video/webm) ──────────────────────────────────────────────────────────────
+    .audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-mobile-webkit-repeat1/video-1.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #5: video (video/webm) ──────────────────────────────────────────────────────────────
+    .audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-mobile-webkit-repeat1/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-mobile-webkit-repeat1/error-context.md
+
+    attachment #7: trace (application/zip) ─────────────────────────────────────────────────────────
+    .audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-mobile-webkit-repeat1/trace.zip
+    Usage:
+
+        npx playwright show-trace .audit/overnight/recovery-notice/before/test-results/persistence-an-older-sessi-5b670-it-committed-by-another-tab-mobile-webkit-repeat1/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4 failed
+    [desktop-chromium] › tests/persistence.spec.ts:69:7 › an older session draft cannot replace a newer edit committed by another tab
+    [desktop-chromium] › tests/persistence.spec.ts:69:7 › an older session draft cannot replace a newer edit committed by another tab
+    [mobile-webkit] › tests/persistence.spec.ts:69:7 › an older session draft cannot replace a newer edit committed by another tab
+    [mobile-webkit] › tests/persistence.spec.ts:69:7 › an older session draft cannot replace a newer edit committed by another tab
+  8 passed (37.7s)
+error: script "test:e2e" exited with code 1

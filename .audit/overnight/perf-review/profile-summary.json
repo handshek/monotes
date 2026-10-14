@@ -1,0 +1,629 @@
+{
+  "baseline-1-active.cpuprofile": {
+    "durationMs": 12617.961,
+    "sampledMs": 12617.402,
+    "topSelf": [
+      {
+        "name": "(idle)",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "ms": 10950.8
+      },
+      {
+        "name": "(program)",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "ms": 960.07
+      },
+      {
+        "name": "(garbage collector)",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "ms": 43.83
+      },
+      {
+        "name": "mount",
+        "url": "http://127.0.0.1:3109/_next/static/chunks/863-5586ebef32bb114f.js",
+        "line": 1,
+        "column": 5013,
+        "ms": 30.02
+      },
+      {
+        "name": "mount",
+        "url": "http://127.0.0.1:3109/_next/static/chunks/863-5586ebef32bb114f.js",
+        "line": 1,
+        "column": 5013,
+        "ms": 28.97
+      },
+      {
+        "name": "",
+        "url": "http://127.0.0.1:3109/_next/static/chunks/305-3669ba175d790f06.js",
+        "line": 1,
+        "column": 301620,
+        "ms": 24.45
+      },
+      {
+        "name": "addEventListener",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "ms": 22.53
+      },
+      {
+        "name": "",
+        "url": "http://127.0.0.1:3109/_next/static/chunks/app/(notes)/%5Bid%5D/page-f12fc567f7c6a469.js",
+        "line": 1,
+        "column": 5100,
+        "ms": 18.82
+      },
+      {
+        "name": "parseInline",
+        "url": "http://127.0.0.1:3109/_next/static/chunks/305-3669ba175d790f06.js",
+        "line": 1,
+        "column": 46654,
+        "ms": 12.68
+      },
+      {
+        "name": "",
+        "url": "http://127.0.0.1:3109/_next/static/chunks/app/(notes)/%5Bid%5D/page-f12fc567f7c6a469.js",
+        "line": 1,
+        "column": 5100,
+        "ms": 11.36
+      },
+      {
+        "name": "",
+        "url": "http://127.0.0.1:3109/_next/static/chunks/5dbc21ff-c89d6d9c1c1085e3.js",
+        "line": 1,
+        "column": 94692,
+        "ms": 9.97
+      },
+      {
+        "name": "getBoundingClientRect",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "ms": 7.55
+      },
+      {
+        "name": "advance",
+        "url": "http://127.0.0.1:3109/_next/static/chunks/305-3669ba175d790f06.js",
+        "line": 1,
+        "column": 39331,
+        "ms": 7.45
+      },
+      {
+        "name": "",
+        "url": "http://127.0.0.1:3109/_next/static/chunks/5dbc21ff-c89d6d9c1c1085e3.js",
+        "line": 1,
+        "column": 142820,
+        "ms": 7.38
+      },
+      {
+        "name": "getClientRects",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "ms": 7.32
+      },
+      {
+        "name": "",
+        "url": "http://127.0.0.1:3109/_next/static/chunks/app/(notes)/%5Bid%5D/page-f12fc567f7c6a469.js",
+        "line": 1,
+        "column": 5100,
+        "ms": 6.39
+      },
+      {
+        "name": "parseInline",
+        "url": "http://127.0.0.1:3109/_next/static/chunks/305-3669ba175d790f06.js",
+        "line": 1,
+        "column": 46654,
+        "ms": 6.37
+      },
+      {
+        "name": "parseInline",
+        "url": "http://127.0.0.1:3109/_next/static/chunks/305-3669ba175d790f06.js",
+        "line": 1,
+        "column": 46654,
+        "ms": 6.36
+      },
+      {
+        "name": "parseInline",
+        "url": "http://127.0.0.1:3109/_next/static/chunks/305-3669ba175d790f06.js",
+        "line": 1,
+        "column": 46654,
+        "ms": 6.3
+      },
+      {
+        "name": "finishLeaf",
+        "url": "http://127.0.0.1:3109/_next/static/chunks/305-3669ba175d790f06.js",
+        "line": 1,
+        "column": 43801,
+        "ms": 6.29
+      }
+    ],
+    "matchCumulative": [
+      {
+        "name": "String.match",
+        "url": "",
+        "line": 45,
+        "column": 40,
+        "ms": 5.07
+      }
+    ]
+  },
+  "baseline-1-idle.cpuprofile": {
+    "durationMs": 12534.979,
+    "sampledMs": 12534.051,
+    "topSelf": [
+      {
+        "name": "(idle)",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "ms": 12245.94
+      },
+      {
+        "name": "(program)",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "ms": 240.51
+      },
+      {
+        "name": "(garbage collector)",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "ms": 16.05
+      },
+      {
+        "name": "String.match",
+        "url": "",
+        "line": 45,
+        "column": 40,
+        "ms": 8.82
+      },
+      {
+        "name": "requestAnimationFrame",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "ms": 6.29
+      },
+      {
+        "name": "get",
+        "url": "http://127.0.0.1:3109/_next/static/chunks/833-68f4e754a1804ca6.js",
+        "line": 1,
+        "column": 67177,
+        "ms": 2.52
+      },
+      {
+        "name": "t.current.onmessage",
+        "url": "http://127.0.0.1:3109/_next/static/chunks/app/(notes)/%5Bid%5D/page-f12fc567f7c6a469.js",
+        "line": 1,
+        "column": 2185,
+        "ms": 2.3
+      },
+      {
+        "name": "p",
+        "url": "http://127.0.0.1:3109/_next/static/chunks/app/(notes)/layout-b493539fb40468d0.js",
+        "line": 1,
+        "column": 339,
+        "ms": 1.36
+      },
+      {
+        "name": "uo",
+        "url": "http://127.0.0.1:3109/_next/static/chunks/b7a705f5-4e55b35fc6453615.js",
+        "line": 1,
+        "column": 107849,
+        "ms": 1.32
+      },
+      {
+        "name": "s",
+        "url": "http://127.0.0.1:3109/_next/static/chunks/184-5816e329bbc5c92b.js",
+        "line": 1,
+        "column": 7524,
+        "ms": 1.3
+      },
+      {
+        "name": "e6",
+        "url": "http://127.0.0.1:3109/_next/static/chunks/833-68f4e754a1804ca6.js",
+        "line": 1,
+        "column": 16226,
+        "ms": 1.27
+      },
+      {
+        "name": "sy",
+        "url": "http://127.0.0.1:3109/_next/static/chunks/b7a705f5-4e55b35fc6453615.js",
+        "line": 1,
+        "column": 137966,
+        "ms": 1.26
+      },
+      {
+        "name": "",
+        "url": "",
+        "line": 384,
+        "column": 43,
+        "ms": 1.26
+      },
+      {
+        "name": "frame",
+        "url": "",
+        "line": 18,
+        "column": 16,
+        "ms": 1.25
+      },
+      {
+        "name": "e",
+        "url": "http://127.0.0.1:3109/_next/static/chunks/707-dcd48464af151740.js",
+        "line": 1,
+        "column": 6375,
+        "ms": 1.25
+      },
+      {
+        "name": "",
+        "url": "http://127.0.0.1:3109/_next/static/chunks/b7a705f5-4e55b35fc6453615.js",
+        "line": 1,
+        "column": 127829,
+        "ms": 0.94
+      },
+      {
+        "name": "rS",
+        "url": "http://127.0.0.1:3109/_next/static/chunks/b7a705f5-4e55b35fc6453615.js",
+        "line": 1,
+        "column": 32860,
+        "ms": 0.31
+      },
+      {
+        "name": "serialize",
+        "url": "",
+        "line": 203,
+        "column": 19,
+        "ms": 0.1
+      }
+    ],
+    "matchCumulative": [
+      {
+        "name": "String.match",
+        "url": "",
+        "line": 45,
+        "column": 40,
+        "ms": 8.82
+      }
+    ]
+  },
+  "current-1-active.cpuprofile": {
+    "durationMs": 11439.969,
+    "sampledMs": 11439.439,
+    "topSelf": [
+      {
+        "name": "(idle)",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "ms": 8349.73
+      },
+      {
+        "name": "(program)",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "ms": 820.6
+      },
+      {
+        "name": "String.match",
+        "url": "",
+        "line": 45,
+        "column": 40,
+        "ms": 629.85
+      },
+      {
+        "name": "(garbage collector)",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "ms": 295.12
+      },
+      {
+        "name": "mount",
+        "url": "http://127.0.0.1:3110/_next/static/chunks/863-5586ebef32bb114f.js",
+        "line": 1,
+        "column": 5013,
+        "ms": 53.33
+      },
+      {
+        "name": "get",
+        "url": "http://127.0.0.1:3110/_next/static/chunks/92-c72ef651b666288e.js",
+        "line": 1,
+        "column": 67937,
+        "ms": 43.06
+      },
+      {
+        "name": "String.match",
+        "url": "",
+        "line": 45,
+        "column": 40,
+        "ms": 40.47
+      },
+      {
+        "name": "o0",
+        "url": "http://127.0.0.1:3110/_next/static/chunks/b7a705f5-4e55b35fc6453615.js",
+        "line": 1,
+        "column": 73523,
+        "ms": 31.59
+      },
+      {
+        "name": "mount",
+        "url": "http://127.0.0.1:3110/_next/static/chunks/863-5586ebef32bb114f.js",
+        "line": 1,
+        "column": 5013,
+        "ms": 28.59
+      },
+      {
+        "name": "",
+        "url": "http://127.0.0.1:3110/_next/static/chunks/b7a705f5-4e55b35fc6453615.js",
+        "line": 1,
+        "column": 139092,
+        "ms": 21.14
+      },
+      {
+        "name": "",
+        "url": "http://127.0.0.1:3110/_next/static/chunks/app/(notes)/%5Bid%5D/page-405324816ceae23d.js",
+        "line": 1,
+        "column": 3876,
+        "ms": 19.75
+      },
+      {
+        "name": "",
+        "url": "http://127.0.0.1:3110/_next/static/chunks/305-3669ba175d790f06.js",
+        "line": 1,
+        "column": 301620,
+        "ms": 18.5
+      },
+      {
+        "name": "oQ",
+        "url": "http://127.0.0.1:3110/_next/static/chunks/b7a705f5-4e55b35fc6453615.js",
+        "line": 1,
+        "column": 71177,
+        "ms": 18.08
+      },
+      {
+        "name": "",
+        "url": "http://127.0.0.1:3110/_next/static/chunks/283-0a438b7e3efb8109.js",
+        "line": 1,
+        "column": 3042,
+        "ms": 13.93
+      },
+      {
+        "name": "addEventListener",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "ms": 13.63
+      },
+      {
+        "name": "",
+        "url": "http://127.0.0.1:3110/_next/static/chunks/973-50e618f80411d3b8.js",
+        "line": 7,
+        "column": 18700,
+        "ms": 13.45
+      },
+      {
+        "name": "measure",
+        "url": "http://127.0.0.1:3110/_next/static/chunks/5dbc21ff-c89d6d9c1c1085e3.js",
+        "line": 1,
+        "column": 93569,
+        "ms": 12.72
+      },
+      {
+        "name": "is",
+        "url": "http://127.0.0.1:3110/_next/static/chunks/b7a705f5-4e55b35fc6453615.js",
+        "line": 1,
+        "column": 82766,
+        "ms": 11.95
+      },
+      {
+        "name": "m",
+        "url": "http://127.0.0.1:3110/_next/static/chunks/374-0bd3fca7b4f50e82.js",
+        "line": 1,
+        "column": 479,
+        "ms": 11.35
+      },
+      {
+        "name": "rS",
+        "url": "http://127.0.0.1:3110/_next/static/chunks/b7a705f5-4e55b35fc6453615.js",
+        "line": 1,
+        "column": 32860,
+        "ms": 11.31
+      }
+    ],
+    "matchCumulative": [
+      {
+        "name": "String.match",
+        "url": "",
+        "line": 45,
+        "column": 40,
+        "ms": 40.47
+      },
+      {
+        "name": "String.match",
+        "url": "",
+        "line": 45,
+        "column": 40,
+        "ms": 633.62
+      },
+      {
+        "name": "matchCommand",
+        "url": "http://127.0.0.1:3110/_next/static/chunks/c46d7d51-5f1cb06473906cdb.js",
+        "line": 1,
+        "column": 50607,
+        "ms": 1.25
+      }
+    ]
+  },
+  "current-1-idle.cpuprofile": {
+    "durationMs": 11353.353,
+    "sampledMs": 11351.993,
+    "topSelf": [
+      {
+        "name": "(idle)",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "ms": 9273.37
+      },
+      {
+        "name": "String.match",
+        "url": "",
+        "line": 45,
+        "column": 40,
+        "ms": 537.5
+      },
+      {
+        "name": "(program)",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "ms": 360.89
+      },
+      {
+        "name": "(garbage collector)",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "ms": 265.73
+      },
+      {
+        "name": "String.match",
+        "url": "",
+        "line": 45,
+        "column": 40,
+        "ms": 55.19
+      },
+      {
+        "name": "get",
+        "url": "http://127.0.0.1:3110/_next/static/chunks/92-c72ef651b666288e.js",
+        "line": 1,
+        "column": 67937,
+        "ms": 39.06
+      },
+      {
+        "name": "",
+        "url": "http://127.0.0.1:3110/_next/static/chunks/b7a705f5-4e55b35fc6453615.js",
+        "line": 1,
+        "column": 139092,
+        "ms": 35.57
+      },
+      {
+        "name": "oQ",
+        "url": "http://127.0.0.1:3110/_next/static/chunks/b7a705f5-4e55b35fc6453615.js",
+        "line": 1,
+        "column": 71177,
+        "ms": 31.33
+      },
+      {
+        "name": "is",
+        "url": "http://127.0.0.1:3110/_next/static/chunks/b7a705f5-4e55b35fc6453615.js",
+        "line": 1,
+        "column": 82766,
+        "ms": 25.3
+      },
+      {
+        "name": "",
+        "url": "http://127.0.0.1:3110/_next/static/chunks/app/(notes)/layout-e09861658e58f1fb.js",
+        "line": 1,
+        "column": 5896,
+        "ms": 19.25
+      },
+      {
+        "name": "s",
+        "url": "http://127.0.0.1:3110/_next/static/chunks/935-a97d079e4cfc7015.js",
+        "line": 1,
+        "column": 7524,
+        "ms": 13.93
+      },
+      {
+        "name": "o0",
+        "url": "http://127.0.0.1:3110/_next/static/chunks/b7a705f5-4e55b35fc6453615.js",
+        "line": 1,
+        "column": 73523,
+        "ms": 12.92
+      },
+      {
+        "name": "",
+        "url": "http://127.0.0.1:3110/_next/static/chunks/b7a705f5-4e55b35fc6453615.js",
+        "line": 1,
+        "column": 127829,
+        "ms": 12.49
+      },
+      {
+        "name": "",
+        "url": "http://127.0.0.1:3110/_next/static/chunks/283-0a438b7e3efb8109.js",
+        "line": 1,
+        "column": 3042,
+        "ms": 11.98
+      },
+      {
+        "name": "",
+        "url": "http://127.0.0.1:3110/_next/static/chunks/b7a705f5-4e55b35fc6453615.js",
+        "line": 1,
+        "column": 130354,
+        "ms": 11.52
+      },
+      {
+        "name": "",
+        "url": "http://127.0.0.1:3110/_next/static/chunks/973-50e618f80411d3b8.js",
+        "line": 7,
+        "column": 18700,
+        "ms": 10.95
+      },
+      {
+        "name": "uk",
+        "url": "http://127.0.0.1:3110/_next/static/chunks/b7a705f5-4e55b35fc6453615.js",
+        "line": 1,
+        "column": 119478,
+        "ms": 9.79
+      },
+      {
+        "name": "",
+        "url": "http://127.0.0.1:3110/_next/static/chunks/283-0a438b7e3efb8109.js",
+        "line": 1,
+        "column": 1564,
+        "ms": 9.7
+      },
+      {
+        "name": "",
+        "url": "http://127.0.0.1:3110/_next/static/chunks/b7a705f5-4e55b35fc6453615.js",
+        "line": 1,
+        "column": 93701,
+        "ms": 9.7
+      },
+      {
+        "name": "t",
+        "url": "http://127.0.0.1:3110/_next/static/chunks/b7a705f5-4e55b35fc6453615.js",
+        "line": 1,
+        "column": 43397,
+        "ms": 9.61
+      }
+    ],
+    "matchCumulative": [
+      {
+        "name": "String.match",
+        "url": "",
+        "line": 45,
+        "column": 40,
+        "ms": 55.19
+      },
+      {
+        "name": "String.match",
+        "url": "",
+        "line": 45,
+        "column": 40,
+        "ms": 538.76
+      }
+    ]
+  }
+}

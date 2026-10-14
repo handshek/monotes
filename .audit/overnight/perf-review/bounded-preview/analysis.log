@@ -1,0 +1,230 @@
+{
+  "timing": {
+    "inputFrameP95": {
+      "baseline": {
+        "runs": [
+          15.700000002980232,
+          15.600000001490116,
+          16,
+          16,
+          15.799999997019768
+        ],
+        "median": 15.799999997019768,
+        "range": [
+          15.600000001490116,
+          16
+        ]
+      },
+      "current": {
+        "runs": [
+          15.800000004470348,
+          15.700000002980232,
+          15.600000001490116,
+          15.700000002980232,
+          15.699999995529652
+        ],
+        "median": 15.700000002980232,
+        "range": [
+          15.600000001490116,
+          15.800000004470348
+        ]
+      },
+      "exactTwoSidedRankPermutationP": 0.35714285714285715,
+      "currentU": 7.5
+    },
+    "typingMs": {
+      "baseline": {
+        "runs": [
+          10233.381208,
+          10219.152917000003,
+          10262.483790999999,
+          10270.040666999994,
+          10293.306375
+        ],
+        "median": 10262.483790999999,
+        "range": [
+          10219.152917000003,
+          10293.306375
+        ]
+      },
+      "current": {
+        "runs": [
+          10196.649084,
+          10230.807957999998,
+          10275.015249999997,
+          10345.092042000004,
+          10236.064083999998
+        ],
+        "median": 10236.064083999998,
+        "range": [
+          10196.649084,
+          10345.092042000004
+        ]
+      },
+      "exactTwoSidedRankPermutationP": 1.0,
+      "currentU": 12.0
+    }
+  },
+  "profiles": 4,
+  "verifiedTimingRuns": 10,
+  "diagnostic": [
+    {
+      "side": "baseline",
+      "active": {
+        "active": false,
+        "inputs": 120,
+        "keydowns": 120,
+        "inputToFrame": {
+          "count": 120,
+          "p50": 7.5,
+          "p95": 15.600000001490116,
+          "max": 16.100000001490116
+        },
+        "keydownToFrame": {
+          "count": 120,
+          "p50": 7.799999997019768,
+          "p95": 16,
+          "max": 16.399999998509884
+        },
+        "frames": {
+          "count": 677,
+          "p50": 16.699999999999818,
+          "p95": 16.700000000000728,
+          "max": 16.80000000000109
+        },
+        "longTasks": {
+          "count": 0,
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "previousFrame": 13377.8,
+        "scans": 24000,
+        "scannedCharacters": 491528082,
+        "scanMilliseconds": 735.800000064075,
+        "boundedPreviewSplits": 0,
+        "splitMilliseconds": 0,
+        "puts": 120,
+        "cursorSteps": 24000,
+        "indexQueries": 120
+      },
+      "idle": {
+        "active": false,
+        "inputs": 0,
+        "keydowns": 0,
+        "inputToFrame": {
+          "count": 0,
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "keydownToFrame": {
+          "count": 0,
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "frames": {
+          "count": 676,
+          "p50": 16.699999999999818,
+          "p95": 16.700000000000728,
+          "max": 33.30000000000018
+        },
+        "longTasks": {
+          "count": 0,
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "previousFrame": 13244.8,
+        "scans": 24000,
+        "scannedCharacters": 491528082,
+        "scanMilliseconds": 724.8000000491738,
+        "boundedPreviewSplits": 0,
+        "splitMilliseconds": 0,
+        "puts": 0,
+        "cursorSteps": 24000,
+        "indexQueries": 120
+      }
+    },
+    {
+      "side": "current",
+      "active": {
+        "active": false,
+        "inputs": 120,
+        "keydowns": 120,
+        "inputToFrame": {
+          "count": 120,
+          "p50": 8.799999997019768,
+          "p95": 15.899999998509884,
+          "max": 16.400000005960464
+        },
+        "keydownToFrame": {
+          "count": 120,
+          "p50": 9.199999995529652,
+          "p95": 16.299999997019768,
+          "max": 16.899999998509884
+        },
+        "frames": {
+          "count": 674,
+          "p50": 16.699999999999818,
+          "p95": 16.700000000000728,
+          "max": 16.80000000000109
+        },
+        "longTasks": {
+          "count": 0,
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "previousFrame": 13353,
+        "scans": 0,
+        "scannedCharacters": 0,
+        "scanMilliseconds": 0,
+        "boundedPreviewSplits": 24000,
+        "splitMilliseconds": 11.5,
+        "puts": 120,
+        "cursorSteps": 24000,
+        "indexQueries": 120
+      },
+      "idle": {
+        "active": false,
+        "inputs": 0,
+        "keydowns": 0,
+        "inputToFrame": {
+          "count": 0,
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "keydownToFrame": {
+          "count": 0,
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "frames": {
+          "count": 673,
+          "p50": 16.699999999999818,
+          "p95": 16.700000000000728,
+          "max": 16.80000000000109
+        },
+        "longTasks": {
+          "count": 0,
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "previousFrame": 13196.8,
+        "scans": 0,
+        "scannedCharacters": 0,
+        "scanMilliseconds": 0,
+        "boundedPreviewSplits": 24000,
+        "splitMilliseconds": 11.900000043213367,
+        "puts": 0,
+        "cursorSteps": 24000,
+        "indexQueries": 120
+      }
+    }
+  ]
+}

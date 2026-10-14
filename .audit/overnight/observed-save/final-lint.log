@@ -1,0 +1,9 @@
+$ eslint src convex tests scripts/check-offline-shell.ts playwright.config.ts
+
+/Users/abhi/.codex/worktrees/monotes-overnight/monotes/convex/auth.config.ts
+  1:1  warning  Assign object to a variable before exporting as module default  import/no-anonymous-default-export
+
+/Users/abhi/.codex/worktrees/monotes-overnight/monotes/src/components/settings/appearance-settings.tsx
+  110:14  warning  'e' is defined but never used  @typescript-eslint/no-unused-vars
+
+✖ 2 problems (0 errors, 2 warnings)
