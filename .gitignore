@@ -53,3 +53,7 @@ next-env.d.ts
 # In-place search verification
 /.audit/search-dialog/**/html/
 /.audit/search-dialog/**/test-results/
+
+# Command search verification
+/.audit/command-search/**/html/
+/.audit/command-search/**/test-results/

@@ -1,0 +1,754 @@
+{
+  "config": {
+    "argv": [
+      "/Users/abhi/.hermes/node/bin/node",
+      "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/node_modules/.bin/playwright",
+      "test",
+      "tests/command-search.spec.ts",
+      "tests/search-dialog.spec.ts"
+    ],
+    "configFile": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/playwright.config.ts",
+    "rootDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/command-search/review-focused/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop-chromium",
+        "name": "desktop-chromium",
+        "testDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests",
+        "testIgnore": [
+          "**/mobile.spec.ts"
+        ],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/command-search/review-focused/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile-webkit",
+        "name": "mobile-webkit",
+        "testDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/command-search/review-focused/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "desktop-chromium",
+        "testDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests",
+        "snapshotDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests",
+        "testIgnore": "**/mobile.spec.ts",
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 30000,
+        "use": {
+          "baseURL": "http://127.0.0.1:3000",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "video": "retain-on-failure",
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.8078.4 Safari/537.36",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          },
+          "screen": {
+            "width": 1920,
+            "height": 1080
+          },
+          "deviceScaleFactor": 1,
+          "isMobile": false,
+          "hasTouch": false,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "desktop-chromium"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/command-search/review-focused/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "mobile-webkit",
+        "testDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests",
+        "snapshotDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 30000,
+        "use": {
+          "baseURL": "http://127.0.0.1:3000",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "video": "retain-on-failure",
+          "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.2 Mobile/15E148 Safari/604.1",
+          "viewport": {
+            "width": 390,
+            "height": 664
+          },
+          "screen": {
+            "width": 390,
+            "height": 844
+          },
+          "deviceScaleFactor": 3,
+          "isMobile": true,
+          "hasTouch": true,
+          "defaultBrowserType": "webkit"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "mobile-webkit"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": ".audit/command-search/review-focused/report.json"
+        }
+      ],
+      [
+        "html",
+        {
+          "outputFolder": ".audit/command-search/review-focused/html",
+          "open": "never"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "command-search.spec.ts",
+      "file": "command-search.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Cmd and Ctrl K open search without changing the note and Escape restores editing",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2728,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T08:46:53.589Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "Meta-k",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/command-search/review-focused/test-results/command-search-Cmd-and-Ctr-e3fac-and-Escape-restores-editing-desktop-chromium/attachments/Meta-k-b4323dbdf23f4aab5d31251cbcfe53031e2a3075.png"
+                    },
+                    {
+                      "name": "Control-k",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/command-search/review-focused/test-results/command-search-Cmd-and-Ctr-e3fac-and-Escape-restores-editing-desktop-chromium/attachments/Control-k-8418d14941301ee15402675c4cd785a43a196e63.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "acf8dfbece13953b191b-ae8ea37743d5e5f83492",
+          "file": "command-search.spec.ts",
+          "line": 4,
+          "column": 5
+        },
+        {
+          "title": "search input is not clipped and each note result has a visible border",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1287,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T08:46:56.414Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "search-boundaries",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/command-search/review-focused/test-results/command-search-search-inpu-e8012-result-has-a-visible-border-desktop-chromium/attachments/search-boundaries-aaf8ea488df76fb10fdc7df8020fa1dc776824b2.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "acf8dfbece13953b191b-8e7312f8b4ea5a62dc75",
+          "file": "command-search.spec.ts",
+          "line": 34,
+          "column": 5
+        },
+        {
+          "title": "command input stays visible while long results scroll in a short viewport",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2387,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T08:46:57.706Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "command-short-viewport",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/command-search/review-focused/test-results/command-search-command-inp-42f23--scroll-in-a-short-viewport-desktop-chromium/attachments/command-short-viewport-d5cf0a5e8aad0b97d5ecb0498309b15b6c0788ce.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "acf8dfbece13953b191b-e7507a15aad5f1e25042",
+          "file": "command-search.spec.ts",
+          "line": 73,
+          "column": 5
+        },
+        {
+          "title": "Tab skips command results while arrow keys choose the note to open",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1538,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T08:47:00.097Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "acf8dfbece13953b191b-137ad83c599cdf257579",
+          "file": "command-search.spec.ts",
+          "line": 104,
+          "column": 5
+        },
+        {
+          "title": "search shortcut respects another open modal",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2427,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T08:47:01.640Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "acf8dfbece13953b191b-7c3063a88277da4cd107",
+          "file": "command-search.spec.ts",
+          "line": 124,
+          "column": 5
+        },
+        {
+          "title": "Cmd and Ctrl K open search without changing the note and Escape restores editing",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2761,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T08:47:11.787Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "Meta-k",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/command-search/review-focused/test-results/command-search-Cmd-and-Ctr-e3fac-and-Escape-restores-editing-mobile-webkit/attachments/Meta-k-ff2324ecfe6c7e79a6375723d8d0bf3b467ada4f.png"
+                    },
+                    {
+                      "name": "Control-k",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/command-search/review-focused/test-results/command-search-Cmd-and-Ctr-e3fac-and-Escape-restores-editing-mobile-webkit/attachments/Control-k-892d73dbcb56f8461cb476485851a2f31c3e14bc.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "acf8dfbece13953b191b-ca7f590d66cef883e3ea",
+          "file": "command-search.spec.ts",
+          "line": 4,
+          "column": 5
+        },
+        {
+          "title": "search input is not clipped and each note result has a visible border",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2188,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T08:47:14.716Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "search-boundaries",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/command-search/review-focused/test-results/command-search-search-inpu-e8012-result-has-a-visible-border-mobile-webkit/attachments/search-boundaries-c59af38aded6253f512ca0ccff23088319b0dc29.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "acf8dfbece13953b191b-ff4b627ce441b208ca33",
+          "file": "command-search.spec.ts",
+          "line": 34,
+          "column": 5
+        },
+        {
+          "title": "command input stays visible while long results scroll in a short viewport",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2984,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T08:47:16.908Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "command-short-viewport",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/command-search/review-focused/test-results/command-search-command-inp-42f23--scroll-in-a-short-viewport-mobile-webkit/attachments/command-short-viewport-09d03a430f0ffb8a8457b51404607211539b663f.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "acf8dfbece13953b191b-4acffea01dbebe46f13a",
+          "file": "command-search.spec.ts",
+          "line": 73,
+          "column": 5
+        },
+        {
+          "title": "Tab skips command results while arrow keys choose the note to open",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1330,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T08:47:19.897Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "acf8dfbece13953b191b-7beb1c7e108643619975",
+          "file": "command-search.spec.ts",
+          "line": 104,
+          "column": 5
+        },
+        {
+          "title": "search shortcut respects another open modal",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3784,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T08:47:21.231Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "acf8dfbece13953b191b-4d35e0de7d4cb32837bb",
+          "file": "command-search.spec.ts",
+          "line": 124,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "search-dialog.spec.ts",
+      "file": "search-dialog.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "search stays inside the current note and dismisses without losing edits",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2937,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T08:47:04.073Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "search-opening",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/command-search/review-focused/test-results/search-dialog-search-stays-7e7f7-misses-without-losing-edits-desktop-chromium/attachments/search-opening-3f947b34b531b1d2ce824cbb17edfe6f803a0c9a.png"
+                    },
+                    {
+                      "name": "search-matches-with-note-open",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/command-search/review-focused/test-results/search-dialog-search-stays-7e7f7-misses-without-losing-edits-desktop-chromium/attachments/search-matches-with-note-open-1e8fce9b0e7344218a51c770d19825eec4ea893f.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c5e394b7ed4189b46c43-6c56b2ba054aebd667bf",
+          "file": "search-dialog.spec.ts",
+          "line": 4,
+          "column": 5
+        },
+        {
+          "title": "search filters local notes offline and opens a result with keyboard or touch",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4533,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T08:47:07.014Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "offline-search-result",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/command-search/review-focused/test-results/search-dialog-search-filte-4137e-sult-with-keyboard-or-touch-desktop-chromium/attachments/offline-search-result-c191f62aebf3bfc49c2adaffec2d048b7bebd48a.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c5e394b7ed4189b46c43-0e31b16b955e072eafae",
+          "file": "search-dialog.spec.ts",
+          "line": 42,
+          "column": 5
+        },
+        {
+          "title": "search stays inside the current note and dismisses without losing edits",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4858,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T08:47:25.023Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "search-opening",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/command-search/review-focused/test-results/search-dialog-search-stays-7e7f7-misses-without-losing-edits-mobile-webkit/attachments/search-opening-f8b6a3e5a42d88373485633d868e64e14a637ee7.png"
+                    },
+                    {
+                      "name": "search-matches-with-note-open",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/command-search/review-focused/test-results/search-dialog-search-stays-7e7f7-misses-without-losing-edits-mobile-webkit/attachments/search-matches-with-note-open-faf48df80c33afc6a51f41a344e19fe56b52a3b8.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c5e394b7ed4189b46c43-53cc34cb99421208e8e0",
+          "file": "search-dialog.spec.ts",
+          "line": 4,
+          "column": 5
+        },
+        {
+          "title": "search filters local notes offline and opens a result with keyboard or touch",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4936,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T08:47:29.884Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "offline-search-result",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/command-search/review-focused/test-results/search-dialog-search-filte-4137e-sult-with-keyboard-or-touch-mobile-webkit/attachments/offline-search-result-afd3d7ef671bfef80a20b27efb8a644b02a48023.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c5e394b7ed4189b46c43-696dcede0b5679becb16",
+          "file": "search-dialog.spec.ts",
+          "line": 42,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-14T08:46:53.376Z",
+    "duration": 41490.027,
+    "expected": 14,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

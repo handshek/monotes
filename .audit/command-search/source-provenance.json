@@ -1,0 +1,28 @@
+{
+  "baseline": "c6a4174eb9c8125bea876bb6624a34d8c9e24f84",
+  "recordedAt": "2026-10-14T08:40:49.480674+00:00",
+  "sha256": {
+    "src/components/ui/command.tsx": "d4260eb4cf6b0a9a728676538e03f4de4c164f63e2d7f6bdb442ecb2c14c1d74",
+    "src/components/notes/notes-search-dialog.tsx": "51ba9feea0a1f938302f00dbeca3073b367125c415d8e0396f44557fee01b481",
+    "src/components/notes/notes-sidebar.tsx": "d6529f8113fc54926ebf15bb223c825c11ae0c0261172d0a459cf65460b74432",
+    "src/hooks/useNoteSearch.ts": "558d71025f5f851ee80d109f58f95535696d76857a637c2cb95bed4b145c2651",
+    "tests/command-search.spec.ts": "7eb3886d0ea3008bef5327d87aaec5c4219f6c2dc1446c940484ad6451e326db",
+    "tests/search-dialog.spec.ts": "ac71ac1208e64279a1ce7cde819df3afc298809a91e1c9d2ccfc331bc2a39531",
+    "tests/regressions.spec.ts": "7145360b7562fe6a6e872434eae65086054d950d230f1283e52a249abe442310",
+    "package.json": "bad80cbc4f7c505b740cc3d3300e7bea2481368d8b52658b4f3871bd38e53859",
+    "bun.lock": "661331fe5ad1cb896daaa5ca62066655fd8679e95af1b7c6ae791b183aca84fb"
+  },
+  "verifiedAt": "2026-10-14T08:42:40.869169+00:00",
+  "browserStats": {
+    "startTime": "2026-10-14T08:38:28.868Z",
+    "duration": 203116.06399999998,
+    "expected": 108,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "buildId": "xwN5WbsXFziVM325GYhM7",
+  "lint": "pass with 2 pre-existing warnings",
+  "typecheck": "pass",
+  "sourceUnchangedDuringVerification": true
+}

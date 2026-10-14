@@ -1,0 +1,541 @@
+{
+  "config": {
+    "argv": [
+      "/Users/abhi/.hermes/node/bin/node",
+      "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/node_modules/.bin/playwright",
+      "test",
+      "tests/command-search.spec.ts"
+    ],
+    "configFile": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/playwright.config.ts",
+    "rootDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/command-search/before/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop-chromium",
+        "name": "desktop-chromium",
+        "testDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests",
+        "testIgnore": [
+          "**/mobile.spec.ts"
+        ],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/command-search/before/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile-webkit",
+        "name": "mobile-webkit",
+        "testDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/command-search/before/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "desktop-chromium",
+        "testDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests",
+        "snapshotDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests",
+        "testIgnore": "**/mobile.spec.ts",
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 30000,
+        "use": {
+          "baseURL": "http://127.0.0.1:3000",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "video": "retain-on-failure",
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.8078.4 Safari/537.36",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          },
+          "screen": {
+            "width": 1920,
+            "height": 1080
+          },
+          "deviceScaleFactor": 1,
+          "isMobile": false,
+          "hasTouch": false,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "desktop-chromium"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/command-search/before/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "mobile-webkit",
+        "testDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests",
+        "snapshotDir": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 30000,
+        "use": {
+          "baseURL": "http://127.0.0.1:3000",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "video": "retain-on-failure",
+          "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.2 Mobile/15E148 Safari/604.1",
+          "viewport": {
+            "width": 390,
+            "height": 664
+          },
+          "screen": {
+            "width": 390,
+            "height": 844
+          },
+          "deviceScaleFactor": 3,
+          "isMobile": true,
+          "hasTouch": true,
+          "defaultBrowserType": "webkit"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "mobile-webkit"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": ".audit/command-search/before/report.json"
+        }
+      ],
+      [
+        "html",
+        {
+          "outputFolder": ".audit/command-search/before/html",
+          "open": "never"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "command-search.spec.ts",
+      "file": "command-search.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Cmd and Ctrl K open search without changing the note and Escape restores editing",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 6105,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog', { name: 'Search notes', exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog', { name: 'Search notes', exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: 'Search notes', exact: true })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog', { name: 'Search notes', exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog', { name: 'Search notes', exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: 'Search notes', exact: true })\u001b[22m\n\n    at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/command-search.spec.ts:13:26",
+                    "location": {
+                      "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/command-search.spec.ts",
+                      "column": 26,
+                      "line": 13
+                    },
+                    "snippet": "  11 |     await capture(page, testInfo, `${modifier}-k`);\n  12 |     const dialog = page.getByRole(\"dialog\", { name: \"Search notes\", exact: true });\n> 13 |     await expect(dialog).toBeVisible();\n     |                          ^\n  14 |     await expect(page).toHaveURL(new RegExp(`/${id}$`));\n  15 |     const input = dialog.getByRole(\"combobox\", { name: \"Search notes\", exact: true });\n  16 |     await expect(input).toBeFocused();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/command-search.spec.ts",
+                        "column": 26,
+                        "line": 13
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog', { name: 'Search notes', exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog', { name: 'Search notes', exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: 'Search notes', exact: true })\u001b[22m\n\n\n  11 |     await capture(page, testInfo, `${modifier}-k`);\n  12 |     const dialog = page.getByRole(\"dialog\", { name: \"Search notes\", exact: true });\n> 13 |     await expect(dialog).toBeVisible();\n     |                          ^\n  14 |     await expect(page).toHaveURL(new RegExp(`/${id}$`));\n  15 |     const input = dialog.getByRole(\"combobox\", { name: \"Search notes\", exact: true });\n  16 |     await expect(input).toBeFocused();\n    at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/command-search.spec.ts:13:26"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T08:33:32.039Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "Meta-k",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/command-search/before/test-results/command-search-Cmd-and-Ctr-e3fac-and-Escape-restores-editing-desktop-chromium/attachments/Meta-k-81bac77cf7cfc4fd0010a17e7766326e67634077.png"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/command-search/before/test-results/command-search-Cmd-and-Ctr-e3fac-and-Escape-restores-editing-desktop-chromium/test-failed-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/command-search/before/test-results/command-search-Cmd-and-Ctr-e3fac-and-Escape-restores-editing-desktop-chromium/video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/command-search/before/test-results/command-search-Cmd-and-Ctr-e3fac-and-Escape-restores-editing-desktop-chromium/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/command-search/before/test-results/command-search-Cmd-and-Ctr-e3fac-and-Escape-restores-editing-desktop-chromium/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/command-search.spec.ts",
+                    "column": 26,
+                    "line": 13
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "acf8dfbece13953b191b-ae8ea37743d5e5f83492",
+          "file": "command-search.spec.ts",
+          "line": 4,
+          "column": 5
+        },
+        {
+          "title": "search input is not clipped and each note result has a visible border",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 1261,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 3\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"DIV\",\u001b[39m\n\u001b[31m+ ]\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 3\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"DIV\",\u001b[39m\n\u001b[31m+ ]\u001b[39m\n    at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/command-search.spec.ts:53:31",
+                    "location": {
+                      "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/command-search.spec.ts",
+                      "column": 31,
+                      "line": 53
+                    },
+                    "snippet": "  51 |     return clippedBy;\n  52 |   });\n> 53 |   await expect.soft(clipping).toEqual([]);\n     |                               ^\n  54 |   const border = await result.evaluate((element) => {\n  55 |     const style = getComputedStyle(element);\n  56 |     return { width: parseFloat(style.borderTopWidth), style: style.borderTopStyle, color: style.borderTopColor };"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/command-search.spec.ts",
+                        "column": 31,
+                        "line": 53
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 3\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"DIV\",\u001b[39m\n\u001b[31m+ ]\u001b[39m\n\n  51 |     return clippedBy;\n  52 |   });\n> 53 |   await expect.soft(clipping).toEqual([]);\n     |                               ^\n  54 |   const border = await result.evaluate((element) => {\n  55 |     const style = getComputedStyle(element);\n  56 |     return { width: parseFloat(style.borderTopWidth), style: style.borderTopStyle, color: style.borderTopColor };\n    at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/command-search.spec.ts:53:31"
+                    },
+                    {
+                      "location": {
+                        "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/command-search.spec.ts",
+                        "column": 35,
+                        "line": 58
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m1\u001b[39m\nReceived:    \u001b[31m0\u001b[39m\n\n  56 |     return { width: parseFloat(style.borderTopWidth), style: style.borderTopStyle, color: style.borderTopColor };\n  57 |   });\n> 58 |   await expect.soft(border.width).toBeGreaterThanOrEqual(1);\n     |                                   ^\n  59 |   await expect.soft(border.style).toBe(\"solid\");\n  60 |   await expect.soft(border.color).not.toBe(\"rgba(0, 0, 0, 0)\");\n  61 | });\n    at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/command-search.spec.ts:58:35"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T08:33:38.585Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "search-boundaries",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/command-search/before/test-results/command-search-search-inpu-e8012-result-has-a-visible-border-desktop-chromium/attachments/search-boundaries-f79196e5bb0bb797fc113a34711e46bac8a59feb.png"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/command-search/before/test-results/command-search-search-inpu-e8012-result-has-a-visible-border-desktop-chromium/test-failed-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/command-search/before/test-results/command-search-search-inpu-e8012-result-has-a-visible-border-desktop-chromium/video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/command-search/before/test-results/command-search-search-inpu-e8012-result-has-a-visible-border-desktop-chromium/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/command-search/before/test-results/command-search-search-inpu-e8012-result-has-a-visible-border-desktop-chromium/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/command-search.spec.ts",
+                    "column": 31,
+                    "line": 53
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "acf8dfbece13953b191b-8e7312f8b4ea5a62dc75",
+          "file": "command-search.spec.ts",
+          "line": 25,
+          "column": 5
+        },
+        {
+          "title": "Cmd and Ctrl K open search without changing the note and Escape restores editing",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 6245,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog', { name: 'Search notes', exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog', { name: 'Search notes', exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: 'Search notes', exact: true })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog', { name: 'Search notes', exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog', { name: 'Search notes', exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: 'Search notes', exact: true })\u001b[22m\n\n    at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/command-search.spec.ts:13:26",
+                    "location": {
+                      "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/command-search.spec.ts",
+                      "column": 26,
+                      "line": 13
+                    },
+                    "snippet": "  11 |     await capture(page, testInfo, `${modifier}-k`);\n  12 |     const dialog = page.getByRole(\"dialog\", { name: \"Search notes\", exact: true });\n> 13 |     await expect(dialog).toBeVisible();\n     |                          ^\n  14 |     await expect(page).toHaveURL(new RegExp(`/${id}$`));\n  15 |     const input = dialog.getByRole(\"combobox\", { name: \"Search notes\", exact: true });\n  16 |     await expect(input).toBeFocused();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/command-search.spec.ts",
+                        "column": 26,
+                        "line": 13
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog', { name: 'Search notes', exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog', { name: 'Search notes', exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: 'Search notes', exact: true })\u001b[22m\n\n\n  11 |     await capture(page, testInfo, `${modifier}-k`);\n  12 |     const dialog = page.getByRole(\"dialog\", { name: \"Search notes\", exact: true });\n> 13 |     await expect(dialog).toBeVisible();\n     |                          ^\n  14 |     await expect(page).toHaveURL(new RegExp(`/${id}$`));\n  15 |     const input = dialog.getByRole(\"combobox\", { name: \"Search notes\", exact: true });\n  16 |     await expect(input).toBeFocused();\n    at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/command-search.spec.ts:13:26"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T08:33:40.130Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "Meta-k",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/command-search/before/test-results/command-search-Cmd-and-Ctr-e3fac-and-Escape-restores-editing-mobile-webkit/attachments/Meta-k-585d5a9a3dd6d1fec8c7b85cd4c1b9ebe62756be.png"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/command-search/before/test-results/command-search-Cmd-and-Ctr-e3fac-and-Escape-restores-editing-mobile-webkit/test-failed-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/command-search/before/test-results/command-search-Cmd-and-Ctr-e3fac-and-Escape-restores-editing-mobile-webkit/video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/command-search/before/test-results/command-search-Cmd-and-Ctr-e3fac-and-Escape-restores-editing-mobile-webkit/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/command-search/before/test-results/command-search-Cmd-and-Ctr-e3fac-and-Escape-restores-editing-mobile-webkit/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/command-search.spec.ts",
+                    "column": 26,
+                    "line": 13
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "acf8dfbece13953b191b-ca7f590d66cef883e3ea",
+          "file": "command-search.spec.ts",
+          "line": 4,
+          "column": 5
+        },
+        {
+          "title": "search input is not clipped and each note result has a visible border",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-webkit",
+              "projectName": "mobile-webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 2313,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 3\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"DIV\",\u001b[39m\n\u001b[31m+ ]\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 3\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"DIV\",\u001b[39m\n\u001b[31m+ ]\u001b[39m\n    at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/command-search.spec.ts:53:31",
+                    "location": {
+                      "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/command-search.spec.ts",
+                      "column": 31,
+                      "line": 53
+                    },
+                    "snippet": "  51 |     return clippedBy;\n  52 |   });\n> 53 |   await expect.soft(clipping).toEqual([]);\n     |                               ^\n  54 |   const border = await result.evaluate((element) => {\n  55 |     const style = getComputedStyle(element);\n  56 |     return { width: parseFloat(style.borderTopWidth), style: style.borderTopStyle, color: style.borderTopColor };"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/command-search.spec.ts",
+                        "column": 31,
+                        "line": 53
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 3\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"DIV\",\u001b[39m\n\u001b[31m+ ]\u001b[39m\n\n  51 |     return clippedBy;\n  52 |   });\n> 53 |   await expect.soft(clipping).toEqual([]);\n     |                               ^\n  54 |   const border = await result.evaluate((element) => {\n  55 |     const style = getComputedStyle(element);\n  56 |     return { width: parseFloat(style.borderTopWidth), style: style.borderTopStyle, color: style.borderTopColor };\n    at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/command-search.spec.ts:53:31"
+                    },
+                    {
+                      "location": {
+                        "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/command-search.spec.ts",
+                        "column": 35,
+                        "line": 58
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m1\u001b[39m\nReceived:    \u001b[31m0\u001b[39m\n\n  56 |     return { width: parseFloat(style.borderTopWidth), style: style.borderTopStyle, color: style.borderTopColor };\n  57 |   });\n> 58 |   await expect.soft(border.width).toBeGreaterThanOrEqual(1);\n     |                                   ^\n  59 |   await expect.soft(border.style).toBe(\"solid\");\n  60 |   await expect.soft(border.color).not.toBe(\"rgba(0, 0, 0, 0)\");\n  61 | });\n    at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/command-search.spec.ts:58:35"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T08:33:46.745Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "search-boundaries",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/command-search/before/test-results/command-search-search-inpu-e8012-result-has-a-visible-border-mobile-webkit/attachments/search-boundaries-033dd329f5d264d7ee5516ee0055d494a94a6bb6.png"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/command-search/before/test-results/command-search-search-inpu-e8012-result-has-a-visible-border-mobile-webkit/test-failed-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/command-search/before/test-results/command-search-search-inpu-e8012-result-has-a-visible-border-mobile-webkit/video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/command-search/before/test-results/command-search-search-inpu-e8012-result-has-a-visible-border-mobile-webkit/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/.audit/command-search/before/test-results/command-search-search-inpu-e8012-result-has-a-visible-border-mobile-webkit/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/command-search.spec.ts",
+                    "column": 31,
+                    "line": 53
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "acf8dfbece13953b191b-ff4b627ce441b208ca33",
+          "file": "command-search.spec.ts",
+          "line": 25,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-14T08:33:31.847Z",
+    "duration": 17400.327999999998,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 4,
+    "flaky": 0
+  }
+}

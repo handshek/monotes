@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, type MouseEvent } from "react";
+import { useEffect, useRef, useState, type MouseEvent } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -59,6 +59,7 @@ export default function NotesSidebar() {
   const { syncNow } = useNoteSync();
   const [searchOpen, setSearchOpen] = useState(false);
   const searchTrigger = useRef<HTMLButtonElement>(null);
+  const searchReturnFocus = useRef<HTMLElement | null>(null);
   const [noteToDelete, setNoteToDelete] = useState<string | null>(null);
 
   // Use Dexie's liveQuery for automatic reactivity
@@ -89,38 +90,64 @@ export default function NotesSidebar() {
   };
 
   const onSearch = () => {
+    searchReturnFocus.current = searchTrigger.current;
     setOpenMobile(false);
     setSearchOpen(true);
   };
 
+  useEffect(() => {
+    const handleSearchShortcut = (event: KeyboardEvent) => {
+      if (
+        event.key.toLowerCase() !== "k" ||
+        !(event.metaKey || event.ctrlKey) ||
+        event.altKey || event.shiftKey || event.isComposing
+      ) return;
+
+      if (!searchOpen && document.querySelector(
+        '[role="dialog"][data-state="open"]:not([data-sidebar="sidebar"]), [role="alertdialog"][data-state="open"]',
+      )) return;
+
+      event.preventDefault();
+      event.stopPropagation();
+      if (event.repeat) return;
+      if (searchOpen) {
+        setSearchOpen(false);
+      } else {
+        searchReturnFocus.current = document.activeElement instanceof HTMLElement
+          ? document.activeElement : null;
+        setOpenMobile(false);
+        setSearchOpen(true);
+      }
+    };
+    document.addEventListener("keydown", handleSearchShortcut, true);
+    return () => document.removeEventListener("keydown", handleSearchShortcut, true);
+  }, [searchOpen, setOpenMobile]);
+
   const displayName = currentUser?.name || currentUser?.email || "User";
   const currentNoteId = pathname?.replace(/^\//, "") || null;
 
-  const handleNoteClick = async (
-    e: MouseEvent<HTMLAnchorElement>,
-    targetNoteId: string,
-  ) => {
-    if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+  const openNote = async (targetNoteId: string) => {
     setOpenMobile(false);
-
-    // Get current note ID from pathname
     const currentNoteIdFromPath = pathname?.replace(/^\//, "") || null;
+    if (targetNoteId === currentNoteIdFromPath) return;
 
-    // If clicking a different note and sync function exists, sync before navigating
-    if (
-      currentNoteIdFromPath &&
-      targetNoteId !== currentNoteIdFromPath &&
-      syncNow
-    ) {
-      e.preventDefault(); // Prevent Link navigation
+    if (currentNoteIdFromPath && syncNow) {
       try {
         await syncNow();
       } catch (error) {
         console.error("Sync failed before navigation:", error);
       }
-      // Navigate after sync completes
-      router.push(`/${targetNoteId}`);
     }
+    router.push(`/${targetNoteId}`);
+  };
+
+  const handleNoteClick = (
+    event: MouseEvent<HTMLAnchorElement>,
+    targetNoteId: string,
+  ) => {
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    void openNote(targetNoteId);
   };
 
   const handleDeleteNote = async (id: string) => {
@@ -160,9 +187,10 @@ export default function NotesSidebar() {
                   </SidebarMenuButton>
                 </SidebarMenuItem>
                 <SidebarMenuItem>
-                  <SidebarMenuButton ref={searchTrigger} onClick={onSearch}>
+                  <SidebarMenuButton ref={searchTrigger} onClick={onSearch} aria-keyshortcuts="Meta+K Control+K">
                     <Search className="size-4 mr-2" />
-                    <span>Search</span>
+                    <span className="truncate">Search</span>
+                    <kbd aria-hidden="true" className="ml-auto rounded border px-1 text-[10px] text-muted-foreground">⌘ K / Ctrl K</kbd>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               </SidebarMenu>
@@ -313,8 +341,8 @@ export default function NotesSidebar() {
       <NotesSearchDialog
         open={searchOpen}
         onOpenChange={setSearchOpen}
-        onSelect={handleNoteClick}
-        triggerRef={searchTrigger}
+        onSelect={openNote}
+        returnFocusRef={searchReturnFocus}
       />
     </>
   );

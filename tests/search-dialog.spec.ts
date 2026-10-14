@@ -10,13 +10,13 @@ test("search stays inside the current note and dismisses without losing edits", 
   await capture(page, testInfo, "search-opening");
   await expect(page).toHaveURL(new RegExp(`/${id}$`));
   const dialog = page.getByRole("dialog", { name: "Search notes", exact: true });
-  const search = dialog.getByRole("textbox", { name: "Search notes", exact: true });
+  const search = dialog.getByRole("combobox", { name: "Search notes", exact: true });
   await expect(dialog).toBeVisible();
   if (isMobile) await expect(page.getByRole("dialog", { name: "Sidebar", exact: true })).toBeHidden();
   await expect(search).toBeFocused();
   await search.fill("LIGHTHOUSE");
-  await expect(dialog.getByRole("link")).toHaveCount(1);
-  await expect(dialog.getByRole("link")).toContainText(content);
+  await expect(dialog.getByRole("option")).toHaveCount(1);
+  await expect(dialog.getByRole("option")).toContainText(content);
   await expect(dialog.locator("mark")).toHaveText("lighthouse");
   await capture(page, testInfo, "search-matches-with-note-open");
   await search.press("Escape");
@@ -32,7 +32,7 @@ test("search stays inside the current note and dismisses without losing edits", 
   await page.getByRole("button", { name: "Search", exact: true }).click();
   await expect(search).toHaveValue("");
   await expect(search).toBeFocused();
-  await dialog.getByRole("link").click();
+  await dialog.getByRole("option").click();
   await expect(dialog).toBeHidden();
   await expect(page).toHaveURL(new RegExp(`/${id}$`));
   await expect(editor(page)).toHaveText(content);
@@ -49,25 +49,29 @@ test("search filters local notes offline and opens a result with keyboard or tou
   await openSidebar(page, isMobile);
   await page.getByRole("button", { name: "Search", exact: true }).click();
   const dialog = page.getByRole("dialog", { name: "Search notes", exact: true });
-  const search = dialog.getByRole("textbox", { name: "Search notes", exact: true });
+  const search = dialog.getByRole("combobox", { name: "Search notes", exact: true });
   await expect(search).toBeFocused();
   await context.setOffline(true);
   await search.fill("not-found-cobalt");
   await expect(dialog.getByText('No notes matching "not-found-cobalt".', { exact: true })).toBeVisible();
-  await expect(dialog.getByRole("link")).toHaveCount(0);
+  await expect(dialog.getByRole("option")).toHaveCount(0);
   await search.fill("   ");
-  await expect(dialog.getByRole("link")).toHaveCount(2);
+  await expect(dialog.getByRole("option")).toHaveCount(2);
+  await search.press("ArrowDown");
+  await expect(dialog.getByRole("option", { selected: true })).toContainText("A copper canyon destination.");
+  await search.press("ArrowUp");
+  await expect(dialog.getByRole("option", { selected: true })).toContainText("Current notebook.");
   await search.fill("COPPER canyon");
-  await expect(dialog.getByRole("link")).toHaveCount(1);
-  await expect(dialog.getByRole("link")).toContainText("A copper canyon destination.");
+  await expect(dialog.getByRole("option")).toHaveCount(1);
+  await expect(dialog.getByRole("option")).toContainText("A copper canyon destination.");
   await expect(page).toHaveURL(new RegExp(`/${currentId}$`));
   await capture(page, testInfo, "offline-search-result");
   await context.setOffline(false);
   if (isMobile) {
-    await dialog.getByRole("link").tap();
+    await dialog.getByRole("option").tap();
   } else {
     const newTabPromise = context.waitForEvent("page");
-    await dialog.getByRole("link").click({ modifiers: ["ControlOrMeta"] });
+    await dialog.getByRole("option").click({ modifiers: ["ControlOrMeta"] });
     const newTab = await newTabPromise;
     await expect(newTab).toHaveURL(new RegExp(`/${targetId}$`));
     await expect(editor(newTab)).toHaveText("Morning atlasA copper canyon destination.");
@@ -76,9 +80,8 @@ test("search filters local notes offline and opens a result with keyboard or tou
     await expect(editor(page)).toHaveText("Current notebook. Keep this thought.");
     await newTab.close();
     await search.focus();
-    await search.press("Tab");
-    await expect(dialog.getByRole("link")).toBeFocused();
-    await page.keyboard.press("Enter");
+    await expect(dialog.getByRole("option", { selected: true })).toContainText("A copper canyon destination.");
+    await search.press("Enter");
   }
   await expect(dialog).toBeHidden();
   await expect(page).toHaveURL(new RegExp(`/${targetId}$`));

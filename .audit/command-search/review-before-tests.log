@@ -1,0 +1,151 @@
+$ playwright test tests/command-search.spec.ts --grep "Tab skips|respects another"
+
+Running 4 tests using 1 worker
+
+(node:59545) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 [desktop-chromium] › tests/command-search.spec.ts:104:5 › Tab skips command results while arrow keys choose the note to open (6.6s)
+(node:59568) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  2 [desktop-chromium] › tests/command-search.spec.ts:124:5 › search shortcut respects another open modal (6.3s)
+(node:59593) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  3 [mobile-webkit] › tests/command-search.spec.ts:104:5 › Tab skips command results while arrow keys choose the note to open (1.4s)
+  ✘  4 [mobile-webkit] › tests/command-search.spec.ts:124:5 › search shortcut respects another open modal (6.2s)
+
+
+  1) [desktop-chromium] › tests/command-search.spec.ts:104:5 › Tab skips command results while arrow keys choose the note to open
+
+    Error: expect(locator).toBeFocused() failed
+
+    Locator:  getByRole('dialog', { name: 'Search notes', exact: true }).getByRole('button', { name: 'Close', exact: true })
+    Expected: focused
+    Received: inactive
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toBeFocused" getByRole('dialog', { name: 'Search notes', exact: true }).getByRole('button', { name: 'Close', exact: true }) with timeout 5000ms
+      - waiting for getByRole('dialog', { name: 'Search notes', exact: true }).getByRole('button', { name: 'Close', exact: true })
+        14 × locator resolved to <button type="button" data-slot="dialog-close" class="ring-offset-background focus:ring-ring data-[state=open]:bg-accent data-[state=open]:text-muted-foreground absolute top-4 right-4 rounded-xs opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4">…</button>
+           - unexpected value "inactive"
+
+
+      113 |   await expect(dialog.getByRole("option")).toHaveCount(2);
+      114 |   await input.press("Tab");
+    > 115 |   await expect(dialog.getByRole("button", { name: "Close", exact: true })).toBeFocused();
+          |                                                                            ^
+      116 |   await page.keyboard.press("Shift+Tab");
+      117 |   await expect(input).toBeFocused();
+      118 |   await input.press("ArrowDown");
+        at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/command-search.spec.ts:115:76
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .audit/command-search/review-before/test-results/command-search-Tab-skips-c-08a3a-eys-choose-the-note-to-open-desktop-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    .audit/command-search/review-before/test-results/command-search-Tab-skips-c-08a3a-eys-choose-the-note-to-open-desktop-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .audit/command-search/review-before/test-results/command-search-Tab-skips-c-08a3a-eys-choose-the-note-to-open-desktop-chromium/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    .audit/command-search/review-before/test-results/command-search-Tab-skips-c-08a3a-eys-choose-the-note-to-open-desktop-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace .audit/command-search/review-before/test-results/command-search-Tab-skips-c-08a3a-eys-choose-the-note-to-open-desktop-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [desktop-chromium] › tests/command-search.spec.ts:124:5 › search shortcut respects another open modal
+
+    Error: expect(locator).toBeHidden() failed
+
+    Locator:  getByRole('dialog', { name: 'Search notes', exact: true })
+    Expected: hidden
+    Received: visible
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toBeHidden" getByRole('dialog', { name: 'Search notes', exact: true }) with timeout 5000ms
+      - waiting for getByRole('dialog', { name: 'Search notes', exact: true })
+        14 × locator resolved to <div role="dialog" tabindex="-1" data-state="open" id="radix-_R_j9esqlb_" data-slot="dialog-content" aria-labelledby="radix-_R_j9esqlbH1_" aria-describedby="radix-_R_j9esqlbH2_" class="bg-background data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 fixed left-[50%] z-50 w-full max-w-[calc(100%-2rem)] translate-x-[-50%] rounded-lg border shadow-lg duration-200 top-[10dvh…>…</div>
+           - unexpected value "visible"
+
+
+      128 |   await expect(settings).toBeVisible();
+      129 |   await page.keyboard.press("ControlOrMeta+k");
+    > 130 |   await expect(page.getByRole("dialog", { name: "Search notes", exact: true })).toBeHidden();
+          |                                                                                 ^
+      131 |   await expect(settings).toBeVisible();
+      132 |   await page.keyboard.press("Escape");
+      133 |   await expect(settings).toBeHidden();
+        at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/command-search.spec.ts:130:81
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .audit/command-search/review-before/test-results/command-search-search-shortcut-respects-another-open-modal-desktop-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    .audit/command-search/review-before/test-results/command-search-search-shortcut-respects-another-open-modal-desktop-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .audit/command-search/review-before/test-results/command-search-search-shortcut-respects-another-open-modal-desktop-chromium/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    .audit/command-search/review-before/test-results/command-search-search-shortcut-respects-another-open-modal-desktop-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace .audit/command-search/review-before/test-results/command-search-search-shortcut-respects-another-open-modal-desktop-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [mobile-webkit] › tests/command-search.spec.ts:124:5 › search shortcut respects another open modal
+
+    Error: expect(locator).toBeHidden() failed
+
+    Locator:  getByRole('dialog', { name: 'Search notes', exact: true })
+    Expected: hidden
+    Received: visible
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toBeHidden" getByRole('dialog', { name: 'Search notes', exact: true }) with timeout 5000ms
+      - waiting for getByRole('dialog', { name: 'Search notes', exact: true })
+        14 × locator resolved to <div role="dialog" tabindex="-1" data-state="open" id="radix-_R_j9esqlb_" data-slot="dialog-content" aria-labelledby="radix-_R_j9esqlbH1_" aria-describedby="radix-_R_j9esqlbH2_" class="bg-background data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 fixed left-[50%] z-50 w-full max-w-[calc(100%-2rem)] translate-x-[-50%] rounded-lg border shadow-lg duration-200 top-[10dvh…>…</div>
+           - unexpected value "visible"
+
+
+      128 |   await expect(settings).toBeVisible();
+      129 |   await page.keyboard.press("ControlOrMeta+k");
+    > 130 |   await expect(page.getByRole("dialog", { name: "Search notes", exact: true })).toBeHidden();
+          |                                                                                 ^
+      131 |   await expect(settings).toBeVisible();
+      132 |   await page.keyboard.press("Escape");
+      133 |   await expect(settings).toBeHidden();
+        at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/command-search.spec.ts:130:81
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .audit/command-search/review-before/test-results/command-search-search-shortcut-respects-another-open-modal-mobile-webkit/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    .audit/command-search/review-before/test-results/command-search-search-shortcut-respects-another-open-modal-mobile-webkit/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .audit/command-search/review-before/test-results/command-search-search-shortcut-respects-another-open-modal-mobile-webkit/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    .audit/command-search/review-before/test-results/command-search-search-shortcut-respects-another-open-modal-mobile-webkit/trace.zip
+    Usage:
+
+        npx playwright show-trace .audit/command-search/review-before/test-results/command-search-search-shortcut-respects-another-open-modal-mobile-webkit/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3 failed
+    [desktop-chromium] › tests/command-search.spec.ts:104:5 › Tab skips command results while arrow keys choose the note to open
+    [desktop-chromium] › tests/command-search.spec.ts:124:5 › search shortcut respects another open modal
+    [mobile-webkit] › tests/command-search.spec.ts:124:5 › search shortcut respects another open modal
+  1 passed (21.7s)
+error: script "test:e2e" exited with code 1

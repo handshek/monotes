@@ -1,0 +1,169 @@
+$ playwright test tests/command-search.spec.ts tests/search-dialog.spec.ts tests/regressions.spec.ts --grep "search|Search|Cmd"
+
+Running 12 tests using 1 worker
+
+(node:51557) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 [desktop-chromium] › tests/command-search.spec.ts:4:5 › Cmd and Ctrl K open search without changing the note and Escape restores editing (2.8s)
+  ✓   2 [desktop-chromium] › tests/command-search.spec.ts:34:5 › search input is not clipped and each note result has a visible border (1.3s)
+  ✓   3 [desktop-chromium] › tests/command-search.spec.ts:73:5 › command input stays visible while long results scroll in a short viewport (2.2s)
+  ✘   4 [desktop-chromium] › tests/regressions.spec.ts:36:5 › sidebar Search opens a focused search and finds the current note (6.7s)
+(node:51629) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   5 [desktop-chromium] › tests/search-dialog.spec.ts:4:5 › search stays inside the current note and dismisses without losing edits (3.0s)
+  ✓   6 [desktop-chromium] › tests/search-dialog.spec.ts:42:5 › search filters local notes offline and opens a result with keyboard or touch (4.4s)
+(node:52038) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   7 [mobile-webkit] › tests/command-search.spec.ts:4:5 › Cmd and Ctrl K open search without changing the note and Escape restores editing (2.7s)
+  ✓   8 [mobile-webkit] › tests/command-search.spec.ts:34:5 › search input is not clipped and each note result has a visible border (2.2s)
+  ✘   9 [mobile-webkit] › tests/command-search.spec.ts:73:5 › command input stays visible while long results scroll in a short viewport (2.9s)
+(node:52087) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  10 [mobile-webkit] › tests/regressions.spec.ts:36:5 › sidebar Search opens a focused search and finds the current note (8.6s)
+(node:52231) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  11 [mobile-webkit] › tests/search-dialog.spec.ts:4:5 › search stays inside the current note and dismisses without losing edits (4.8s)
+  ✓  12 [mobile-webkit] › tests/search-dialog.spec.ts:42:5 › search filters local notes offline and opens a result with keyboard or touch (5.0s)
+
+
+  1) [desktop-chromium] › tests/regressions.spec.ts:36:5 › sidebar Search opens a focused search and finds the current note
+
+    Error: expect(locator).toContainText(expected) failed
+
+    Locator: getByRole('region', { name: 'Search results (1)', exact: true }).getByRole('link')
+    Expected substring: "Cobalt lighthouse search target."
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toContainText" getByRole('region', { name: 'Search results (1)', exact: true }).getByRole('link') with timeout 5000ms
+      - waiting for getByRole('region', { name: 'Search results (1)', exact: true }).getByRole('link')
+
+
+      53 |   await search.fill("lighthouse");
+      54 |   const results = page.getByRole("region", { name: "Search results (1)", exact: true });
+    > 55 |   await expect(results.getByRole("link")).toContainText("Cobalt lighthouse search target.");
+         |                                           ^
+      56 |   await results.getByRole("link").click();
+      57 |   await expect(editor(page)).toHaveText("Cobalt lighthouse search target.");
+      58 | });
+        at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/regressions.spec.ts:55:43
+
+    attachment #1: after-sidebar-search (image/png) ────────────────────────────────────────────────
+    .audit/command-search/focused/test-results/regressions-sidebar-Search-7ebcb--and-finds-the-current-note-desktop-chromium/attachments/after-sidebar-search-67a104265b4fbad04894f07832325c44e4d3e4e0.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .audit/command-search/focused/test-results/regressions-sidebar-Search-7ebcb--and-finds-the-current-note-desktop-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #3: video (video/webm) ──────────────────────────────────────────────────────────────
+    .audit/command-search/focused/test-results/regressions-sidebar-Search-7ebcb--and-finds-the-current-note-desktop-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .audit/command-search/focused/test-results/regressions-sidebar-Search-7ebcb--and-finds-the-current-note-desktop-chromium/error-context.md
+
+    attachment #5: trace (application/zip) ─────────────────────────────────────────────────────────
+    .audit/command-search/focused/test-results/regressions-sidebar-Search-7ebcb--and-finds-the-current-note-desktop-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace .audit/command-search/focused/test-results/regressions-sidebar-Search-7ebcb--and-finds-the-current-note-desktop-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [mobile-webkit] › tests/command-search.spec.ts:73:5 › command input stays visible while long results scroll in a short viewport
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 4
+    + Received  + 4
+
+      Object {
+    -   "height": 46.25401306152344,
+    -   "width": 258.25159454345703,
+    -   "x": 62.01970672607422,
+    -   "y": 54.8563232421875,
+    +   "height": 46.553829193115234,
+    +   "width": 259.92552947998047,
+    +   "x": 61.157752990722656,
+    +   "y": 53.850711822509766,
+      }
+
+      89 |   await expect(dialog.getByRole("option", { selected: true })).toContainText("Note 0.");
+      90 |   const after = await input.boundingBox();
+    > 91 |   expect(after).toEqual(before);
+         |                 ^
+      92 |   const scrolling = await list.evaluate(element => ({ scrollHeight: element.scrollHeight, clientHeight: element.clientHeight, scrollTop: element.scrollTop }));
+      93 |   expect(scrolling.scrollHeight).toBeGreaterThan(scrolling.clientHeight);
+      94 |   expect(scrolling.scrollTop).toBeGreaterThan(0);
+        at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/command-search.spec.ts:91:17
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .audit/command-search/focused/test-results/command-search-command-inp-42f23--scroll-in-a-short-viewport-mobile-webkit/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    .audit/command-search/focused/test-results/command-search-command-inp-42f23--scroll-in-a-short-viewport-mobile-webkit/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .audit/command-search/focused/test-results/command-search-command-inp-42f23--scroll-in-a-short-viewport-mobile-webkit/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    .audit/command-search/focused/test-results/command-search-command-inp-42f23--scroll-in-a-short-viewport-mobile-webkit/trace.zip
+    Usage:
+
+        npx playwright show-trace .audit/command-search/focused/test-results/command-search-command-inp-42f23--scroll-in-a-short-viewport-mobile-webkit/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [mobile-webkit] › tests/regressions.spec.ts:36:5 › sidebar Search opens a focused search and finds the current note
+
+    Error: expect(locator).toContainText(expected) failed
+
+    Locator: getByRole('region', { name: 'Search results (1)', exact: true }).getByRole('link')
+    Expected substring: "Cobalt lighthouse search target."
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toContainText" getByRole('region', { name: 'Search results (1)', exact: true }).getByRole('link') with timeout 5000ms
+      - waiting for getByRole('region', { name: 'Search results (1)', exact: true }).getByRole('link')
+
+
+      53 |   await search.fill("lighthouse");
+      54 |   const results = page.getByRole("region", { name: "Search results (1)", exact: true });
+    > 55 |   await expect(results.getByRole("link")).toContainText("Cobalt lighthouse search target.");
+         |                                           ^
+      56 |   await results.getByRole("link").click();
+      57 |   await expect(editor(page)).toHaveText("Cobalt lighthouse search target.");
+      58 | });
+        at /Users/abhi/.codex/worktrees/monotes-overnight/monotes/tests/regressions.spec.ts:55:43
+
+    attachment #1: after-sidebar-search (image/png) ────────────────────────────────────────────────
+    .audit/command-search/focused/test-results/regressions-sidebar-Search-7ebcb--and-finds-the-current-note-mobile-webkit/attachments/after-sidebar-search-272a5479909b97d984c6ec3d89f4d9faca2826e7.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .audit/command-search/focused/test-results/regressions-sidebar-Search-7ebcb--and-finds-the-current-note-mobile-webkit/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #3: video (video/webm) ──────────────────────────────────────────────────────────────
+    .audit/command-search/focused/test-results/regressions-sidebar-Search-7ebcb--and-finds-the-current-note-mobile-webkit/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .audit/command-search/focused/test-results/regressions-sidebar-Search-7ebcb--and-finds-the-current-note-mobile-webkit/error-context.md
+
+    attachment #5: trace (application/zip) ─────────────────────────────────────────────────────────
+    .audit/command-search/focused/test-results/regressions-sidebar-Search-7ebcb--and-finds-the-current-note-mobile-webkit/trace.zip
+    Usage:
+
+        npx playwright show-trace .audit/command-search/focused/test-results/regressions-sidebar-Search-7ebcb--and-finds-the-current-note-mobile-webkit/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3 failed
+    [desktop-chromium] › tests/regressions.spec.ts:36:5 › sidebar Search opens a focused search and finds the current note
+    [mobile-webkit] › tests/command-search.spec.ts:73:5 › command input stays visible while long results scroll in a short viewport
+    [mobile-webkit] › tests/regressions.spec.ts:36:5 › sidebar Search opens a focused search and finds the current note
+  9 passed (48.4s)
+error: script "test:e2e" exited with code 1
