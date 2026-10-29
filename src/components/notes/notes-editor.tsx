@@ -1,15 +1,17 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef } from "react";
+import { useCallback, useEffect, useMemo } from "react";
 import CodeMirror, { EditorSelection } from "@uiw/react-codemirror";
 import { markdown } from "@codemirror/lang-markdown";
 import { EditorView, keymap } from "@codemirror/view";
 import { EditorState } from "@codemirror/state";
-import { vim, Vim } from "@replit/codemirror-vim";
+import { vim } from "@replit/codemirror-vim";
 import { toast } from "sonner";
 import { editorThemeExtensions } from "./notes-theme";
 import { useLocalNote } from "@/hooks/useLocalNote";
+import { useVimCommands } from "@/hooks/useVimCommands";
 import { useDebouncedCloudSync } from "@/lib/sync-engine";
+import { getNote } from "@/lib/local-notes";
 import { useNoteSync } from "@/contexts/note-sync-context";
 import NotesMetadataBar from "./notes-metadata-bar";
 import WelcomeDialog from "./welcome-dialog";
@@ -32,9 +34,6 @@ export default function NotesEditor({ noteId }: NotesEditorProps) {
   const { settings } = useEditorSettings();
   const { triggerDistraction } = useDistractionFree();
 
-  // Track applied Vim mappings to cleanup later
-  const appliedMappings = useRef<{ lhs: string; mode: string }[]>([]);
-
   const saveAndSync = useCallback(async () => {
     const result = await saveNow();
     await syncNow();
@@ -47,6 +46,13 @@ export default function NotesEditor({ noteId }: NotesEditorProps) {
       unregisterSync();
     };
   }, [id, saveAndSync, registerSync, unregisterSync]);
+
+  // Before connecting for agents, make every keystroke durable and read the
+  // stored text so nothing typed in this editor is left behind.
+  const prepareConnect = useCallback(async () => {
+    await saveNow();
+    return (await getNote(id))?.content ?? "";
+  }, [saveNow, id]);
 
   const showUpdatedNotice = useCallback(() => {
     toast("Updated from another tab", { id: `note-update-${id}` });
@@ -66,45 +72,7 @@ export default function NotesEditor({ noteId }: NotesEditorProps) {
     return true;
   }, [saveAndSync, showUpdatedNotice]);
 
-  // Handle Vim commands
-  useEffect(() => {
-    if (!settings.vimMode) return;
-
-    // Clean up previous mappings
-    appliedMappings.current.forEach(({ lhs, mode }) => {
-      try {
-        Vim.unmap(lhs, mode);
-      } catch {
-        // Ignore unmap errors
-      }
-    });
-    appliedMappings.current = [];
-
-    Vim.defineEx("write", "w", handleSave);
-
-    const lines = settings.vimCommands.split("\n");
-    lines.forEach((line) => {
-      const parts = line.trim().split(/\s+/);
-      if (parts.length < 3) return;
-
-      const [cmd, lhs, ...rhsParts] = parts;
-      const rhs = rhsParts.join(" ");
-      let mode = "normal";
-
-      if (cmd.startsWith("i")) mode = "insert";
-      else if (cmd.startsWith("v")) mode = "visual";
-      else if (cmd.startsWith("n")) mode = "normal";
-
-      // Map keys
-      if (cmd.includes("nore")) {
-        Vim.noremap(lhs, rhs, mode);
-      } else {
-        Vim.map(lhs, rhs, mode);
-      }
-
-      appliedMappings.current.push({ lhs, mode });
-    });
-  }, [settings.vimMode, settings.vimCommands, handleSave]);
+  useVimCommands(settings.vimMode, settings.vimCommands, handleSave);
 
   const extensions = useMemo(() => {
     const exts = [
@@ -145,6 +113,7 @@ export default function NotesEditor({ noteId }: NotesEditorProps) {
           noteId={noteId}
           isSyncing={isSyncing}
           syncComplete={syncComplete}
+          prepareConnect={prepareConnect}
         />
         {saveError && (
           <div role="alert" className="mb-4 text-sm text-destructive">

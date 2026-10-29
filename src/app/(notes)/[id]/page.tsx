@@ -1,7 +1,7 @@
 "use client";
 
 import Navbar from "@/app/(notes)/navbar";
-import NotesEditor from "@/components/notes/notes-editor";
+import NoteView from "@/components/notes/note-view";
 import { useParams } from "next/navigation";
 import { isValidSlug } from "@/lib/ids";
 
@@ -30,7 +30,7 @@ export default function Note() {
       <Navbar />
       <main className="flex">
         <section className="flex-1 md:max-w-4xl mx-auto">
-          {id && <NotesEditor key={id} noteId={id} />}
+          {id && <NoteView key={id} noteId={id} />}
         </section>
       </main>
     </div>

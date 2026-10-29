@@ -42,13 +42,14 @@ import { getDB } from "@/lib/local-db";
 import { useLiveQuery } from "dexie-react-hooks";
 import { generateSlug } from "@/lib/ids";
 import { toast } from "sonner";
-import { Authenticated, Unauthenticated, useQuery } from "convex/react";
+import { Authenticated, Unauthenticated, useMutation, useQuery } from "convex/react";
 import { useAuthActions } from "@convex-dev/auth/react";
 import { useRouter, usePathname } from "next/navigation";
 import { api } from "../../../convex/_generated/api";
 import { useNoteSync } from "@/contexts/note-sync-context";
 import { cn } from "@/lib/utils";
 import NotesSearchDialog from "./notes-search-dialog";
+import { forgetLocalNote } from "@/lib/collab/store";
 
 export default function NotesSidebar() {
   const { toggleSidebar, setOpenMobile } = useSidebar();
@@ -61,6 +62,7 @@ export default function NotesSidebar() {
   const searchTrigger = useRef<HTMLButtonElement>(null);
   const searchReturnFocus = useRef<HTMLElement | null>(null);
   const [noteToDelete, setNoteToDelete] = useState<string | null>(null);
+  const deleteCloudNote = useMutation(api.collab.deleteCloudNote);
 
   // Use Dexie's liveQuery for automatic reactivity
   const notes =
@@ -151,7 +153,35 @@ export default function NotesSidebar() {
   };
 
   const handleDeleteNote = async (id: string) => {
-    await getDB().notes.delete(id);
+    const note = await getDB().notes.get(id);
+    if (note?.collab) {
+      // Agent access ends only once the server confirms the deletion, so a
+      // shared note is never removed from this device before that.
+      if (!navigator.onLine) {
+        toast.error("Connect to the internet to delete a note shared with agents.");
+        return;
+      }
+      try {
+        const result = await deleteCloudNote({ noteId: id });
+        if (result.status === "signed_out") {
+          toast.error("Sign in to delete a note shared with agents.");
+          return;
+        }
+      } catch {
+        toast.error("Couldn’t delete this note. Try again.");
+        return;
+      }
+      await forgetLocalNote(id);
+    } else {
+      if (note && note.cloudStatus !== "local") {
+        try {
+          await deleteCloudNote({ noteId: id });
+        } catch {
+          toast.warning("Deleted on this device. The cloud copy couldn’t be removed yet.");
+        }
+      }
+      await getDB().notes.delete(id);
+    }
     if (currentNoteId === id) {
       router.push("/");
     }

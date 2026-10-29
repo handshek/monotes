@@ -11,10 +11,57 @@ export interface NoteContent {
   updatedAt: number;
   localRevision?: LocalRevision;
   cloudStatus: "local" | "syncing" | "synced" | "ai-enabled";
+  // Set once the note is connected for live agent editing. The row's content
+  // is then a copy derived from collaboration state, never its source.
+  collab?: CollabMarker;
+}
+
+export interface CollabMarker {
+  epoch: string;
+  // Clock of the last derived write; any other writer is detected.
+  derivedClock?: number;
+}
+
+export interface StoredUpdate {
+  seq: number;
+  changes: string;
+}
+
+/*
+ * One tab's collaboration client for one note: the text and version last
+ * confirmed by the server plus the updates it has not confirmed yet. Written
+ * atomically before any of those updates is sent.
+ */
+export interface CollabClientRecord {
+  noteId: string;
+  clientId: string;
+  epoch: string;
+  version: number;
+  text: string;
+  confirmedSeq: number;
+  unconfirmed: StoredUpdate[];
+  updatedAt: number;
+}
+
+export interface RecoveryRecord {
+  id?: number;
+  noteId: string;
+  text: string;
+  reason:
+    | "other_window"
+    | "older_window"
+    | "unmerged"
+    | "deleted"
+    | "before_connect"
+    | "unsaved_typing"
+    | "unsent";
+  createdAt: number;
 }
 
 class MonotesLocalDB extends Dexie {
   notes!: Table<NoteContent, string>;
+  collabClients!: Table<CollabClientRecord, [string, string]>;
+  recoveries!: Table<RecoveryRecord, number>;
 
   constructor() {
     super("monotes-db");
@@ -51,6 +98,13 @@ class MonotesLocalDB extends Dexie {
             delete note.accessKey;
           });
       });
+
+    // Version 4: per-tab collaboration queues and recovery copies.
+    this.version(4).stores({
+      notes: "id,updatedAt,cloudStatus",
+      collabClients: "[noteId+clientId],noteId",
+      recoveries: "++id,noteId",
+    });
   }
 }
 
