@@ -1,7 +1,7 @@
 "use client";
 
 import NotesSidebar from "@/components/notes/notes-sidebar";
-import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
+import { SidebarProvider, SidebarInset } from "@/components/sidebar";
 import { NoteSyncProvider } from "@/contexts/note-sync-context";
 import { DistractionFreeProvider } from "@/contexts/distraction-free-context";
 

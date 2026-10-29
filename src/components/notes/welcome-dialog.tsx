@@ -3,14 +3,40 @@
 import { useState, useEffect } from "react";
 import {
   Dialog,
+  DialogAction,
+  DialogBody,
   DialogContent,
+  DialogDescription,
+  DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogFooter,
-} from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
+} from "@/components/sodium/ui/dialog";
+import { Checkbox } from "@/components/sodium/ui/checkbox";
 
 const WELCOME_DISMISSED_KEY = "monotes-welcome-dismissed";
+
+const FEATURES = [
+  {
+    title: "Local-first notes",
+    body: "Your notes are stored locally on your device using IndexedDB. They work offline and load instantly, with no server required for basic usage.",
+  },
+  {
+    title: "Cloud sync",
+    body: "Sign in to sync your notes across devices. Changes are automatically saved and synced in the background while you type.",
+  },
+  {
+    title: "Vim mode",
+    body: "Enable Vim keybindings in settings for a keyboard-driven editing experience. Custom key mappings are supported via the editor settings.",
+  },
+  {
+    title: "Distraction-free mode",
+    body: "The UI fades away while you type, keeping you focused on your writing. Interface elements reappear when you pause.",
+  },
+  {
+    title: "Markdown editor",
+    body: "Write in Markdown with syntax highlighting powered by CodeMirror. Customize font size, tab width, and line numbers in settings.",
+  },
+];
 
 export default function WelcomeDialog() {
   const [open, setOpen] = useState(false);
@@ -27,76 +53,31 @@ export default function WelcomeDialog() {
     if (dontShowAgain) {
       localStorage.setItem(WELCOME_DISMISSED_KEY, "true");
     }
-    setOpen(false);
   };
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogContent
-        className="sm:max-w-[500px] max-h-[85vh] flex flex-col gap-0 p-0 overflow-hidden"
-        showCloseButton={false}
-      >
-        <DialogHeader className="sticky top-0 bg-background z-10 px-6 py-4 border-b border-border/50">
-          <DialogTitle className="text-xl">Welcome to Monotes</DialogTitle>
+      <DialogContent showCloseButton={false}>
+        <DialogHeader>
+          <DialogTitle>Welcome to Monotes</DialogTitle>
         </DialogHeader>
-
-        <div className="flex-1 overflow-y-auto px-6 py-5 space-y-5">
-          <div>
-            <h4 className="font-semibold text-sm mb-1">Local-First Notes</h4>
-            <p className="text-sm text-muted-foreground">
-              Your notes are stored locally on your device using IndexedDB. They
-              work offline and load instantly, with no server required for basic
-              usage.
-            </p>
-          </div>
-
-          <div>
-            <h4 className="font-semibold text-sm mb-1">Cloud Sync</h4>
-            <p className="text-sm text-muted-foreground">
-              Sign in to sync your notes across devices. Changes are
-              automatically saved and synced in the background while you type.
-            </p>
-          </div>
-
-          <div>
-            <h4 className="font-semibold text-sm mb-1">Vim Mode</h4>
-            <p className="text-sm text-muted-foreground">
-              Enable Vim keybindings in settings for a keyboard-driven editing
-              experience. Custom key mappings are supported via the editor
-              settings.
-            </p>
-          </div>
-
-          <div>
-            <h4 className="font-semibold text-sm mb-1">Distraction-Free Mode</h4>
-            <p className="text-sm text-muted-foreground">
-              The UI fades away while you type, keeping you focused on your
-              writing. Interface elements reappear when you pause.
-            </p>
-          </div>
-
-          <div>
-            <h4 className="font-semibold text-sm mb-1">Markdown Editor</h4>
-            <p className="text-sm text-muted-foreground">
-              Write in Markdown with syntax highlighting powered by CodeMirror.
-              Customize font size, tab width, and line numbers in settings.
-            </p>
-          </div>
-        </div>
-
-        <DialogFooter className="sticky bottom-0 bg-background z-10 px-6 py-4 border-t border-border/50 flex-row items-center justify-between sm:justify-between gap-4">
-          <label className="flex items-center gap-2 cursor-pointer">
-            <input
-              type="checkbox"
-              checked={dontShowAgain}
-              onChange={(e) => setDontShowAgain(e.target.checked)}
-              className="size-4 rounded border-border accent-primary cursor-pointer"
-            />
-            <span className="text-sm text-muted-foreground">
-              Do not show again
-            </span>
+        <DialogBody>
+          <DialogDescription>A Markdown notebook that keeps your notes on this device first.</DialogDescription>
+          <dl className="mt-1 flex flex-col">
+            {FEATURES.map((feature) => (
+              <div key={feature.title} className="rule-row flex flex-col gap-1 py-3">
+                <dt className="type-label text-text-1">{feature.title}</dt>
+                <dd className="type-body-sm text-text-2">{feature.body}</dd>
+              </div>
+            ))}
+          </dl>
+        </DialogBody>
+        <DialogFooter defaultAction="primary">
+          <label className="me-auto flex cursor-pointer items-center gap-3 type-label-sm text-text-2">
+            <Checkbox checked={dontShowAgain} onCheckedChange={(checked) => setDontShowAgain(checked)} />
+            Do not show again
           </label>
-          <Button onClick={handleClose}>Okay</Button>
+          <DialogAction onAction={handleClose}>Okay</DialogAction>
         </DialogFooter>
       </DialogContent>
     </Dialog>

@@ -3,6 +3,11 @@
 import * as React from "react";
 import { ThemeProvider as NextThemesProvider, useTheme } from "next-themes";
 import { ThemePreset } from "@/lib/themes";
+import {
+  applySodiumVars,
+  clearSodiumVars,
+  sodiumVarsFromTheme,
+} from "@/lib/theme-bridge";
 
 interface ColorThemeContextType {
   activeTheme: ThemePreset | null;
@@ -18,6 +23,9 @@ const ColorThemeContext = React.createContext<ColorThemeContextType>({
 
 export const useColorTheme = () => React.useContext(ColorThemeContext);
 
+const THEME_KEY = "monotes-color-theme-v2";
+const LEGACY_THEME_KEY = "monotes-color-theme";
+
 export function ThemeProvider({
   children,
   ...props
@@ -29,7 +37,10 @@ export function ThemeProvider({
 
   // Load from local storage on mount
   React.useEffect(() => {
-    const saved = localStorage.getItem("monotes-color-theme");
+    // A theme chosen before the Sodium redesign no longer applies: Sodium is
+    // the default, and a theme picked since is stored under the new key.
+    localStorage.removeItem(LEGACY_THEME_KEY);
+    const saved = localStorage.getItem(THEME_KEY);
     if (saved) {
       try {
         setActiveThemeState(JSON.parse(saved));
@@ -43,9 +54,9 @@ export function ThemeProvider({
   const setActiveTheme = (theme: ThemePreset | null) => {
     setActiveThemeState(theme);
     if (theme) {
-      localStorage.setItem("monotes-color-theme", JSON.stringify(theme));
+      localStorage.setItem(THEME_KEY, JSON.stringify(theme));
     } else {
-      localStorage.removeItem("monotes-color-theme");
+      localStorage.removeItem(THEME_KEY);
     }
   };
 
@@ -77,36 +88,12 @@ function ThemeInjector({ activeTheme }: { activeTheme: ThemePreset | null }) {
       };
     }
 
-    // Ensure prefixes for all paths
-    const vars: Record<string, string> = {};
-    Object.entries(rawVars).forEach(([key, value]) => {
-      const prop = key.startsWith("--") ? key : `--${key}`;
-
-      // Exclude font styles
-      if (prop.includes("font")) return;
-
-      vars[prop] = value;
-    });
-
-    console.table(vars);
-
-    injectThemeVars(vars);
-    return () => removeThemeVars(vars);
+    // Sodium's roles live on the .sodium element (body), so the theme is
+    // translated into them and set there rather than on <html>.
+    const vars = sodiumVarsFromTheme(rawVars);
+    applySodiumVars(document.body, vars);
+    return () => clearSodiumVars(document.body, vars);
   }, [activeTheme, resolvedTheme]);
 
   return null;
-}
-
-function injectThemeVars(vars: Record<string, string>) {
-  const root = document.documentElement;
-  Object.entries(vars).forEach(([key, value]) => {
-    root.style.setProperty(key, value);
-  });
-}
-
-function removeThemeVars(vars: Record<string, string>) {
-  const root = document.documentElement;
-  Object.keys(vars).forEach((key) => {
-    root.style.removeProperty(key);
-  });
 }

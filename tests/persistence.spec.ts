@@ -1,5 +1,5 @@
 import { expect, test, type Page } from "@playwright/test";
-import { capture, createNote, editor, openSidebar, readStoredNote, waitForStoredContent } from "./notes-helpers";
+import { capture, createNote, editor, openSidebar, readStoredNote, toastTitle, waitForStoredContent } from "./notes-helpers";
 
 const failedSaveMessage = "Changes aren’t saved to this device. Keep this tab open and try saving again.";
 
@@ -56,7 +56,7 @@ test("failed local saves show failure and recover the draft after reload", async
   await capture(page, testInfo, "forced-local-save-failure");
   const saveFailure = page.getByRole("alert").filter({ hasText: failedSaveMessage });
   await expect(saveFailure).toBeVisible();
-  await expect(page.getByText("Couldn’t save note", { exact: true })).toBeVisible();
+  await expect(toastTitle(page, "Couldn’t save note")).toBeVisible();
   await expect(page.getByText("Saved", { exact: true })).not.toBeVisible();
   await page.reload();
   await expect(editor(page)).toHaveText("The unsaved thought must survive a failed write.");
@@ -118,7 +118,7 @@ test("an older session draft cannot resurrect a note deleted in another tab", as
   await expect.poll(() => readStoredNote(otherTab, id)).toBeNull();
 
   await page.goto(`/${id}`);
-  await expect(page.getByText("❌ Note not found", { exact: true })).toBeVisible();
+  await expect(page.getByText("Note not found", { exact: true })).toBeVisible();
   await expect(editor(page)).not.toBeVisible();
   await expect.poll(() => readSessionDraft(page, id)).toBeNull();
   await expect.poll(() => readStoredNote(page, id)).toBeNull();

@@ -2,6 +2,11 @@ import { expect, type Page, type TestInfo } from "@playwright/test";
 
 export const editor = (page: Page) => page.locator('.cm-content[contenteditable="true"]');
 
+// A toast's visible title. Failure toasts are also announced through a separate role="alert" element, so the
+// lookup stays inside the visible stack.
+export const toastTitle = (page: Page, title: string) =>
+  page.getByRole("region", { name: "Notifications" }).getByText(title, { exact: true });
+
 export async function createNote(page: Page) {
   await page.goto("/");
   await page.getByRole("button", { name: "Create new note", exact: true }).click();
@@ -41,6 +46,8 @@ export async function waitForStoredContent(page: Page, id: string, content: stri
 
 export async function openSidebar(page: Page, isMobile: boolean) {
   if (isMobile) {
+    // A drawer that was just dismissed stays on the page until its exit transition ends.
+    await expect(page.getByRole("dialog", { name: "Sidebar", exact: true })).toBeHidden();
     await page.getByRole("button", { name: "Toggle sidebar", exact: true }).click();
     await expect(page.getByRole("dialog", { name: "Sidebar", exact: true })).toBeVisible();
   }

@@ -1,25 +1,22 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import {
-  ButtonGroup,
-  ButtonGroupSeparator,
-} from "@/components/ui/button-group";
-import { PlusIcon, HamburgerMenuIcon } from "@radix-ui/react-icons";
+import { Button } from "@/components/sodium/ui/button";
+import { ButtonGroup, ButtonGroupSeparator } from "@/components/sodium/ui/button-group";
+import { Icon, Add, SidebarToggle } from "@/components/sodium/icon";
+import { toast } from "@/components/sodium/ui/toast";
 import ThemeToggeler from "@/components/theme-toggeler";
 import { useRouter } from "next/navigation";
 import { createNewNote } from "@/lib/local-notes";
 import { generateSlug } from "@/lib/ids";
-import { toast } from "sonner";
-import { useSidebar } from "@/components/ui/sidebar";
+import { useSidebar } from "@/components/sidebar";
 import SettingsTrigger from "@/components/settings/settings-trigger";
 import { useDistractionFree } from "@/contexts/distraction-free-context";
 import { useEffect } from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/sodium/utils";
 
 export default function Navbar() {
   const router = useRouter();
-  const { toggleSidebar } = useSidebar();
+  const { toggleSidebar, isMobile, open } = useSidebar();
   const { isDistracted, resetDistraction } = useDistractionFree();
 
   const onCreateNew = async () => {
@@ -28,7 +25,7 @@ export default function Navbar() {
       const note = await createNewNote(slug);
       router.push(`/${note.id}`);
     } catch {
-      toast.error("Could not create note. Please try again.");
+      toast.fail("Could not create note. Please try again.");
     }
   };
 
@@ -46,27 +43,30 @@ export default function Navbar() {
   return (
     <nav
       className={cn(
-        "flex items-center justify-between fixed top-0 left-0 w-full p-2 transition-opacity duration-300",
+        "fixed start-0 top-0 flex w-full items-center justify-between p-2 transition-opacity duration-(--dur-overlay) ease-out",
         isDistracted ? "opacity-15" : "opacity-100",
       )}
     >
-      <Button
-        variant="outline"
-        size="icon-lg"
-        onClick={toggleSidebar}
-        aria-label="Toggle sidebar"
-      >
-        <HamburgerMenuIcon className="size-4" />
-      </Button>
-
-      <ButtonGroup className="rounded-inherit">
+      {/* With the desktop sidebar open it sits over this spot and carries its own toggle. */}
+      {(isMobile || !open) && (
         <Button
-          variant="outline"
-          size="icon-lg"
+          variant="ghost"
+          size="icon"
+          onClick={toggleSidebar}
+          aria-label="Toggle sidebar"
+        >
+          <Icon icon={SidebarToggle} />
+        </Button>
+      )}
+
+      <ButtonGroup aria-label="Note actions" className="ms-auto">
+        <Button
+          variant="ghost"
+          size="icon"
           aria-label="New note"
           onClick={onCreateNew}
         >
-          <PlusIcon className="size-4" />
+          <Icon icon={Add} />
         </Button>
         <ButtonGroupSeparator />
         <SettingsTrigger />

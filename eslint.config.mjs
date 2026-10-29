@@ -10,7 +10,14 @@ const compat = new FlatCompat({
 });
 
 const eslintConfig = [
-  { ignores: ["convex/_generated/**"] },
+  {
+    ignores: [
+      "convex/_generated/**",
+      // Sodium's registry code, replaced on update; checked by sodium.eslint.config.mjs instead.
+      "src/components/sodium/**",
+      "src/lib/sodium/**",
+    ],
+  },
   ...compat.extends("next/core-web-vitals", "next/typescript"),
 ];
 

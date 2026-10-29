@@ -6,8 +6,11 @@ import { useConvex, useConvexAuth, useQuery } from "convex/react";
 import { api } from "../../../convex/_generated/api";
 import { getDB } from "@/lib/local-db";
 import { hydrateCloudNote, markConnected } from "@/lib/collab/store";
+import { noteTitle } from "@/lib/note-summary";
 import NotesEditor from "./notes-editor";
 import CollabNoteEditor from "./collab-note-editor";
+import { Alert, AlertAction, AlertDescription, AlertTitle } from "@/components/sodium/ui/alert";
+import { Button } from "@/components/sodium/ui/button";
 
 /*
  * Choose how to open a note. Ordinary scratch notes keep the local editor.
@@ -26,6 +29,16 @@ export default function NoteView({ noteId }: { noteId: string }) {
   const needsCopy = info?.status === "ok" && (row === null || (info.epoch !== null && !row?.collab));
   const [copyFailed, setCopyFailed] = useState(false);
   const [attempt, setAttempt] = useState(0);
+  const tabTitle = row ? `${noteTitle(row.content)} · Monotes` : null;
+
+  // The tab and browser history name the note; leaving it restores the app's name.
+  useEffect(() => {
+    if (!tabTitle) return;
+    document.title = tabTitle;
+  }, [tabTitle]);
+  useEffect(() => () => {
+    document.title = "Monotes";
+  }, []);
 
   useEffect(() => {
     if (!needsCopy) return;
@@ -61,16 +74,21 @@ export default function NoteView({ noteId }: { noteId: string }) {
   if (row === null && isAuthenticated && (info === undefined || needsCopy)) {
     if (copyFailed) {
       return (
-        <div role="alert" className="py-12 text-center text-sm">
-          Monotes couldn’t open this note from your cloud account.{" "}
-          <button type="button" className="underline" onClick={() => setAttempt((value) => value + 1)}>
-            Try again
-          </button>
+        <div className="py-12">
+          <Alert status="fail">
+            <AlertTitle>Cloud copy</AlertTitle>
+            <AlertDescription>Monotes couldn’t open this note from your cloud account.</AlertDescription>
+            <AlertAction>
+              <Button size="sm" onClick={() => setAttempt((value) => value + 1)}>
+                Try again
+              </Button>
+            </AlertAction>
+          </Alert>
         </div>
       );
     }
     return (
-      <p role="status" className="py-12 text-center text-sm text-muted-foreground">
+      <p role="status" className="py-12 text-center type-body-sm text-text-2">
         Opening…
       </p>
     );

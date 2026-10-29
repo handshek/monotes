@@ -3,19 +3,25 @@
 import { useEffect, useState } from "react";
 import { useAction, useMutation, useQuery } from "convex/react";
 import { z } from "zod";
-import { toast } from "sonner";
 import { api } from "../../../convex/_generated/api";
 import type { Id } from "../../../convex/_generated/dataModel";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { cn } from "@/lib/utils";
-import { copyToClipboard, setupMessage, workRequest, type GrantedAccess } from "./agent-messages";
+import { Alert, AlertAction, AlertDescription, AlertTitle } from "@/components/sodium/ui/alert";
+import { Button } from "@/components/sodium/ui/button";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/sodium/ui/collapsible";
+import { CopyButton } from "@/components/sodium/ui/copy-button";
+import { Field, FieldLabel, FieldLegend, FieldSet } from "@/components/sodium/ui/field";
+import { Input } from "@/components/sodium/ui/input";
+import { RadioGroup, RadioGroupOption } from "@/components/sodium/ui/radio-group";
+import { SegmentedControl, SegmentedControlItem } from "@/components/sodium/ui/segmented-control";
+import { StatusMark } from "@/components/sodium/ui/status";
+import { toast } from "@/components/sodium/ui/toast";
+import { setupMessage, workRequest, type GrantedAccess } from "./agent-messages";
 
 const AGENTS = [
-  { id: "Codex", hint: "desktop or CLI" },
-  { id: "Claude Code", hint: "terminal or app" },
-  { id: "Cursor", hint: "editor" },
-  { id: "other", hint: "name it" },
+  { id: "Codex" },
+  { id: "Claude Code" },
+  { id: "Cursor" },
+  { id: "other" },
 ] as const;
 
 type AgentChoice = (typeof AGENTS)[number]["id"];
@@ -92,9 +98,8 @@ const START_ERRORS: Record<string, string> = {
 const ALREADY_WORKS = (name: string) =>
   `${name} already works with Monotes, so it keeps its access. It hasn’t necessarily read this note yet.`;
 
-async function copy(text: string, what: string) {
-  if (await copyToClipboard(text)) toast.success(`${what} copied`);
-  else toast.error("Couldn’t copy. Select the text and copy it instead.");
+function isGrantedAccess(value: unknown): value is GrantedAccess {
+  return value === "read" || value === "edit";
 }
 
 /* Connect a coding agent to this note with a one-time pairing code. */
@@ -172,10 +177,10 @@ export default function PairAgent({
         toast(ALREADY_WORKS(replacing?.name ?? name));
         finish();
       } else {
-        toast.error(START_ERRORS[result.status] ?? "Couldn’t create a setup message.");
+        toast.fail(START_ERRORS[result.status] ?? "Couldn’t create a setup message.");
       }
     } catch {
-      toast.error("Couldn’t create a setup message. Try again.");
+      toast.fail("Couldn’t create a setup message. Try again.");
     } finally {
       setBusy(false);
     }
@@ -191,7 +196,7 @@ export default function PairAgent({
         finish();
       } else remember(null);
     } catch {
-      toast.error("Couldn’t cancel. Try again.");
+      toast.fail("Couldn’t cancel. Try again.");
     } finally {
       setBusy(false);
     }
@@ -207,123 +212,124 @@ export default function PairAgent({
 
   if (!setup || status === null) {
     return (
-      <div className="space-y-4 text-sm">
-        <fieldset className="space-y-2">
-          <legend className="mb-1 text-xs text-muted-foreground">Which agent do you use?</legend>
-          <div className="grid grid-cols-2 gap-2 sm:grid-cols-4" role="group" aria-label="Agent">
+      <div className="flex flex-col gap-5">
+        <FieldSet>
+          <FieldLegend>Which agent do you use?</FieldLegend>
+          {/* Toggle buttons that act as one choice: pressing the chosen one keeps it. */}
+          <SegmentedControl
+            multiple
+            size="sm"
+            aria-label="Agent"
+            value={[agent]}
+            onValueChange={(values) => {
+              const next = AGENTS.find((item) => item.id !== agent && values.includes(item.id));
+              if (next) setAgent(next.id);
+            }}
+          >
             {AGENTS.map((item) => (
-              <button
-                key={item.id}
-                type="button"
-                aria-pressed={agent === item.id}
-                onClick={() => setAgent(item.id)}
-                className={cn(
-                  "rounded-md border px-2 py-2 text-left",
-                  agent === item.id && "border-foreground ring-1 ring-foreground",
-                )}
-              >
-                <span className="block">{item.id === "other" ? "Other" : item.id}</span>
-                <span className="block text-xs text-muted-foreground">{item.hint}</span>
-              </button>
+              <SegmentedControlItem key={item.id} value={item.id}>
+                {item.id === "other" ? "Other" : item.id}
+              </SegmentedControlItem>
             ))}
-          </div>
+          </SegmentedControl>
           {agent === "other" && (
-            <Input
-              aria-label="Agent name"
-              placeholder="Agent name"
-              maxLength={60}
-              value={otherName}
-              onChange={(event) => setOtherName(event.target.value)}
-            />
+            <Field>
+              <FieldLabel>Agent name</FieldLabel>
+              <Input maxLength={60} value={otherName} onChange={(event) => setOtherName(event.target.value)} />
+            </Field>
           )}
-        </fieldset>
-        <fieldset className="space-y-2">
-          <legend className="mb-1 text-xs text-muted-foreground">
-            What may it do with <span className="font-medium text-foreground">{noteTitle}</span>?
-          </legend>
-          {(["read", "edit"] as const).map((option) => (
-            <label
-              key={option}
-              className={cn("flex cursor-pointer gap-3 rounded-md border px-3 py-2", access === option && "border-foreground ring-1 ring-foreground")}
-            >
-              <input type="radio" name="agent-access" value={option} checked={access === option} onChange={() => setAccess(option)} />
-              <span>
-                {option === "read" ? "Can read" : "Can edit"}
-                <span className="block text-xs text-muted-foreground">
-                  {option === "read"
-                    ? "It sees this note’s text but can’t change it."
-                    : "It reads and edits this note while you type. You can see and restore every edit."}
-                </span>
-              </span>
-            </label>
-          ))}
-        </fieldset>
-        <p className="border-l-2 pl-3 text-xs text-muted-foreground">
+        </FieldSet>
+        <FieldSet>
+          <FieldLegend>
+            What may it do with <span className="text-text-1">{noteTitle}</span>?
+          </FieldLegend>
+          <RadioGroup
+            value={access}
+            onValueChange={(value) => {
+              if (isGrantedAccess(value)) setAccess(value);
+            }}
+          >
+            <RadioGroupOption value="read" label="Can read" description="It sees this note’s text but can’t change it." />
+            <RadioGroupOption
+              value="edit"
+              label="Can edit"
+              description="It reads and edits this note while you type. You can see and restore every edit."
+            />
+          </RadioGroup>
+        </FieldSet>
+        <p className="type-caption text-text-2">
           Only this note. Your other notes stay out of reach, and you can remove access at any time.
         </p>
-        <Button disabled={busy || !name} onClick={() => create()}>
+        <Button className="self-start" pending={busy} disabled={!name} onClick={() => create()}>
           Create setup message
         </Button>
-        <details className="text-xs text-muted-foreground">
-          <summary className="cursor-pointer">What happens next?</summary>
-          <ul className="mt-2 list-disc space-y-1 pl-5">
-            <li>You paste one message into your agent. It has a code that works once, for 10 minutes, for this note.</li>
-            <li>Your agent uses the code to save its own private access file on your computer, then reads this note.</li>
-            <li>This window shows when the code is used and when your agent has read the note.</li>
-            <li>Monotes doesn’t start or message your agent. It can confirm the code was used, not which program used it.</li>
-          </ul>
-        </details>
+        <Collapsible>
+          <CollapsibleTrigger size="sm">What happens next</CollapsibleTrigger>
+          <CollapsibleContent>
+            <ul className="flex max-w-measure list-disc flex-col gap-1 ps-5 pt-2 type-body-sm text-text-2">
+              <li>You paste one message into your agent. It has a code that works once, for 10 minutes, for this note.</li>
+              <li>Your agent uses the code to save its own private access file on your computer, then reads this note.</li>
+              <li>This window shows when the code is used and when your agent has read the note.</li>
+              <li>Monotes doesn’t start or message your agent. It can confirm the code was used, not which program used it.</li>
+            </ul>
+          </CollapsibleContent>
+        </Collapsible>
       </div>
     );
   }
 
-  if (status === undefined) return <p className="text-sm text-muted-foreground">Checking your agent setup…</p>;
+  if (status === undefined) return <p className="type-body-sm text-text-2">Checking your agent setup…</p>;
 
   const expired = status.state === "expired" || (waiting && setup.expiresAt <= now);
   if (expired || status.state === "cancelled" || status.state === "access_removed") {
     return (
-      <div className="space-y-3 text-sm" role="status">
-        <p>
+      <Alert role="status" status={expired ? "warn" : "neutral"}>
+        <AlertDescription>
           {expired
-            ? "This code expired. Nothing was connected."
+            ? "This code expired, so nothing was connected."
             : status.state === "cancelled"
-              ? "This setup was cancelled. Nothing is connected from it."
+              ? "This setup was cancelled, so nothing is connected from it."
               : `${status.name} no longer has access to this note.`}
-        </p>
-        <div className="flex flex-wrap gap-2">
+        </AlertDescription>
+        <AlertAction>
           {expired && (
-            <Button disabled={busy} onClick={() => create(replacing)}>
+            <Button size="sm" pending={busy} onClick={() => create(replacing)}>
               Create a new message
             </Button>
           )}
-          <Button variant="outline" disabled={busy} onClick={changeChoices}>
+          <Button size="sm" variant="secondary" disabled={busy} onClick={changeChoices}>
             {expired ? "Change agent or access" : "Start again"}
           </Button>
-        </div>
-      </div>
+        </AlertAction>
+      </Alert>
     );
   }
 
   if (status.state === "connected") {
     const request = workRequest({ origin, noteId, title: setup.title, credentialFile: status.credentialFile });
+    const may = status.access === "edit" ? "read and edit" : "read";
     return (
-      <div className="space-y-3 text-sm">
-        <div role="status" className="rounded-md border border-green-200 bg-green-50 p-3 dark:border-green-900 dark:bg-green-950">
-          <p className="font-medium text-green-700 dark:text-green-400">✓ {status.name} is connected</p>
-          <p className="mt-1 text-xs">
-            It can {status.access === "edit" ? "read and edit" : "read"} “{setup.title}”. It read the note at{" "}
-            {status.verifiedAt ? clock(status.verifiedAt) : "—"}.
-          </p>
-        </div>
-        <p>Next time, paste this into {status.name} and add what you want done:</p>
-        <pre aria-label="Request for your agent" className="whitespace-pre-wrap rounded-md border bg-muted/40 p-2 text-xs">{request}</pre>
+      <div className="flex flex-col gap-3">
+        <Alert status="ok">
+          <AlertTitle>{status.name} is connected</AlertTitle>
+          <AlertDescription>
+            It can {may} “{setup.title}”{status.verifiedAt ? ` and read it at ${clock(status.verifiedAt)}` : ""}.
+          </AlertDescription>
+        </Alert>
+        <p className="type-body-sm text-text-1">Next time, paste this into {status.name} and add what you want done:</p>
+        <pre
+          aria-label="Request for your agent"
+          className="code-surface min-w-0 p-3 type-code-sm break-words whitespace-pre-wrap text-text-1"
+        >
+          {request}
+        </pre>
         <div className="flex flex-wrap gap-2">
-          <Button onClick={() => copy(request, "Request")}>Copy request</Button>
-          <Button variant="outline" onClick={finish}>
+          <CopyButton variant="secondary" size="default" showLabel label="request" value={request} />
+          <Button variant="secondary" onClick={finish}>
             Done
           </Button>
         </div>
-        <p className="text-xs text-muted-foreground">The request holds only links and the access file’s name — no code or key.</p>
+        <p className="type-caption text-text-2">The request holds only links and the access file’s name, no code or key.</p>
       </div>
     );
   }
@@ -340,15 +346,20 @@ export default function PairAgent({
   const minutes = Math.floor(remaining / 60_000);
   const seconds = String(Math.floor((remaining % 60_000) / 1000)).padStart(2, "0");
   return (
-    <div className="space-y-3 text-sm">
+    <div className="flex flex-col gap-3">
       {waiting ? (
         <>
-          <p>
-            Paste this into <span className="font-medium">{status.name}</span>:
+          <p className="type-body-sm text-text-1">
+            Paste this into <span className="mono">{status.name}</span>:
           </p>
-          <pre aria-label="Setup message" className="whitespace-pre-wrap rounded-md border bg-muted/40 p-2 text-xs">{message}</pre>
+          <pre
+            aria-label="Setup message"
+            className="code-surface min-w-0 p-3 type-code-sm break-words whitespace-pre-wrap text-text-1"
+          >
+            {message}
+          </pre>
           <div className="flex flex-wrap gap-2">
-            <Button onClick={() => copy(message, "Setup message")}>Copy message</Button>
+            <CopyButton variant="secondary" size="default" showLabel label="message" value={message} />
             <Button variant="ghost" disabled={busy} onClick={() => create(replacing)}>
               New code
             </Button>
@@ -358,35 +369,45 @@ export default function PairAgent({
           </div>
         </>
       ) : null}
-      <ol role="status" aria-label="Connection progress" className="space-y-1 rounded-md border p-3">
-        <li className={waiting ? "" : "text-green-700 dark:text-green-400"}>
-          {waiting
-            ? `◌ Waiting for ${status.name} to use the code · ${minutes}:${seconds} left`
-            : `✓ Code accepted at ${status.acceptedAt ? clock(status.acceptedAt) : "—"}`}
+      <ol role="status" aria-label="Connection progress" className="frame">
+        <li className="rule-row flex items-start gap-2 px-inset py-2 type-body-sm text-text-1">
+          <StatusMark status={waiting ? "running" : "ok"} />
+          <span className="min-w-0">
+            {waiting ? (
+              <>
+                Waiting for {status.name} to use the code · <span className="data">{minutes}:{seconds}</span> left
+              </>
+            ) : (
+              `Code accepted at ${status.acceptedAt ? clock(status.acceptedAt) : "—"}`
+            )}
+          </span>
         </li>
-        <li className={waiting ? "text-muted-foreground" : ""}>
-          {waiting ? `○ ${status.name} reads “${setup.title}”` : `◌ Waiting for ${status.name} to read “${setup.title}” to test its access`}
+        <li className={`rule-row flex items-start gap-2 px-inset py-2 type-body-sm ${waiting ? "text-text-2" : "text-text-1"}`}>
+          <StatusMark status={waiting ? "idle" : "running"} />
+          <span className="min-w-0">
+            {waiting ? `${status.name} reads “${setup.title}”` : `Waiting for ${status.name} to read “${setup.title}” to test its access`}
+          </span>
         </li>
       </ol>
       {!waiting && status.connectionVerified && (
-        <div className="space-y-2" role="status">
-          <p>
+        <div className="flex flex-col gap-2" role="status">
+          <p className="type-body-sm text-text-1">
             {status.name} already works with Monotes: it has read another note you gave it. It hasn’t read “
             {setup.title}” yet, so this note isn’t confirmed.
           </p>
-          <Button variant="outline" size="sm" onClick={finish}>
+          <Button className="self-start" variant="secondary" size="sm" onClick={finish}>
             Done
           </Button>
         </div>
       )}
       {!waiting && !status.connectionVerified && (
-        <div className="space-y-2">
-          <p className="text-xs text-muted-foreground">
+        <div className="flex flex-col gap-2">
+          <p className="type-caption text-text-2">
             If your agent stopped after using the code, ask it to read the note. If it lost its access file, start over:
             this setup’s connection is removed first.
           </p>
           <div className="flex flex-wrap gap-2">
-            <Button variant="outline" size="sm" disabled={busy} onClick={() => create(replacing)}>
+            <Button variant="secondary" size="sm" disabled={busy} onClick={() => create(replacing)}>
               Start over with a new code
             </Button>
             <Button variant="ghost" size="sm" disabled={busy} onClick={cancelSetup}>
@@ -395,13 +416,17 @@ export default function PairAgent({
           </div>
         </div>
       )}
-      <details className="text-xs text-muted-foreground">
-        <summary className="cursor-pointer">If {status.name} asks for permission</summary>
-        <p className="mt-2">
-          It needs to contact {origin} and save one private file in ~/.config/monotes. Agents that ask before using
-          the network or writing files will ask you to allow both.
-        </p>
-      </details>
+      <Collapsible>
+        <CollapsibleTrigger size="sm" summary={`If ${status.name} asks`}>
+          Permissions
+        </CollapsibleTrigger>
+        <CollapsibleContent>
+          <p className="max-w-measure pt-2 type-body-sm text-text-2">
+            It needs to contact {origin} and save one private file in ~/.config/monotes. Agents that ask before using
+            the network or writing files will ask you to allow both.
+          </p>
+        </CollapsibleContent>
+      </Collapsible>
     </div>
   );
 }

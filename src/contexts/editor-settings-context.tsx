@@ -9,6 +9,11 @@ import React, {
   useMemo,
 } from "react";
 import { useIsTouchDevice } from "@/hooks/use-touch-device";
+import {
+  DEFAULT_NOTE_MEASURE,
+  isNoteMeasure,
+  type NoteMeasure,
+} from "@/lib/note-measure";
 
 export interface EditorSettings {
   vimMode: boolean;
@@ -17,6 +22,8 @@ export interface EditorSettings {
   highlightActiveLine: boolean;
   lineNumbers: boolean;
   tabSize: number;
+  /** How wide the note column runs, in characters, or "full". */
+  measure: NoteMeasure;
 }
 
 const DEFAULT_SETTINGS: EditorSettings = {
@@ -26,6 +33,7 @@ const DEFAULT_SETTINGS: EditorSettings = {
   highlightActiveLine: false,
   lineNumbers: false,
   tabSize: 4,
+  measure: DEFAULT_NOTE_MEASURE,
 };
 
 const STORAGE_KEY = "monotes-editor-settings";
@@ -57,7 +65,9 @@ export function EditorSettingsProvider({
     if (stored) {
       try {
         const parsed = JSON.parse(stored);
-        setSettings({ ...DEFAULT_SETTINGS, ...parsed });
+        const next = { ...DEFAULT_SETTINGS, ...parsed };
+        if (!isNoteMeasure(next.measure)) next.measure = DEFAULT_NOTE_MEASURE;
+        setSettings(next);
       } catch (e) {
         console.error("Failed to parse editor settings", e);
       }

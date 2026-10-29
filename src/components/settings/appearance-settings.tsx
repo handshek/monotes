@@ -1,51 +1,80 @@
 "use client";
 
-import { useState } from "react";
-import { Check, Loader2, RotateCcw, X } from "lucide-react";
+import { useEffect, useId, useState } from "react";
 import { useTheme } from "next-themes";
+import { Button as ButtonPrimitive } from "@base-ui/react/button";
 import { BUILT_IN_THEMES, fetchThemeFromUrl } from "@/lib/themes";
 import { useColorTheme } from "@/components/theme-provider";
 import { useThemes, PreviewColors } from "@/hooks/useThemes";
-import { cn } from "@/lib/utils";
-import ThemeToggeler from "@/components/theme-toggeler";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import {
+  Icon,
+  Checkmark,
+  Close,
+} from "@/components/sodium/icon";
+import { Button } from "@/components/sodium/ui/button";
+import { Input, InputAction } from "@/components/sodium/ui/input";
+import {
+  Field,
+  FieldDescription,
+  FieldError,
+  FieldLabel,
+  FieldTitle,
+} from "@/components/sodium/ui/field";
+import {
+  Item,
+  ItemActions,
+  ItemContent,
+  ItemGroup,
+  ItemMedia,
+  ItemTitle,
+} from "@/components/sodium/ui/item";
+import {
+  SegmentedControl,
+  SegmentedControlItem,
+} from "@/components/sodium/ui/segmented-control";
+import {
+  Empty,
+  EmptyDescription,
+  EmptyHeader,
+  EmptyIcon,
+  EmptyTitle,
+} from "@/components/sodium/ui/empty-state";
+import { cn } from "@/lib/sodium/utils";
+
+// A theme's preview colours are the theme's own data, so they are set inline; the squares around them use tokens.
+// Sodium's own palette, as fixed values: the live roles would show whichever theme is active.
+const SODIUM_PREVIEW: Record<"light" | "dark", PreviewColors> = {
+  light: { background: "#ffffff", primary: "#ffd400", secondary: "#fafaf7", accent: "#fff4bf", muted: "#f4f3ee" },
+  dark: { background: "#141412", primary: "#ffd400", secondary: "#1c1b19", accent: "#3a3107", muted: "#22211e" },
+};
 
 function ColorPreview({ colors }: { colors: PreviewColors | null }) {
   const hasValidColors = colors && (colors.primary || colors.background);
 
-  if (!hasValidColors) {
-    return (
-      <div className="flex gap-1">
-        {[...Array(5)].map((_, i) => (
-          <div
-            key={i}
-            className="size-3 rounded-full bg-muted-foreground/20 animate-pulse"
-          />
-        ))}
-      </div>
-    );
-  }
-
-  const colorList = [
-    { value: colors.background, label: "Background" },
-    { value: colors.primary, label: "Primary" },
-    { value: colors.secondary, label: "Secondary" },
-    { value: colors.accent, label: "Accent" },
-    { value: colors.muted, label: "Muted" },
-  ];
+  const colorList = hasValidColors
+    ? [
+        { value: colors.background, label: "Background" },
+        { value: colors.primary, label: "Primary" },
+        { value: colors.secondary, label: "Secondary" },
+        { value: colors.accent, label: "Accent" },
+        { value: colors.muted, label: "Muted" },
+      ]
+    : null;
 
   return (
-    <div className="flex gap-1">
-      {colorList.map((color, i) => (
-        <div
-          key={i}
-          className="size-4 rounded-full border-2 border-border"
-          style={color.value ? { backgroundColor: color.value } : undefined}
-          title={color.label}
-        />
-      ))}
+    <div className="flex gap-1" aria-hidden>
+      {colorList
+        ? colorList.map((color, i) => (
+            <span
+              key={i}
+              className="size-3 border border-line"
+              style={color.value ? { backgroundColor: color.value } : undefined}
+              title={color.label}
+            />
+          ))
+        : [...Array(5)].map((_, i) => (
+            <span key={i} className="size-3 border border-line-faint bg-well" />
+          ))}
     </div>
   );
 }
@@ -54,13 +83,104 @@ function ThemeSearchEmptyState({ query }: { query: string }) {
   const trimmedQuery = query.trim();
 
   return (
-    <div className="mt-2 rounded-lg border border-dashed border-border/60 bg-muted/10 px-3 py-2 text-xs text-muted-foreground">
-      <p className="font-medium">
-        {trimmedQuery
-          ? `No themes found for "${trimmedQuery}".`
-          : "No themes match your search."}
-      </p>
-      <p>Try a different name or clear the search filter.</p>
+    <Empty reason="no-results" variant="plain" size="sm">
+      <EmptyIcon />
+      <EmptyHeader>
+        <EmptyTitle>
+          {trimmedQuery
+            ? `No themes found for "${trimmedQuery}".`
+            : "No themes match your search."}
+        </EmptyTitle>
+        <EmptyDescription>
+          Try a different name or clear the search filter.
+        </EmptyDescription>
+      </EmptyHeader>
+    </Empty>
+  );
+}
+
+interface ThemeRowProps {
+  name: string;
+  media: React.ReactNode;
+  active: boolean;
+  loading?: boolean;
+  failed?: boolean;
+  onSelect: () => void;
+  onRemove?: () => void;
+}
+
+/** One theme in the list: its swatches, its name, and the checkmark when it is the active one. */
+function ThemeRow({
+  name,
+  media,
+  active,
+  loading = false,
+  failed = false,
+  onSelect,
+  onRemove,
+}: ThemeRowProps) {
+  return (
+    <Item size="sm" selected={active} disabled={loading}>
+      <ItemMedia className="w-20 justify-start">{media}</ItemMedia>
+      <ItemContent>
+        <ItemTitle>
+          <ButtonPrimitive
+            data-slot="item-link"
+            data-control=""
+            aria-pressed={active}
+            aria-busy={loading || undefined}
+            disabled={loading}
+            onClick={onSelect}
+            className={cn(
+              "min-w-0 cursor-pointer truncate text-start after:absolute after:inset-0",
+              loading && "cursor-wait",
+            )}
+          >
+            {name}
+          </ButtonPrimitive>
+        </ItemTitle>
+      </ItemContent>
+      {loading && <span className="pending text-text-2" aria-hidden />}
+      {failed && <span className="type-label-sm text-fail-text">Failed</span>}
+      {active && <Icon icon={Checkmark} className="shrink-0" />}
+      {onRemove && (
+        <ItemActions>
+          <Button
+            variant="ghost"
+            size="icon-sm"
+            aria-label="Remove theme"
+            title="Remove theme"
+            onClick={onRemove}
+          >
+            <Icon icon={Close} />
+          </Button>
+        </ItemActions>
+      )}
+    </Item>
+  );
+}
+
+function ModeControl() {
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  const labelId = useId();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  return (
+    <div className="flex items-center justify-between gap-3">
+      <FieldTitle id={labelId}>Mode</FieldTitle>
+      <SegmentedControl
+        aria-labelledby={labelId}
+        value={mounted ? (theme ?? "system") : "system"}
+        onValueChange={(value) => setTheme(value)}
+      >
+        <SegmentedControlItem value="light">Light</SegmentedControlItem>
+        <SegmentedControlItem value="dark">Dark</SegmentedControlItem>
+        <SegmentedControlItem value="system">System</SegmentedControlItem>
+      </SegmentedControl>
     </div>
   );
 }
@@ -107,7 +227,7 @@ export default function AppearanceSettings() {
       } else {
         setError("Failed to load theme. Please check the URL.");
       }
-    } catch (e) {
+    } catch {
       setError("An error occurred while importing the theme.");
     } finally {
       setIsLoadingCustom(false);
@@ -149,176 +269,96 @@ export default function AppearanceSettings() {
   const showEmptyState = hasSearch && !hasThemeResults;
 
   return (
-    <div className="space-y-6">
-      <div className="space-y-2">
-        <Label>Theme &amp; Mode</Label>
-        <div className="flex items-center gap-3 rounded-lg">
-          <Input
-            placeholder="Search themes..."
-            value={themeSearch}
-            onChange={(e) => setThemeSearch(e.target.value)}
-            className="h-8 flex-1 shadow-none focus-visible:ring-0 focus-visible:ring-offset-0"
-          />
-          <ThemeToggeler />
-        </div>
-      </div>
+    <div className="flex flex-col gap-6">
+      <p className="type-body-sm text-text-2">
+        Customize the look and feel of the application.
+      </p>
 
-      <div className="space-y-2">
-        <Label>Theme Color</Label>
+      <ModeControl />
+
+      <section className="flex flex-col gap-2" aria-labelledby="theme-list-label">
+        <FieldTitle id="theme-list-label">Theme</FieldTitle>
+        <Input
+          mode="search"
+          aria-label="Search themes"
+          placeholder="Search themes"
+          value={themeSearch}
+          onValueChange={setThemeSearch}
+        />
 
         {showEmptyState && <ThemeSearchEmptyState query={themeSearch} />}
 
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
-          <button
-            onClick={() => setActiveTheme(null)}
-            className={cn(
-              "group relative flex aspect-[1.6] flex-col items-start justify-between rounded-lg border-2 p-3 transition-all hover:bg-accent/50",
-              activeTheme === null
-                ? "border-primary"
-                : "border-border/50 hover:border-border",
-            )}
-          >
-            <div className="flex w-full justify-between">
-              <RotateCcw className="size-4 text-muted-foreground" />
-              {activeTheme === null && (
-                <div className="rounded-full bg-primary p-0.5 text-primary-foreground shadow-sm">
-                  <Check className="size-3" />
-                </div>
-              )}
-            </div>
-            <span className="text-xs font-medium">Default</span>
-          </button>
+        <ItemGroup aria-labelledby="theme-list-label">
+          <ThemeRow
+            name="Sodium"
+            media={<ColorPreview colors={SODIUM_PREVIEW[mode]} />}
+            active={activeTheme === null}
+            onSelect={() => setActiveTheme(null)}
+          />
 
           {filteredBuiltInThemes.map((theme) => {
-            const isActive = activeTheme?.name === theme.name;
             const state = themes.get(theme.name);
-            const previewColors = getPreviewColors(theme.name, mode);
-
             return (
-              <button
+              <ThemeRow
                 key={theme.name}
-                onClick={() => handleThemeSelect(theme.name)}
-                disabled={state?.isLoading}
-                className={cn(
-                  "group relative flex aspect-[1.6] flex-col items-start justify-between rounded-lg border-2 p-3 transition-all hover:bg-accent/50",
-                  isActive
-                    ? "border-primary"
-                    : "border-border/50 hover:border-border",
-                  state?.isLoading && "opacity-70 cursor-wait",
-                )}
-              >
-                <div className="flex w-full justify-between">
-                  <ColorPreview colors={previewColors} />
-                </div>
-
-                <div className="flex w-full justify-between">
-                  <span className="text-xs font-medium text-left line-clamp-1 w-full pr-5">
-                    {theme.name}
-                  </span>
-                  {isActive && (
-                    <div className="rounded-full bg-primary p-0.5 text-primary-foreground shadow-sm">
-                      <Check className="size-3" />
-                    </div>
-                  )}
-                </div>
-
-                {state?.isLoading && (
-                  <div className="absolute inset-0 flex items-center justify-center rounded-lg bg-background/50">
-                    <Loader2 className="size-4 animate-spin" />
-                  </div>
-                )}
-
-                {state?.error && !state.theme && (
-                  <div className="absolute inset-0 flex items-center justify-center rounded-lg bg-destructive/10">
-                    <span className="text-xs text-destructive">Failed</span>
-                  </div>
-                )}
-              </button>
+                name={theme.name}
+                media={
+                  <ColorPreview colors={getPreviewColors(theme.name, mode)} />
+                }
+                active={activeTheme?.name === theme.name}
+                loading={state?.isLoading}
+                failed={!!state?.error && !state.theme}
+                onSelect={() => handleThemeSelect(theme.name)}
+              />
             );
           })}
 
-          {/* Custom Imported Themes */}
-          {filteredCustomThemeEntries.map(([themeName, state]) => {
-            const isActive = activeTheme?.name === themeName;
-            const previewColors = getPreviewColors(themeName, mode);
+          {/* Custom imported themes */}
+          {filteredCustomThemeEntries.map(([themeName, state]) => (
+            <ThemeRow
+              key={themeName}
+              name={state.theme?.name || themeName}
+              media={
+                <ColorPreview colors={getPreviewColors(themeName, mode)} />
+              }
+              active={activeTheme?.name === themeName}
+              onSelect={() => handleThemeSelect(themeName)}
+              onRemove={() => handleRemoveCustomTheme(themeName)}
+            />
+          ))}
+        </ItemGroup>
+      </section>
 
-            return (
-              <div key={themeName} className="relative">
-                <button
-                  onClick={() => handleThemeSelect(themeName)}
-                  className={cn(
-                    "group relative flex aspect-[1.6] w-full flex-col items-start justify-between rounded-lg border-2 p-3 transition-all hover:bg-accent/50",
-                    isActive
-                      ? "border-primary"
-                      : "border-border/50 hover:border-border",
-                  )}
-                >
-                  <div className="flex w-full justify-between">
-                    <ColorPreview colors={previewColors} />
-                    {/* Remove button for custom themes */}
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleRemoveCustomTheme(themeName);
-                      }}
-                      className="absolute top-3 right-3 rounded-full p-0.5 text-muted-foreground hover:bg-destructive/20 hover:text-destructive transition-colors"
-                      title="Remove theme"
-                    >
-                      <X className="size-3" />
-                    </button>
-                  </div>
-
-                  <div className="flex w-full justify-between">
-                    <span className="text-xs font-medium text-left line-clamp-1 w-full pr-5">
-                      {state.theme?.name || themeName}
-                    </span>
-                    {isActive && (
-                      <div className="rounded-full bg-primary p-0.5 text-primary-foreground shadow-sm">
-                        <Check className="size-3" />
-                      </div>
-                    )}
-                  </div>
-                </button>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-
-      <div className="space-y-2">
-        <Label>Custom Theme</Label>
-        <div className="flex gap-2">
-          <Input
-            placeholder="Paste tweakcn.com URL..."
-            value={customThemeUrl}
-            onChange={(e) => setCustomThemeUrl(e.target.value)}
-            className="flex-1"
-          />
-          <Button
-            onClick={handleImportTheme}
-            disabled={isLoadingCustom || !customThemeUrl}
-          >
-            {isLoadingCustom ? (
-              <Loader2 className="size-4 animate-spin" />
-            ) : (
-              "Import"
-            )}
-          </Button>
-        </div>
-        {error && <p className="text-destructive text-xs">{error}</p>}
-        <p className="text-[0.8rem] text-muted-foreground">
+      <Field invalid={!!error}>
+        <FieldLabel>Custom theme</FieldLabel>
+        <Input
+          type="url"
+          mono
+          autoComplete="off"
+          placeholder="Paste a tweakcn.com URL"
+          value={customThemeUrl}
+          onValueChange={setCustomThemeUrl}
+          trailing={
+            <InputAction
+              size="text"
+              variant="primary"
+              pending={isLoadingCustom}
+              disabled={!customThemeUrl}
+              onClick={handleImportTheme}
+            >
+              Import
+            </InputAction>
+          }
+        />
+        {error && <FieldError>{error}</FieldError>}
+        <FieldDescription>
           Import themes from{" "}
-          <a
-            href="https://tweakcn.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline hover:text-foreground"
-          >
+          <a href="https://tweakcn.com" target="_blank" rel="noopener noreferrer">
             tweakcn.com
           </a>
           .
-        </p>
-      </div>
+        </FieldDescription>
+      </Field>
     </div>
   );
 }

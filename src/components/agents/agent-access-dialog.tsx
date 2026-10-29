@@ -4,16 +4,18 @@ import Link from "next/link";
 import { useState } from "react";
 import { useConvexAuth, useMutation, useQuery } from "convex/react";
 import { useRouter } from "next/navigation";
-import { toast } from "sonner";
 import { api } from "../../../convex/_generated/api";
+import { Button } from "@/components/sodium/ui/button";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/sodium/ui/collapsible";
 import {
   Dialog,
+  DialogBody,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
+} from "@/components/sodium/ui/dialog";
+import { toast } from "@/components/sodium/ui/toast";
 import LineDiffView from "@/components/notes/line-diff-view";
 import { markConnected } from "@/lib/collab/store";
 import { useLiveQuery } from "dexie-react-hooks";
@@ -40,19 +42,21 @@ type Choice = { localText: string; cloudText: string; cloudUpdatedAt: number };
 /* What agent access means, in one line plus details on request. */
 export function AgentAccessExplanation() {
   return (
-    <div className="space-y-2 text-sm text-muted-foreground">
-      <p>
+    <div className="flex flex-col gap-2">
+      <p className="max-w-measure type-body-sm text-text-2">
         Let a coding agent you already use, such as Codex, Claude Code or Cursor, read or edit the notes you choose
         while you keep typing.
       </p>
-      <details className="text-xs">
-        <summary className="cursor-pointer">How it works and what it can reach</summary>
-        <ul className="mt-2 list-disc space-y-1 pl-5">
-          <li>Each agent reaches only the notes you give it, and you can remove access any time.</li>
-          <li>Monotes doesn’t start your agent, sign in to it, or send it messages. You keep asking it things where you normally do.</li>
-          <li>A note you share is stored in your Monotes cloud account so your agent can reach it. Cloud notes aren’t end-to-end encrypted.</li>
-        </ul>
-      </details>
+      <Collapsible>
+        <CollapsibleTrigger size="sm">How it works</CollapsibleTrigger>
+        <CollapsibleContent>
+          <ul className="flex max-w-measure list-disc flex-col gap-1 ps-5 pt-2 type-body-sm text-text-2">
+            <li>Each agent reaches only the notes you give it, and you can remove access any time.</li>
+            <li>Monotes doesn’t start your agent, sign in to it, or send it messages. You keep asking it things where you normally do.</li>
+            <li>A note you share is stored in your Monotes cloud account so your agent can reach it. Cloud notes aren’t end-to-end encrypted.</li>
+          </ul>
+        </CollapsibleContent>
+      </Collapsible>
     </div>
   );
 }
@@ -81,13 +85,13 @@ function ConnectNote({ noteId, prepareConnect }: { noteId: string; prepareConnec
         setChoice({ localText, cloudText: result.cloudText, cloudUpdatedAt: result.cloudUpdatedAt });
         return;
       case "deleted":
-        toast.error("This note was deleted from your cloud account.");
+        toast.fail("This note was deleted from your cloud account.");
         return;
       case "too_large":
-        toast.error("This note is too large to share with agents.");
+        toast.fail("This note is too large to share with agents.");
         return;
       default:
-        toast.error("Sign in to share this note with agents.");
+        toast.fail("Sign in to share this note with agents.");
     }
   };
 
@@ -102,7 +106,7 @@ function ConnectNote({ noteId, prepareConnect }: { noteId: string; prepareConnec
       );
       await finish(result, localText);
     } catch {
-      toast.error("Couldn’t connect this note. Your text is still saved on this device.");
+      toast.fail("Couldn’t connect this note. Your text is still saved on this device.");
     } finally {
       setBusy(false);
     }
@@ -110,25 +114,25 @@ function ConnectNote({ noteId, prepareConnect }: { noteId: string; prepareConnec
 
   if (choice) {
     return (
-      <div className="space-y-3 text-sm">
-        <p>
+      <div className="flex flex-col gap-3">
+        <p className="type-body-sm text-text-1">
           Your cloud account already has a different version of this note. Choose which text agents should start
           from. The other version is kept as a saved version you can compare and restore.
         </p>
         <LineDiffView before={choice.cloudText} after={choice.localText} label="Cloud copy compared with this device" />
-        <p className="text-xs text-muted-foreground">Removed lines are only in the cloud copy; added lines are only on this device.</p>
+        <p className="type-caption text-text-2">Removed lines are only in the cloud copy; added lines are only on this device.</p>
         <div className="flex flex-wrap gap-2">
           <Button disabled={busy} onClick={() => connect("local")}>Use this device’s text</Button>
-          <Button disabled={busy} variant="outline" onClick={() => connect("cloud")}>Use the cloud text</Button>
+          <Button disabled={busy} variant="secondary" onClick={() => connect("cloud")}>Use the cloud text</Button>
           <Button disabled={busy} variant="ghost" onClick={() => setChoice(null)}>Cancel</Button>
         </div>
       </div>
     );
   }
   return (
-    <div className="space-y-3">
+    <div className="flex flex-col gap-4">
       <AgentAccessExplanation />
-      <Button disabled={busy} onClick={() => connect()}>
+      <Button className="self-start" pending={busy} onClick={() => connect()}>
         Allow agents on this note
       </Button>
     </div>
@@ -153,7 +157,7 @@ function NoteAccess({ noteId, noteTitle }: { noteId: string; noteTitle: string }
   const showPairing = list.length === 0 || connecting || setUpName !== null;
 
   return (
-    <div className="space-y-5 text-sm">
+    <div className="flex flex-col gap-6">
       {list.length > 0 && (
         <NoteAgents
           noteId={noteId}
@@ -165,10 +169,10 @@ function NoteAccess({ noteId, noteTitle }: { noteId: string; noteTitle: string }
           }}
         />
       )}
-      <section className="space-y-3" aria-label="Connect an agent">
+      <section className="flex flex-col gap-3" aria-label="Connect an agent">
         {showPairing ? (
           <>
-            <h3 className="font-medium">Agent setup</h3>
+            <h3 className="type-heading text-text-1">Agent setup</h3>
             <PairAgent
               key={setUpName ?? "new"}
               noteId={noteId}
@@ -182,22 +186,24 @@ function NoteAccess({ noteId, noteTitle }: { noteId: string; noteTitle: string }
             />
           </>
         ) : (
-          <Button variant="outline" size="sm" onClick={() => setConnecting(true)}>
+          <Button className="self-start" variant="secondary" size="sm" onClick={() => setConnecting(true)}>
             Connect another agent
           </Button>
         )}
       </section>
-      <details className="text-xs text-muted-foreground" open={manual} onToggle={(event) => setManual(event.currentTarget.open)}>
-        <summary className="cursor-pointer">Set up manually with a key instead</summary>
-        <div className="mt-3 space-y-2 text-sm text-foreground">
-          <p className="text-xs text-muted-foreground">
-            For people who prefer to manage a key and environment variables themselves. The key is shown once.
-          </p>
-          {manual && <CreateAgentKey />}
-        </div>
-      </details>
-      <p>
-        <Link href="/agent-access" className="underline">
+      <Collapsible open={manual} onOpenChange={setManual}>
+        <CollapsibleTrigger size="sm">Set up manually with a key instead</CollapsibleTrigger>
+        <CollapsibleContent>
+          <div className="flex flex-col gap-3 pt-3">
+            <p className="type-caption text-text-2">
+              For people who prefer to manage a key and environment variables themselves. The key is shown once.
+            </p>
+            {manual && <CreateAgentKey />}
+          </div>
+        </CollapsibleContent>
+      </Collapsible>
+      <p className="type-body-sm">
+        <Link href="/agent-access" className="text-text-1 underline underline-offset-4">
           Manage all agents
         </Link>
       </p>
@@ -211,25 +217,27 @@ export default function AgentAccessDialog({ open, onOpenChange, noteId, connecte
   const localContent = useLiveQuery(async () => (await getDB().notes.get(noteId))?.content ?? "", [noteId]);
   const noteTitle = titleOf(localContent ?? "");
   return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-h-[90vh] overflow-y-auto sm:max-w-xl">
+    <Dialog open={open} onOpenChange={(next) => onOpenChange(next)}>
+      <DialogContent size="lg">
         <DialogHeader>
           <DialogTitle>Agent access</DialogTitle>
-          <DialogDescription>
-            For <span className="font-medium text-foreground">{noteTitle}</span>
-          </DialogDescription>
         </DialogHeader>
-        {isLoading ? null : !isAuthenticated ? (
-          <div className="space-y-3">
-            <AgentAccessExplanation />
-            <p className="text-sm">Agent access uses your Monotes account, so sign in first.</p>
-            <Button onClick={() => router.push("/signin")}>Sign in</Button>
-          </div>
-        ) : connected ? (
-          <NoteAccess noteId={noteId} noteTitle={noteTitle} />
-        ) : (
-          <ConnectNote noteId={noteId} prepareConnect={prepareConnect} />
-        )}
+        <DialogBody className="gap-5">
+          <DialogDescription>
+            For <span className="text-text-1">{noteTitle}</span>
+          </DialogDescription>
+          {isLoading ? null : !isAuthenticated ? (
+            <div className="flex flex-col gap-3">
+              <AgentAccessExplanation />
+              <p className="type-body-sm text-text-1">Agent access uses your Monotes account, so sign in first.</p>
+              <Button className="self-start" onClick={() => router.push("/signin")}>Sign in</Button>
+            </div>
+          ) : connected ? (
+            <NoteAccess noteId={noteId} noteTitle={noteTitle} />
+          ) : (
+            <ConnectNote noteId={noteId} prepareConnect={prepareConnect} />
+          )}
+        </DialogBody>
       </DialogContent>
     </Dialog>
   );

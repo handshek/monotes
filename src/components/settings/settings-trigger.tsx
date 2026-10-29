@@ -1,95 +1,89 @@
 "use client";
 
-import { MixerHorizontalIcon } from "@radix-ui/react-icons";
-import { Button } from "../ui/button";
-import React, { useState } from "react";
+import { useState } from "react";
 import { useBreakpoint } from "@/hooks/use-breakpoint";
+import { Button } from "@/components/sodium/ui/button";
+import { Icon, Settings } from "@/components/sodium/icon";
 import {
   Dialog,
+  DialogBody,
   DialogContent,
   DialogDescription,
-  DialogTitle,
   DialogHeader,
-} from "@/components/ui/dialog";
+  DialogTitle,
+} from "@/components/sodium/ui/dialog";
 import {
-  Drawer,
-  DrawerContent,
-  DrawerDescription,
-  DrawerHeader,
-  DrawerTitle,
-} from "@/components/ui/drawer";
+  Sheet,
+  SheetBody,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+} from "@/components/sodium/ui/sheet";
 import { SettingsContent } from "./settings-content";
-import { EditorView } from "@codemirror/view";
+
+const DESCRIPTION = "Customize your settings here.";
+
+// When settings close, focus goes back to the note being edited rather than to this button.
+function editorFocusTarget() {
+  return document.querySelector<HTMLElement>(".cm-editor .cm-content") ?? true;
+}
 
 export default function SettingsTrigger() {
   const [open, setOpen] = useState(false);
-  const breakpoint = 768;
-  const isMobile = useBreakpoint(breakpoint);
-
-  const focusEditor = () => {
-    const editorElement = document.querySelector<HTMLElement>(".cm-editor");
-    if (editorElement) {
-      const view = EditorView.findFromDOM(editorElement);
-      view?.focus();
-    }
-  };
+  const isMobile = useBreakpoint(768);
 
   return (
-    <React.Fragment>
+    <>
       <Button
-        variant="outline"
-        size="icon-lg"
+        variant="ghost"
+        size="icon"
         aria-label="settings"
         onClick={() => setOpen(true)}
       >
-        <MixerHorizontalIcon className="size-4" />
+        <Icon icon={Settings} />
       </Button>
 
-      {isMobile && (
-        <Drawer
-          open={open}
-          onOpenChange={(newOpen) => {
-            setOpen(newOpen);
-            if (!newOpen) {
-              setTimeout(focusEditor, 0);
-            }
-          }}
+      <Sheet open={open && isMobile} onOpenChange={setOpen}>
+        <SheetContent
+          side="bottom"
+          showCloseButton
+          className="h-[calc(100dvh-var(--space-10)*2)]"
+          finalFocus={editorFocusTarget}
         >
-          <DrawerContent className="h-[85vh] bg-sidebar">
-            <DrawerHeader className="text-left px-6 pt-6 pb-2 border-b border-border/50">
-              <DrawerTitle className="text-lg font-semibold leading-none tracking-tight text-left w-fit py-2">
-                Settings
-              </DrawerTitle>
-              <DrawerDescription className="sr-only">
-                Customize your settings here.
-              </DrawerDescription>
-            </DrawerHeader>
-            <SettingsContent isMobile={isMobile} />
-          </DrawerContent>
-        </Drawer>
-      )}
+          <SheetHeader>
+            <SheetTitle>Settings</SheetTitle>
+          </SheetHeader>
+          <SettingsContent
+            Body={SheetBody}
+            description={
+              <SheetDescription className="sr-only">
+                {DESCRIPTION}
+              </SheetDescription>
+            }
+          />
+        </SheetContent>
+      </Sheet>
 
-      {!isMobile && (
-        <Dialog open={open} onOpenChange={setOpen}>
-          <DialogContent
-            className="flex flex-col gap-0 overflow-hidden p-0 md:h-[80%] md:max-h-[700px] md:max-w-[700px] lg:max-w-[800px] bg-sidebar divide-y divide-border/50"
-            onCloseAutoFocus={(e) => {
-              e.preventDefault();
-              focusEditor();
-            }}
-          >
-            <DialogHeader className="px-6 py-4 h-fit text-left">
-              <DialogTitle className="text-lg font-semibold">
-                Settings
-              </DialogTitle>
+      <Dialog open={open && !isMobile} onOpenChange={setOpen}>
+        <DialogContent
+          size="lg"
+          className="h-[calc(100dvh-var(--space-10)*4)]"
+          finalFocus={editorFocusTarget}
+        >
+          <DialogHeader>
+            <DialogTitle>Settings</DialogTitle>
+          </DialogHeader>
+          <SettingsContent
+            Body={DialogBody}
+            description={
               <DialogDescription className="sr-only">
-                Customize your settings here.
+                {DESCRIPTION}
               </DialogDescription>
-            </DialogHeader>
-            <SettingsContent isMobile={isMobile} />
-          </DialogContent>
-        </Dialog>
-      )}
-    </React.Fragment>
+            }
+          />
+        </DialogContent>
+      </Dialog>
+    </>
   );
 }

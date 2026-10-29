@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import { capture, editor } from "./notes-helpers";
+import { capture, editor, toastTitle } from "./notes-helpers";
 
 test("the direct new-note route creates exactly one durable note", async ({ page }, testInfo) => {
   await page.goto("/new");
@@ -31,7 +31,9 @@ for (const entry of ["home", "direct"] as const) {
     if (entry === "home") {
       await page.getByRole("button", { name: "Create new note", exact: true }).click();
     }
-    await expect(page.getByText("Could not create note. Please try again.", { exact: true })).toBeVisible();
+    // The home page reports the failure in a toast; the direct route shows it on the page.
+    const message = "Could not create note. Please try again.";
+    await expect(entry === "home" ? toastTitle(page, message) : page.getByText(message, { exact: true })).toBeVisible();
     if (entry === "direct") {
       await page.getByRole("link", { name: "Back to notes", exact: true }).click();
     }

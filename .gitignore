@@ -62,3 +62,8 @@ next-env.d.ts
 /.audit/collab/**/html/
 /.audit/collab/**/test-results/
 /.audit/collab/latest/
+
+# UI review captures (reports are kept)
+/.ui-review/**/*.png
+/.ui-review/**/*.aria.yml
+/.ui-review/**/probes.json
