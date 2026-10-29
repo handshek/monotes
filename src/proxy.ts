@@ -27,5 +27,7 @@ export default convexAuthNextjsProxy(
 export const config = {
   // The following matcher runs middleware on all routes
   // except static assets.
-  matcher: ["/((?!.*\\..*|_next).*)", "/", "/(api|trpc)(.*)"],
+  // The agent API under /api/agent authenticates with agent keys only, so it
+  // is excluded and never receives or sets browser session cookies.
+  matcher: ["/((?!.*\\..*|_next|api/agent/).*)", "/", "/api/((?!agent/).*)", "/trpc(.*)"],
 };

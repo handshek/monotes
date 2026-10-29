@@ -57,3 +57,8 @@ next-env.d.ts
 # Command search verification
 /.audit/command-search/**/html/
 /.audit/command-search/**/test-results/
+
+# Collaboration browser verification
+/.audit/collab/**/html/
+/.audit/collab/**/test-results/
+/.audit/collab/latest/

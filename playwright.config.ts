@@ -5,6 +5,7 @@ const evidenceDir = process.env.MONOTES_EVIDENCE_DIR ?? ".audit/overnight/latest
 
 export default defineConfig({
   testDir: "./tests",
+  testMatch: "**/*.spec.ts",
   fullyParallel: false,
   workers: 1,
   retries: 0,

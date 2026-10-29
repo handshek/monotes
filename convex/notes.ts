@@ -1,6 +1,12 @@
 import { getAuthUserId } from "@convex-dev/auth/server";
 import { mutation, query } from "./_generated/server";
 import { v } from "convex/values";
+import { removeGrantsForNote } from "./lib/history";
+
+// Connected notes accept changes only through versioned collaboration
+// updates. A whole-note write, for example from an older open tab, must
+// never replace that history. The client recognises this message.
+export const COLLABORATIVE_NOTE_ERROR = "note_is_collaborative";
 
 /*
  * Sync a local note to the cloud
@@ -25,6 +31,10 @@ export const syncNote = mutation({
         q.eq("userId", userId).eq("noteId", args.noteId)
       )
       .first();
+
+    if (existing?.collab) {
+      throw new Error(COLLABORATIVE_NOTE_ERROR);
+    }
 
     if (existing) {
       return await ctx.db.patch(existing._id, {
@@ -149,6 +159,10 @@ export const updateNote = mutation({
       throw new Error("Note not found");
     }
 
+    if (note.collab) {
+      throw new Error(COLLABORATIVE_NOTE_ERROR);
+    }
+
     return await ctx.db.patch(note._id, {
       content: args.content,
       updatedAt: args.updatedAt,
@@ -180,8 +194,9 @@ export const deleteNote = mutation({
       throw new Error("Note not found");
     }
 
+    await removeGrantsForNote(ctx, note._id);
     return await ctx.db.patch(note._id, {
-      deletedAt: Date.now(),
+      deletedAt: note.deletedAt ?? Date.now(),
     });
   },
 });
