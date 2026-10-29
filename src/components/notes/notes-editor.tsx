@@ -1,13 +1,13 @@
 "use client";
 
-import { useCallback, useEffect, useMemo } from "react";
+import { useCallback, useEffect, useMemo, type CSSProperties } from "react";
 import CodeMirror, { EditorSelection } from "@uiw/react-codemirror";
 import { markdown } from "@codemirror/lang-markdown";
 import { EditorView, keymap } from "@codemirror/view";
 import { EditorState } from "@codemirror/state";
 import { vim } from "@replit/codemirror-vim";
-import { toast } from "sonner";
-import { editorThemeExtensions } from "./notes-theme";
+import { toast } from "@/components/sodium/ui/toast";
+import { editorThemeExtensions, notePlaceholder } from "./notes-theme";
 import { useLocalNote } from "@/hooks/useLocalNote";
 import { useVimCommands } from "@/hooks/useVimCommands";
 import { useDebouncedCloudSync } from "@/lib/sync-engine";
@@ -17,6 +17,10 @@ import NotesMetadataBar from "./notes-metadata-bar";
 import WelcomeDialog from "./welcome-dialog";
 import { useEditorSettings } from "@/contexts/editor-settings-context";
 import { useDistractionFree } from "@/contexts/distraction-free-context";
+import { Alert, AlertAction, AlertDescription, AlertTitle } from "@/components/sodium/ui/alert";
+import { Button } from "@/components/sodium/ui/button";
+import { Document } from "@/components/sodium/icon";
+import { Empty, EmptyDescription, EmptyHeader, EmptyIcon, EmptyTitle } from "@/components/sodium/ui/empty-state";
 
 interface NotesEditorProps {
   noteId: string;
@@ -67,12 +71,18 @@ export default function NotesEditor({ noteId }: NotesEditorProps) {
       (result) => result === "updated"
         ? showUpdatedNotice()
         : toast.success("Saved"),
-      () => toast.error("Couldn’t save note")
+      () => toast.fail("Couldn’t save note")
     );
     return true;
   }, [saveAndSync, showUpdatedNotice]);
 
   useVimCommands(settings.vimMode, settings.vimCommands, handleSave);
+
+  // Built in the browser only: the placeholder is a DOM element (see notePlaceholder).
+  const emptyPlaceholder = useMemo(
+    () => (typeof document === "undefined" ? "Start typing" : notePlaceholder()),
+    [],
+  );
 
   const extensions = useMemo(() => {
     const exts = [
@@ -92,19 +102,34 @@ export default function NotesEditor({ noteId }: NotesEditorProps) {
 
   if (note === null) {
     return (
-      <div className="py-12 text-center text-muted-foreground">
-        <div className="mb-4">❌ Note not found</div>
-        <div>This note doesn’t exist locally. Create a new one instead.</div>
+      <div className="py-12">
+        <Empty reason="empty">
+          <EmptyIcon icon={Document} />
+          <EmptyHeader>
+            <EmptyTitle>Note not found</EmptyTitle>
+            <EmptyDescription>This note doesn’t exist locally. Create a new one instead.</EmptyDescription>
+          </EmptyHeader>
+        </Empty>
       </div>
     );
   }
 
   if (!note) {
-    return loadError ? <p role="alert" className="py-12 text-center">{loadError}</p> : null;
+    return loadError ? (
+      <div className="py-12">
+        <Alert status="fail">
+          <AlertTitle>Note didn’t open</AlertTitle>
+          <AlertDescription>{loadError}</AlertDescription>
+        </Alert>
+      </div>
+    ) : null;
   }
 
   return (
-    <div className="editor-shell" style={{ fontSize: settings.fontSize }}>
+    <div
+      className="editor-shell text-(length:--editor-font-size)"
+      style={{ "--editor-font-size": `${settings.fontSize}px` } as CSSProperties}
+    >
       <WelcomeDialog />
       <div className="py-12">
         <NotesMetadataBar
@@ -116,14 +141,17 @@ export default function NotesEditor({ noteId }: NotesEditorProps) {
           prepareConnect={prepareConnect}
         />
         {saveError && (
-          <div role="alert" className="mb-4 text-sm text-destructive">
-            {saveError}{" "}
-            <button type="button" className="underline" onClick={handleSave}>Retry</button>
-          </div>
+          <Alert status="fail" className="mb-4">
+            <AlertTitle>Not saved</AlertTitle>
+            <AlertDescription>{saveError}</AlertDescription>
+            <AlertAction>
+              <Button size="sm" onClick={handleSave}>Retry</Button>
+            </AlertAction>
+          </Alert>
         )}
         <CodeMirror
-          placeholder={"Start typing"}
-          className="cm-container md:max-w-4xl"
+          placeholder={emptyPlaceholder}
+          className="cm-container"
           value={note?.content ?? ""}
           onChange={(value) => {
             setMarkdown(value);

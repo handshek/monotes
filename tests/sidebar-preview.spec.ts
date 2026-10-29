@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 import { createNote, editor, openSidebar, waitForStoredContent } from "./notes-helpers";
 
-test("sidebar previews preserve the first twenty words and blank note fallback", async ({ page, isMobile }) => {
+test("sidebar previews preserve the first twenty words and name a blank note untitled", async ({ page, isMobile }) => {
   const id = await createNote(page);
   const words = Array.from({ length: 24 }, (_, index) => `word${index + 1}`);
   const separators = [" ", "\n", "\t", "\u00a0", "\u2003"];
@@ -15,5 +15,6 @@ test("sidebar previews preserve the first twenty words and blank note fallback",
   await editor(page).fill(" \t\n\u00a0\u2003 ");
   await waitForStoredContent(page, id, " \t\n\u00a0\u2003 ");
   await openSidebar(page, isMobile);
-  await expect(noteLink).toHaveText(id);
+  // A note without text is listed as an untitled note rather than by its id.
+  await expect(noteLink).toHaveText("Untitled note");
 });

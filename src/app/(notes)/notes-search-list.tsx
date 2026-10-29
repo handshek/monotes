@@ -1,17 +1,40 @@
 "use client";
 
 import { HighlightedText } from "@/components/highlighted-text";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Skeleton } from "@/components/ui/skeleton";
+import { Button } from "@/components/sodium/ui/button";
+import { Input } from "@/components/sodium/ui/input";
+import { SkeletonRows } from "@/components/sodium/ui/skeleton";
+import {
+  Frame,
+  FrameFooter,
+  FrameHeader,
+  FrameTitle,
+  FrameValue,
+} from "@/components/sodium/ui/frame";
+import {
+  Empty,
+  EmptyContent,
+  EmptyHeader,
+  EmptyIcon,
+  EmptyTitle,
+} from "@/components/sodium/ui/empty-state";
+import {
+  Item,
+  ItemContent,
+  ItemDescription,
+  ItemGroup,
+  ItemMeta,
+  ItemTitle,
+} from "@/components/sodium/ui/item";
+import { Icon, Add, Document, Search } from "@/components/sodium/icon";
+import { toast } from "@/components/sodium/ui/toast";
 import { generateSlug } from "@/lib/ids";
-import { toast } from "sonner";
 import { createNewNote } from "@/lib/local-notes";
-import { cn } from "@/lib/utils";
-import { PlusIcon } from "lucide-react";
+import { summarizeNote, UNTITLED_NOTE } from "@/lib/note-summary";
+import { formatExactTime, formatRelativeTime } from "@/lib/relative-time";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useSidebar } from "@/components/ui/sidebar";
+import { useSidebar } from "@/components/sidebar";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useNoteSearch } from "@/hooks/useNoteSearch";
 
@@ -36,11 +59,6 @@ export default function NotesSearchList() {
     isLoading,
   } = useNoteSearch(searchQuery);
 
-  const getNotePreview = (content: string | undefined) => {
-    if (!content?.trim()) return "Untitled note";
-    return content.trim().slice(0, 500);
-  };
-
   const getWordCount = (content: string | undefined) => {
     if (!content?.trim()) return 0;
     return content.trim().split(/\s+/).length;
@@ -52,7 +70,7 @@ export default function NotesSearchList() {
       const note = await createNewNote(slug);
       router.push(`/${note.id}`);
     } catch {
-      toast.error("Could not create note. Please try again.");
+      toast.fail("Could not create note. Please try again.");
     }
   };
 
@@ -77,93 +95,112 @@ export default function NotesSearchList() {
 
   return (
     <>
-      <div className="flex gap-3 mb-8" role="search">
+      <div className="flex gap-2" role="search">
         <Input
           ref={searchInput}
           id="notes-search"
           placeholder="Search notes..."
           value={searchQuery}
-          onChange={(e) => onSearchChange(e.target.value)}
-          className="flex-1"
+          onValueChange={onSearchChange}
+          leading={<Icon icon={Search} />}
+          className="min-w-0 flex-1"
           aria-label="Search notes"
         />
-        <Button
-          onClick={onCreateNew}
-          size="default"
-          aria-label="Create new note"
-        >
-          <PlusIcon className="size-4 mr-2" />
+        <Button onClick={onCreateNew} aria-label="Create new note">
+          <Icon icon={Add} />
           New Note
         </Button>
       </div>
-      <section className="mb-16" aria-label={sectionTitle}>
-        <h2 className="text-2xl font-semibold mb-4">{sectionTitle}</h2>
+      <Frame aria-label={sectionTitle}>
+        <FrameHeader>
+          <FrameTitle>{sectionTitle}</FrameTitle>
+          {!isSearching && mergedNotes.length > 0 && (
+            <FrameValue meta>
+              {mergedNotes.length} {mergedNotes.length === 1 ? "note" : "notes"}
+            </FrameValue>
+          )}
+        </FrameHeader>
         {isLoading ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {[...Array(6)].map((_, i) => (
-              <Skeleton key={i} className="h-24 rounded-lg" />
-            ))}
-          </div>
+          <SkeletonRows rows={6} />
         ) : isEmpty ? (
-          <div className="text-center py-12 text-muted-foreground">
-            <p className="mb-4">
-              {isSearching
-                ? `No notes matching "${debouncedQuery}".`
-                : "No notes yet."}
-            </p>
+          <Empty reason={isSearching ? "no-results" : "empty"} variant="plain">
+            <EmptyIcon icon={isSearching ? Search : Document} />
+            <EmptyHeader>
+              <EmptyTitle>
+                {isSearching
+                  ? `No notes matching "${debouncedQuery}".`
+                  : "No notes yet."}
+              </EmptyTitle>
+            </EmptyHeader>
             {!isSearching && (
-              <Button onClick={onCreateNew} variant="outline">
-                <PlusIcon className="size-4 mr-2" />
-                Create your first note
-              </Button>
+              <EmptyContent>
+                <Button onClick={onCreateNew} variant="secondary">
+                  <Icon icon={Add} />
+                  Create your first note
+                </Button>
+              </EmptyContent>
             )}
-          </div>
+          </Empty>
         ) : (
           <>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {visibleNotes.map((note) => (
-                <Link
-                  key={note.id}
-                  href={`/${note.id}`}
-                  className={cn(
-                    "group flex flex-col justify-between border bg-card hover:bg-accent p-4 h-[180px]",
-                    "hover:border-ring",
-                  )}
-                >
-                  <div className="relative flex-1 overflow-hidden [mask-image:linear-gradient(to_bottom,black_60%,transparent_100%)]">
-                    <h3 className="font-medium text-sm whitespace-pre-wrap break-words">
-                      {isSearching ? (
-                        <HighlightedText
-                          content={note.content}
-                          query={debouncedQuery}
-                        />
-                      ) : (
-                        getNotePreview(note.content)
+            <ItemGroup variant="plain">
+              {visibleNotes.map((note) => {
+                const { title, preview } = summarizeNote(note.content, 40);
+                return (
+                  <Item key={note.id} className="items-start py-3">
+                    <ItemContent>
+                      {/* A title the person wrote wraps rather than ending in an ellipsis. */}
+                      <ItemTitle className="items-start [&>*:first-child]:whitespace-normal">
+                        <Link
+                          href={`/${note.id}`}
+                          data-slot="item-link"
+                          data-control=""
+                          className={
+                            isSearching
+                              ? "line-clamp-3 break-words whitespace-pre-wrap after:absolute after:inset-0 after:content-['']"
+                              : "min-w-0 break-words after:absolute after:inset-0 after:content-['']"
+                          }
+                        >
+                          {isSearching ? (
+                            <HighlightedText
+                              content={note.content}
+                              query={debouncedQuery}
+                            />
+                          ) : (
+                            (title ?? UNTITLED_NOTE)
+                          )}
+                        </Link>
+                      </ItemTitle>
+                      {!isSearching && preview && (
+                        <ItemDescription className="line-clamp-1">{preview}</ItemDescription>
                       )}
-                    </h3>
-                  </div>
-                  <div className="flex items-center justify-between pt-4">
+                    </ItemContent>
                     {note.updatedAt && (
-                      <p className="text-xs text-muted-foreground">
-                        {new Date(note.updatedAt).toLocaleDateString()}
-                        <span className="mx-2">•</span>
+                      <ItemMeta>
+                        <time
+                          dateTime={new Date(note.updatedAt).toISOString()}
+                          title={formatExactTime(note.updatedAt)}
+                        >
+                          {formatRelativeTime(note.updatedAt)}
+                        </time>
+                        {" · "}
                         {getWordCount(note.content)} words
-                      </p>
+                      </ItemMeta>
                     )}
-                  </div>
-                </Link>
-              ))}
-            </div>
+                  </Item>
+                );
+              })}
+            </ItemGroup>
             {hasMore && (
-              <div className="flex justify-center mt-6">
-                <Button variant="outline" onClick={() => setShowAll(true)}>
+              <FrameFooter className="justify-start">
+                <Button variant="secondary" size="sm" onClick={() => setShowAll(true)}>
                   Show all ({mergedNotes.length} notes)
                 </Button>
-              </div>
+              </FrameFooter>
             )}
           </>
         )}
-      </section>
+      </Frame>
     </>
   );
 }

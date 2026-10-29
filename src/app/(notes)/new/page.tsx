@@ -25,17 +25,17 @@ export default function NewNote() {
   }, [router]);
 
   return (
-    <main className="flex items-center justify-center min-h-screen">
-      <div className="text-center">
+    <main className="flex min-h-dvh items-center justify-center bg-page text-text-1">
+      <div className="flex flex-col items-center gap-4 text-center">
         {error ? (
           <>
-            <p role="alert" className="text-destructive mb-4">Could not create note. Please try again.</p>
-            <Link href="/" className="underline">Back to notes</Link>
+            <p role="alert" className="type-body text-fail-text">Could not create note. Please try again.</p>
+            <Link href="/" className="type-body-sm text-text-1 underline underline-offset-4">Back to notes</Link>
           </>
         ) : (
           <>
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
-            <p className="text-muted-foreground">Creating new note...</p>
+            <span aria-hidden="true" className="pending" />
+            <p className="type-body text-text-2">Creating new note...</p>
           </>
         )}
       </div>

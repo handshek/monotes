@@ -5,19 +5,35 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useQuery, useMutation } from "convex/react";
 import { api } from "../../../convex/_generated/api";
-import { User, Loader } from "lucide-react";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Button } from "@/components/ui/button";
-import { toast } from "sonner";
+import { Icon, User } from "@/components/sodium/icon";
+import { Input } from "@/components/sodium/ui/input";
+import { Button } from "@/components/sodium/ui/button";
+import {
+  Field,
+  FieldDescription,
+  FieldGroup,
+  FieldLabel,
+} from "@/components/sodium/ui/field";
+import { toast } from "@/components/sodium/ui/toast";
 import {
   Empty,
   EmptyContent,
   EmptyDescription,
   EmptyHeader,
-  EmptyMedia,
+  EmptyIcon,
   EmptyTitle,
-} from "@/components/ui/empty";
+} from "@/components/sodium/ui/empty-state";
+
+function ProfileHeading() {
+  return (
+    <div className="flex flex-col gap-0.5">
+      <h3 className="type-heading-sm text-text-1">Profile</h3>
+      <p className="type-body-sm text-text-2">
+        Manage your account information and preferences.
+      </p>
+    </div>
+  );
+}
 
 export default function GeneralSettings() {
   const currentUser = useQuery(api.user.currentUser);
@@ -47,11 +63,11 @@ export default function GeneralSettings() {
 
     // Validation
     if (trimmedName.length === 0) {
-      toast.error("Name cannot be empty");
+      toast.fail("Name cannot be empty");
       return;
     }
     if (trimmedName.length > 100) {
-      toast.error("Name must be 100 characters or less");
+      toast.fail("Name must be 100 characters or less");
       return;
     }
 
@@ -62,10 +78,10 @@ export default function GeneralSettings() {
       setHasChanges(false);
     } catch (error) {
       console.error("Failed to update name:", error);
-      toast.error(
+      toast.fail(
         error instanceof Error
           ? error.message
-          : "Failed to update name. Please try again."
+          : "Failed to update name. Please try again.",
       );
     } finally {
       setIsSaving(false);
@@ -75,8 +91,12 @@ export default function GeneralSettings() {
   // Show loading state while user data is loading
   if (currentUser === undefined) {
     return (
-      <div className="flex items-center justify-center py-8">
-        <Loader className="size-5 animate-spin text-muted-foreground" />
+      <div
+        role="status"
+        aria-label="Loading profile"
+        className="flex items-center justify-center py-8 text-text-2"
+      >
+        <span className="pending" />
       </div>
     );
   }
@@ -84,28 +104,20 @@ export default function GeneralSettings() {
   // Show message if user is not authenticated
   if (currentUser === null) {
     return (
-      <div className="space-y-6">
-        <div>
-          <h3 className="text-sm font-medium mb-1">Profile</h3>
-          <p className="text-xs text-muted-foreground">
-            Manage your account information and preferences.
-          </p>
-        </div>
-
-        <Empty className="border-none bg-secondary/50 dark:bg-card/50">
-          <EmptyMedia variant="icon" className="border">
-            <User className="size-5" />
-          </EmptyMedia>
+      <div className="flex flex-col gap-4">
+        <ProfileHeading />
+        <Empty reason="no-access" variant="plain" size="sm">
+          <EmptyIcon icon={User} />
           <EmptyHeader>
-            <EmptyTitle>Sign in Required</EmptyTitle>
+            <EmptyTitle>Sign in required</EmptyTitle>
             <EmptyDescription>
               Please sign in to manage your account settings and sync your notes
               across devices.
             </EmptyDescription>
           </EmptyHeader>
           <EmptyContent>
-            <Button onClick={() => router.push("/signin")} variant="outline">
-              Go to Sign In
+            <Button onClick={() => router.push("/signin")}>
+              Go to sign in
             </Button>
           </EmptyContent>
         </Empty>
@@ -118,97 +130,69 @@ export default function GeneralSettings() {
   const email = currentUser.email || "No email";
 
   return (
-    <div className="space-y-6">
-      <section className="space-y-4">
-        <div>
-          <h3 className="text-sm font-medium mb-1">Profile</h3>
-          <p className="text-xs text-muted-foreground">
-            Manage your account information and preferences.
-          </p>
-        </div>
+    <div className="flex flex-col">
+      <ProfileHeading />
 
-        <div className="rounded-lg bg-secondary border border-border/50 dark:bg-card divide-y divide-border/50">
-          {/* Profile Picture Section */}
-          <div className="flex items-center gap-4 p-4">
-            <div className="flex items-center justify-center size-16 rounded-full bg-sidebar-accent shrink-0 overflow-hidden border-2 border-border/50">
-              {currentUser.image ? (
-                <Image
-                  src={currentUser.image}
-                  alt={displayName}
-                  width={64}
-                  height={64}
-                  className="size-full object-cover"
-                />
-              ) : (
-                <User className="size-8 text-muted-foreground" />
-              )}
-            </div>
-            <div className="flex-1 min-w-0">
-              <p className="text-xs text-muted-foreground mb-1">
-                Profile Picture
-              </p>
-              <p className="text-sm text-muted-foreground">
-                Profile pictures are managed by your authentication provider.
-              </p>
-            </div>
-          </div>
-
-          {/* Email Section */}
-          <div className="p-4 space-y-2">
-            <Label htmlFor="email" className="text-xs font-medium">
-              Email
-            </Label>
-            <Input
-              id="email"
-              type="email"
-              value={email}
-              disabled
-              className="bg-input/50 cursor-not-allowed"
-            />
-            <p className="text-[12px] text-muted-foreground">
-              Email addresses cannot be changed here.
-            </p>
-          </div>
-
-          {/* Name Section */}
-          <div className="p-4 space-y-2">
-            <Label htmlFor="name" className="text-xs font-medium">
-              Name
-            </Label>
-            <Input
-              id="name"
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="Enter your name"
-              maxLength={100}
-              className="bg-background"
-              disabled={isSaving}
-            />
-            <p className="text-[12px] text-muted-foreground">
-              This is how your name will appear in the application.
-            </p>
-          </div>
-        </div>
-
-        {/* Save Button */}
-        <div className="flex justify-end">
-          <Button
-            onClick={handleSave}
-            disabled={!hasChanges || isSaving || name.trim().length === 0}
-            className="min-w-[100px]"
-          >
-            {isSaving ? (
-              <>
-                <Loader className="mr-2 size-4 animate-spin" />
-                Saving...
-              </>
+      <FieldGroup className="mt-4 gap-0">
+        {/* Profile picture */}
+        <div className="rule-row flex items-center gap-3 pb-3">
+          <div className="flex size-12 shrink-0 items-center justify-center overflow-hidden border border-line bg-well text-text-3">
+            {currentUser.image ? (
+              <Image
+                src={currentUser.image}
+                alt={displayName}
+                width={48}
+                height={48}
+                className="size-full object-cover"
+              />
             ) : (
-              "Save Changes"
+              <Icon icon={User} size={20} />
             )}
-          </Button>
+          </div>
+          <div className="flex min-w-0 flex-1 flex-col gap-0.5">
+            <p className="type-label-sm text-text-2">Profile picture</p>
+            <p className="type-body-sm text-text-2">
+              Profile pictures are managed by your authentication provider.
+            </p>
+          </div>
         </div>
-      </section>
+
+        <Field className="rule-row py-3">
+          <FieldLabel>Email</FieldLabel>
+          <Input id="email" type="email" value={email} disabled />
+          <FieldDescription>
+            Email addresses cannot be changed here.
+          </FieldDescription>
+        </Field>
+
+        <Field className="rule-row py-3">
+          <FieldLabel>Name</FieldLabel>
+          <Input
+            id="name"
+            type="text"
+            autoComplete="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Enter your name"
+            maxLength={100}
+            disabled={isSaving}
+          />
+          <FieldDescription>
+            This is how your name will appear in the application.
+          </FieldDescription>
+        </Field>
+      </FieldGroup>
+
+      <div className="flex justify-end pt-3">
+        <Button
+          onClick={handleSave}
+          pending={isSaving}
+          pendingLabel="Saving"
+          disabled={!hasChanges || name.trim().length === 0}
+        >
+          Save changes
+        </Button>
+      </div>
     </div>
   );
 }

@@ -102,10 +102,13 @@ Install the browser engines, then run the checks with the local Convex configura
 ```sh
 bunx playwright install chromium webkit
 bun run lint
+bun run lint:sodium
 bun run test:unit
 bun run test:e2e
 bun run typecheck
 ```
+
+`bun run lint:sodium` checks the UI against the Sodium design system's rules: its tokens and type roles only, no raw colours or sizes, square corners and one primary action per group.
 
 `bun run test:unit` runs the collaboration protocol, Convex backend, agent pairing, browser session and agent proxy tests without a deployment. It also runs the skill's connect command against a throwaway local server, to check the saved access file's permissions and that an existing file is never replaced.
 
@@ -131,11 +134,13 @@ The default HTML report is `.audit/overnight/latest/html/index.html`. See the [v
 
 ## Code layout
 
-Monotes uses Next.js 16, React 19, TypeScript, and Tailwind CSS. CodeMirror provides the Markdown editor. The search dialog uses cmdk with shadcn-style components. Dexie manages IndexedDB, and Convex provides the backend and authentication.
+Monotes uses Next.js 16, React 19, TypeScript, and Tailwind CSS. The interface is built with [Sodium](https://design.how/systems/sodium), a design system of Base UI components installed into the repo; its rules for coding agents are in `.agents/skills/sodium/SKILL.md`. Unlike stock Sodium, every type role is set in Commit Mono, because Vim's motions and block cursor need equal-width characters. Themes imported from tweakcn are translated onto Sodium's colour roles. CodeMirror provides the Markdown editor. Dexie manages IndexedDB, and Convex provides the backend and authentication.
 
 | Path | Contents |
 | --- | --- |
 | `src/app/` | Routes, layouts, and providers |
+| `src/components/sodium/`, `src/lib/sodium/` | Sodium's tokens, styles and components, installed from its registry |
+| `src/lib/theme-bridge.ts` | Translates imported themes onto Sodium's colour roles |
 | `src/components/notes/` | Editors, sidebar, search dialog, sync controls, and change history |
 | `src/components/agents/` | Agent access dialog and key setup |
 | `src/lib/collab/` | Live editing session, local queues, tab identity, and agent highlights |

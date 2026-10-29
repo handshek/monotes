@@ -3,17 +3,20 @@
 import { useState } from "react";
 import { useMutation, useQuery } from "convex/react";
 import type { FunctionReturnType } from "convex/server";
-import { toast } from "sonner";
+import { toast } from "@/components/sodium/ui/toast";
 import { api } from "../../../convex/_generated/api";
 import type { Id } from "../../../convex/_generated/dataModel";
 import {
   Dialog,
+  DialogBody,
+  DialogClose,
   DialogContent,
   DialogDescription,
+  DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
+} from "@/components/sodium/ui/dialog";
+import { Button } from "@/components/sodium/ui/button";
 import LineDiffView from "./line-diff-view";
 import type { SendProblem } from "@/lib/collab/session";
 
@@ -60,7 +63,7 @@ function describe(item: Activity) {
 function copy(text: string) {
   navigator.clipboard.writeText(text).then(
     () => toast.success("Copied"),
-    () => toast.error("Couldn’t copy"),
+    () => toast.fail("Couldn’t copy"),
   );
 }
 
@@ -71,22 +74,22 @@ function ActivityComparison({ noteId, item }: { noteId: string; item: Activity }
   );
   const after = useQuery(api.collab.versionText, { noteId, version: item.toVersion });
   if (!item.checkpointId) return null;
-  if (checkpoint === undefined || after === undefined) return <p className="text-sm text-muted-foreground">Loading…</p>;
-  if (!checkpoint || !after) return <p className="text-sm">This comparison isn’t available.</p>;
+  if (checkpoint === undefined || after === undefined) return <p role="status" className="mt-2 type-body-sm text-text-2">Loading…</p>;
+  if (!checkpoint || !after) return <p className="mt-2 type-body-sm text-text-2">This comparison isn’t available.</p>;
   if (item.kind === "late_overlap") {
     return (
-      <div className="space-y-2">
-        <p className="text-sm">Merged result compared with what you typed offline:</p>
+      <div className="mt-2 flex flex-col items-start gap-2">
+        <p className="type-body-sm text-text-2">Merged result compared with what you typed offline:</p>
         <LineDiffView before={after.text} after={checkpoint.text} label="Merged text compared with your offline text" />
-        <Button size="sm" variant="outline" onClick={() => copy(checkpoint.text)}>Copy your offline text</Button>
+        <Button size="sm" variant="secondary" onClick={() => copy(checkpoint.text)}>Copy your offline text</Button>
       </div>
     );
   }
   return (
-    <div className="space-y-2">
-      <p className="text-sm">Before compared with right after this change:</p>
+    <div className="mt-2 flex flex-col items-start gap-2">
+      <p className="type-body-sm text-text-2">Before compared with right after this change:</p>
       <LineDiffView before={checkpoint.text} after={after.text} label="Changes made" />
-      <Button size="sm" variant="outline" onClick={() => copy(checkpoint.text)}>Copy earlier text</Button>
+      <Button size="sm" variant="secondary" onClick={() => copy(checkpoint.text)}>Copy earlier text</Button>
     </div>
   );
 }
@@ -108,28 +111,29 @@ function RestorePreview({
   const current = useQuery(api.collab.snapshot, { noteId });
   const restore = useMutation(api.collab.restoreCheckpoint);
   const [busy, setBusy] = useState(false);
-  if (saved === undefined || current === undefined) return <p className="text-sm text-muted-foreground">Loading…</p>;
-  if (!saved || current.status !== "ok") return <p className="text-sm">This version isn’t available.</p>;
+  if (saved === undefined || current === undefined) return <p role="status" className="mt-2 type-body-sm text-text-2">Loading…</p>;
+  if (!saved || current.status !== "ok") return <p className="mt-2 type-body-sm text-text-2">This version isn’t available.</p>;
   const previewVersion = current.version;
   return (
-    <div className="space-y-3 text-sm">
-      <p>Current note compared with this saved version:</p>
+    <div className="mt-2 flex flex-col gap-3">
+      <p className="type-body-sm text-text-2">Current note compared with this saved version:</p>
       <LineDiffView before={current.text} after={saved.text} label="Current note compared with saved version" />
-      <p className="text-muted-foreground">
+      <p className="type-body-sm text-text-2">
         Restoring replaces the whole current note with this version, including anything written after it. The
         current text is saved first, so you can come back to it.
       </p>
       <div className="flex flex-wrap gap-2">
-        <Button size="sm" variant="outline" onClick={() => copy(saved.text)}>Copy this version</Button>
+        <Button size="sm" variant="secondary" onClick={() => copy(saved.text)}>Copy this version</Button>
         <Button
           size="sm"
-          disabled={busy || saved.text === current.text}
+          pending={busy}
+          disabled={saved.text === current.text}
           onClick={async () => {
             setBusy(true);
             try {
               const flushed = await flushForRestore();
               if (!flushed.ok) {
-                toast.error(RESTORE_BLOCKED[flushed.reason]);
+                toast.fail(RESTORE_BLOCKED[flushed.reason]);
                 return;
               }
               const result = await restore({ noteId, epoch, checkpointId: checkpoint.id, expectedVersion: previewVersion });
@@ -141,10 +145,10 @@ function RestorePreview({
               } else if (result.status === "unchanged") {
                 toast("The note already matches this version.");
               } else {
-                toast.error("Couldn’t restore this version.");
+                toast.fail("Couldn’t restore this version.");
               }
             } catch {
-              toast.error("Couldn’t restore this version.");
+              toast.fail("Couldn’t restore this version.");
             } finally {
               setBusy(false);
             }
@@ -177,75 +181,80 @@ export default function NoteHistoryDialog({
   const restorable = checkpoints?.find((item) => item.id === selectedCheckpoint) ?? null;
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-h-[90vh] overflow-y-auto sm:max-w-2xl">
+      <DialogContent size="lg">
         <DialogHeader>
           <DialogTitle>Changes</DialogTitle>
-          <DialogDescription>Agent edits and saved versions of this note.</DialogDescription>
         </DialogHeader>
-        <section aria-label="Activity" className="space-y-2">
-          <h3 className="text-sm font-medium">Activity</h3>
-          {activity?.length ? (
-            <ul className="space-y-2">
-              {activity.map((item) => (
-                <li key={item.id} className="rounded-md border p-2 text-sm">
-                  <div className="flex items-center justify-between gap-2">
-                    <span>
-                      {describe(item)} <span className="text-xs text-muted-foreground">· {when(item.createdAt)}</span>
-                    </span>
-                    {item.checkpointId && (
+        <DialogBody>
+          <DialogDescription>Agent edits and saved versions of this note.</DialogDescription>
+          <section aria-label="Activity" className="mt-4">
+            <h3 className="border-b border-line py-2 type-label-sm text-text-2">Activity</h3>
+            {activity?.length ? (
+              <ul>
+                {activity.map((item) => (
+                  <li key={item.id} className="rule-row py-2">
+                    <div className="flex items-center justify-between gap-2">
+                      <span className="min-w-0 type-body-sm text-text-1">
+                        {describe(item)} <span className="type-caption text-text-2">· {when(item.createdAt)}</span>
+                      </span>
+                      {item.checkpointId && (
+                        <Button
+                          size="sm"
+                          variant="ghost"
+                          onClick={() => setSelectedActivity(selectedActivity === item.id ? null : item.id)}
+                        >
+                          {selectedActivity === item.id ? "Hide" : "View changes"}
+                        </Button>
+                      )}
+                    </div>
+                    {selectedActivity === item.id && <ActivityComparison noteId={noteId} item={item} />}
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="py-2 type-body-sm text-text-2">No activity yet.</p>
+            )}
+          </section>
+          <section aria-label="Saved versions" className="mt-4">
+            <h3 className="border-b border-line py-2 type-label-sm text-text-2">Saved versions</h3>
+            {checkpoints?.length ? (
+              <ul>
+                {checkpoints.map((item) => (
+                  <li key={item.id} className="rule-row py-2">
+                    <div className="flex items-center justify-between gap-2">
+                      <span className="min-w-0 type-body-sm text-text-1">
+                        {CHECKPOINT_LABELS[item.reason]}
+                        {item.agentName ? ` (${item.agentName})` : ""}{" "}
+                        <span className="type-caption text-text-2">· {when(item.createdAt)}</span>
+                      </span>
                       <Button
                         size="sm"
                         variant="ghost"
-                        onClick={() => setSelectedActivity(selectedActivity === item.id ? null : item.id)}
+                        onClick={() => setSelectedCheckpoint(selectedCheckpoint === item.id ? null : item.id)}
                       >
-                        {selectedActivity === item.id ? "Hide" : "View changes"}
+                        {selectedCheckpoint === item.id ? "Hide" : "Compare"}
                       </Button>
+                    </div>
+                    {restorable?.id === item.id && (
+                      <RestorePreview
+                        noteId={noteId}
+                        epoch={epoch}
+                        checkpoint={item}
+                        flushForRestore={flushForRestore}
+                        onDone={() => setSelectedCheckpoint(null)}
+                      />
                     )}
-                  </div>
-                  {selectedActivity === item.id && <ActivityComparison noteId={noteId} item={item} />}
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p className="text-sm text-muted-foreground">No activity yet.</p>
-          )}
-        </section>
-        <section aria-label="Saved versions" className="space-y-2">
-          <h3 className="text-sm font-medium">Saved versions</h3>
-          {checkpoints?.length ? (
-            <ul className="space-y-2">
-              {checkpoints.map((item) => (
-                <li key={item.id} className="rounded-md border p-2 text-sm">
-                  <div className="flex items-center justify-between gap-2">
-                    <span>
-                      {CHECKPOINT_LABELS[item.reason]}
-                      {item.agentName ? ` (${item.agentName})` : ""}{" "}
-                      <span className="text-xs text-muted-foreground">· {when(item.createdAt)}</span>
-                    </span>
-                    <Button
-                      size="sm"
-                      variant="ghost"
-                      onClick={() => setSelectedCheckpoint(selectedCheckpoint === item.id ? null : item.id)}
-                    >
-                      {selectedCheckpoint === item.id ? "Hide" : "Compare"}
-                    </Button>
-                  </div>
-                  {restorable?.id === item.id && (
-                    <RestorePreview
-                      noteId={noteId}
-                      epoch={epoch}
-                      checkpoint={item}
-                      flushForRestore={flushForRestore}
-                      onDone={() => setSelectedCheckpoint(null)}
-                    />
-                  )}
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p className="text-sm text-muted-foreground">No saved versions yet.</p>
-          )}
-        </section>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="py-2 type-body-sm text-text-2">No saved versions yet.</p>
+            )}
+          </section>
+        </DialogBody>
+        <DialogFooter defaultAction="none">
+          <DialogClose>Done</DialogClose>
+        </DialogFooter>
       </DialogContent>
     </Dialog>
   );

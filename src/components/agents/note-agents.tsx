@@ -3,11 +3,15 @@
 import { useState } from "react";
 import { useMutation } from "convex/react";
 import type { FunctionReturnType } from "convex/server";
-import { toast } from "sonner";
 import { api } from "../../../convex/_generated/api";
 import type { Id } from "../../../convex/_generated/dataModel";
-import { Button } from "@/components/ui/button";
-import { copyToClipboard, workRequest } from "./agent-messages";
+import { Button } from "@/components/sodium/ui/button";
+import { CopyButton } from "@/components/sodium/ui/copy-button";
+import { Item, ItemActions, ItemContent, ItemDescription, ItemGroup, ItemMedia, ItemTitle } from "@/components/sodium/ui/item";
+import { NativeSelect } from "@/components/sodium/ui/select";
+import { StatusMark, type StatusValue } from "@/components/sodium/ui/status";
+import { toast } from "@/components/sodium/ui/toast";
+import { workRequest } from "./agent-messages";
 
 type NoteAgent = NonNullable<FunctionReturnType<typeof api.agents.noteGrants>>[number];
 
@@ -28,6 +32,14 @@ function describe(agent: NoteAgent): string {
       return "Set up manually · never used. Its key can’t be shown again.";
   }
 }
+
+/* The square mark that leads each row; the description beside it names the state. */
+const STATE_MARK: Record<NoteAgent["state"], StatusValue> = {
+  connected: "ok",
+  used: "ok",
+  waiting: "queued",
+  unused: "idle",
+};
 
 function isAccess(value: string): value is "none" | "read" | "edit" {
   return value === "none" || value === "read" || value === "edit";
@@ -58,87 +70,93 @@ export default function NoteAgents({
   const change = async (connectionId: Id<"agentConnections">, access: "none" | "read" | "edit") => {
     try {
       const result = await setGrant({ noteId, connectionId, access });
-      if (result.status !== "ok") toast.error("Couldn’t change access. Try again.");
+      if (result.status !== "ok") toast.fail("Couldn’t change access. Try again.");
     } catch {
-      toast.error("Couldn’t change access. Try again.");
+      toast.fail("Couldn’t change access. Try again.");
     }
   };
 
-  const row = (agent: NoteAgent) => (
-    <li key={agent.id} className="space-y-2 px-3 py-2">
-      <div className="flex items-center justify-between gap-3">
-        <div className="min-w-0">
-          <div className="truncate font-medium">{agent.name}</div>
-          <div className="text-xs text-muted-foreground">{describe(agent)}</div>
-        </div>
-        <select
-          aria-label={`Access for ${agent.name}`}
-          className="rounded-md border bg-background px-2 py-1"
-          value={agent.access}
-          onChange={(event) => {
-            if (isAccess(event.target.value)) void change(agent.id, event.target.value);
-          }}
-        >
-          <option value="none">No access</option>
-          <option value="read">Can read</option>
-          <option value="edit">Can edit</option>
-        </select>
-      </div>
-      <div className="flex flex-wrap gap-2">
-        {agent.access !== "none" && agent.state !== "unused" && (
-          <Button
+  const row = (agent: NoteAgent) => {
+    const canCopy = agent.access !== "none" && agent.state !== "unused";
+    const canSetUp = agent.state === "unused" || agent.state === "waiting";
+    return (
+      <Item key={agent.id} className="flex-wrap">
+        <ItemMedia>
+          <StatusMark status={STATE_MARK[agent.state]} />
+        </ItemMedia>
+        <ItemContent>
+          <ItemTitle>
+            <span>{agent.name}</span>
+          </ItemTitle>
+          <ItemDescription className="line-clamp-none">{describe(agent)}</ItemDescription>
+        </ItemContent>
+        <ItemActions>
+          <NativeSelect
             size="sm"
-            variant="outline"
-            onClick={async () => {
-              const text = workRequest({ origin, noteId, title: noteTitle, credentialFile: agent.credentialFile });
-              if (await copyToClipboard(text)) toast.success(`Request for ${agent.name} copied`);
-              else toast.error("Couldn’t copy. Try again.");
+            aria-label={`Access for ${agent.name}`}
+            className="w-32"
+            value={agent.access}
+            onChange={(event) => {
+              if (isAccess(event.target.value)) void change(agent.id, event.target.value);
             }}
           >
-            Copy request
-          </Button>
+            <option value="none">No access</option>
+            <option value="read">Can read</option>
+            <option value="edit">Can edit</option>
+          </NativeSelect>
+        </ItemActions>
+        {(canCopy || canSetUp) && (
+          <div className="flex basis-full flex-wrap gap-2 ps-5">
+            {canCopy && (
+              <CopyButton
+                variant="secondary"
+                showLabel
+                label="request"
+                value={() => workRequest({ origin, noteId, title: noteTitle, credentialFile: agent.credentialFile })}
+              />
+            )}
+            {canSetUp && (
+              <>
+                <Button size="sm" variant="secondary" onClick={() => onSetUpAgain(agent.name)}>
+                  {agent.state === "unused" ? "Set up a new connection" : "Set up again"}
+                </Button>
+                {/* Removing touches only this connection, and only when asked twice. */}
+                <Button
+                  size="sm"
+                  variant={confirmRemove === agent.id ? "destructive" : "ghost"}
+                  onClick={async () => {
+                    if (confirmRemove !== agent.id) return setConfirmRemove(agent.id);
+                    setConfirmRemove(null);
+                    const result = await revoke({ connectionId: agent.id }).catch(() => null);
+                    if (result?.status === "ok") toast.success(`${agent.name} removed`);
+                    else toast.fail("Couldn’t remove it. Try again.");
+                  }}
+                >
+                  {confirmRemove === agent.id ? `Confirm: remove ${agent.name}` : "Remove"}
+                </Button>
+              </>
+            )}
+          </div>
         )}
-        {(agent.state === "unused" || agent.state === "waiting") && (
-          <>
-            <Button size="sm" variant="outline" onClick={() => onSetUpAgain(agent.name)}>
-              {agent.state === "unused" ? "Set up a new connection" : "Set up again"}
-            </Button>
-            {/* Removing touches only this connection, and only when asked twice. */}
-            <Button
-              size="sm"
-              variant="ghost"
-              onClick={async () => {
-                if (confirmRemove !== agent.id) return setConfirmRemove(agent.id);
-                setConfirmRemove(null);
-                const result = await revoke({ connectionId: agent.id }).catch(() => null);
-                if (result?.status === "ok") toast.success(`${agent.name} removed`);
-                else toast.error("Couldn’t remove it. Try again.");
-              }}
-            >
-              {confirmRemove === agent.id ? `Confirm: remove ${agent.name}` : "Remove"}
-            </Button>
-          </>
-        )}
-      </div>
-    </li>
-  );
+      </Item>
+    );
+  };
 
   return (
-    <div className="space-y-4 text-sm">
+    <div className="flex flex-col gap-5">
       {withAccess.length > 0 && (
-        <section className="space-y-2">
-          <h3 className="text-xs text-muted-foreground">Agents with access to this note</h3>
-          <ul aria-label="Agents with access to this note" className="divide-y rounded-md border">
-            {withAccess.map(row)}
-          </ul>
+        <section className="flex flex-col gap-2">
+          <h3 className="type-label-sm text-text-2">Agents with access to this note</h3>
+          <ItemGroup aria-label="Agents with access to this note">{withAccess.map(row)}</ItemGroup>
         </section>
       )}
       {others.length > 0 && (
-        <section className="space-y-2">
-          <h3 className="text-xs text-muted-foreground">Your other agents — give one access without setting it up again</h3>
-          <ul aria-label="Your other agents" className="divide-y rounded-md border">
-            {others.map(row)}
-          </ul>
+        <section className="flex flex-col gap-2">
+          <div className="flex flex-col gap-1">
+            <h3 className="type-label-sm text-text-2">Your other agents</h3>
+            <p className="type-caption text-text-2">Give one access without setting it up again.</p>
+          </div>
+          <ItemGroup aria-label="Your other agents">{others.map(row)}</ItemGroup>
         </section>
       )}
     </div>

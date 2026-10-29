@@ -7,6 +7,9 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuthActions } from "@convex-dev/auth/react";
+import { Button } from "@/components/sodium/ui/button";
+import { Field, FieldLabel } from "@/components/sodium/ui/field";
+import { Input } from "@/components/sodium/ui/input";
 
 export function SigninForm() {
   const { signIn } = useAuthActions();
@@ -16,7 +19,7 @@ export function SigninForm() {
   const password = "test-password-1234";
   return (
     <form
-      className="flex flex-col gap-2"
+      className="flex flex-col gap-3"
       onSubmit={async (event) => {
         event.preventDefault();
         try {
@@ -32,10 +35,12 @@ export function SigninForm() {
         router.push("/");
       }}
     >
-      <label htmlFor="test-email">Test email</label>
-      <input id="test-email" value={email} onChange={(event) => setEmail(event.target.value)} />
-      <button type="submit">Test sign in</button>
-      {error && <p role="alert">{error}</p>}
+      <Field>
+        <FieldLabel>Test email</FieldLabel>
+        <Input id="test-email" value={email} onChange={(event) => setEmail(event.target.value)} />
+      </Field>
+      <Button type="submit">Test sign in</Button>
+      {error && <p role="alert" className="type-caption text-fail-text">{error}</p>}
     </form>
   );
 }

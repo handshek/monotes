@@ -2,29 +2,25 @@
 
 import { useState } from "react";
 import { useAction } from "convex/react";
-import { toast } from "sonner";
 import { api } from "../../../convex/_generated/api";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { Button } from "@/components/sodium/ui/button";
+import { CopyButton } from "@/components/sodium/ui/copy-button";
+import { Field, FieldLabel } from "@/components/sodium/ui/field";
+import { Input } from "@/components/sodium/ui/input";
+import { toast } from "@/components/sodium/ui/toast";
 
-function CopyBlock({ text, label }: { text: string; label: string }) {
+/*
+ * A value to copy, in mono on the code surface, with its copy button at the end.
+ * `copyLabel` names the button ("Copy key"); it must not repeat the block's own
+ * label, so a search by label finds the block alone.
+ */
+function CopyBlock({ text, label, copyLabel }: { text: string; label: string; copyLabel: string }) {
   return (
-    <div className="relative">
-      <pre aria-label={label} className="overflow-x-auto rounded-md border bg-muted/40 p-2 pr-16 text-xs">{text}</pre>
-      <Button
-        size="sm"
-        variant="ghost"
-        className="absolute right-1 top-1 h-7"
-        onClick={() =>
-          navigator.clipboard.writeText(text).then(
-            () => toast.success("Copied"),
-            () => toast.error("Couldn’t copy"),
-          )
-        }
-      >
-        Copy
-      </Button>
+    <div className="code-surface flex min-w-0 items-start">
+      <pre aria-label={label} className="min-w-0 flex-1 overflow-x-auto p-2 type-code-sm text-text-1">
+        {text}
+      </pre>
+      <CopyButton className="m-1 shrink-0" label={copyLabel} value={text} />
     </div>
   );
 }
@@ -33,13 +29,13 @@ function CopyBlock({ text, label }: { text: string; label: string }) {
 export function AgentSetupSteps({ token, name }: { token: string; name: string }) {
   const origin = typeof window === "undefined" ? "" : window.location.origin;
   return (
-    <div className="space-y-3 text-sm">
-      <p className="font-medium">Key for “{name}” — shown only once</p>
-      <CopyBlock label="Agent key" text={token} />
-      <p className="text-muted-foreground">
+    <div className="flex flex-col gap-3 type-body-sm text-text-1">
+      <p>Key for “{name}”, shown only once</p>
+      <CopyBlock label="Agent key" copyLabel="key" text={token} />
+      <p className="text-text-2">
         This key can’t open anything yet. It reaches only the notes you allow, and you can remove it any time.
       </p>
-      <ol className="list-decimal space-y-3 pl-5">
+      <ol className="flex list-decimal flex-col gap-3 ps-5">
         <li>
           <p className="mb-1">
             Save the key where your agent’s shell can read it, outside any code repository (for example in a file
@@ -47,6 +43,7 @@ export function AgentSetupSteps({ token, name }: { token: string; name: string }
           </p>
           <CopyBlock
             label="Environment variables"
+            copyLabel="variables"
             text={`export MONOTES_URL="${origin}"\nexport MONOTES_AGENT_KEY="${token}"`}
           />
         </li>
@@ -60,11 +57,12 @@ export function AgentSetupSteps({ token, name }: { token: string; name: string }
           </p>
           <CopyBlock
             label="Prompt for your agent"
+            copyLabel="prompt"
             text={`Read ${origin}/agent-skill/SKILL.md and follow it to work in my Monotes notes, using the MONOTES_URL and MONOTES_AGENT_KEY environment variables that are already set.\nThen: add a testing section to ${origin}/<note id>`}
           />
         </li>
       </ol>
-      <p className="text-xs text-muted-foreground">
+      <p className="type-caption text-text-2">
         Your agent sends requests to Monotes from your computer. If it runs in a sandbox without network access, allow
         requests to {origin || "this site"}.
       </p>
@@ -81,9 +79,9 @@ export function CreateAgentKey({ onCreated }: { onCreated?: (connectionId: strin
 
   if (created) {
     return (
-      <div className="space-y-3">
+      <div className="flex flex-col gap-3">
         <AgentSetupSteps token={created.token} name={created.name} />
-        <Button variant="outline" size="sm" onClick={() => setCreated(null)}>
+        <Button className="self-start" variant="secondary" size="sm" onClick={() => setCreated(null)}>
           I’ve saved the key
         </Button>
       </div>
@@ -100,21 +98,21 @@ export function CreateAgentKey({ onCreated }: { onCreated?: (connectionId: strin
           if (result.status === "created") {
             setCreated({ token: result.token, name: result.name });
             onCreated?.(result.connectionId);
-          } else if (result.status === "invalid_name") toast.error("Use a name of 1–60 characters.");
-          else if (result.status === "too_many") toast.error("You already have 20 agent keys. Revoke one first.");
-          else toast.error("Sign in to add an agent key.");
+          } else if (result.status === "invalid_name") toast.fail("Use a name of 1–60 characters.");
+          else if (result.status === "too_many") toast.fail("You already have 20 agent keys. Revoke one first.");
+          else toast.fail("Sign in to add an agent key.");
         } catch {
-          toast.error("Couldn’t create the key. Try again.");
+          toast.fail("Couldn’t create the key. Try again.");
         } finally {
           setBusy(false);
         }
       }}
     >
-      <div className="grid gap-1">
-        <Label htmlFor="agent-name">Agent name</Label>
-        <Input id="agent-name" value={name} maxLength={60} onChange={(event) => setName(event.target.value)} className="w-56" />
-      </div>
-      <Button type="submit" disabled={busy}>
+      <Field className="w-56">
+        <FieldLabel>Agent name</FieldLabel>
+        <Input value={name} maxLength={60} onChange={(event) => setName(event.target.value)} />
+      </Field>
+      <Button type="submit" pending={busy}>
         Create agent key
       </Button>
     </form>

@@ -2,15 +2,19 @@
 
 import { useState } from "react";
 import { useLiveQuery } from "dexie-react-hooks";
-import { toast } from "sonner";
+import { toast } from "@/components/sodium/ui/toast";
 import {
   Dialog,
+  DialogBody,
+  DialogClose,
   DialogContent,
   DialogDescription,
+  DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
+} from "@/components/sodium/ui/dialog";
+import { Alert, AlertAction, AlertDescription, AlertTitle } from "@/components/sodium/ui/alert";
+import { Button } from "@/components/sodium/ui/button";
 import { getDB, type RecoveryRecord } from "@/lib/local-db";
 import { deleteRecovery } from "@/lib/collab/store";
 
@@ -40,68 +44,78 @@ export default function RecoveryNotice({
   if (!recoveries?.length) return null;
   return (
     <>
-      <div role="status" className="mb-4 flex items-center justify-between gap-2 rounded-md border px-3 py-2 text-sm">
-        <span>
+      <Alert className="mb-4">
+        <AlertTitle>Kept text</AlertTitle>
+        <AlertDescription>
           Monotes kept {recoveries.length === 1 ? "some text" : `${recoveries.length} pieces of text`} it didn’t merge
           into this note.
-        </span>
-        <Button size="sm" variant="outline" onClick={() => setOpen(true)}>
-          Review kept text
-        </Button>
-      </div>
+        </AlertDescription>
+        <AlertAction>
+          <Button size="sm" variant="secondary" onClick={() => setOpen(true)}>
+            Review kept text
+          </Button>
+        </AlertAction>
+      </Alert>
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="max-h-[85vh] overflow-y-auto sm:max-w-2xl">
+        <DialogContent size="lg">
           <DialogHeader>
             <DialogTitle>Kept text</DialogTitle>
+          </DialogHeader>
+          <DialogBody>
             <DialogDescription>
               This text is stored only on this device. Copy what you need, add it to the note, or discard it.
             </DialogDescription>
-          </DialogHeader>
-          <ul className="space-y-4">
-            {recoveries.map((recovery) => (
-              <li key={recovery.id} className="rounded-md border p-3">
-                <div className="mb-2 text-xs text-muted-foreground">
-                  {REASONS[recovery.reason]} · {new Date(recovery.createdAt).toLocaleString()}
-                </div>
-                <pre className="max-h-48 overflow-auto whitespace-pre-wrap text-sm">{recovery.text}</pre>
-                <div className="mt-2 flex flex-wrap gap-2">
-                  <Button
-                    size="sm"
-                    variant="outline"
-                    onClick={() =>
-                      navigator.clipboard.writeText(recovery.text).then(
-                        () => toast.success("Copied"),
-                        () => toast.error("Couldn’t copy"),
-                      )
-                    }
-                  >
-                    Copy
-                  </Button>
-                  {onAppend && (
+            <ul className="mt-2">
+              {recoveries.map((recovery) => (
+                <li key={recovery.id} className="rule-row flex flex-col gap-2 py-3">
+                  <div className="type-label-sm text-text-2">
+                    {REASONS[recovery.reason]} · {new Date(recovery.createdAt).toLocaleString()}
+                  </div>
+                  <pre className="max-h-48 overflow-auto whitespace-pre-wrap bg-code-surface p-2 type-code-sm text-text-1">
+                    {recovery.text}
+                  </pre>
+                  <div className="flex flex-wrap gap-2">
                     <Button
                       size="sm"
-                      variant="outline"
+                      variant="secondary"
+                      onClick={() =>
+                        navigator.clipboard.writeText(recovery.text).then(
+                          () => toast.success("Copied"),
+                          () => toast.fail("Couldn’t copy"),
+                        )
+                      }
+                    >
+                      Copy
+                    </Button>
+                    {onAppend && (
+                      <Button
+                        size="sm"
+                        variant="secondary"
+                        onClick={async () => {
+                          onAppend(recovery.text);
+                          if (recovery.id !== undefined) await deleteRecovery(recovery.id);
+                        }}
+                      >
+                        Add to end of note
+                      </Button>
+                    )}
+                    <Button
+                      size="sm"
+                      variant="ghost"
                       onClick={async () => {
-                        onAppend(recovery.text);
                         if (recovery.id !== undefined) await deleteRecovery(recovery.id);
                       }}
                     >
-                      Add to end of note
+                      Discard
                     </Button>
-                  )}
-                  <Button
-                    size="sm"
-                    variant="ghost"
-                    onClick={async () => {
-                      if (recovery.id !== undefined) await deleteRecovery(recovery.id);
-                    }}
-                  >
-                    Discard
-                  </Button>
-                </div>
-              </li>
-            ))}
-          </ul>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </DialogBody>
+          <DialogFooter defaultAction="none">
+            <DialogClose>Done</DialogClose>
+          </DialogFooter>
         </DialogContent>
       </Dialog>
     </>

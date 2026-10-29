@@ -1,18 +1,18 @@
 "use client";
 
-import React, { useState } from "react";
 import {
   Dialog,
+  DialogAction,
+  DialogBody,
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
-import { Loader } from "lucide-react";
+} from "@/components/sodium/ui/dialog";
 import { useSyncNoteToCloud } from "@/lib/sync-engine";
-import { toast } from "sonner";
+import { toast } from "@/components/sodium/ui/toast";
 
 interface SyncModalProps {
   open: boolean;
@@ -25,55 +25,41 @@ export default function SyncModal({
   onOpenChange,
   noteId,
 }: SyncModalProps) {
-  const [isSyncing, setIsSyncing] = useState(false);
   const syncNoteToCloud = useSyncNoteToCloud();
 
+  // The dialog holds itself pending while this runs, closes when it resolves,
+  // and shows the rejection's message above the footer when it fails.
   const handleConfirm = async () => {
-    setIsSyncing(true);
     try {
       await syncNoteToCloud(noteId);
-      toast.success("Note synced to cloud successfully");
-      onOpenChange(false);
     } catch (error) {
       console.error("Failed to sync note:", error);
-      toast.error(
+      throw new Error(
         error instanceof Error
           ? error.message
           : "Failed to sync note. Please try again."
       );
-    } finally {
-      setIsSyncing(false);
     }
+    toast.success("Note synced to cloud");
   };
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Sync Note to Cloud</DialogTitle>
+          <DialogTitle>Sync note to cloud</DialogTitle>
+        </DialogHeader>
+        <DialogBody>
           <DialogDescription>
             This will upload your note to the cloud so you can access it from
             other devices. Your note will be synced automatically going forward.
           </DialogDescription>
-        </DialogHeader>
+        </DialogBody>
         <DialogFooter>
-          <Button
-            variant="outline"
-            onClick={() => onOpenChange(false)}
-            disabled={isSyncing}
-          >
-            Cancel
-          </Button>
-          <Button onClick={handleConfirm} disabled={isSyncing}>
-            {isSyncing ? (
-              <React.Fragment>
-                <Loader className="mr-2 size-4 animate-spin" />
-                Syncing...
-              </React.Fragment>
-            ) : (
-              "Sync to Cloud"
-            )}
-          </Button>
+          <DialogClose>Cancel</DialogClose>
+          <DialogAction onAction={handleConfirm} pendingLabel="Syncing">
+            Sync to cloud
+          </DialogAction>
         </DialogFooter>
       </DialogContent>
     </Dialog>

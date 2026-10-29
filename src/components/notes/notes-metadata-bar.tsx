@@ -1,20 +1,25 @@
 "use client";
 
-import { CounterClockwiseClockIcon, UpdateIcon } from "@radix-ui/react-icons";
-import { CircleCheckBigIcon, DatabaseIcon, History, KeyRound } from "lucide-react";
 import { Authenticated, Unauthenticated } from "convex/react";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import SyncModal from "./sync-modal";
 import {
   Dialog,
+  DialogAction,
+  DialogBody,
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
+} from "@/components/sodium/ui/dialog";
+import { Button } from "@/components/sodium/ui/button";
+import { Status, type StatusValue } from "@/components/sodium/ui/status";
+import { Icon, DataBase, History, Key, Time } from "@/components/sodium/icon";
+import { cn } from "@/lib/sodium/utils";
+import { formatExactTime, useRelativeTime } from "@/lib/relative-time";
 import AgentAccessDialog, { REOPEN_KEY } from "@/components/agents/agent-access-dialog";
 import NoteHistoryDialog, { type RestoreReadiness } from "./note-history-dialog";
 import type { SessionStatus } from "@/lib/collab/session";
@@ -54,6 +59,24 @@ function connectionLabel(status: SessionStatus | null): string {
   }
 }
 
+/* Where the shared connection stands, as a Status mark beside the label. */
+function connectionTone(status: SessionStatus | null): StatusValue {
+  switch (status?.connection) {
+    case undefined:
+    case "connecting":
+      return "running";
+    case "live":
+      return status.pending > 0 ? "running" : "ok";
+    case "offline":
+    case "signed_out":
+      return "paused";
+    case "deleted":
+      return "fail";
+    default:
+      return "warn";
+  }
+}
+
 export default function NotesMetadataBar({
   lastEdited,
   cloudStatus = "local",
@@ -84,104 +107,87 @@ export default function NotesMetadataBar({
     }
   }, [connected, noteId]);
 
-  const formatLastEdited = (timestamp: number) => {
-    try {
-      const date = new Date(timestamp);
-      const day = date.getDate().toString().padStart(2, "0");
-      const month = date
-        .toLocaleString("en-US", { month: "short" })
-        .toUpperCase();
-      const year = date.getFullYear().toString().slice(-2);
-      const time = date.toLocaleString("en-US", {
-        hour: "numeric",
-        minute: "2-digit",
-        hour12: true,
-      });
-
-      return `${time} · ${day}-${month}-${year}`;
-    } catch {
-      return "unknown";
-    }
-  };
+  const editedAgo = useRelativeTime(lastEdited);
 
   return (
     <React.Fragment>
       <div
-        className={`flex items-center justify-between text-xs text-muted-foreground px-2 py-4 ${className}`}
+        className={cn(
+          "@container flex flex-wrap items-center justify-between gap-x-4 gap-y-2 px-2 py-4 type-label-sm text-text-2",
+          className,
+        )}
       >
-        <div
-          className="flex items-center gap-2"
-          title="Last Edited"
-          aria-label="last edited"
-        >
-          <CounterClockwiseClockIcon className="size-3" />
-          <span>{lastEdited ? formatLastEdited(lastEdited) : "never"}</span>
+        <div className="flex min-w-0 items-center gap-2">
+          <Icon icon={Time} />
+          {lastEdited ? (
+            <time
+              dateTime={new Date(lastEdited).toISOString()}
+              title={`Last edited ${formatExactTime(lastEdited)}`}
+              className="truncate"
+            >
+              Edited {editedAgo}
+            </time>
+          ) : (
+            <span>Not edited yet</span>
+          )}
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-1">
           {connected && (
             <>
-              <span role="status" aria-label="Sharing status" className="flex items-center gap-2">
-                {connectionLabel(connected.status)}
+              <span role="status" aria-label="Sharing status" className="me-2 flex items-center">
+                <Status size="sm" status={connectionTone(connected.status)}>
+                  {connectionLabel(connected.status)}
+                </Status>
               </span>
-              <button
-                type="button"
-                onClick={() => setHistoryOpen(true)}
-                className="text-xs rounded-md hover:bg-muted/80 transition-colors cursor-pointer flex items-center gap-1"
-              >
-                <History className="size-3" />
-                Changes
-              </button>
+              <Button variant="ghost" size="sm" onClick={() => setHistoryOpen(true)}>
+                <Icon icon={History} />
+                {/* In a narrow bar (a phone, or a 60ch note) the glyph stands alone so the row fits; the name stays for screen readers. */}
+                <span className="@max-[36rem]:sr-only">Changes</span>
+              </Button>
             </>
           )}
           {noteId && (
-            <button
-              type="button"
-              onClick={() => setAgentAccessOpen(true)}
-              className="text-xs rounded-md hover:bg-muted/80 transition-colors cursor-pointer flex items-center gap-1"
-            >
-              <KeyRound className="size-3" />
-              Agent access
-            </button>
+            <Button variant="ghost" size="sm" onClick={() => setAgentAccessOpen(true)}>
+              <Icon icon={Key} />
+              <span className="@max-[36rem]:sr-only">Agent access</span>
+            </Button>
           )}
           {!connected && cloudStatus === "local" && (
-            <div className="">
+            <>
               <Unauthenticated>
-                <button
+                <Button
+                  variant="ghost"
+                  size="sm"
                   onClick={() => setAuthModalOpen(true)}
-                  className="text-xs rounded-md hover:bg-muted/80 transition-colors cursor-pointer flex items-center gap-2"
                   title="Sign in to sync to cloud"
                 >
-                  <DatabaseIcon className="size-3" />
-                  Local Only
-                </button>
+                  <Icon icon={DataBase} />
+                  Local only
+                </Button>
               </Unauthenticated>
               <Authenticated>
-                <button
+                <Button
+                  variant="ghost"
+                  size="sm"
                   onClick={() => setSyncModalOpen(true)}
-                  className="text-xs rounded-md hover:bg-muted/80 transition-colors cursor-pointer flex items-center gap-2"
                   title="Click to sync to cloud"
                 >
-                  <DatabaseIcon className="size-3" />
-                  Local Only
-                </button>
+                  <Icon icon={DataBase} />
+                  Local only
+                </Button>
               </Authenticated>
-            </div>
+            </>
           )}
           {!connected && isSyncing && (
-            <span className="text-muted-foreground flex items-center gap-2">
-              <UpdateIcon className="size-3 animate-spin" />
-              Syncing...
-            </span>
+            <Status size="sm" status="running" className="ms-2">
+              Syncing
+            </Status>
           )}
           {!connected && !isSyncing && syncComplete && (
-            <span
-              className="text-blue-500 flex items-center gap-2"
-              title="Synced to cloud"
-            >
-              <CircleCheckBigIcon className="size-3" />
+            <Status size="sm" status="ok" className="ms-2" title="Synced to cloud">
               Synced
-            </span>
+            </Status>
           )}
         </div>
       </div>
@@ -212,19 +218,19 @@ export default function NotesMetadataBar({
       )}
 
       <Dialog open={authModalOpen} onOpenChange={setAuthModalOpen}>
-        <DialogContent>
+        <DialogContent size="sm">
           <DialogHeader>
-            <DialogTitle>Sign in required</DialogTitle>
+            <DialogTitle>Sign in to sync</DialogTitle>
+          </DialogHeader>
+          <DialogBody>
             <DialogDescription>
               To sync your notes to the cloud and access them from anywhere, you
               need to sign in.
             </DialogDescription>
-          </DialogHeader>
-          <DialogFooter className="gap-2">
-            <Button variant="outline" onClick={() => setAuthModalOpen(false)}>
-              Stay Local
-            </Button>
-            <Button onClick={() => router.push("/signin")}>Sign In</Button>
+          </DialogBody>
+          <DialogFooter>
+            <DialogClose>Stay local</DialogClose>
+            <DialogAction onAction={() => router.push("/signin")}>Sign in</DialogAction>
           </DialogFooter>
         </DialogContent>
       </Dialog>

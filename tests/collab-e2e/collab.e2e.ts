@@ -380,7 +380,7 @@ test("connect an agent with one message: code accepted, read verified, then it e
       .replace("~/.config/monotes/<file>", path.join(configDir, file))
       .replace("<id>", id);
     expect(await bash(read, configDir)).toContain('"content":"# Release plan');
-    await expect(dialog.getByText("✓ Codex is connected")).toBeVisible();
+    await expect(dialog.getByText("Codex is connected")).toBeVisible();
     await expect(dialog.getByText(/It can read and edit “Release plan”/)).toBeVisible();
     await capture(page, testInfo, "pairing-connected");
 

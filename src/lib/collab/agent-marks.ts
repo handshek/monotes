@@ -43,8 +43,8 @@ const agentMarkField = StateField.define<DecorationSet>({
 
 const agentMarkTheme = EditorView.baseTheme({
   ".cm-agent-edit": {
-    backgroundColor: "color-mix(in oklab, var(--primary, #3b82f6) 18%, transparent)",
-    borderRadius: "2px",
+    // Sodium's selection wash marks what an agent just changed.
+    backgroundColor: "var(--selected)",
   },
 });
 

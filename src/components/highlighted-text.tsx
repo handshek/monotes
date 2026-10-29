@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/sodium/utils";
 
 interface HighlightedTextProps {
   content: string;
@@ -63,7 +63,7 @@ export function HighlightedText({
     <span className={cn("whitespace-pre-wrap", className)}>
       {startLine > 0 && "..."}
       {before}
-      <mark className="bg-primary text-primary-foreground rounded-xs px-0.5">
+      <mark className="selected">
         {match}
       </mark>
       {after}

@@ -1,53 +1,61 @@
 "use client";
 
 import { useEffect, useRef, useState, type MouseEvent } from "react";
-import Link from "next/link";
 import Image from "next/image";
 import {
   Sidebar,
   SidebarContent,
-  SidebarHeader,
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarGroupLabel,
-  SidebarMenu,
-  SidebarMenuItem,
-  SidebarMenuButton,
-  useSidebar,
-  SidebarRail,
   SidebarFooter,
-  SidebarMenuAction,
-} from "@/components/ui/sidebar";
-import { Button } from "@/components/ui/button";
-import { PinLeftIcon, PlusIcon } from "@radix-ui/react-icons";
-import { User, LogOut, Search, MoreHorizontal, Trash } from "lucide-react";
+  SidebarHeader,
+  useSidebar,
+} from "@/components/sidebar";
+import { Button } from "@/components/sodium/ui/button";
+import { Kbd } from "@/components/sodium/ui/kbd";
+import {
+  Item,
+  ItemActions,
+  ItemGroup,
+  ItemLink,
+  ItemTitle,
+} from "@/components/sodium/ui/item";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+} from "@/components/sodium/ui/dropdown-menu";
 import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-} from "@/components/ui/alert-dialog";
+  Dialog,
+  DialogAction,
+  DialogBody,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/sodium/ui/dialog";
+import {
+  Icon,
+  Add,
+  Logout,
+  OverflowMenuHorizontal,
+  Search,
+  SidebarToggle,
+  TrashCan,
+  User,
+} from "@/components/sodium/icon";
+import { toast } from "@/components/sodium/ui/toast";
 import { createNewNote } from "@/lib/local-notes";
 import { getDB } from "@/lib/local-db";
 import { useLiveQuery } from "dexie-react-hooks";
 import { generateSlug } from "@/lib/ids";
-import { toast } from "sonner";
+import { summarizeNote, UNTITLED_NOTE } from "@/lib/note-summary";
 import { Authenticated, Unauthenticated, useMutation, useQuery } from "convex/react";
 import { useAuthActions } from "@convex-dev/auth/react";
 import { useRouter, usePathname } from "next/navigation";
 import { api } from "../../../convex/_generated/api";
 import { useNoteSync } from "@/contexts/note-sync-context";
-import { cn } from "@/lib/utils";
 import NotesSearchDialog from "./notes-search-dialog";
 import { forgetLocalNote } from "@/lib/collab/store";
 
@@ -87,7 +95,7 @@ export default function NotesSidebar() {
       setOpenMobile(false);
       router.push(`/${note.id}`);
     } catch {
-      toast.error("Could not create note. Please try again.");
+      toast.fail("Could not create note. Please try again.");
     }
   };
 
@@ -106,7 +114,7 @@ export default function NotesSidebar() {
       ) return;
 
       if (!searchOpen && document.querySelector(
-        '[role="dialog"][data-state="open"]:not([data-sidebar="sidebar"]), [role="alertdialog"][data-state="open"]',
+        ':is([role="dialog"], [role="alertdialog"]):is([data-state="open"], [data-open]):not([data-sidebar="sidebar"])',
       )) return;
 
       event.preventDefault();
@@ -158,17 +166,17 @@ export default function NotesSidebar() {
       // Agent access ends only once the server confirms the deletion, so a
       // shared note is never removed from this device before that.
       if (!navigator.onLine) {
-        toast.error("Connect to the internet to delete a note shared with agents.");
+        toast.fail("Connect to the internet to delete a note shared with agents.");
         return;
       }
       try {
         const result = await deleteCloudNote({ noteId: id });
         if (result.status === "signed_out") {
-          toast.error("Sign in to delete a note shared with agents.");
+          toast.fail("Sign in to delete a note shared with agents.");
           return;
         }
       } catch {
-        toast.error("Couldn’t delete this note. Try again.");
+        toast.fail("Couldn’t delete this note. Try again.");
         return;
       }
       await forgetLocalNote(id);
@@ -177,7 +185,7 @@ export default function NotesSidebar() {
         try {
           await deleteCloudNote({ noteId: id });
         } catch {
-          toast.warning("Deleted on this device. The cloud copy couldn’t be removed yet.");
+          toast.warn("Deleted on this device. The cloud copy couldn’t be removed yet.");
         }
       }
       await getDB().notes.delete(id);
@@ -191,143 +199,111 @@ export default function NotesSidebar() {
     <>
       <Sidebar>
         <SidebarHeader>
-          <div className="flex items-center justify-between px-1.5 py-1.5">
-            <Button
-              variant="ghost"
-              size="icon-lg"
-              className="size-7"
-              onClick={toggleSidebar}
-              aria-label="Toggle sidebar"
-            >
-              <PinLeftIcon className="size-4" />
-            </Button>
-            <div className="flex items-center gap-2">
-              <span className="font-semibold text-sm">Monotes</span>
-            </div>
-          </div>
+          <Button
+            variant="ghost"
+            size="icon-sm"
+            className="-ms-1"
+            onClick={toggleSidebar}
+            aria-label="Toggle sidebar"
+          >
+            <Icon icon={SidebarToggle} />
+          </Button>
+          <span className="min-w-0 truncate">Monotes</span>
         </SidebarHeader>
         <SidebarContent>
-          <SidebarGroup>
-            <SidebarGroupContent>
-              <SidebarMenu>
-                <SidebarMenuItem>
-                  <SidebarMenuButton onClick={onCreateNew}>
-                    <PlusIcon className="size-4 mr-2" />
-                    <span>New Note</span>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-                <SidebarMenuItem>
-                  <SidebarMenuButton ref={searchTrigger} onClick={onSearch} aria-keyshortcuts="Meta+K Control+K">
-                    <Search className="size-4 mr-2" />
-                    <span className="truncate">Search</span>
-                    <kbd aria-hidden="true" className="ml-auto rounded border px-1 text-[10px] text-muted-foreground">⌘ K / Ctrl K</kbd>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              </SidebarMenu>
-            </SidebarGroupContent>
-          </SidebarGroup>
-          <SidebarGroup>
-            <SidebarGroupLabel className="text-foreground">
-              Notes
-            </SidebarGroupLabel>
-            <SidebarGroupContent>
-              <SidebarMenu>
-                {notes.map((n) => (
-                  <SidebarMenuItem key={n.id}>
-                    <SidebarMenuButton asChild>
-                      <Link
-                        href={`/${n.id}`}
-                        onClick={(e) => handleNoteClick(e, n.id)}
-                        className={cn(
-                          "[&:hover_span]:text-foreground group",
-                          currentNoteId === n.id &&
-                            "bg-accent [&>span]:text-foreground border",
-                        )}
-                      >
-                        <span className="truncate text-sidebar-foreground/70 transition-colors">
-                          {n.content?.trim()
-                            ? n.content.trim().split(/\s+/, 20).join(" ")
-                            : n.id}
-                        </span>
-                      </Link>
-                    </SidebarMenuButton>
-                    <DropdownMenu modal={false}>
-                      <DropdownMenuTrigger asChild className="cursor-pointer">
-                        <SidebarMenuAction showOnHover>
-                          <MoreHorizontal />
-                          <span className="sr-only">Options</span>
-                        </SidebarMenuAction>
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent
-                        className="w-36"
-                        side="bottom"
-                        align="start"
-                        collisionPadding={10}
-                      >
-                        <DropdownMenuItem onSelect={() => setNoteToDelete(n.id)}>
-                          <Trash className="text-destructive" />
-                          <span className="text-destructive">Delete</span>
-                        </DropdownMenuItem>
-                      </DropdownMenuContent>
-                    </DropdownMenu>
-                  </SidebarMenuItem>
-                ))}
-                {notes.length === 0 && (
-                  <div className="text-xs text-muted-foreground px-2 py-1.5">
-                    No notes yet.
-                  </div>
-                )}
-              </SidebarMenu>
-            </SidebarGroupContent>
-            <AlertDialog
-              open={noteToDelete !== null}
-              onOpenChange={(open) => !open && setNoteToDelete(null)}
+          <div className="flex flex-col border-b border-line py-1">
+            <Button
+              variant="ghost"
+              className="w-full justify-start"
+              onClick={onCreateNew}
             >
-              <AlertDialogContent>
-                <AlertDialogHeader>
-                  <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-                  <AlertDialogDescription>
-                    This action cannot be undone. This will permanently delete
-                    your note locally and from our servers.
-                  </AlertDialogDescription>
-                </AlertDialogHeader>
-                <AlertDialogFooter>
-                  <AlertDialogCancel>Cancel</AlertDialogCancel>
-                  <AlertDialogAction
-                    onClick={() => {
-                      if (noteToDelete) {
-                        handleDeleteNote(noteToDelete);
-                      }
-                    }}
-                    className="bg-destructive text-destructive-foreground"
-                  >
-                    Yes, delete note
-                  </AlertDialogAction>
-                </AlertDialogFooter>
-              </AlertDialogContent>
-            </AlertDialog>
-          </SidebarGroup>
+              <Icon icon={Add} />
+              New Note
+            </Button>
+            <Button
+              ref={searchTrigger}
+              variant="ghost"
+              className="w-full justify-start"
+              onClick={onSearch}
+              aria-keyshortcuts="Meta+K Control+K"
+            >
+              <Icon icon={Search} />
+              <span className="min-w-0 truncate">Search</span>
+              <span aria-hidden="true" className="ms-auto pointer-coarse:hidden">
+                <Kbd keys="mod+k" />
+              </span>
+            </Button>
+          </div>
+          {/* With no notes the page itself says so and offers the first one; the sidebar stays quiet. */}
+          {notes.length > 0 && (
+            <h2 className="px-inset pt-3 pb-1 type-micro text-text-3">Notes</h2>
+          )}
+          {notes.length === 0 ? null : (
+            <ItemGroup variant="plain" aria-label="Notes">
+              {notes.map((n) => {
+                const selected = currentNoteId === n.id;
+                return (
+                  <Item key={n.id} size="sm" selected={selected} className="group/note">
+                    <ItemTitle className="min-w-0 flex-1">
+                      <ItemLink
+                        href={`/${n.id}`}
+                        aria-current={selected ? "page" : undefined}
+                        onClick={(e) => handleNoteClick(e, n.id)}
+                      >
+                        <NoteRowLabel content={n.content} />
+                      </ItemLink>
+                    </ItemTitle>
+                    <ItemActions>
+                      <DropdownMenu modal={false}>
+                        <DropdownMenuTrigger
+                          render={
+                            <Button
+                              variant="ghost"
+                              size="icon-sm"
+                              aria-label="Options"
+                              className="md:opacity-0 md:group-hover/note:opacity-100 md:group-focus-within/note:opacity-100 md:data-popup-open:opacity-100"
+                            />
+                          }
+                        >
+                          <Icon icon={OverflowMenuHorizontal} />
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent side="bottom" align="start">
+                          <DropdownMenuItem
+                            variant="destructive"
+                            onClick={() => setNoteToDelete(n.id)}
+                          >
+                            <Icon icon={TrashCan} />
+                            Delete
+                          </DropdownMenuItem>
+                        </DropdownMenuContent>
+                      </DropdownMenu>
+                    </ItemActions>
+                  </Item>
+                );
+              })}
+            </ItemGroup>
+          )}
         </SidebarContent>
-        <SidebarFooter className="py-4 border-t border-secondary">
+        <SidebarFooter>
           <Unauthenticated>
             <div className="flex flex-col gap-2">
               <Button
-                variant="outline"
+                variant="secondary"
                 className="w-full"
                 onClick={() => router.push("/signin")}
               >
-                Sign In
+                Sign in
               </Button>
-              <p className="text-xs text-muted-foreground px-2">
+              <p className="type-caption text-text-2">
                 Sign in to sync notes to the cloud
               </p>
             </div>
           </Unauthenticated>
           <Authenticated>
             {currentUser && (
-              <div className="flex items-center gap-2 w-full">
-                <div className="flex items-center gap-2 flex-1 min-w-0">
-                  <div className="flex items-center justify-center size-8 rounded-full bg-sidebar-accent shrink-0 overflow-hidden">
+              <div className="flex w-full items-center gap-2">
+                <div className="flex min-w-0 flex-1 items-center gap-2">
+                  <div className="flex size-8 shrink-0 items-center justify-center overflow-hidden border border-line bg-page text-text-2">
                     {currentUser.image ? (
                       <Image
                         src={currentUser.image}
@@ -337,15 +313,13 @@ export default function NotesSidebar() {
                         className="size-full object-cover"
                       />
                     ) : (
-                      <User className="size-4" />
+                      <Icon icon={User} />
                     )}
                   </div>
-                  <div className="flex flex-col min-w-0 flex-1">
-                    <span className="text-[10px] text-muted-foreground leading-none">
-                      Signed In as
-                    </span>
+                  <div className="flex min-w-0 flex-1 flex-col">
+                    <span className="type-micro text-text-3">Signed in as</span>
                     <span
-                      className="text-sm font-medium truncate text-ellipsis"
+                      className="truncate type-body-sm text-text-1"
                       title={displayName}
                     >
                       {displayName}
@@ -353,27 +327,70 @@ export default function NotesSidebar() {
                   </div>
                 </div>
                 <Button
-                  variant="outline"
+                  variant="ghost"
                   size="icon"
                   title="Sign out"
-                  className="size-8 shrink-0"
                   onClick={handleSignOut}
                   aria-label="Sign out"
                 >
-                  <LogOut className="size-4 text-destructive" />
+                  <Icon icon={Logout} />
                 </Button>
               </div>
             )}
           </Authenticated>
         </SidebarFooter>
-        <SidebarRail />
       </Sidebar>
+      <Dialog
+        role="alertdialog"
+        open={noteToDelete !== null}
+        onOpenChange={(open) => !open && setNoteToDelete(null)}
+      >
+        <DialogContent size="sm">
+          <DialogHeader>
+            <DialogTitle>Delete this note?</DialogTitle>
+          </DialogHeader>
+          <DialogBody>
+            <DialogDescription>
+              This action cannot be undone. This will permanently delete
+              your note locally and from our servers.
+            </DialogDescription>
+          </DialogBody>
+          <DialogFooter>
+            <DialogClose>Cancel</DialogClose>
+            <DialogAction
+              variant="destructive"
+              onAction={() => {
+                if (noteToDelete) return handleDeleteNote(noteToDelete);
+              }}
+            >
+              Yes, delete note
+            </DialogAction>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
       <NotesSearchDialog
         open={searchOpen}
         onOpenChange={setSearchOpen}
         onSelect={openNote}
         returnFocusRef={searchReturnFocus}
       />
+    </>
+  );
+}
+
+/** A note's title in ink, then the start of its text, muted, on the same line. */
+function NoteRowLabel({ content }: { content: string | undefined }) {
+  const { title, preview } = summarizeNote(content);
+  if (!title) return <span className="text-text-3">{UNTITLED_NOTE}</span>;
+  return (
+    <>
+      <span className="text-text-1">{title}</span>
+      {preview && (
+        <>
+          {" "}
+          <span className="text-text-3">{preview}</span>
+        </>
+      )}
     </>
   );
 }

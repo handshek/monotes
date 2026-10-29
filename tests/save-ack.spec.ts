@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import { capture, createNote, editor, readStoredNote, waitForStoredContent } from "./notes-helpers";
+import { capture, createNote, editor, readStoredNote, toastTitle, waitForStoredContent } from "./notes-helpers";
 
 const draftContent = "This tab's pending draft needs an honest save result.";
 const newerContent = "The newer edit committed by the other tab.";
@@ -47,7 +47,7 @@ test("manual save does not acknowledge a pending draft displaced by another tab"
 
   await editor(page).press("ControlOrMeta+s");
   const success = page.getByText("Saved", { exact: true });
-  const failure = page.getByText("Couldn’t save note", { exact: true });
+  const failure = toastTitle(page, "Couldn’t save note");
   const updated = page.getByText("Updated from another tab", { exact: true });
   await expect(success.or(failure).or(updated)).toBeVisible();
   await expect(editor(page)).toHaveText(newerContent);
@@ -82,7 +82,7 @@ test("manual save acknowledges text that is actually durable", async ({ page }, 
   await editor(page).press("ControlOrMeta+s");
   await expect(page.getByText("Saved", { exact: true })).toBeVisible();
   await expect(page.getByText("Updated from another tab", { exact: true })).not.toBeVisible();
-  await expect(page.getByText("Couldn’t save note", { exact: true })).not.toBeVisible();
+  await expect(toastTitle(page, "Couldn’t save note")).not.toBeVisible();
   await waitForStoredContent(page, id, content);
   await capture(page, testInfo, "ordinary-manual-save-acknowledged");
   await page.reload();

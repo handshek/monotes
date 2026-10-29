@@ -62,7 +62,7 @@ test("search input is not clipped and each note result has a visible border", as
   await expect.soft(clipping).toEqual([]);
   const border = await result.evaluate((element) => {
     const style = getComputedStyle(element);
-    return { width: parseFloat(style.borderTopWidth), style: style.borderTopStyle, color: style.borderTopColor };
+    return { width: parseFloat(style.borderBottomWidth), style: style.borderBottomStyle, color: style.borderBottomColor };
   });
   await expect.soft(border.width).toBeGreaterThanOrEqual(1);
   await expect.soft(border.style).toBe("solid");
@@ -71,7 +71,8 @@ test("search input is not clipped and each note result has a visible border", as
 
 
 test("command input stays visible while long results scroll in a short viewport", async ({ page, isMobile }, testInfo) => {
-  for (let i = 0; i < 4; i++) {
+  // Enough notes that Sodium's compact result rows overflow the list at this height.
+  for (let i = 0; i < 6; i++) {
     const id = await createNote(page);
     const text = `Note ${i}.\nFirst visible preview line.\nSecond visible preview line.`;
     await editor(page).fill(text);
@@ -83,7 +84,7 @@ test("command input stays visible while long results scroll in a short viewport"
   const dialog = page.getByRole("dialog", { name: "Search notes", exact: true });
   const input = dialog.getByRole("combobox", { name: "Search notes", exact: true });
   const list = dialog.getByRole("listbox");
-  await expect(dialog.getByRole("option")).toHaveCount(4);
+  await expect(dialog.getByRole("option")).toHaveCount(6);
   await dialog.evaluate(async element => { await Promise.all(element.getAnimations().map(animation => animation.finished)); });
   const before = await input.boundingBox();
   await input.press("End");
