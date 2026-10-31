@@ -106,6 +106,26 @@ export const listUserNotes = query({
 });
 
 /*
+ * The ids of a user's notes, without their text
+ */
+export const listNoteIds = query({
+  args: {},
+  handler: async (ctx) => {
+    const userId = await getAuthUserId(ctx);
+    if (userId === null) {
+      return [];
+    }
+
+    const notes = await ctx.db
+      .query("notes")
+      .withIndex("by_user", (q) => q.eq("userId", userId))
+      .collect();
+
+    return notes.filter((note) => !note.deletedAt).map((note) => note.noteId);
+  },
+});
+
+/*
  * Search user's notes by content (case-insensitive)
  */
 export const searchNotes = query({

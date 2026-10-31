@@ -2,7 +2,9 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { useLiveQuery } from "dexie-react-hooks";
-import { getDB, type NoteContent } from "@/lib/local-db";
+import type { NoteContent } from "@/lib/local-db";
+import { listOwnerNotes } from "@/lib/local-notes";
+import { useCurrentOwner } from "@/lib/current-owner";
 import { useSearchCloudNotes } from "@/lib/cloud-notes";
 
 export type NoteSearchResult = Pick<NoteContent, "id" | "content" | "updatedAt">;
@@ -16,9 +18,10 @@ export function useNoteSearch(searchQuery: string) {
     return () => window.clearTimeout(timer);
   }, [trimmedQuery]);
 
+  const owner = useCurrentOwner();
   const localNotes = useLiveQuery(
-    () => getDB().notes.orderBy("updatedAt").reverse().toArray(),
-    [],
+    async () => (owner ? listOwnerNotes(owner) : undefined),
+    [owner],
   );
   const cloudNotes = useSearchCloudNotes(query || undefined);
 

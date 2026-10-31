@@ -8,6 +8,8 @@ import { EditorState } from "@codemirror/state";
 import { vim } from "@replit/codemirror-vim";
 import { toast } from "@/components/sodium/ui/toast";
 import { editorThemeExtensions, notePlaceholder } from "./notes-theme";
+import { Unauthenticated } from "convex/react";
+import { useRouter } from "next/navigation";
 import { useLocalNote } from "@/hooks/useLocalNote";
 import { useVimCommands } from "@/hooks/useVimCommands";
 import { getNote } from "@/lib/local-notes";
@@ -19,7 +21,7 @@ import { useDistractionFree } from "@/contexts/distraction-free-context";
 import { Alert, AlertAction, AlertDescription, AlertTitle } from "@/components/sodium/ui/alert";
 import { Button } from "@/components/sodium/ui/button";
 import { Document } from "@/components/sodium/icon";
-import { Empty, EmptyDescription, EmptyHeader, EmptyIcon, EmptyTitle } from "@/components/sodium/ui/empty-state";
+import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyIcon, EmptyTitle } from "@/components/sodium/ui/empty-state";
 
 interface NotesEditorProps {
   noteId: string;
@@ -29,6 +31,7 @@ export default function NotesEditor({ noteId }: NotesEditorProps) {
   const id = noteId ?? "local-default";
   const { note, setMarkdown, saveNow, saveError, replacedRevision, loadError } = useLocalNote(id);
   const queue = useUploadQueue();
+  const router = useRouter();
   const { settings } = useEditorSettings();
   const { triggerDistraction } = useDistractionFree();
 
@@ -97,6 +100,11 @@ export default function NotesEditor({ noteId }: NotesEditorProps) {
             <EmptyTitle>Note not found</EmptyTitle>
             <EmptyDescription>This note doesn’t exist locally. Create a new one instead.</EmptyDescription>
           </EmptyHeader>
+          <Unauthenticated>
+            <EmptyContent>
+              <Button variant="secondary" onClick={() => router.push("/signin")}>Sign in</Button>
+            </EmptyContent>
+          </Unauthenticated>
         </Empty>
       </div>
     );
