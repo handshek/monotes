@@ -8,7 +8,7 @@ export async function getNote(slug: string): Promise<NoteContent | null> {
 
 export async function saveNote(draft: NoteDraft): Promise<NoteContent | null> {
   const db = getDB();
-  return db.transaction("rw", db.notes, db.recoveries, async () => {
+  return db.transaction("rw", db.notes, db.recoveries, db.pendingUploads, async () => {
     const existing = await db.notes.get(draft.id);
     if (!existing || compareNoteRevisions(existing, draft) >= 0) {
       return existing ?? null;
@@ -23,6 +23,9 @@ export async function saveNote(draft: NoteDraft): Promise<NoteContent | null> {
     }
     const updated = { ...existing, ...draft };
     await db.notes.put(updated);
+    if (updated.cloudStatus !== "local" && updated.content !== existing.content) {
+      await db.pendingUploads.put({ noteId: updated.id, clock: draft.localRevision.clock });
+    }
     return updated;
   });
 }
@@ -39,6 +42,24 @@ export async function createNewNote(slug: string): Promise<NoteContent> {
   return note;
 }
 
-export async function listNotes(): Promise<NoteContent[]> {
-  return getDB().notes.orderBy("updatedAt").reverse().toArray();
+/* Record that the first upload worked. Text typed meanwhile still needs sending. */
+export async function markSynced(uploaded: NoteContent): Promise<void> {
+  const db = getDB();
+  await db.transaction("rw", db.notes, db.pendingUploads, async () => {
+    const note = await db.notes.get(uploaded.id);
+    if (!note) return;
+    await db.notes.update(uploaded.id, { cloudStatus: "synced" });
+    if (note.content !== uploaded.content) {
+      await db.pendingUploads.put({ noteId: note.id, clock: note.localRevision?.clock ?? note.updatedAt });
+    }
+  });
+}
+
+/* The cloud holds this text, unless the note has changed since it was read. */
+export async function clearPendingUpload(uploaded: NoteContent): Promise<void> {
+  const db = getDB();
+  await db.transaction("rw", db.notes, db.pendingUploads, async () => {
+    const note = await db.notes.get(uploaded.id);
+    if (!note || note.content === uploaded.content) await db.pendingUploads.delete(uploaded.id);
+  });
 }

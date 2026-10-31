@@ -58,8 +58,19 @@ export interface RecoveryRecord {
   createdAt: number;
 }
 
+/*
+ * A Synced note has text the cloud may not hold. Written in the same
+ * transaction as the row, so an upload can't be forgotten by leaving the note,
+ * reloading or going offline.
+ */
+export interface PendingUpload {
+  noteId: string;
+  clock: number;
+}
+
 class MonotesLocalDB extends Dexie {
   notes!: Table<NoteContent, string>;
+  pendingUploads!: Table<PendingUpload, string>;
   collabClients!: Table<CollabClientRecord, [string, string]>;
   recoveries!: Table<RecoveryRecord, number>;
 
@@ -104,6 +115,11 @@ class MonotesLocalDB extends Dexie {
       notes: "id,updatedAt,cloudStatus",
       collabClients: "[noteId+clientId],noteId",
       recoveries: "++id,noteId",
+    });
+
+    // Version 5: durable markers for uploads the cloud hasn't confirmed.
+    this.version(5).stores({
+      pendingUploads: "noteId",
     });
   }
 }
