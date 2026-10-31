@@ -14,7 +14,9 @@ import { useLocalNote } from "@/hooks/useLocalNote";
 import { useVimCommands } from "@/hooks/useVimCommands";
 import { getNote } from "@/lib/local-notes";
 import { useUploadQueue } from "@/contexts/upload-queue-context";
+import { keepCursorOnCloudText } from "@/lib/cloud-text-extension";
 import NotesMetadataBar from "./notes-metadata-bar";
+import RecoveryNotice from "./recovery-notice";
 import WelcomeDialog from "./welcome-dialog";
 import { useEditorSettings } from "@/contexts/editor-settings-context";
 import { useDistractionFree } from "@/contexts/distraction-free-context";
@@ -49,6 +51,10 @@ export default function NotesEditor({ noteId }: NotesEditorProps) {
     return (await getNote(id))?.content ?? "";
   }, [saveNow, id]);
 
+  const appendKept = useCallback((text: string) => {
+    if (note) setMarkdown(note.content ? `${note.content}\n\n${text}` : text);
+  }, [note, setMarkdown]);
+
   const showUpdatedNotice = useCallback(() => {
     toast("Updated from another tab", { id: `note-update-${id}` });
   }, [id]);
@@ -78,6 +84,7 @@ export default function NotesEditor({ noteId }: NotesEditorProps) {
   const extensions = useMemo(() => {
     const exts = [
       markdown(),
+      keepCursorOnCloudText,
       ...editorThemeExtensions(),
       EditorView.scrollMargins.of(() => ({ top: 200, bottom: 200 })),
       keymap.of([{ key: "Mod-s", run: handleSave, preventDefault: true }]),
@@ -143,6 +150,7 @@ export default function NotesEditor({ noteId }: NotesEditorProps) {
             </AlertAction>
           </Alert>
         )}
+        <RecoveryNotice noteId={id} onAppend={appendKept} />
         <CodeMirror
           placeholder={emptyPlaceholder}
           className="cm-container"

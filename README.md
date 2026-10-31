@@ -26,7 +26,11 @@ Notes live in IndexedDB in the current browser. Pending drafts use sessionStorag
 
 Once the app has loaded, you can edit and search local notes without a network connection. Starting or reloading the app while offline is not supported.
 
-Cloud sync is optional for each note. Sign in with Google, select **Local Only** in the note's status bar, and confirm **Sync to Cloud** to upload it and enable background sync. Signing in does not upload every local note. Authenticated sync across devices is not covered by the local verification suite.
+Cloud sync is optional for each note. Sign in with Google, select **Local Only** in the note's status bar, and confirm **Sync to Cloud** to upload it and enable background sync. Signing in does not upload every local note.
+
+A Synced note follows your account across devices. Each device uploads your edits in the background, including after you leave the note, reload or reconnect, and brings in newer text when you open the note or while it stays open. If two devices change the same note, your typing stays in the editor and the other text is saved under **Kept text** on that device. Notes don't merge unless they're connected for agents. A note deleted on another device becomes Local only here, and **Sync to Cloud** can bring it back.
+
+Each signed-in account and the signed-out Local user have separate notes on a device. Signing out hides your notes without deleting them. Authenticated sync across devices is not covered by the local verification suite.
 
 ## Work on a note with your coding agent
 

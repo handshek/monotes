@@ -1,7 +1,7 @@
 import { liveQuery } from "dexie";
 import { getDB, type NoteContent, type PendingUpload } from "@/lib/local-db";
-import { clearPendingUpload, markSynced } from "@/lib/local-notes";
-import type { NoteCloud } from "@/lib/note-cloud";
+import { becomeLocalOnly, pullCloudText, recordUpload, resolveConflict } from "@/lib/local-notes";
+import type { NoteCloud, UploadResult } from "@/lib/note-cloud";
 
 export interface UploadTiming {
   debounceMs: number;
@@ -43,6 +43,8 @@ export class UploadQueue {
   private failures = new Map<string, number>();
   private running = new Set<string>();
   private urgent = new Set<string>();
+  // Requests from the open note that arrived before the session was confirmed.
+  private awaitingAccount = new Map<string, () => void>();
   private account: string | null = null;
   private started = false;
   private loaded = false;
@@ -50,15 +52,23 @@ export class UploadQueue {
 
   constructor(
     private cloud: NoteCloud,
-    options: { timing?: Partial<UploadTiming>; lock?: NoteLock; isOnline?: () => boolean } = {},
+    options: {
+      timing?: Partial<UploadTiming>;
+      lock?: NoteLock;
+      isOnline?: () => boolean;
+      /* A note this device thought was Synced turned out to be deleted from the cloud. */
+      onDeletedElsewhere?: (noteId: string) => void;
+    } = {},
   ) {
     this.timing = { ...TIMING, ...options.timing };
     this.lock = options.lock ?? browserLock;
     this.isOnline = options.isOnline ?? (() => navigator.onLine);
+    this.onDeletedElsewhere = options.onDeletedElsewhere ?? (() => {});
   }
 
   private lock: NoteLock;
   private isOnline: () => boolean;
+  private onDeletedElsewhere: (noteId: string) => void;
 
   start() {
     this.started = true;
@@ -87,7 +97,11 @@ export class UploadQueue {
   setAccount(account: string | null) {
     if (this.account === account) return;
     this.account = account;
-    if (account) this.runAll();
+    if (!account) return;
+    this.runAll();
+    const waiting = [...this.awaitingAccount.values()];
+    this.awaitingAccount.clear();
+    for (const request of waiting) request();
   }
 
   /* Send a note's marked text without waiting for the debounce. */
@@ -102,8 +116,43 @@ export class UploadQueue {
     const note = await getDB().notes.get(noteId);
     if (!note) throw new Error("This note isn’t on this device");
     if (note.owner !== this.account) throw new Error(NOT_THEIRS);
-    await this.cloud.upload(note);
-    await markSynced(note);
+    await this.apply(note, await this.cloud.upload(note, { baseRevision: note.cloudRevision ?? null, explicit: true }));
+  }
+
+  /* The open note's cloud copy moved on. Bring it here, or let an upload settle it. */
+  async pull(noteId: string) {
+    if (!this.account) {
+      this.awaitingAccount.set(noteId, () => void this.pull(noteId));
+      return;
+    }
+    try {
+      await this.lock(noteId, async () => {
+        const db = getDB();
+        const note = await db.notes.get(noteId);
+        if (!isSyncedRow(note) || note.owner !== this.account) return;
+        if (await db.pendingUploads.get(noteId)) {
+          this.uploadNow(noteId);
+          return;
+        }
+        const cloud = await this.cloud.fetch(noteId);
+        if (!cloud) return;
+        if (note.cloudRevision === undefined) await resolveConflict(noteId, cloud);
+        else await pullCloudText(noteId, cloud);
+      });
+    } catch {
+      // The note stays as it is; the next change to the cloud copy tries again.
+    }
+  }
+
+  /* The open note's cloud copy was deleted on another device. */
+  async deletedInCloud(noteId: string) {
+    if (!this.account) {
+      this.awaitingAccount.set(noteId, () => void this.deletedInCloud(noteId));
+      return;
+    }
+    const note = await getDB().notes.get(noteId);
+    if (!isSyncedRow(note) || note.owner !== this.account) return;
+    if (await becomeLocalOnly(noteId)) this.onDeletedElsewhere(noteId);
   }
 
   private onMarkers = (markers: PendingUpload[]) => {
@@ -167,8 +216,28 @@ export class UploadQueue {
       return false;
     }
     if (note.owner !== this.account) return true;
-    await this.cloud.upload(note);
-    await clearPendingUpload(note);
+    await this.apply(note, await this.cloud.upload(note, { baseRevision: note.cloudRevision ?? null }));
     return false;
+  }
+
+  private async apply(note: NoteContent, result: UploadResult) {
+    switch (result.status) {
+      case "ok":
+        await recordUpload(note, result.revision);
+        return;
+      case "conflict":
+        await resolveConflict(note.id, result.cloud);
+        return;
+      case "deleted":
+        if (await becomeLocalOnly(note.id)) this.onDeletedElsewhere(note.id);
+        return;
+      case "connected":
+        // Opening the note switches it over and keeps any differing text aside.
+        await getDB().pendingUploads.delete(note.id);
+        if (note.cloudStatus === "local") throw new Error("This note is shared with agents in your account");
+        return;
+      case "signed_out":
+        throw new Error("Sign in to sync this note");
+    }
   }
 }

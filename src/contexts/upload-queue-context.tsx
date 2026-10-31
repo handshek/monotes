@@ -3,6 +3,7 @@
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 import { useConvex, useQuery } from "convex/react";
 import { api } from "../../convex/_generated/api";
+import { toast } from "@/components/sodium/ui/toast";
 import { useCurrentOwner } from "@/lib/current-owner";
 import { confirmSignIn } from "@/lib/local-notes";
 import { convexNoteCloud } from "@/lib/note-cloud";
@@ -19,7 +20,12 @@ const UploadQueueContext = createContext<UploadQueueValue | undefined>(undefined
 export function UploadQueueProvider({ children }: { children: ReactNode }) {
   const convex = useConvex();
   const cloud = useMemo(() => convexNoteCloud(convex), [convex]);
-  const queue = useMemo(() => new UploadQueue(cloud), [cloud]);
+  const queue = useMemo(
+    () => new UploadQueue(cloud, {
+      onDeletedElsewhere: (noteId) => toast("This note was deleted from your cloud account. It’s Local only here.", { id: `note-deleted-${noteId}` }),
+    }),
+    [cloud],
+  );
   const owner = useCurrentOwner();
   const account = useQuery(api.user.currentUser)?._id ?? null;
   const [claimedAccount, setClaimedAccount] = useState<string | null>(null);

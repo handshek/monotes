@@ -26,6 +26,8 @@ const REASONS: Record<RecoveryRecord["reason"], string> = {
   before_connect: "This device’s copy before connecting",
   unsaved_typing: "Typing from before a reload",
   unsent: "Changes Monotes couldn’t send",
+  cloud_version: "Newer text from your cloud account",
+  before_cloud_version: "This device’s copy before a newer cloud version",
 };
 
 /* Text Monotes kept instead of merging or discarding it. */

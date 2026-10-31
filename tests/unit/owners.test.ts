@@ -55,7 +55,7 @@ describe("separate spaces", () => {
   it("stamps the current owner at every creation site", async () => {
     setCurrentOwner(A);
     await createNewNote("n1");
-    await hydrateCloudNote("n2", "cloud", 1);
+    await hydrateCloudNote("n2", "cloud", 1, 1);
     await markConnected("n3", "epoch", "server", 1);
     const rows = await getDB().notes.bulkGet(["n1", "n2", "n3"]);
     expect(rows.map((row) => row?.owner)).toEqual([A, A, A]);
