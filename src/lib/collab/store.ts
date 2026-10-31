@@ -93,11 +93,11 @@ export async function markConnected(noteId: string, epoch: string, serverText: s
 }
 
 /* Copy a legacy cloud note onto this device so it can be opened. */
-export async function hydrateCloudNote(noteId: string, content: string, updatedAt: number) {
+export async function hydrateCloudNote(noteId: string, content: string, updatedAt: number, cloudRevision: number) {
   const db = getDB();
   await db.transaction("rw", db.notes, async () => {
     if (await db.notes.get(noteId)) return;
-    await db.notes.add({ id: noteId, owner: readCurrentOwner(), content, updatedAt, cloudStatus: "synced" });
+    await db.notes.add({ id: noteId, owner: readCurrentOwner(), content, updatedAt, cloudRevision, cloudStatus: "synced" });
   });
 }
 

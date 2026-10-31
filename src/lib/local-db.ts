@@ -16,6 +16,11 @@ export interface NoteContent {
   content: string;
   updatedAt: number;
   localRevision?: LocalRevision;
+  // The last cloud revision this device saw. Absent until first contact.
+  cloudRevision?: number;
+  // How many times cloud text has replaced this row, so a draft typed over
+  // the older text can be recognised when it lands.
+  pulls?: number;
   cloudStatus: "local" | "syncing" | "synced" | "ai-enabled";
   // Set once the note is connected for live agent editing. The row's content
   // is then a copy derived from collaboration state, never its source.
@@ -60,7 +65,9 @@ export interface RecoveryRecord {
     | "deleted"
     | "before_connect"
     | "unsaved_typing"
-    | "unsent";
+    | "unsent"
+    | "cloud_version"
+    | "before_cloud_version";
   createdAt: number;
 }
 

@@ -33,6 +33,9 @@ const schema = defineSchema({
     content: v.string(),
     updatedAt: v.number(),
     deletedAt: v.optional(v.number()),
+    // Bumped by every whole-note write, so a device that hasn't seen the
+    // latest text can't overwrite it. Absent means 0.
+    revision: v.optional(v.number()),
     // Present once a note is explicitly connected for live agent editing.
     // From then on only the versioned collaboration path may change it.
     collab: v.optional(

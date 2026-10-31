@@ -188,6 +188,8 @@ export default function NotesSidebar() {
       await forgetLocalNote(id);
     } else {
       if (note && note.cloudStatus !== "local") {
+        // This deletion mustn't read as one from another device while it runs.
+        await getDB().notes.update(id, { cloudStatus: "local" });
         try {
           await deleteCloudNote({ noteId: id });
         } catch {
