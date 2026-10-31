@@ -30,7 +30,7 @@ Cloud sync is optional for each note. Sign in with Google, select **Local Only**
 
 A Synced note follows your account across devices. Each device uploads your edits in the background, including after you leave the note, reload or reconnect, and brings in newer text when you open the note or while it stays open. If two devices change the same note, your typing stays in the editor and the other text is saved under **Kept text** on that device. Notes don't merge unless they're connected for agents. A note deleted on another device becomes Local only here, and **Sync to Cloud** can bring it back.
 
-Each signed-in account and the signed-out Local user have separate notes on a device. Signing out hides your notes without deleting them. Authenticated sync across devices is not covered by the local verification suite.
+Each signed-in account and the signed-out Local user have separate notes on a device. Signing out hides your notes without deleting them. The note's status bar shows **Synced** only when the cloud holds its text, and otherwise **Syncing**, **Waiting to upload** or **Sign in to sync**. Sync across two signed-in devices is covered by the collaboration browser tests against a local backend, not against a deployed one.
 
 ## Work on a note with your coding agent
 

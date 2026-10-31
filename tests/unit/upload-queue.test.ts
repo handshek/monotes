@@ -452,3 +452,58 @@ describe("version check", () => {
     expect(await kept()).toEqual([{ text: "theirs", reason: "cloud_version" }]);
   });
 });
+
+describe("upload status", () => {
+  it("says Synced only once the cloud holds the text", async () => {
+    await getDB().notes.put(row("old"));
+    const cloud = new MemoryCloud();
+    let release = () => {};
+    cloud.gate = new Promise<void>((resolve) => { release = resolve; });
+    const queue = startQueue(cloud);
+    await wait(5);
+    expect(queue.statusOf(NOTE)).toBe("synced");
+    await type(row("old"), "new");
+    await vi.waitFor(() => expect(queue.statusOf(NOTE)).toBe("syncing"));
+    release();
+    cloud.gate = null;
+    await vi.waitFor(() => expect(queue.statusOf(NOTE)).toBe("synced"));
+    expect(cloud.uploads).toEqual(["new"]);
+  });
+
+  it("says Waiting to upload after a failure, and clears it on success", async () => {
+    await getDB().notes.put(row("old"));
+    await type(row("old"), "new");
+    const cloud = new MemoryCloud();
+    cloud.failNext = 1;
+    const queue = startQueue(cloud, { timing: { ...timing, retryBaseMs: 300, retryMaxMs: 300 } });
+    await vi.waitFor(() => expect(queue.statusOf(NOTE)).toBe("waiting"), { interval: 5 });
+    await vi.waitFor(() => expect(queue.statusOf(NOTE)).toBe("synced"));
+  });
+
+  it("says Waiting to upload offline", async () => {
+    await getDB().notes.put(row("old"));
+    await type(row("old"), "new");
+    const queue = startQueue(new MemoryCloud(), { isOnline: () => false });
+    await vi.waitFor(() => expect(queue.statusOf(NOTE)).toBe("waiting"));
+  });
+
+  it("says Sign in to sync with no confirmed account", async () => {
+    await getDB().notes.put(row("old"));
+    await type(row("old"), "new");
+    const queue = new UploadQueue(new MemoryCloud(), { timing, isOnline: () => true });
+    stops.push(queue.start());
+    await vi.waitFor(() => expect(queue.statusOf(NOTE)).toBe("sign_in"));
+  });
+
+  it("tells subscribers when the status changes", async () => {
+    await getDB().notes.put(row("old"));
+    const queue = startQueue(new MemoryCloud());
+    const seen: string[] = [];
+    queue.subscribe(() => seen.push(queue.statusOf(NOTE)));
+    await wait(5);
+    await type(row("old"), "new");
+    await settled();
+    await vi.waitFor(() => expect(seen).toContain("syncing"));
+    await vi.waitFor(() => expect(seen.at(-1)).toBe("synced"));
+  });
+});
