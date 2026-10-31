@@ -11,6 +11,9 @@ export interface UploadTiming {
 
 const TIMING: UploadTiming = { debounceMs: 3_000, retryBaseMs: 5_000, retryMaxMs: 60_000 };
 
+/* Where a Synced note's text stands. Synced only when the cloud holds this text. */
+export type UploadStatus = "synced" | "syncing" | "waiting" | "sign_in";
+
 /* Runs a task while holding a note's lock. Resolves false if another tab holds it. */
 export type NoteLock = (noteId: string, task: () => Promise<void>) => Promise<boolean>;
 
@@ -46,6 +49,7 @@ export class UploadQueue {
   // Requests from the open note that arrived before the session was confirmed.
   private awaitingAccount = new Map<string, () => void>();
   private account: string | null = null;
+  private listeners = new Set<() => void>();
   private started = false;
   private loaded = false;
   private timing: UploadTiming;
@@ -70,6 +74,17 @@ export class UploadQueue {
   private isOnline: () => boolean;
   private onDeletedElsewhere: (noteId: string) => void;
 
+  subscribe = (listener: () => void) => {
+    this.listeners.add(listener);
+    return () => { this.listeners.delete(listener); };
+  };
+
+  statusOf = (noteId: string): UploadStatus => {
+    if (!this.seen.has(noteId)) return "synced";
+    if (!this.isOnline() || this.failures.has(noteId)) return "waiting";
+    return this.account ? "syncing" : "sign_in";
+  };
+
   start() {
     this.started = true;
     const subscription = liveQuery(() => getDB().pendingUploads.toArray()).subscribe({
@@ -78,11 +93,13 @@ export class UploadQueue {
       error: () => {},
     });
     window.addEventListener("online", this.runAll);
+    window.addEventListener("offline", this.publish);
     return () => {
       this.started = false;
       this.loaded = false;
       subscription.unsubscribe();
       window.removeEventListener("online", this.runAll);
+      window.removeEventListener("offline", this.publish);
       for (const timer of this.timers.values()) clearTimeout(timer);
       this.timers.clear();
       this.seen.clear();
@@ -97,6 +114,7 @@ export class UploadQueue {
   setAccount(account: string | null) {
     if (this.account === account) return;
     this.account = account;
+    this.publish();
     if (!account) return;
     this.runAll();
     const waiting = [...this.awaitingAccount.values()];
@@ -170,10 +188,19 @@ export class UploadQueue {
       this.schedule(noteId, this.loaded && !this.urgent.has(noteId) ? this.timing.debounceMs : 0);
     }
     this.loaded = true;
+    this.publish();
   };
 
   private runAll = () => {
-    for (const noteId of this.seen.keys()) this.schedule(noteId, 0);
+    for (const noteId of this.seen.keys()) {
+      this.failures.delete(noteId);
+      this.schedule(noteId, 0);
+    }
+    this.publish();
+  };
+
+  private publish = () => {
+    for (const listener of this.listeners) listener();
   };
 
   private schedule(noteId: string, delayMs: number) {
@@ -194,12 +221,13 @@ export class UploadQueue {
     try {
       let waiting = false;
       const ran = await this.lock(noteId, async () => { waiting = await this.uploadMarked(noteId); });
-      this.failures.delete(noteId);
+      if (this.failures.delete(noteId)) this.publish();
       if (!ran || (!waiting && (await getDB().pendingUploads.get(noteId)))) delayMs = this.timing.debounceMs;
     } catch {
       const failures = (this.failures.get(noteId) ?? 0) + 1;
       this.failures.set(noteId, failures);
       delayMs = Math.min(this.timing.retryBaseMs * 2 ** (failures - 1), this.timing.retryMaxMs);
+      this.publish();
     } finally {
       this.running.delete(noteId);
     }

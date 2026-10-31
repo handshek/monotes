@@ -1,13 +1,13 @@
 "use client";
 
-import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
+import { createContext, useContext, useEffect, useMemo, useState, useSyncExternalStore, type ReactNode } from "react";
 import { useConvex, useQuery } from "convex/react";
 import { api } from "../../convex/_generated/api";
 import { toast } from "@/components/sodium/ui/toast";
 import { useCurrentOwner } from "@/lib/current-owner";
 import { confirmSignIn } from "@/lib/local-notes";
 import { convexNoteCloud } from "@/lib/note-cloud";
-import { UploadQueue } from "@/lib/upload-queue";
+import { UploadQueue, type UploadStatus } from "@/lib/upload-queue";
 
 interface UploadQueueValue {
   queue: UploadQueue;
@@ -64,4 +64,10 @@ export function useUploadQueue() {
 
 export function useClaimedAccount() {
   return useUploadQueueValue().claimedAccount;
+}
+
+export function useUploadStatus(noteId: string): UploadStatus {
+  const queue = useUploadQueue();
+  const read = () => queue.statusOf(noteId);
+  return useSyncExternalStore(queue.subscribe, read, read);
 }

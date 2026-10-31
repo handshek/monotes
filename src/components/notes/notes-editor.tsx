@@ -13,7 +13,7 @@ import { useRouter } from "next/navigation";
 import { useLocalNote } from "@/hooks/useLocalNote";
 import { useVimCommands } from "@/hooks/useVimCommands";
 import { getNote } from "@/lib/local-notes";
-import { useUploadQueue } from "@/contexts/upload-queue-context";
+import { useUploadQueue, useUploadStatus } from "@/contexts/upload-queue-context";
 import { keepCursorOnCloudText } from "@/lib/cloud-text-extension";
 import NotesMetadataBar from "./notes-metadata-bar";
 import RecoveryNotice from "./recovery-notice";
@@ -33,6 +33,7 @@ export default function NotesEditor({ noteId }: NotesEditorProps) {
   const id = noteId ?? "local-default";
   const { note, setMarkdown, saveNow, saveError, replacedRevision, loadError } = useLocalNote(id);
   const queue = useUploadQueue();
+  const uploadStatus = useUploadStatus(id);
   const router = useRouter();
   const { settings } = useEditorSettings();
   const { triggerDistraction } = useDistractionFree();
@@ -138,6 +139,7 @@ export default function NotesEditor({ noteId }: NotesEditorProps) {
         <NotesMetadataBar
           lastEdited={note?.updatedAt}
           cloudStatus={note?.cloudStatus}
+          uploadStatus={uploadStatus}
           noteId={noteId}
           prepareConnect={prepareConnect}
         />
