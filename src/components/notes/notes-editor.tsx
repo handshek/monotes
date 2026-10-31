@@ -10,9 +10,8 @@ import { toast } from "@/components/sodium/ui/toast";
 import { editorThemeExtensions, notePlaceholder } from "./notes-theme";
 import { useLocalNote } from "@/hooks/useLocalNote";
 import { useVimCommands } from "@/hooks/useVimCommands";
-import { useDebouncedCloudSync } from "@/lib/sync-engine";
 import { getNote } from "@/lib/local-notes";
-import { useNoteSync } from "@/contexts/note-sync-context";
+import { useUploadQueue } from "@/contexts/upload-queue-context";
 import NotesMetadataBar from "./notes-metadata-bar";
 import WelcomeDialog from "./welcome-dialog";
 import { useEditorSettings } from "@/contexts/editor-settings-context";
@@ -29,27 +28,16 @@ interface NotesEditorProps {
 export default function NotesEditor({ noteId }: NotesEditorProps) {
   const id = noteId ?? "local-default";
   const { note, setMarkdown, saveNow, saveError, replacedRevision, loadError } = useLocalNote(id);
-  const { syncNow, isSyncing, syncComplete } = useDebouncedCloudSync(
-    note ? id : "",
-    note?.content ?? "",
-    note?.cloudStatus ?? "local"
-  );
-  const { registerSync, unregisterSync } = useNoteSync();
+  const queue = useUploadQueue();
   const { settings } = useEditorSettings();
   const { triggerDistraction } = useDistractionFree();
 
+  // The text is safe once it's on this device, so saving never waits on the cloud.
   const saveAndSync = useCallback(async () => {
     const result = await saveNow();
-    await syncNow();
+    queue.uploadNow(id);
     return result;
-  }, [saveNow, syncNow]);
-
-  useEffect(() => {
-    registerSync(id, async () => { await saveAndSync(); });
-    return () => {
-      unregisterSync();
-    };
-  }, [id, saveAndSync, registerSync, unregisterSync]);
+  }, [saveNow, queue, id]);
 
   // Before connecting for agents, make every keystroke durable and read the
   // stored text so nothing typed in this editor is left behind.
@@ -136,8 +124,6 @@ export default function NotesEditor({ noteId }: NotesEditorProps) {
           lastEdited={note?.updatedAt}
           cloudStatus={note?.cloudStatus}
           noteId={noteId}
-          isSyncing={isSyncing}
-          syncComplete={syncComplete}
           prepareConnect={prepareConnect}
         />
         {saveError && (

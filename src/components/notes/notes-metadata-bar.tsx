@@ -29,8 +29,6 @@ interface NotesMetadataBarProps {
   cloudStatus?: "local" | "syncing" | "synced" | "ai-enabled";
   noteId?: string;
   className?: string;
-  isSyncing?: boolean;
-  syncComplete?: boolean;
   /* Present for notes connected for live agent editing. */
   connected?: {
     status: SessionStatus | null;
@@ -82,8 +80,6 @@ export default function NotesMetadataBar({
   cloudStatus = "local",
   noteId,
   className = "",
-  isSyncing = false,
-  syncComplete = false,
   connected,
   prepareConnect,
 }: NotesMetadataBarProps) {
@@ -178,16 +174,6 @@ export default function NotesMetadataBar({
                 </Button>
               </Authenticated>
             </>
-          )}
-          {!connected && isSyncing && (
-            <Status size="sm" status="running" className="ms-2">
-              Syncing
-            </Status>
-          )}
-          {!connected && !isSyncing && syncComplete && (
-            <Status size="sm" status="ok" className="ms-2" title="Synced to cloud">
-              Synced
-            </Status>
           )}
         </div>
       </div>
