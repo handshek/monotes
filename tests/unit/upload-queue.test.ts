@@ -8,9 +8,11 @@ import { UploadQueue, type NoteLock } from "../../src/lib/upload-queue";
 import { MemoryCloud } from "./memory-cloud";
 
 const NOTE = "Note000001";
+const ACCOUNT = "user_a";
 const timing = { debounceMs: 10, retryBaseMs: 10, retryMaxMs: 40 };
 const row = (content: string, cloudStatus: NoteContent["cloudStatus"] = "synced"): NoteContent => ({
   id: NOTE,
+  owner: ACCOUNT,
   content,
   updatedAt: 1,
   cloudStatus,
@@ -24,7 +26,7 @@ let stops: (() => void)[] = [];
 function startQueue(cloud: MemoryCloud, options: ConstructorParameters<typeof UploadQueue>[1] = {}) {
   const queue = new UploadQueue(cloud, { timing, isOnline: () => true, ...options });
   stops.push(queue.start());
-  queue.setSignedIn(true);
+  queue.setAccount(ACCOUNT);
   return queue;
 }
 
@@ -123,9 +125,23 @@ describe("UploadQueue", () => {
     stops.push(queue.start());
     await wait(30);
     expect(cloud.uploads).toEqual([]);
-    queue.setSignedIn(true);
+    queue.setAccount(ACCOUNT);
     await settled();
     expect(cloud.uploads).toEqual(["held"]);
+  });
+
+  it("never uploads another owner's note, and sends it when they return", async () => {
+    await getDB().notes.put(row("old"));
+    await type(row("old"), "theirs");
+    const cloud = new MemoryCloud();
+    const queue = startQueue(cloud);
+    queue.setAccount("user_b");
+    await wait(40);
+    expect(cloud.uploads).toEqual([]);
+    expect(await pending()).toBeDefined();
+    queue.setAccount(ACCOUNT);
+    await settled();
+    expect(cloud.uploads).toEqual(["theirs"]);
   });
 
   it("keeps the marker when typing lands during an upload, then sends the new text", async () => {
@@ -201,6 +217,13 @@ describe("first upload", () => {
     await startQueue(cloud).syncToCloud(NOTE);
     expect((await getDB().notes.get(NOTE))?.cloudStatus).toBe("synced");
     expect(cloud.rows.get(NOTE)?.content).toBe("text");
+  });
+
+  it("refuses a note that isn't the signed-in account's", async () => {
+    await getDB().notes.put({ ...row("text", "local"), owner: "user_b" });
+    const cloud = new MemoryCloud();
+    await expect(startQueue(cloud).syncToCloud(NOTE)).rejects.toThrow("someone else");
+    expect(cloud.uploads).toEqual([]);
   });
 
   it("leaves the note Local only when it fails", async () => {

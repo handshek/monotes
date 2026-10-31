@@ -22,4 +22,8 @@ export class MemoryCloud implements NoteCloud {
     this.uploads.push(note.content);
     this.rows.set(note.id, { content: note.content, updatedAt: note.updatedAt });
   }
+
+  async listNoteIds() {
+    return [...this.rows.keys()];
+  }
 }

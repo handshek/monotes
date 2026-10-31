@@ -29,6 +29,8 @@ const browserLock: NoteLock = async (noteId, task) => {
 const isSyncedRow = (note: NoteContent | undefined): note is NoteContent =>
   !!note && !note.collab && note.cloudStatus !== "local";
 
+const NOT_THEIRS = "This note belongs to someone else on this device";
+
 /*
  * Uploads every Synced note with text the cloud lacks, whichever note is open
  * and however the person left it. The work is driven by the durable markers
@@ -41,7 +43,7 @@ export class UploadQueue {
   private failures = new Map<string, number>();
   private running = new Set<string>();
   private urgent = new Set<string>();
-  private signedIn = false;
+  private account: string | null = null;
   private started = false;
   private loaded = false;
   private timing: UploadTiming;
@@ -77,11 +79,15 @@ export class UploadQueue {
     };
   }
 
-  /* Uploads pause while signed out and resume from the markers afterwards. */
-  setSignedIn(signedIn: boolean) {
-    if (this.signedIn === signedIn) return;
-    this.signedIn = signedIn;
-    if (signedIn) this.runAll();
+  /*
+   * The account the session is confirmed to be, while it is also the current
+   * owner, and otherwise null. Only that account's notes upload; everything
+   * else waits, so a note never lands in another account.
+   */
+  setAccount(account: string | null) {
+    if (this.account === account) return;
+    this.account = account;
+    if (account) this.runAll();
   }
 
   /* Send a note's marked text without waiting for the debounce. */
@@ -95,6 +101,7 @@ export class UploadQueue {
   async syncToCloud(noteId: string) {
     const note = await getDB().notes.get(noteId);
     if (!note) throw new Error("This note isn’t on this device");
+    if (note.owner !== this.account) throw new Error(NOT_THEIRS);
     await this.cloud.upload(note);
     await markSynced(note);
   }
@@ -132,13 +139,14 @@ export class UploadQueue {
   private async run(noteId: string) {
     this.urgent.delete(noteId);
     // Reconnecting or signing in calls runAll, so nothing is lost by stopping.
-    if (!this.signedIn || !this.isOnline() || this.running.has(noteId)) return;
+    if (!this.account || !this.isOnline() || this.running.has(noteId)) return;
     this.running.add(noteId);
     let delayMs: number | null = null;
     try {
-      const ran = await this.lock(noteId, () => this.uploadMarked(noteId));
+      let waiting = false;
+      const ran = await this.lock(noteId, async () => { waiting = await this.uploadMarked(noteId); });
       this.failures.delete(noteId);
-      if (!ran || (await getDB().pendingUploads.get(noteId))) delayMs = this.timing.debounceMs;
+      if (!ran || (!waiting && (await getDB().pendingUploads.get(noteId)))) delayMs = this.timing.debounceMs;
     } catch {
       const failures = (this.failures.get(noteId) ?? 0) + 1;
       this.failures.set(noteId, failures);
@@ -149,15 +157,18 @@ export class UploadQueue {
     if (delayMs !== null) this.schedule(noteId, delayMs);
   }
 
+  /* Resolves true if the note must wait for its owner to come back. */
   private async uploadMarked(noteId: string) {
     const db = getDB();
-    if (!(await db.pendingUploads.get(noteId))) return;
+    if (!(await db.pendingUploads.get(noteId))) return false;
     const note = await db.notes.get(noteId);
     if (!isSyncedRow(note)) {
       await db.pendingUploads.delete(noteId);
-      return;
+      return false;
     }
+    if (note.owner !== this.account) return true;
     await this.cloud.upload(note);
     await clearPendingUpload(note);
+    return false;
   }
 }

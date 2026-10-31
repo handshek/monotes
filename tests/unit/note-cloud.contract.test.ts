@@ -18,7 +18,7 @@ async function memoryHarness(): Promise<Harness> {
 
 async function convexHarness(): Promise<Harness> {
   const { as } = await signIn(setup());
-  const client = { mutation: as.mutation } as Parameters<typeof convexNoteCloud>[0];
+  const client = { mutation: as.mutation, query: as.query } as Parameters<typeof convexNoteCloud>[0];
   return {
     cloud: convexNoteCloud(client),
     read: async (noteId) => (await as.query(api.notes.getNote, { noteId }))?.content ?? null,
@@ -41,5 +41,11 @@ describe.each([
     await cloud.upload({ id: NOTE, content: "first", updatedAt: 1 });
     await cloud.upload({ id: NOTE, content: "second", updatedAt: 2 });
     expect(await read(NOTE)).toBe("second");
+  });
+
+  it("lists the ids of the notes it holds", async () => {
+    const { cloud } = await harness();
+    await cloud.upload({ id: NOTE, content: "first", updatedAt: 1 });
+    expect(await cloud.listNoteIds()).toEqual([NOTE]);
   });
 });

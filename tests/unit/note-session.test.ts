@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 import "fake-indexeddb/auto";
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { getDB, type NoteContent } from "../../src/lib/local-db";
+import { getDB, LOCAL_OWNER, type NoteContent } from "../../src/lib/local-db";
 import { createDraft, readPendingDraft, writePendingDraft } from "../../src/lib/local-drafts";
 import { saveNote } from "../../src/lib/local-notes";
 import { deviceNoteStore, NoteSession } from "../../src/lib/note-session";
@@ -9,6 +9,7 @@ import { deviceNoteStore, NoteSession } from "../../src/lib/note-session";
 const NOTE = "Note000001";
 const row = (content: string, cloudStatus: NoteContent["cloudStatus"] = "local"): NoteContent => ({
   id: NOTE,
+  owner: LOCAL_OWNER,
   content,
   updatedAt: 1,
   cloudStatus,
@@ -23,6 +24,7 @@ async function opened(store = deviceNoteStore) {
 
 beforeEach(async () => {
   sessionStorage.clear();
+  localStorage.clear();
   await getDB().delete();
   await getDB().open();
 });

@@ -46,8 +46,9 @@ import {
   User,
 } from "@/components/sodium/icon";
 import { toast } from "@/components/sodium/ui/toast";
-import { createNewNote } from "@/lib/local-notes";
-import { getDB } from "@/lib/local-db";
+import { createNewNote, listOwnerNotes } from "@/lib/local-notes";
+import { setCurrentOwner, useCurrentOwner } from "@/lib/current-owner";
+import { getDB, LOCAL_OWNER } from "@/lib/local-db";
 import { useLiveQuery } from "dexie-react-hooks";
 import { generateSlug } from "@/lib/ids";
 import { summarizeNote, UNTITLED_NOTE } from "@/lib/note-summary";
@@ -57,6 +58,7 @@ import { useRouter, usePathname } from "next/navigation";
 import { api } from "../../../convex/_generated/api";
 import { useNoteSync } from "@/contexts/note-sync-context";
 import NotesSearchDialog from "./notes-search-dialog";
+import LocalNotesOffer from "./local-notes-offer";
 import { forgetLocalNote } from "@/lib/collab/store";
 
 export default function NotesSidebar() {
@@ -73,16 +75,20 @@ export default function NotesSidebar() {
   const deleteCloudNote = useMutation(api.collab.deleteCloudNote);
 
   // Use Dexie's liveQuery for automatic reactivity
+  const owner = useCurrentOwner();
   const notes =
     useLiveQuery(
-      () => getDB().notes.orderBy("updatedAt").reverse().toArray(),
-      [],
+      async () => (owner ? listOwnerNotes(owner) : []),
+      [owner],
     ) || [];
 
   const handleSignOut = async () => {
     try {
       await signOut();
+      // The only thing that takes a device back to the Local user.
+      setCurrentOwner(LOCAL_OWNER);
       router.push("/");
+      toast("Signed out. Your notes stay on this device and come back when you sign in.");
     } catch (error) {
       console.error("Failed to sign out:", error);
     }
@@ -300,6 +306,7 @@ export default function NotesSidebar() {
             </div>
           </Unauthenticated>
           <Authenticated>
+            <LocalNotesOffer />
             {currentUser && (
               <div className="flex w-full items-center gap-2">
                 <div className="flex min-w-0 flex-1 items-center gap-2">

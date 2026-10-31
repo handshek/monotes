@@ -1,5 +1,7 @@
 import Dexie, { Table } from "dexie";
 
+export const LOCAL_OWNER = "local";
+
 export interface LocalRevision {
   clock: number;
   actor: string;
@@ -7,6 +9,10 @@ export interface LocalRevision {
 
 export interface NoteContent {
   id: string;
+  // A signed-in account's id, or LOCAL_OWNER. See docs/adr/0001.
+  owner: string;
+  // Set on notes from before owners existed, until an account claims them.
+  unclaimed?: true;
   content: string;
   updatedAt: number;
   localRevision?: LocalRevision;
@@ -121,6 +127,22 @@ class MonotesLocalDB extends Dexie {
     this.version(5).stores({
       pendingUploads: "noteId",
     });
+
+    // Version 6: every note belongs to an owner. Older notes start with the
+    // Local user and are claimed by an account that holds a cloud copy of them.
+    this.version(6)
+      .stores({
+        notes: "id,updatedAt,cloudStatus,[owner+updatedAt]",
+      })
+      .upgrade((tx) => {
+        return tx
+          .table("notes")
+          .toCollection()
+          .modify((note) => {
+            note.owner = LOCAL_OWNER;
+            note.unclaimed = true;
+          });
+      });
   }
 }
 

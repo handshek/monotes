@@ -163,7 +163,7 @@ beforeEach(async () => {
   const db = getDB();
   await db.open();
   await Promise.all([db.notes.clear(), db.collabClients.clear(), db.recoveries.clear()]);
-  await db.notes.put({ id: NOTE, content: "", updatedAt: 1, cloudStatus: "synced", collab: { epoch: EPOCH } });
+  await db.notes.put({ id: NOTE, owner: "local", content: "", updatedAt: 1, cloudStatus: "synced", collab: { epoch: EPOCH } });
 });
 
 afterEach(() => {
