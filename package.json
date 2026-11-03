@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
+    "dev:signed-in": "scripts/dev-signed-in.sh",
     "build": "next build",
     "start": "next start",
     "lint": "eslint src convex tests scripts/check-offline-shell.ts playwright.config.ts",
