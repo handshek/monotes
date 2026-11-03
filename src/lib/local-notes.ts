@@ -1,5 +1,5 @@
 import Dexie from "dexie";
-import { getDB, LOCAL_OWNER, type NoteContent, type RecoveryRecord } from "./local-db";
+import { adoptOwnerlessNotes, getDB, LOCAL_OWNER, type NoteContent, type RecoveryRecord } from "./local-db";
 import { readCurrentOwner, setCurrentOwner } from "./current-owner";
 import type { CloudVersion, NoteCloud } from "./note-cloud";
 import { compareNoteRevisions, createDraft, type NoteDraft } from "./local-drafts";
@@ -175,6 +175,7 @@ export async function claimNotes(account: string, cloudIds: string[]): Promise<v
 export async function confirmSignIn(account: string, cloud: Pick<NoteCloud, "listNoteIds">) {
   if (readCurrentOwner() !== account) setCurrentOwner(account);
   try {
+    await adoptOwnerlessNotes(getDB());
     await claimNotes(account, await cloud.listNoteIds());
   } catch {
     // Claimed on the next confirmed sign-in; the notes are safe meanwhile.

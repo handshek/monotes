@@ -150,7 +150,21 @@ class MonotesLocalDB extends Dexie {
             note.unclaimed = true;
           });
       });
+
+    // A tab still running a release from before owners can reopen this
+    // database and add notes without an owner, which no space lists.
+    this.on("ready", (db) => adoptOwnerlessNotes(db as MonotesLocalDB), true);
   }
+}
+
+/* Give notes without an owner to the Local user, claimable like any note from before owners. */
+export function adoptOwnerlessNotes(db: MonotesLocalDB) {
+  return db.notes
+    .filter((note) => !note.owner)
+    .modify((note) => {
+      note.owner = LOCAL_OWNER;
+      note.unclaimed = true;
+    });
 }
 
 let indexDBInstance: MonotesLocalDB | null = null;
