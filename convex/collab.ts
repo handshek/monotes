@@ -54,7 +54,12 @@ export const openInfo = query({
     const note = await findOwnedNote(ctx, userId, noteId);
     if (!note) return { status: "missing" as const };
     if (note.deletedAt) return { status: "deleted" as const, collab: Boolean(note.collab) };
-    return { status: "ok" as const, epoch: note.collab?.epoch ?? null };
+    return {
+      status: "ok" as const,
+      epoch: note.collab?.epoch ?? null,
+      revision: note.revision ?? 0,
+      updatedAt: note.updatedAt,
+    };
   },
 });
 
@@ -66,7 +71,12 @@ export const openContent = query({
     if (userId === null) return null;
     const note = await findOwnedNote(ctx, userId, noteId);
     if (!note || note.deletedAt) return null;
-    return { content: note.content, updatedAt: note.updatedAt, epoch: note.collab?.epoch ?? null };
+    return {
+      content: note.content,
+      updatedAt: note.updatedAt,
+      epoch: note.collab?.epoch ?? null,
+      revision: note.revision ?? 0,
+    };
   },
 });
 

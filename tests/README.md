@@ -41,7 +41,7 @@ bun run typecheck
 
 The suite covers desktop Chromium and mobile WebKit. Desktop keyboard editing enters the default Vim insert mode. Mobile editing uses ordinary text input. The suite checks local creation, editing, reload, case-insensitive content search, offline edits followed by reconnect and reload, immediate reload durability, repeated sidebar search, and mobile drawer navigation. It also checks empty-note persistence, visible storage failures, draft recovery, and protection against stale drafts overwriting newer or deleted notes. Save-notification checks distinguish a durably saved draft from one displaced by a newer tab during manual saving, observation, or automatic settlement. Ordinary remote edits and identical-content resolutions stay quiet. Sidebar preview checks preserve twenty words across mixed whitespace and retain the blank-note fallback. Forced storage errors and delayed cross-tab notifications are confined to isolated test contexts.
 
-Offline persistence checks operate after the application has loaded. They do not establish that the application can boot or reload without a network connection. Cloud sync requires a separate authenticated account and is not claimed by these isolated local tests.
+Offline persistence checks operate after the application has loaded. They do not establish that the application can boot or reload without a network connection. Cloud sync requires an authenticated account and is not claimed by these isolated local tests. The collaboration browser tests below cover it against a local backend.
 
 Characterize full offline reload with a running local server.
 
@@ -72,6 +72,8 @@ The suite covers:
 - resuming a setup after a reload keeps its agent and access through **New code**, and **Cancel setup** removes only that setup's connection
 - an agent that first reads a different note it was given leaving its setup with **Done**, keeping its access, with nothing stuck after a reload
 - the setup on a 390-pixel-wide phone screen, without sideways scrolling
+- a Synced note following its account to a second device, with an edit reaching the first device while its note is open, and a conflict after reconnecting that keeps both texts
+- separate owner spaces when signing out and switching accounts on one device
 
 Set `MONOTES_COLLAB_KEEP=1` to keep the temporary directory and deployment state. Set `MONOTES_COLLAB_PORT` to use another port. The report is `.audit/collab/latest/html/index.html`.
 

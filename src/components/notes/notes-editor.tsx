@@ -8,19 +8,22 @@ import { EditorState } from "@codemirror/state";
 import { vim } from "@replit/codemirror-vim";
 import { toast } from "@/components/sodium/ui/toast";
 import { editorThemeExtensions, notePlaceholder } from "./notes-theme";
+import { Unauthenticated } from "convex/react";
+import { useRouter } from "next/navigation";
 import { useLocalNote } from "@/hooks/useLocalNote";
 import { useVimCommands } from "@/hooks/useVimCommands";
-import { useDebouncedCloudSync } from "@/lib/sync-engine";
 import { getNote } from "@/lib/local-notes";
-import { useNoteSync } from "@/contexts/note-sync-context";
+import { useUploadQueue, useUploadStatus } from "@/contexts/upload-queue-context";
+import { keepCursorOnCloudText } from "@/lib/cloud-text-extension";
 import NotesMetadataBar from "./notes-metadata-bar";
+import RecoveryNotice from "./recovery-notice";
 import WelcomeDialog from "./welcome-dialog";
 import { useEditorSettings } from "@/contexts/editor-settings-context";
 import { useDistractionFree } from "@/contexts/distraction-free-context";
 import { Alert, AlertAction, AlertDescription, AlertTitle } from "@/components/sodium/ui/alert";
 import { Button } from "@/components/sodium/ui/button";
 import { Document } from "@/components/sodium/icon";
-import { Empty, EmptyDescription, EmptyHeader, EmptyIcon, EmptyTitle } from "@/components/sodium/ui/empty-state";
+import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyIcon, EmptyTitle } from "@/components/sodium/ui/empty-state";
 
 interface NotesEditorProps {
   noteId: string;
@@ -29,27 +32,18 @@ interface NotesEditorProps {
 export default function NotesEditor({ noteId }: NotesEditorProps) {
   const id = noteId ?? "local-default";
   const { note, setMarkdown, saveNow, saveError, replacedRevision, loadError } = useLocalNote(id);
-  const { syncNow, isSyncing, syncComplete } = useDebouncedCloudSync(
-    note ? id : "",
-    note?.content ?? "",
-    note?.cloudStatus ?? "local"
-  );
-  const { registerSync, unregisterSync } = useNoteSync();
+  const queue = useUploadQueue();
+  const uploadStatus = useUploadStatus(id);
+  const router = useRouter();
   const { settings } = useEditorSettings();
   const { triggerDistraction } = useDistractionFree();
 
+  // The text is safe once it's on this device, so saving never waits on the cloud.
   const saveAndSync = useCallback(async () => {
     const result = await saveNow();
-    await syncNow();
+    queue.uploadNow(id);
     return result;
-  }, [saveNow, syncNow]);
-
-  useEffect(() => {
-    registerSync(id, async () => { await saveAndSync(); });
-    return () => {
-      unregisterSync();
-    };
-  }, [id, saveAndSync, registerSync, unregisterSync]);
+  }, [saveNow, queue, id]);
 
   // Before connecting for agents, make every keystroke durable and read the
   // stored text so nothing typed in this editor is left behind.
@@ -57,6 +51,10 @@ export default function NotesEditor({ noteId }: NotesEditorProps) {
     await saveNow();
     return (await getNote(id))?.content ?? "";
   }, [saveNow, id]);
+
+  const appendKept = useCallback((text: string) => {
+    if (note) setMarkdown(note.content ? `${note.content}\n\n${text}` : text);
+  }, [note, setMarkdown]);
 
   const showUpdatedNotice = useCallback(() => {
     toast("Updated from another tab", { id: `note-update-${id}` });
@@ -87,6 +85,7 @@ export default function NotesEditor({ noteId }: NotesEditorProps) {
   const extensions = useMemo(() => {
     const exts = [
       markdown(),
+      keepCursorOnCloudText,
       ...editorThemeExtensions(),
       EditorView.scrollMargins.of(() => ({ top: 200, bottom: 200 })),
       keymap.of([{ key: "Mod-s", run: handleSave, preventDefault: true }]),
@@ -109,6 +108,11 @@ export default function NotesEditor({ noteId }: NotesEditorProps) {
             <EmptyTitle>Note not found</EmptyTitle>
             <EmptyDescription>This note doesn’t exist locally. Create a new one instead.</EmptyDescription>
           </EmptyHeader>
+          <Unauthenticated>
+            <EmptyContent>
+              <Button variant="secondary" onClick={() => router.push("/signin")}>Sign in</Button>
+            </EmptyContent>
+          </Unauthenticated>
         </Empty>
       </div>
     );
@@ -135,9 +139,8 @@ export default function NotesEditor({ noteId }: NotesEditorProps) {
         <NotesMetadataBar
           lastEdited={note?.updatedAt}
           cloudStatus={note?.cloudStatus}
+          uploadStatus={uploadStatus}
           noteId={noteId}
-          isSyncing={isSyncing}
-          syncComplete={syncComplete}
           prepareConnect={prepareConnect}
         />
         {saveError && (
@@ -149,6 +152,7 @@ export default function NotesEditor({ noteId }: NotesEditorProps) {
             </AlertAction>
           </Alert>
         )}
+        <RecoveryNotice noteId={id} onAppend={appendKept} />
         <CodeMirror
           placeholder={emptyPlaceholder}
           className="cm-container"

@@ -11,7 +11,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/sodium/ui/dialog";
-import { useSyncNoteToCloud } from "@/lib/sync-engine";
+import { useUploadQueue } from "@/contexts/upload-queue-context";
 import { toast } from "@/components/sodium/ui/toast";
 
 interface SyncModalProps {
@@ -25,13 +25,13 @@ export default function SyncModal({
   onOpenChange,
   noteId,
 }: SyncModalProps) {
-  const syncNoteToCloud = useSyncNoteToCloud();
+  const queue = useUploadQueue();
 
   // The dialog holds itself pending while this runs, closes when it resolves,
   // and shows the rejection's message above the footer when it fails.
   const handleConfirm = async () => {
     try {
-      await syncNoteToCloud(noteId);
+      await queue.syncToCloud(noteId);
     } catch (error) {
       console.error("Failed to sync note:", error);
       throw new Error(

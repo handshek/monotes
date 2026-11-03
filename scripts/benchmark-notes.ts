@@ -168,7 +168,7 @@ try {
             const tx = db.transaction("notes", "readwrite");
             const store = tx.objectStore("notes");
             store.clear();
-            for (let i = 0; i < count; i++) store.put({ id: `Perf${String(i).padStart(6, "0")}`, content: body, updatedAt: 1_700_000_000_000 - i, cloudStatus: "local" });
+            for (let i = 0; i < count; i++) store.put({ id: `Perf${String(i).padStart(6, "0")}`, owner: "local", content: body, updatedAt: 1_700_000_000_000 - i, cloudStatus: "local" });
             tx.oncomplete = () => { db.close(); resolve(); };
             tx.onerror = () => reject(tx.error);
           };

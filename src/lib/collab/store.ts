@@ -1,4 +1,5 @@
 import { ChangeSet, Text } from "@codemirror/state";
+import { readCurrentOwner } from "@/lib/current-owner";
 import { getDB, type CollabClientRecord, type NoteContent, type RecoveryRecord } from "@/lib/local-db";
 
 export async function listClients(noteId: string): Promise<CollabClientRecord[]> {
@@ -79,7 +80,7 @@ export async function markConnected(noteId: string, epoch: string, serverText: s
       await db.recoveries.add({ noteId, text: note.content, reason: "before_connect", createdAt: Date.now() });
     }
     const clock = nextDerivedClock();
-    const base: NoteContent = note ?? { id: noteId, content: "", updatedAt, cloudStatus: "synced" };
+    const base: NoteContent = note ?? { id: noteId, owner: readCurrentOwner(), content: "", updatedAt, cloudStatus: "synced" };
     await db.notes.put({
       ...base,
       content: serverText,
@@ -92,11 +93,11 @@ export async function markConnected(noteId: string, epoch: string, serverText: s
 }
 
 /* Copy a legacy cloud note onto this device so it can be opened. */
-export async function hydrateCloudNote(noteId: string, content: string, updatedAt: number) {
+export async function hydrateCloudNote(noteId: string, content: string, updatedAt: number, cloudRevision: number) {
   const db = getDB();
   await db.transaction("rw", db.notes, async () => {
     if (await db.notes.get(noteId)) return;
-    await db.notes.add({ id: noteId, content, updatedAt, cloudStatus: "synced" });
+    await db.notes.add({ id: noteId, owner: readCurrentOwner(), content, updatedAt, cloudRevision, cloudStatus: "synced" });
   });
 }
 

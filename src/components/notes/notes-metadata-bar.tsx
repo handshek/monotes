@@ -23,14 +23,14 @@ import { formatExactTime, useRelativeTime } from "@/lib/relative-time";
 import AgentAccessDialog, { REOPEN_KEY } from "@/components/agents/agent-access-dialog";
 import NoteHistoryDialog, { type RestoreReadiness } from "./note-history-dialog";
 import type { SessionStatus } from "@/lib/collab/session";
+import type { UploadStatus } from "@/lib/upload-queue";
 
 interface NotesMetadataBarProps {
   lastEdited?: number;
-  cloudStatus?: "local" | "syncing" | "synced" | "ai-enabled";
+  cloudStatus?: "local" | "synced";
+  uploadStatus?: UploadStatus;
   noteId?: string;
   className?: string;
-  isSyncing?: boolean;
-  syncComplete?: boolean;
   /* Present for notes connected for live agent editing. */
   connected?: {
     status: SessionStatus | null;
@@ -40,6 +40,13 @@ interface NotesMetadataBarProps {
   /* Saves pending typing and returns this device's text, before connecting. */
   prepareConnect?: () => Promise<string>;
 }
+
+const UPLOAD_STATUS: Record<UploadStatus, { label: string; tone: StatusValue }> = {
+  synced: { label: "Synced", tone: "ok" },
+  syncing: { label: "Syncing", tone: "running" },
+  waiting: { label: "Waiting to upload", tone: "paused" },
+  sign_in: { label: "Sign in to sync", tone: "warn" },
+};
 
 function connectionLabel(status: SessionStatus | null): string {
   if (!status) return "Connecting…";
@@ -80,10 +87,9 @@ function connectionTone(status: SessionStatus | null): StatusValue {
 export default function NotesMetadataBar({
   lastEdited,
   cloudStatus = "local",
+  uploadStatus = "synced",
   noteId,
   className = "",
-  isSyncing = false,
-  syncComplete = false,
   connected,
   prepareConnect,
 }: NotesMetadataBarProps) {
@@ -179,15 +185,12 @@ export default function NotesMetadataBar({
               </Authenticated>
             </>
           )}
-          {!connected && isSyncing && (
-            <Status size="sm" status="running" className="ms-2">
-              Syncing
-            </Status>
-          )}
-          {!connected && !isSyncing && syncComplete && (
-            <Status size="sm" status="ok" className="ms-2" title="Synced to cloud">
-              Synced
-            </Status>
+          {!connected && cloudStatus !== "local" && (
+            <span role="status" aria-label="Sync status" className="ms-2 flex items-center">
+              <Status size="sm" status={UPLOAD_STATUS[uploadStatus].tone}>
+                {UPLOAD_STATUS[uploadStatus].label}
+              </Status>
+            </span>
           )}
         </div>
       </div>

@@ -1,5 +1,7 @@
 import Dexie, { Table } from "dexie";
 
+export const LOCAL_OWNER = "local";
+
 export interface LocalRevision {
   clock: number;
   actor: string;
@@ -7,10 +9,19 @@ export interface LocalRevision {
 
 export interface NoteContent {
   id: string;
+  // A signed-in account's id, or LOCAL_OWNER. See docs/adr/0001.
+  owner: string;
+  // Set on notes from before owners existed, until an account claims them.
+  unclaimed?: true;
   content: string;
   updatedAt: number;
   localRevision?: LocalRevision;
-  cloudStatus: "local" | "syncing" | "synced" | "ai-enabled";
+  // The last cloud revision this device saw. Absent until first contact.
+  cloudRevision?: number;
+  // How many times cloud text has replaced this row, so a draft typed over
+  // the older text can be recognised when it lands.
+  pulls?: number;
+  cloudStatus: "local" | "synced";
   // Set once the note is connected for live agent editing. The row's content
   // is then a copy derived from collaboration state, never its source.
   collab?: CollabMarker;
@@ -54,12 +65,25 @@ export interface RecoveryRecord {
     | "deleted"
     | "before_connect"
     | "unsaved_typing"
-    | "unsent";
+    | "unsent"
+    | "cloud_version"
+    | "before_cloud_version";
   createdAt: number;
+}
+
+/*
+ * A Synced note has text the cloud may not hold. Written in the same
+ * transaction as the row, so an upload can't be forgotten by leaving the note,
+ * reloading or going offline.
+ */
+export interface PendingUpload {
+  noteId: string;
+  clock: number;
 }
 
 class MonotesLocalDB extends Dexie {
   notes!: Table<NoteContent, string>;
+  pendingUploads!: Table<PendingUpload, string>;
   collabClients!: Table<CollabClientRecord, [string, string]>;
   recoveries!: Table<RecoveryRecord, number>;
 
@@ -105,6 +129,27 @@ class MonotesLocalDB extends Dexie {
       collabClients: "[noteId+clientId],noteId",
       recoveries: "++id,noteId",
     });
+
+    // Version 5: durable markers for uploads the cloud hasn't confirmed.
+    this.version(5).stores({
+      pendingUploads: "noteId",
+    });
+
+    // Version 6: every note belongs to an owner. Older notes start with the
+    // Local user and are claimed by an account that holds a cloud copy of them.
+    this.version(6)
+      .stores({
+        notes: "id,updatedAt,cloudStatus,[owner+updatedAt]",
+      })
+      .upgrade((tx) => {
+        return tx
+          .table("notes")
+          .toCollection()
+          .modify((note) => {
+            note.owner = LOCAL_OWNER;
+            note.unclaimed = true;
+          });
+      });
   }
 }
 

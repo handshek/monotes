@@ -6,6 +6,9 @@ import { useConvex, useConvexAuth, useQuery } from "convex/react";
 import { api } from "../../../convex/_generated/api";
 import { getDB } from "@/lib/local-db";
 import { hydrateCloudNote, markConnected } from "@/lib/collab/store";
+import { getNote } from "@/lib/local-notes";
+import { useCurrentOwner } from "@/lib/current-owner";
+import { useUploadQueue } from "@/contexts/upload-queue-context";
 import { noteTitle } from "@/lib/note-summary";
 import NotesEditor from "./notes-editor";
 import CollabNoteEditor from "./collab-note-editor";
@@ -22,11 +25,22 @@ import { Button } from "@/components/sodium/ui/button";
  */
 export default function NoteView({ noteId }: { noteId: string }) {
   const convex = useConvex();
-  const row = useLiveQuery(async () => (await getDB().notes.get(noteId)) ?? null, [noteId]);
+  const owner = useCurrentOwner();
+  const row = useLiveQuery(async () => (owner ? getNote(noteId) : undefined), [noteId, owner]);
+  // Another owner's copy reads as missing, and nothing may write over it.
+  const elsewhere = useLiveQuery(
+    async () => row === null && !!(await getDB().notes.get(noteId)),
+    [noteId, row],
+  );
   const { isAuthenticated } = useConvexAuth();
   const watch = isAuthenticated && row !== undefined && !row?.collab;
   const info = useQuery(api.collab.openInfo, watch ? { noteId } : "skip");
-  const needsCopy = info?.status === "ok" && (row === null || (info.epoch !== null && !row?.collab));
+  const needsCopy = info?.status === "ok" && elsewhere === false && (row === null || (info.epoch !== null && !row?.collab));
+  const queue = useUploadQueue();
+  const cloudGone = info?.status === "deleted";
+  const cloudMoved = info?.status === "ok" && info.epoch === null ? info.revision : null;
+  const synced = !!row && !row.collab && row.cloudStatus !== "local";
+  const seenRevision = row?.cloudRevision;
   const [copyFailed, setCopyFailed] = useState(false);
   const [attempt, setAttempt] = useState(0);
   const tabTitle = row ? `${noteTitle(row.content)} · Monotes` : null;
@@ -48,7 +62,7 @@ export default function NoteView({ noteId }: { noteId: string }) {
       const cloud = await convex.query(api.collab.openContent, { noteId });
       if (!cloud) throw new Error("The cloud copy isn't available");
       if (cloud.epoch) await markConnected(noteId, cloud.epoch, cloud.content, cloud.updatedAt);
-      else await hydrateCloudNote(noteId, cloud.content, cloud.updatedAt);
+      else await hydrateCloudNote(noteId, cloud.content, cloud.updatedAt, cloud.revision);
     })().catch(() => {
       // Nothing was written. Show the failure rather than an empty note;
       // an existing local copy stays open in the meantime.
@@ -58,6 +72,13 @@ export default function NoteView({ noteId }: { noteId: string }) {
       cancelled = true;
     };
   }, [needsCopy, convex, noteId, attempt]);
+
+  // Text comes only when the metadata says this device is behind.
+  useEffect(() => {
+    if (!synced) return;
+    if (cloudGone) void queue.deletedInCloud(noteId);
+    else if (cloudMoved !== null && (seenRevision === undefined || cloudMoved > seenRevision)) void queue.pull(noteId);
+  }, [synced, cloudGone, cloudMoved, seenRevision, queue, noteId]);
 
   if (row === undefined) return null;
   if (row?.collab) {
@@ -71,7 +92,7 @@ export default function NoteView({ noteId }: { noteId: string }) {
       />
     );
   }
-  if (row === null && isAuthenticated && (info === undefined || needsCopy)) {
+  if (row === null && !elsewhere && isAuthenticated && (info === undefined || needsCopy)) {
     if (copyFailed) {
       return (
         <div className="py-12">
@@ -93,5 +114,5 @@ export default function NoteView({ noteId }: { noteId: string }) {
       </p>
     );
   }
-  return <NotesEditor noteId={noteId} />;
+  return <NotesEditor key={owner} noteId={noteId} />;
 }

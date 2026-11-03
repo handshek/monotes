@@ -7,7 +7,7 @@ import { api } from "../../../../convex/_generated/api";
 import type { Id } from "../../../../convex/_generated/dataModel";
 import { useLiveQuery } from "dexie-react-hooks";
 import Navbar from "@/app/(notes)/navbar";
-import { getDB } from "@/lib/local-db";
+import { getNote } from "@/lib/local-notes";
 import { noteTitle } from "../../../../convex/lib/collabCore";
 import { AgentAccessExplanation } from "@/components/agents/agent-access-dialog";
 import { CreateAgentKey } from "@/components/agents/agent-setup";
@@ -59,7 +59,7 @@ function Connections() {
   // Titles come from this device's copies; the server list holds only note ids.
   const titles = useLiveQuery(async () => {
     const ids = [...new Set((connections ?? []).flatMap((connection) => connection.notes.map((note) => note.noteId)))];
-    const rows = await getDB().notes.bulkGet(ids);
+    const rows = await Promise.all(ids.map((id) => getNote(id)));
     return new Map(rows.flatMap((row) => (row ? [[row.id, noteTitle(row.content)] as const] : [])));
   }, [connections]);
 

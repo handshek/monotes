@@ -3,6 +3,8 @@ import type { LocalRevision, NoteContent } from "./local-db";
 type VersionedNote = Pick<NoteContent, "updatedAt" | "localRevision">;
 export type NoteDraft = Pick<NoteContent, "id" | "content" | "updatedAt"> & {
   localRevision: LocalRevision;
+  // The row's `pulls` when typing began. Absent on drafts from older tabs.
+  basePulls?: number;
 };
 
 const DRAFT_PREFIX = "monotes-draft:";
@@ -23,6 +25,7 @@ export function createDraft(note: NoteContent, content: string): NoteDraft {
     content,
     updatedAt: clock,
     localRevision: { clock, actor },
+    basePulls: note.pulls ?? 0,
   };
 }
 
@@ -48,6 +51,7 @@ export function readPendingDraft(id: string): NoteDraft | null {
         clock: draft.localRevision.clock,
         actor: draft.localRevision.actor,
       },
+      ...(typeof draft.basePulls === "number" ? { basePulls: draft.basePulls } : {}),
     };
   } catch {
     return null;

@@ -13,6 +13,7 @@ import { capture, createNote, editor, waitForStoredContent } from "../notes-help
 
 const liveEditor = (page: Page) => page.locator('.cm-content[data-collab="true"]');
 const sharingStatus = (page: Page) => page.getByRole("status", { name: "Sharing status" });
+const syncStatus = (page: Page) => page.getByRole("status", { name: "Sync status" });
 
 async function signIn(page: Page, label: string, email = `${label}-${Date.now()}@example.test`) {
   await page.goto("/signin");
@@ -63,6 +64,15 @@ function agentApi(request: APIRequestContext, token: string) {
       return { status: response.status(), json: await response.json() };
     },
   };
+}
+
+/* Add to the end of the line from Vim's normal mode, as a person would. */
+async function appendInVim(page: Page, text: string) {
+  await editor(page).click();
+  await page.keyboard.press("Escape");
+  await page.keyboard.press("A");
+  await page.keyboard.type(text);
+  await page.keyboard.press("Escape");
 }
 
 async function editorText(page: Page) {
@@ -336,6 +346,70 @@ async function redeemCode(request: APIRequestContext, code: string) {
   const key = /^MONOTES_AGENT_KEY=(mna_\S+)$/m.exec(text)?.[1] ?? "";
   return { status: response.status(), key };
 }
+
+test("a Synced note follows its owner to another device and neither copy loses text", async ({ page, browser }) => {
+  const email = await signIn(page, "sync");
+  const id = await createNote(page);
+  await editor(page).fill("from the first device");
+  await waitForStoredContent(page, id, "from the first device");
+  await page.getByRole("button", { name: "Local only" }).click();
+  await page.getByRole("dialog", { name: "Sync note to cloud" }).getByRole("button", { name: "Sync to cloud" }).click();
+  await expect(syncStatus(page)).toHaveText("Synced");
+
+  const otherContext = await browser.newContext();
+  try {
+    await otherContext.addInitScript(() => localStorage.setItem("monotes-welcome-dismissed", "true"));
+    const other = await otherContext.newPage();
+    await signIn(other, "sync", email);
+    await other.goto(`/${id}`);
+    await expect(editor(other)).toContainText("from the first device");
+
+    // An edit reaches the first device while its note is open, with its cursor left alone.
+    await appendInVim(other, " and the second");
+    await expect(editor(page)).toContainText("from the first device and the second", { timeout: 15_000 });
+    await expect(syncStatus(other)).toHaveText("Synced", { timeout: 15_000 });
+
+    // Offline, the first device edits while the second moves on: a conflict, with both texts kept.
+    await page.context().setOffline(true);
+    await appendInVim(page, " offline typing");
+    await expect(syncStatus(page)).toHaveText("Waiting to upload");
+    await appendInVim(other, " and more");
+    await expect(syncStatus(other)).toHaveText("Syncing");
+    await expect(syncStatus(other)).toHaveText("Synced", { timeout: 15_000 });
+    await page.context().setOffline(false);
+    await expect(page.getByRole("button", { name: "Review kept text" })).toBeVisible({ timeout: 30_000 });
+    await expect(editor(page)).toContainText("offline typing");
+    await expect(syncStatus(page)).toHaveText("Synced", { timeout: 30_000 });
+    await expect(editor(other)).toContainText("offline typing", { timeout: 15_000 });
+    await page.getByRole("button", { name: "Review kept text" }).click();
+    await expect(page.getByRole("dialog")).toContainText("and more");
+  } finally {
+    await otherContext.close();
+  }
+});
+
+test("each owner has a separate space on a device", async ({ page }) => {
+  const first = await signIn(page, "first");
+  const id = await createNote(page);
+  await editor(page).fill("only the first account");
+  await waitForStoredContent(page, id, "only the first account");
+
+  await page.getByRole("button", { name: "Sign out" }).click();
+  await expect(page.getByRole("button", { name: "Sign in", exact: true })).toBeVisible();
+  await page.goto(`/${id}`);
+  await expect(page.getByText("Note not found")).toBeVisible();
+  await expect(editor(page)).toHaveCount(0);
+
+  await signIn(page, "second");
+  await page.goto(`/${id}`);
+  await expect(page.getByText("Note not found")).toBeVisible();
+  await page.getByRole("button", { name: "Sign out" }).click();
+  await expect(page.getByRole("button", { name: "Sign in", exact: true })).toBeVisible();
+
+  await signIn(page, "first", first);
+  await page.goto(`/${id}`);
+  await expect(editor(page)).toContainText("only the first account");
+});
 
 test("connect an agent with one message: code accepted, read verified, then it edits", async ({ page, context, request, baseURL }, testInfo) => {
   await context.grantPermissions(["clipboard-read", "clipboard-write"], { origin: baseURL });
