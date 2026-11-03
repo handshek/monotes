@@ -61,6 +61,8 @@ scripts/collab-e2e.sh
 
 The script copies the app to a temporary directory and overlays `tests/collab-e2e/overlay`. That overlay adds password sign-in for tests only and never exists in the application source. The script creates a local deployment with `CONVEX_AGENT_MODE=anonymous`. It sets `CONVEX_PROVISION_HOST` to the production Convex API with an explicit port, so the CLI keeps its state in `~/.convex-test-443` and `~/.cache/convex-test-443` instead of using your Convex login. The CLI still contacts Convex to issue the local deployment's admin key. The script generates throwaway auth keys without logging them, builds the copy, serves it on port 3108, and runs `playwright.collab.config.ts`. Afterwards it stops the backend and removes the temporary copy and the deployment state it created.
 
+`scripts/dev-signed-in.sh` (`bun run dev:signed-in`) uses the same overlay for manual testing: it runs `next dev` on port 3109 against a local backend that it keeps between runs. See the [README](../README.md#try-signed-in-features-without-google).
+
 The suite covers:
 
 - typing in Vim insert mode while an agent replaces another section, including the highlight, the person staying in insert mode, the text after reload, and Vim undo and redo affecting only the person's own typing

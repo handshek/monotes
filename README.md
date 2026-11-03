@@ -99,6 +99,16 @@ bun run build
 bun run start
 ```
 
+## Try signed-in features without Google
+
+```sh
+bun run dev:signed-in
+```
+
+This starts the dev server at http://localhost:3109 against a private local Convex backend with test-only password sign-in. The sign-in page has one-click buttons for `alice@test.local` and `bob@test.local`, and accepts any other email. Every test account uses the password `test-password-1234`, which is filled in for you, and is created the first time it signs in. Use two accounts, or two browser profiles, to try owner spaces and sync between devices.
+
+The app runs from a copy in `~/.cache/monotes-dev-signed-in` with the overlay from `tests/collab-e2e/overlay`, so your `.env.local`, Convex login and cloud deployment are never touched. Source edits are copied into it every second, so hot reload works as usual. Accounts and cloud notes are kept between runs; `bun run dev:signed-in --fresh` starts over with an empty backend. The script prints the command to read the backend's notes table.
+
 ## Verify changes
 
 Install the browser engines, then run the checks with the local Convex configuration available.
